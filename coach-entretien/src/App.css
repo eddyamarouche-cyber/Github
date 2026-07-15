@@ -567,6 +567,193 @@
   line-height: 1.5;
 }
 
+/* MEDDIC */
+.meddic-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.meddic-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.meddic-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.meddic-badge {
+  background: rgba(124, 106, 239, 0.15);
+  color: var(--accent-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--accent);
+}
+
+.meddic-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.meddic-when {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+}
+
+.meddic-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.meddic-card {
+  display: flex;
+  gap: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: border-color 0.2s;
+}
+
+.meddic-card:hover {
+  border-color: var(--accent);
+}
+
+.meddic-letter {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.meddic-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.meddic-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.meddic-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.meddic-tip,
+.meddic-example {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+}
+
+.meddic-tip strong,
+.meddic-example strong {
+  color: var(--accent-light);
+}
+
+.meddic-questions {
+  margin-top: 0.75rem;
+}
+
+.meddic-questions summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--accent-light);
+  font-weight: 500;
+  user-select: none;
+}
+
+.meddic-questions summary:hover {
+  color: var(--text-primary);
+}
+
+.meddic-questions ul {
+  list-style: none;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+}
+
+.meddic-questions li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 0.3rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.meddic-questions li::before {
+  content: '?';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.meddic-scenarios h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.scenarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.scenario-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  border-top: 3px solid var(--accent);
+}
+
+.scenario-card h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-light);
+}
+
+.scenario-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
 /* Progress */
 .progress-dashboard {
   text-align: center;
@@ -723,5 +910,16 @@
   .mock-timer-bar {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .meddic-card {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .meddic-letter {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
   }
 }
