@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interview Process Coach — Préparez chaque étape de votre processus de recrutement."
+    />
+    <title>Interview Process Coach</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Écran A : Accueil -->
+      <section id="screen-welcome" class="screen active" aria-label="Accueil">
+        <div class="welcome-card">
+          <div class="brand">
+            <span class="brand-icon" aria-hidden="true">🎯</span>
+            <h1>Interview Process Coach</h1>
+          </div>
+          <p class="lead">
+            Préparez chaque étape de votre processus de recrutement, à votre rythme.
+          </p>
+          <ul class="feature-list">
+            <li>Comprenez l'objectif de chaque entretien</li>
+            <li>Anticipez les questions probables</li>
+            <li>Retenez les conseils et questions à poser</li>
+          </ul>
+          <div class="actions">
+            <button type="button" class="btn btn-primary" data-action="start">
+              Commencer
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary hidden"
+              id="btn-resume"
+              data-action="resume"
+            >
+              Reprendre ma préparation
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Écran B : Informations -->
+      <section id="screen-profile" class="screen" aria-label="Vos informations">
+        <div class="page-header">
+          <button type="button" class="btn-back" data-action="go-welcome" aria-label="Retour">
+            ← Retour
+          </button>
+          <h2>Vos informations</h2>
+          <p class="subtitle">Ces informations personnalisent votre parcours de préparation.</p>
+        </div>
+
+        <form id="profile-form" class="card form-card" novalidate>
+          <div class="form-group">
+            <label for="user-name">Votre nom</label>
+            <input
+              type="text"
+              id="user-name"
+              name="name"
+              placeholder="Ex. : Marie Dupont"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="company">Entreprise visée</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              placeholder="Ex. : Acme Corp"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="role">Poste visé</label>
+            <input
+              type="text"
+              id="role"
+              name="role"
+              placeholder="Ex. : Product Manager"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="interview-date">Date du prochain entretien</label>
+            <input type="date" id="interview-date" name="interviewDate" required />
+          </div>
+
+          <p id="profile-error" class="form-error hidden" role="alert"></p>
+
+          <button type="submit" class="btn btn-primary btn-full">
+            Voir mon parcours d'entretiens
+          </button>
+        </form>
+      </section>
+
+      <!-- Écran C : Parcours -->
+      <section id="screen-journey" class="screen" aria-label="Parcours des étapes">
+        <div class="page-header">
+          <button type="button" class="btn-back" data-action="go-profile" aria-label="Retour">
+            ← Modifier mes infos
+          </button>
+          <h2>Votre parcours</h2>
+        </div>
+
+        <div id="journey-summary" class="summary-card card"></div>
+
+        <div id="steps-list" class="steps-list" role="list"></div>
+
+        <p class="coming-soon-note">
+          La simulation d'entretien arrive bientôt. Pour l'instant, explorez chaque étape pour vous préparer.
+        </p>
+      </section>
+
+      <!-- Écran D : Détail d'une étape -->
+      <section id="screen-step" class="screen" aria-label="Détail de l'étape">
+        <div class="page-header">
+          <button type="button" class="btn-back" data-action="go-journey" aria-label="Retour">
+            ← Retour au parcours
+          </button>
+          <div id="step-header"></div>
+        </div>
+
+        <div id="step-content" class="step-content"></div>
+
+        <div class="step-actions">
+          <button type="button" class="btn btn-secondary btn-full" data-action="mark-in-progress">
+            Marquer comme en cours
+          </button>
+          <button type="button" class="btn btn-primary btn-full" data-action="mark-done">
+            Marquer comme terminé
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

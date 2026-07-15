@@ -1,5 +1,22 @@
 # Coach Entretien Cursor
 
+Ce dépôt contient deux applications web de préparation aux entretiens.
+
+## Interview Process Coach
+
+Application simple pour préparer chaque étape d'un processus de recrutement (Recruiter Screen, Hiring Manager, Product Interview, etc.).
+
+```bash
+cd interview-process-coach
+npx --yes serve .
+```
+
+Voir [interview-process-coach/README.md](interview-process-coach/README.md) pour plus de détails.
+
+---
+
+## Coach Entretien Cursor
+
 Application web de préparation aux entretiens chez **Cursor**. Entraînez-vous avec des questions comportementales, techniques, produit, system design et culture.
 
 ## Fonctionnalités
