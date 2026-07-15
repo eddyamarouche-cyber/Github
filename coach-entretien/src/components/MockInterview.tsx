@@ -1,13 +1,15 @@
 import { useState, useMemo, useCallback } from 'react'
-import { questions } from '../data/questions'
-import type { Category } from '../data/questions'
+import type { Category } from '../data/types'
+import { allCategories } from '../data/types'
 import { useTimer } from '../hooks/useTimer'
 import { useProgress } from '../hooks/useProgress'
+import { useI18n } from '../i18n/context'
 import { QuestionCard } from './QuestionCard'
 
-const MOCK_DURATION = 45 * 60 // 45 minutes
+const MOCK_DURATION = 45 * 60
 
 export function MockInterview() {
+  const { t, questions, format } = useI18n()
   const [started, setStarted] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([
@@ -23,7 +25,7 @@ export function MockInterview() {
     const filtered = questions.filter((q) => selectedCategories.includes(q.category))
     const shuffled = [...filtered].sort(() => Math.random() - 0.5)
     return shuffled.slice(0, 6)
-  }, [selectedCategories])
+  }, [questions, selectedCategories])
 
   const toggleCategory = (cat: Category) => {
     setSelectedCategories((prev) =>
@@ -46,27 +48,22 @@ export function MockInterview() {
   if (!started) {
     return (
       <div className="mock-setup">
-        <h2>🎯 Simulation d'entretien</h2>
-        <p className="mock-description">
-          Entraînez-vous dans des conditions réalistes : 45 minutes, 6 questions aléatoires
-          avec chronomètre.
-        </p>
+        <h2>🎯 {t.mock.title}</h2>
+        <p className="mock-description">{t.mock.description}</p>
 
         <div className="category-selection">
-          <h3>Catégories à inclure :</h3>
+          <h3>{t.mock.categoriesTitle}</h3>
           <div className="category-checkboxes">
-            {(['comportemental', 'technique', 'produit', 'systeme', 'culture'] as Category[]).map(
-              (cat) => (
-                <label key={cat} className="checkbox-label">
-                  <input
-                    type="checkbox"
-                    checked={selectedCategories.includes(cat)}
-                    onChange={() => toggleCategory(cat)}
-                  />
-                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                </label>
-              ),
-            )}
+            {allCategories.map((cat) => (
+              <label key={cat} className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={selectedCategories.includes(cat)}
+                  onChange={() => toggleCategory(cat)}
+                />
+                {t.categories[cat].label}
+              </label>
+            ))}
           </div>
         </div>
 
@@ -76,7 +73,7 @@ export function MockInterview() {
           onClick={handleStart}
           disabled={selectedCategories.length === 0}
         >
-          Démarrer la simulation
+          {t.mock.start}
         </button>
       </div>
     )
@@ -87,13 +84,15 @@ export function MockInterview() {
   if (!currentQuestion || timer.isExpired) {
     return (
       <div className="mock-complete">
-        <h2>⏱️ Simulation terminée !</h2>
+        <h2>⏱️ {t.mock.completeTitle}</h2>
         <p>
-          Vous avez répondu à {currentIndex + 1} question(s) en{' '}
-          {Math.floor((MOCK_DURATION - timer.seconds) / 60)} minutes.
+          {format(t.mock.completeText, {
+            count: currentIndex + 1,
+            minutes: Math.floor((MOCK_DURATION - timer.seconds) / 60),
+          })}
         </p>
         <button type="button" className="start-btn" onClick={handleEnd}>
-          Retour au menu
+          {t.mock.backToMenu}
         </button>
       </div>
     )
@@ -107,7 +106,10 @@ export function MockInterview() {
             ⏱ {timer.formatted}
           </span>
           <span className="mock-progress">
-            Question {currentIndex + 1} / {mockQuestions.length}
+            {format(t.mock.question, {
+              current: currentIndex + 1,
+              total: mockQuestions.length,
+            })}
           </span>
         </div>
         <div className="timer-progress">
@@ -117,7 +119,7 @@ export function MockInterview() {
           />
         </div>
         <button type="button" className="end-btn" onClick={handleEnd}>
-          Terminer
+          {t.mock.end}
         </button>
       </div>
 

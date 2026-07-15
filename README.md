@@ -6,8 +6,13 @@ Application web de préparation aux entretiens chez **Cursor**. Entraînez-vous 
 
 - **Pratique** — Parcourez 14 questions par catégorie avec indices et points clés
 - **Simulation** — Entretien chronométré de 45 minutes avec 6 questions aléatoires
-- **Conseils** — Méthode STAR, tips produit et culture Cursor
+- **Conseils** — Méthode STAR, MEDDIC, tips produit et culture Cursor
 - **Progression** — Auto-évaluation et suivi local de vos réponses
+- **Multilingue** — Interface disponible en français, anglais et italien
+
+## Langues
+
+L'application détecte automatiquement la langue du navigateur. Utilisez le sélecteur **FR / EN / IT** dans l'en-tête pour changer de langue. La préférence est sauvegardée dans le navigateur.
 
 ## Démarrage rapide
 

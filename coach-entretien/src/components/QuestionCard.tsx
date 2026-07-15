@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import type { Question } from '../data/questions'
-import { categoryLabels } from '../data/questions'
+import type { Question } from '../data/types'
 import type { ProgressEntry } from '../hooks/useProgress'
+import { useI18n } from '../i18n/context'
 
 interface Props {
   question: Question
@@ -13,12 +13,13 @@ interface Props {
   onPrev: () => void
 }
 
-const ratings: { value: ProgressEntry['rating']; label: string; emoji: string }[] = [
-  { value: 'poor', label: 'À retravailler', emoji: '😕' },
-  { value: 'ok', label: 'Correct', emoji: '😐' },
-  { value: 'good', label: 'Bien', emoji: '🙂' },
-  { value: 'excellent', label: 'Excellent', emoji: '🌟' },
-]
+const ratingKeys: ProgressEntry['rating'][] = ['poor', 'ok', 'good', 'excellent']
+const ratingEmojis: Record<ProgressEntry['rating'], string> = {
+  poor: '😕',
+  ok: '😐',
+  good: '🙂',
+  excellent: '🌟',
+}
 
 export function QuestionCard({
   question,
@@ -29,6 +30,7 @@ export function QuestionCard({
   onNext,
   onPrev,
 }: Props) {
+  const { t } = useI18n()
   const [showHints, setShowHints] = useState(false)
   const [showKeyPoints, setShowKeyPoints] = useState(false)
   const [notes, setNotes] = useState(progress?.notes ?? '')
@@ -45,9 +47,9 @@ export function QuestionCard({
     <div className="question-card">
       <div className="question-header">
         <div className="question-meta">
-          <span className="category-badge">{categoryLabels[question.category]}</span>
+          <span className="category-badge">{t.categories[question.category].label}</span>
           <span className={`difficulty-badge ${question.difficulty}`}>
-            {question.difficulty}
+            {t.difficulty[question.difficulty]}
           </span>
         </div>
         <span className="question-counter">
@@ -59,7 +61,7 @@ export function QuestionCard({
 
       {question.followUp && (
         <div className="follow-up">
-          <strong>Question de suivi :</strong> {question.followUp}
+          <strong>{t.questionCard.followUp}</strong> {question.followUp}
         </div>
       )}
 
@@ -69,14 +71,14 @@ export function QuestionCard({
           className={`toggle-btn ${showHints ? 'active' : ''}`}
           onClick={() => setShowHints(!showHints)}
         >
-          💡 Indices {showHints ? '▲' : '▼'}
+          💡 {t.questionCard.hints} {showHints ? '▲' : '▼'}
         </button>
         <button
           type="button"
           className={`toggle-btn ${showKeyPoints ? 'active' : ''}`}
           onClick={() => setShowKeyPoints(!showKeyPoints)}
         >
-          ✅ Points clés {showKeyPoints ? '▲' : '▼'}
+          ✅ {t.questionCard.keyPoints} {showKeyPoints ? '▲' : '▼'}
         </button>
       </div>
 
@@ -97,23 +99,23 @@ export function QuestionCard({
       )}
 
       <div className="rating-section">
-        <p className="rating-label">Auto-évaluation de votre réponse :</p>
+        <p className="rating-label">{t.questionCard.rating}</p>
         <div className="rating-buttons">
-          {ratings.map((r) => (
+          {ratingKeys.map((key) => (
             <button
-              key={r.value}
+              key={key}
               type="button"
-              className={`rating-btn ${selectedRating === r.value ? 'selected' : ''}`}
-              onClick={() => handleRate(r.value)}
+              className={`rating-btn ${selectedRating === key ? 'selected' : ''}`}
+              onClick={() => handleRate(key)}
             >
-              <span className="rating-emoji">{r.emoji}</span>
-              <span className="rating-text">{r.label}</span>
+              <span className="rating-emoji">{ratingEmojis[key]}</span>
+              <span className="rating-text">{t.ratings[key]}</span>
             </button>
           ))}
         </div>
         <textarea
           className="notes-input"
-          placeholder="Notes personnelles sur votre réponse..."
+          placeholder={t.questionCard.notesPlaceholder}
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           onBlur={() => {
@@ -125,7 +127,7 @@ export function QuestionCard({
 
       <div className="nav-buttons">
         <button type="button" className="nav-btn" onClick={onPrev} disabled={index === 0}>
-          ← Précédent
+          {t.questionCard.prev}
         </button>
         <button
           type="button"
@@ -133,7 +135,7 @@ export function QuestionCard({
           onClick={onNext}
           disabled={index === total - 1}
         >
-          Suivant →
+          {t.questionCard.next}
         </button>
       </div>
     </div>

@@ -25,6 +25,42 @@
   flex-wrap: wrap;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--bg-card);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.lang-btn {
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: all 0.2s;
+}
+
+.lang-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.lang-btn.active {
+  color: white;
+  background: var(--accent);
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -884,6 +920,16 @@
   .header-content {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lang-switcher {
+    justify-content: center;
   }
 
   .nav {

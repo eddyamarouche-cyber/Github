@@ -1,3 +1,5 @@
+import { useI18n } from '../i18n/context'
+
 interface Props {
   stats: {
     total: number
@@ -10,13 +12,12 @@ interface Props {
 }
 
 export function ProgressDashboard({ stats, onClear }: Props) {
+  const { t, format } = useI18n()
+
   if (stats.total === 0) {
     return (
       <div className="progress-empty">
-        <p>
-          Aucune progression enregistrée. Commencez à pratiquer des questions pour suivre vos
-          progrès !
-        </p>
+        <p>{t.progress.empty}</p>
       </div>
     )
   }
@@ -32,16 +33,16 @@ export function ProgressDashboard({ stats, onClear }: Props) {
 
   return (
     <div className="progress-dashboard">
-      <h2>📊 Votre progression</h2>
+      <h2>📊 {t.progress.title}</h2>
 
       <div className="score-circle">
         <span className="score-value">{score}%</span>
-        <span className="score-label">Score global</span>
+        <span className="score-label">{t.progress.scoreLabel}</span>
       </div>
 
       <div className="stats-bars">
         <div className="stat-row">
-          <span>🌟 Excellent</span>
+          <span>🌟 {t.ratings.excellent}</span>
           <div className="stat-bar">
             <div
               className="stat-fill excellent"
@@ -51,7 +52,7 @@ export function ProgressDashboard({ stats, onClear }: Props) {
           <span>{stats.excellent}</span>
         </div>
         <div className="stat-row">
-          <span>🙂 Bien</span>
+          <span>🙂 {t.ratings.good}</span>
           <div className="stat-bar">
             <div
               className="stat-fill good"
@@ -61,7 +62,7 @@ export function ProgressDashboard({ stats, onClear }: Props) {
           <span>{stats.good}</span>
         </div>
         <div className="stat-row">
-          <span>😐 Correct</span>
+          <span>😐 {t.ratings.ok}</span>
           <div className="stat-bar">
             <div
               className="stat-fill ok"
@@ -71,7 +72,7 @@ export function ProgressDashboard({ stats, onClear }: Props) {
           <span>{stats.ok}</span>
         </div>
         <div className="stat-row">
-          <span>😕 À retravailler</span>
+          <span>😕 {t.ratings.poor}</span>
           <div className="stat-bar">
             <div
               className="stat-fill poor"
@@ -82,10 +83,10 @@ export function ProgressDashboard({ stats, onClear }: Props) {
         </div>
       </div>
 
-      <p className="stats-total">{stats.total} question(s) pratiquée(s)</p>
+      <p className="stats-total">{format(t.progress.practiced, { count: stats.total })}</p>
 
       <button type="button" className="clear-btn" onClick={onClear}>
-        Réinitialiser la progression
+        {t.progress.clear}
       </button>
     </div>
   )

@@ -1,17 +1,19 @@
 import { useState, useMemo } from 'react'
-import { questions, categoryDescriptions } from './data/questions'
-import type { Category } from './data/questions'
+import type { Category } from './data/types'
 import { CategoryFilter } from './components/CategoryFilter'
 import { QuestionCard } from './components/QuestionCard'
 import { MockInterview } from './components/MockInterview'
 import { TipsPanel } from './components/TipsPanel'
 import { ProgressDashboard } from './components/ProgressDashboard'
+import { LanguageSwitcher } from './components/LanguageSwitcher'
 import { useProgress } from './hooks/useProgress'
+import { useI18n } from './i18n/context'
 import './App.css'
 
 type View = 'practice' | 'mock' | 'tips' | 'progress'
 
 function App() {
+  const { t, questions } = useI18n()
   const [view, setView] = useState<View>('practice')
   const [selectedCategory, setSelectedCategory] = useState<Category | 'all'>('all')
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -20,7 +22,7 @@ function App() {
   const filteredQuestions = useMemo(() => {
     if (selectedCategory === 'all') return questions
     return questions.filter((q) => q.category === selectedCategory)
-  }, [selectedCategory])
+  }, [questions, selectedCategory])
 
   const counts = useMemo(() => {
     const result: Record<Category | 'all', number> = {
@@ -35,7 +37,7 @@ function App() {
       result[q.category]++
     }
     return result
-  }, [])
+  }, [questions])
 
   const handleCategoryChange = (cat: Category | 'all') => {
     setSelectedCategory(cat)
@@ -51,40 +53,43 @@ function App() {
           <div className="logo">
             <span className="logo-icon">⚡</span>
             <div>
-              <h1>Coach Entretien Cursor</h1>
-              <p className="tagline">Préparez-vous à exceller lors de votre entretien</p>
+              <h1>{t.meta.title}</h1>
+              <p className="tagline">{t.meta.tagline}</p>
             </div>
           </div>
-          <nav className="nav">
-            <button
-              type="button"
-              className={`nav-link ${view === 'practice' ? 'active' : ''}`}
-              onClick={() => setView('practice')}
-            >
-              Pratique
-            </button>
-            <button
-              type="button"
-              className={`nav-link ${view === 'mock' ? 'active' : ''}`}
-              onClick={() => setView('mock')}
-            >
-              Simulation
-            </button>
-            <button
-              type="button"
-              className={`nav-link ${view === 'tips' ? 'active' : ''}`}
-              onClick={() => setView('tips')}
-            >
-              Conseils
-            </button>
-            <button
-              type="button"
-              className={`nav-link ${view === 'progress' ? 'active' : ''}`}
-              onClick={() => setView('progress')}
-            >
-              Progression
-            </button>
-          </nav>
+          <div className="header-actions">
+            <LanguageSwitcher />
+            <nav className="nav">
+              <button
+                type="button"
+                className={`nav-link ${view === 'practice' ? 'active' : ''}`}
+                onClick={() => setView('practice')}
+              >
+                {t.nav.practice}
+              </button>
+              <button
+                type="button"
+                className={`nav-link ${view === 'mock' ? 'active' : ''}`}
+                onClick={() => setView('mock')}
+              >
+                {t.nav.mock}
+              </button>
+              <button
+                type="button"
+                className={`nav-link ${view === 'tips' ? 'active' : ''}`}
+                onClick={() => setView('tips')}
+              >
+                {t.nav.tips}
+              </button>
+              <button
+                type="button"
+                className={`nav-link ${view === 'progress' ? 'active' : ''}`}
+                onClick={() => setView('progress')}
+              >
+                {t.nav.progress}
+              </button>
+            </nav>
+          </div>
         </div>
       </header>
 
@@ -97,7 +102,7 @@ function App() {
               counts={counts}
             />
             {selectedCategory !== 'all' && (
-              <p className="category-desc">{categoryDescriptions[selectedCategory]}</p>
+              <p className="category-desc">{t.categories[selectedCategory].description}</p>
             )}
             {currentQuestion ? (
               <QuestionCard
@@ -114,7 +119,7 @@ function App() {
                 onPrev={() => setCurrentIndex((i) => Math.max(i - 1, 0))}
               />
             ) : (
-              <p className="empty-state">Aucune question dans cette catégorie.</p>
+              <p className="empty-state">{t.practice.emptyCategory}</p>
             )}
           </div>
         )}
@@ -127,10 +132,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>
-          Coach Entretien Cursor — Outil de préparation aux entretiens techniques et
-          comportementaux
-        </p>
+        <p>{t.meta.footer}</p>
       </footer>
     </div>
   )

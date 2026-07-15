@@ -1,5 +1,6 @@
-import type { Category } from '../data/questions'
-import { categoryLabels } from '../data/questions'
+import type { Category } from '../data/types'
+import { allCategories } from '../data/types'
+import { useI18n } from '../i18n/context'
 
 interface Props {
   selected: Category | 'all'
@@ -7,16 +8,11 @@ interface Props {
   counts: Record<Category | 'all', number>
 }
 
-const categories: (Category | 'all')[] = [
-  'all',
-  'comportemental',
-  'technique',
-  'produit',
-  'systeme',
-  'culture',
-]
+const categories: (Category | 'all')[] = ['all', ...allCategories]
 
 export function CategoryFilter({ selected, onSelect, counts }: Props) {
+  const { t } = useI18n()
+
   return (
     <div className="category-filter">
       {categories.map((cat) => (
@@ -26,7 +22,7 @@ export function CategoryFilter({ selected, onSelect, counts }: Props) {
           className={`category-btn ${selected === cat ? 'active' : ''}`}
           onClick={() => onSelect(cat)}
         >
-          {cat === 'all' ? 'Toutes' : categoryLabels[cat]}
+          {cat === 'all' ? t.categoriesAll : t.categories[cat].label}
           <span className="count">{counts[cat]}</span>
         </button>
       ))}
