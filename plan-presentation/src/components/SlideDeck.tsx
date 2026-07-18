@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { slides, presenter } from '../data/slides'
 import type { Slide } from '../data/slides'
 import { HeroAtmosphere } from './HeroAtmosphere'
+import { StageBackdrop } from './StageBackdrop'
 
 function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
   const enter = active ? 'is-active' : ''
@@ -30,7 +31,9 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
     return (
       <div className={`slide-inner phase ${enter}`}>
         <div className="phase-rail" aria-hidden="true">
+          <span className="phase-watermark">{slide.phaseDays}</span>
           <span className="phase-num">{slide.phaseDays}</span>
+          <span className="phase-unit">jours</span>
         </div>
         <div className="phase-body">
           {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
@@ -49,6 +52,7 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
   if (slide.kind === 'close') {
     return (
       <div className={`slide-inner close ${enter}`}>
+        <div className="close-mark" aria-hidden="true" />
         {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
         <h2 className="slide-title close-title">{slide.title}</h2>
         <p className="slide-lead">{slide.lead}</p>
@@ -57,7 +61,10 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
         </p>
         {slide.cta && (
           <a className="cta" href={slide.cta.href}>
-            {slide.cta.label}
+            <span>{slide.cta.label}</span>
+            <span className="cta-arrow" aria-hidden="true">
+              →
+            </span>
           </a>
         )}
       </div>
@@ -66,6 +73,7 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
 
   return (
     <div className={`slide-inner content ${enter} kind-${slide.kind}`}>
+      <div className="content-rule" aria-hidden="true" />
       {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
       <h2 className="slide-title">{slide.title}</h2>
       {slide.lead && <p className="slide-lead">{slide.lead}</p>}
@@ -129,9 +137,13 @@ export function SlideDeck() {
       aria-roledescription="carousel"
       aria-label="Présentation du plan pour Cursor"
       onKeyDown={onShellKey}
+      data-slide={slide.kind}
     >
+      <StageBackdrop />
+
       <header className="deck-top">
         <div className="deck-identity">
+          <span className="deck-mark" aria-hidden="true" />
           <span className="deck-name">{presenter.name}</span>
           <span className="deck-sep" aria-hidden="true">
             /
@@ -142,7 +154,9 @@ export function SlideDeck() {
           <div className="deck-progress-bar" style={{ width: `${progress}%` }} />
         </div>
         <p className="deck-counter">
-          {String(index + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <span className="deck-counter-sep">/</span>
+          <span>{String(slides.length).padStart(2, '0')}</span>
         </p>
       </header>
 

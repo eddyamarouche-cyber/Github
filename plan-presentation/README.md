@@ -33,4 +33,4 @@ npm run preview
 
 - React 19 + TypeScript
 - Vite 8
-- CSS custom (direction visuelle verdoyante / studio)
+- CSS custom (fond noir cinématique, accent ambre)
