@@ -169,8 +169,8 @@
 
 /* Hero */
 .slide-inner.hero {
-  justify-content: flex-end;
-  padding-bottom: clamp(1.5rem, 6vh, 4rem);
+  justify-content: center;
+  padding: clamp(1rem, 4vh, 2.5rem) 0;
   overflow: hidden;
 }
 
