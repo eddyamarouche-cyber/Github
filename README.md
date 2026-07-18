@@ -1,43 +1,24 @@
-# Coach Entretien Cursor
+# Github — outils Cursor
 
-Application web de préparation aux entretiens chez **Cursor**. Entraînez-vous avec des questions comportementales, techniques, produit, system design et culture.
+Deux applications liées à une candidature chez **Cursor** :
 
-## Fonctionnalités
+| App | Dossier | Description |
+|-----|---------|-------------|
+| Coach Entretien | [`coach-entretien/`](./coach-entretien) | Préparation aux entretiens (questions, simulation, conseils) |
+| Plan de présentation | [`plan-presentation/`](./plan-presentation) | Présentation interactive du plan 30 / 60 / 90 jours |
 
-- **Pratique** — Parcourez 14 questions par catégorie avec indices et points clés
-- **Simulation** — Entretien chronométré de 45 minutes avec 6 questions aléatoires
-- **Conseils** — Méthode STAR, tips produit et culture Cursor
-- **Progression** — Auto-évaluation et suivi local de vos réponses
+## Plan de présentation
 
-## Démarrage rapide
+```bash
+cd plan-presentation
+npm install
+npm run dev
+```
+
+## Coach entretien
 
 ```bash
 cd coach-entretien
 npm install
 npm run dev
 ```
-
-Ouvrez [http://localhost:5173](http://localhost:5173) dans votre navigateur.
-
-## Build production
-
-```bash
-npm run build
-npm run preview
-```
-
-## Catégories de questions
-
-| Catégorie | Description |
-|-----------|-------------|
-| Comportemental | STAR, leadership, collaboration |
-| Technique | Algorithmes, debugging, agents IA |
-| Produit & IA | LLMs, UX développeur, vision produit |
-| System Design | Architecture, scalabilité, latence |
-| Culture Cursor | Mission, valeurs, fit culturel |
-
-## Stack
-
-- React 19 + TypeScript
-- Vite 8
-- CSS custom (dark theme)
