@@ -30,6 +30,14 @@ npm run build
 npm run preview
 ```
 
+## Production (GitHub Pages)
+
+Pushes to `main` that touch `plan-presentation/` deploy automatically.
+
+Live URL: https://eddyamarouche-cyber.github.io/Github/
+
+Manual deploy: Actions → **Deploy plan presentation** → Run workflow.
+
 ## Stack
 
 - React 19 + TypeScript

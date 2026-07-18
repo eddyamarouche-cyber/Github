@@ -7,6 +7,12 @@ Deux applications liées à une candidature chez **Cursor** :
 | Coach Entretien | [`coach-entretien/`](./coach-entretien) | Préparation aux entretiens (questions, simulation, conseils) |
 | Plan de présentation | [`plan-presentation/`](./plan-presentation) | Présentation interactive du plan 30 / 60 / 90 jours |
 
+## Production
+
+Le plan de présentation est déployé sur GitHub Pages :
+
+**https://eddyamarouche-cyber.github.io/Github/**
+
 ## Plan de présentation
 
 ```bash
