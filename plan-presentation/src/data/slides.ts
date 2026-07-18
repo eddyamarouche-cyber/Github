@@ -25,6 +25,13 @@ export const presenter = {
   role: 'Candidat — contribution produit & IA',
 }
 
+/** Top-bar shortcuts to the 30 / 60 / 90 day phases. */
+export const monthNav = [
+  { id: 'd30', label: 'Mois 1', short: 'M1', days: '1–30' },
+  { id: 'd60', label: 'Mois 2', short: 'M2', days: '31–60' },
+  { id: 'd90', label: 'Mois 3', short: 'M3', days: '61–90' },
+] as const
+
 export const slides: Slide[] = [
   {
     id: 'hero',
@@ -73,7 +80,7 @@ export const slides: Slide[] = [
     id: 'd30',
     kind: 'phase',
     eyebrow: 'Plan d’intégration',
-    phaseLabel: 'Jours 1–30',
+    phaseLabel: 'Mois 1 · Jours 1–30',
     phaseDays: '30',
     title: 'Ancrage : comprendre, écouter, livrer petit',
     points: [
@@ -87,7 +94,7 @@ export const slides: Slide[] = [
     id: 'd60',
     kind: 'phase',
     eyebrow: 'Plan d’intégration',
-    phaseLabel: 'Jours 31–60',
+    phaseLabel: 'Mois 2 · Jours 31–60',
     phaseDays: '60',
     title: 'Ownership : porter une initiative de bout en bout',
     points: [
@@ -101,7 +108,7 @@ export const slides: Slide[] = [
     id: 'd90',
     kind: 'phase',
     eyebrow: 'Plan d’intégration',
-    phaseLabel: 'Jours 61–90',
+    phaseLabel: 'Mois 3 · Jours 61–90',
     phaseDays: '90',
     title: 'Impact : multiplier la valeur de l’équipe',
     points: [

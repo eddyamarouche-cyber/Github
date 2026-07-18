@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
-import { slides, presenter } from '../data/slides'
+import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react'
+import { slides, presenter, monthNav } from '../data/slides'
 import type { Slide } from '../data/slides'
 import { HeroAtmosphere } from './HeroAtmosphere'
 import { StageBackdrop } from './StageBackdrop'
@@ -92,6 +92,14 @@ export function SlideDeck() {
   const [index, setIndex] = useState(0)
   const shellRef = useRef<HTMLDivElement>(null)
 
+  const monthIndexes = useMemo(() => {
+    const map = new Map<string, number>()
+    slides.forEach((item, i) => {
+      map.set(item.id, i)
+    })
+    return map
+  }, [])
+
   const go = (next: number) => {
     setIndex(Math.max(0, Math.min(slides.length - 1, next)))
   }
@@ -114,11 +122,18 @@ export function SlideDeck() {
       } else if (event.key === 'End') {
         event.preventDefault()
         go(slides.length - 1)
+      } else if (event.key === '1' || event.key === '2' || event.key === '3') {
+        const month = monthNav[Number(event.key) - 1]
+        const target = monthIndexes.get(month.id)
+        if (target !== undefined) {
+          event.preventDefault()
+          go(target)
+        }
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [index])
+  }, [index, monthIndexes])
 
   const onShellKey = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'ArrowRight') go(index + 1)
@@ -127,6 +142,8 @@ export function SlideDeck() {
 
   const progress = ((index + 1) / slides.length) * 100
   const slide = slides[index]
+  const activeMonthId =
+    slide.kind === 'phase' ? slide.id : monthNav.find((m) => monthIndexes.get(m.id) === index)?.id
 
   return (
     <div
@@ -150,14 +167,35 @@ export function SlideDeck() {
           </span>
           <span className="deck-company">{presenter.company}</span>
         </div>
-        <div className="deck-progress" aria-hidden="true">
-          <div className="deck-progress-bar" style={{ width: `${progress}%` }} />
-        </div>
+
+        <nav className="month-nav" aria-label="Navigation par mois">
+          {monthNav.map((month) => {
+            const target = monthIndexes.get(month.id) ?? 0
+            const active = activeMonthId === month.id
+            return (
+              <button
+                key={month.id}
+                type="button"
+                className={`month-nav-item ${active ? 'active' : ''}`}
+                onClick={() => go(target)}
+                aria-current={active ? 'true' : undefined}
+              >
+                <span className="month-nav-label">{month.label}</span>
+                <span className="month-nav-days">J {month.days}</span>
+              </button>
+            )
+          })}
+        </nav>
+
         <p className="deck-counter">
           <span>{String(index + 1).padStart(2, '0')}</span>
           <span className="deck-counter-sep">/</span>
           <span>{String(slides.length).padStart(2, '0')}</span>
         </p>
+
+        <div className="deck-progress" aria-hidden="true">
+          <div className="deck-progress-bar" style={{ width: `${progress}%` }} />
+        </div>
       </header>
 
       <main className="deck-stage" key={slide.id}>

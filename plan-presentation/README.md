@@ -15,6 +15,7 @@ Ouvrez [http://localhost:5173](http://localhost:5173).
 ## Navigation
 
 - Flèches ← →, Espace, Page Up / Page Down
+- **Mois 1 / 2 / 3** en haut (ou touches `1` `2` `3`) pour aller au plan du mois
 - Boutons **Précédent** / **Suivant**
 - Points en bas pour sauter à une slide
 
