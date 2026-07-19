@@ -2,7 +2,7 @@
 
 Executive presentation application for the Cursor **Leader Challenge** — Regional Director, Southern Europe.
 
-A 90-minute strategy session deck for a C-level audience. No backend, authentication, database or external API. All content lives in local TypeScript data files.
+A 90-minute strategy session presented as a premium SaaS product UI (not a PowerPoint deck) for a C-level audience. Interactive cards, KPI widgets, timelines, expandable sections and Framer Motion transitions. No backend, authentication, database or external API. All content lives in local TypeScript data files.
 
 ## 1. Install
 
