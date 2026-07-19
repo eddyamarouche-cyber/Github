@@ -351,6 +351,22 @@ function CoverSlide({ content }: { content: CoverContent }) {
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/80 lg:text-lg">
           {content.subtitle}
         </p>
+
+        <div className="mt-10">
+          <p className="text-[11px] font-medium tracking-[0.18em] text-white/50 uppercase">
+            With
+          </p>
+          <ul className="mt-3 space-y-1.5">
+            {profile.interlocutors.map((person) => (
+              <li key={person.name} className="text-base text-white lg:text-lg">
+                {person.name}
+                {person.role ? (
+                  <span className="text-white/60"> — {person.role}</span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <div className="flex items-end justify-between gap-6 border-t border-white/15 pt-6">

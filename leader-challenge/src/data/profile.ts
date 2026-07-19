@@ -1,9 +1,15 @@
+export interface Interlocutor {
+  name: string
+  role?: string
+}
+
 export interface Profile {
   candidateName: string
   interviewDate: string
   role: string
   region: string
   company: string
+  interlocutors: Interlocutor[]
 }
 
 /**
@@ -16,4 +22,9 @@ export const profile: Profile = {
   role: 'Regional Director, Southern Europe',
   region: 'Southern Europe',
   company: 'Cursor',
+  interlocutors: [
+    { name: 'Benjamin Caller' },
+    { name: 'Ismail Elmas' },
+    { name: 'Director Enablement' },
+  ],
 }
