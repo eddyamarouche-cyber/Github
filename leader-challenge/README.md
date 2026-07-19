@@ -90,6 +90,9 @@ The print stylesheet renders **one slide per page** at a 16:9 presentation ratio
 | Control | Action |
 |--------|--------|
 | ← / → | Previous / next slide |
+| Space | Next slide |
+| P or **Present** | Enter / exit presentation mode |
+| Esc | Exit presentation mode |
 | N | Toggle presenter notes |
 | M | Open section menu |
 | F | Toggle fullscreen |
@@ -97,7 +100,17 @@ The print stylesheet renders **one slide per page** at a 16:9 presentation ratio
 | Start / Pause / Reset | 90-minute session timer |
 | Rehearsal | Show elapsed time, recommended slide time and cumulative time |
 
-Slides that still contain unresolved placeholders show a discreet **Placeholders** badge.
+### Presentation mode
+
+Press **P** or click **Present** to enter a distraction-free 16:9 view:
+
+- All navigation chrome is hidden
+- One slide fills the screen with a smooth transition
+- The cursor hides after 3 seconds of inactivity
+- ← / → and Space navigate slides
+- Esc exits presentation mode (and fullscreen when active)
+
+Slides that still contain unresolved placeholders show a discreet **Placeholders** badge (hidden during presentation mode).
 
 ## Tech stack
 

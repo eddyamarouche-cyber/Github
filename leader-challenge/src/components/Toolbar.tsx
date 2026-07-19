@@ -6,6 +6,7 @@ import {
   Maximize2,
   Menu,
   Minimize2,
+  Presentation,
   StickyNote,
 } from 'lucide-react'
 import { PlaceholderBadge } from './ui'
@@ -17,11 +18,13 @@ interface ToolbarProps {
   hasPlaceholders: boolean
   showNotes: boolean
   isFullscreen: boolean
+  isPresenting: boolean
   onPrev: () => void
   onNext: () => void
   onToggleMenu: () => void
   onToggleNotes: () => void
   onToggleFullscreen: () => void
+  onTogglePresent: () => void
   onPrint: () => void
   timerSlot: ReactNode
 }
@@ -33,11 +36,13 @@ export function Toolbar({
   hasPlaceholders,
   showNotes,
   isFullscreen,
+  isPresenting,
   onPrev,
   onNext,
   onToggleMenu,
   onToggleNotes,
   onToggleFullscreen,
+  onTogglePresent,
   onPrint,
   timerSlot,
 }: ToolbarProps) {
@@ -96,6 +101,19 @@ export function Toolbar({
         >
           <StickyNote size={14} />
           Notes
+        </button>
+        <button
+          type="button"
+          onClick={onTogglePresent}
+          className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs transition ${
+            isPresenting
+              ? 'border-accent bg-accent-dim text-accent'
+              : 'border-accent/60 bg-accent text-bg hover:bg-accent-soft'
+          }`}
+          title="Presentation mode (P)"
+        >
+          <Presentation size={14} />
+          Present
         </button>
         <button
           type="button"
