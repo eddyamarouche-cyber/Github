@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b0c0e;
+  --color-bg-elevated: #121418;
+  --color-bg-panel: #171a1f;
+  --color-border: #2a2f38;
+  --color-text: #f3f4f6;
+  --color-text-muted: #a1a7b3;
+  --color-text-dim: #6b7280;
+  --color-accent: #f97316;
+  --color-accent-soft: #fb923c;
+  --color-accent-dim: rgba(249, 115, 22, 0.15);
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .slide-stage {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media print {
+  @page {
+    size: landscape;
+    margin: 0;
+  }
+
+  html,
+  body,
+  #root {
+    height: auto !important;
+    background: #0b0c0e !important;
+    color: #f3f4f6 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .presentation-shell {
+    display: none !important;
+  }
+
+  .print-deck {
+    display: block !important;
+  }
+
+  .print-slide {
+    width: 100vw;
+    height: 100vh;
+    page-break-after: always;
+    break-after: page;
+    overflow: hidden;
+    background: #0b0c0e;
+  }
+
+  .print-slide:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+}
+
+@media screen {
+  .print-only,
+  .print-deck {
+    display: none !important;
+  }
+}

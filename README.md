@@ -1,19 +1,30 @@
-# Github — outils Cursor
+# Github — Cursor interview tools
 
-Deux applications liées à une candidature chez **Cursor** :
+Applications related to a Cursor candidacy:
 
-| App | Dossier | Description |
-|-----|---------|-------------|
-| Coach Entretien | [`coach-entretien/`](./coach-entretien) | Préparation aux entretiens (questions, simulation, conseils) |
-| Plan de présentation | [`plan-presentation/`](./plan-presentation) | Présentation interactive du plan 30 / 60 / 90 jours |
+| App | Folder | Description |
+|-----|--------|-------------|
+| Leader Challenge | [`leader-challenge/`](./leader-challenge) | 90-minute executive presentation for Regional Director, Southern Europe |
+| Interview Coach | [`coach-entretien/`](./coach-entretien) | Interview preparation (questions, simulation, guidance) |
+| Presentation Plan | [`plan-presentation/`](./plan-presentation) | Interactive 30 / 60 / 90-day plan presentation |
+
+## Leader Challenge (recommended)
+
+```bash
+cd leader-challenge
+npm install
+npm run dev
+```
+
+See [`leader-challenge/README.md`](./leader-challenge/README.md) for editing profile, candidates, coaching cases, markets, presenter notes and PDF export.
 
 ## Production
 
-Le plan de présentation est déployé sur GitHub Pages :
+The plan presentation is deployed on GitHub Pages:
 
 **https://eddyamarouche-cyber.github.io/Github/**
 
-## Plan de présentation
+## Presentation Plan
 
 ```bash
 cd plan-presentation
@@ -21,7 +32,7 @@ npm install
 npm run dev
 ```
 
-## Coach entretien
+## Interview Coach
 
 ```bash
 cd coach-entretien
