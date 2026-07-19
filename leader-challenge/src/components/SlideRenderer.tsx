@@ -335,27 +335,27 @@ function CoverSlide({ content }: { content: CoverContent }) {
   return (
     <div className="flex h-full flex-col justify-between px-14 py-12 lg:px-20 lg:py-16">
       <div>
-        <p className="text-[11px] font-medium tracking-[0.2em] text-text-dim uppercase">
+        <p className="text-[11px] font-medium tracking-[0.2em] text-white/70 uppercase">
           Cursor
         </p>
       </div>
 
       <div className="max-w-4xl">
         <div className="mb-8 h-px w-12 bg-accent" />
-        <h1 className="font-display text-4xl leading-[1.1] font-semibold tracking-tight text-text lg:text-5xl">
+        <h1 className="font-display text-4xl leading-[1.1] font-semibold tracking-tight text-white lg:text-5xl">
           {content.title}
         </h1>
-        <p className="mt-5 text-xl font-medium tracking-tight text-text-muted lg:text-2xl">
+        <p className="mt-5 text-xl font-medium tracking-tight text-white lg:text-2xl">
           {profile.candidateName}
         </p>
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-dim lg:text-lg">
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/80 lg:text-lg">
           {content.subtitle}
         </p>
       </div>
 
-      <div className="flex items-end justify-between gap-6 border-t border-border/70 pt-6">
-        <p className="text-sm text-text-dim">{profile.role}</p>
-        <p className="text-sm text-text-dim">{profile.interviewDate}</p>
+      <div className="flex items-end justify-between gap-6 border-t border-white/15 pt-6">
+        <p className="text-sm text-white/70">{profile.role}</p>
+        <p className="text-sm text-white/70">{profile.interviewDate}</p>
       </div>
     </div>
   )
