@@ -1,10 +1,11 @@
+import { motion } from 'framer-motion'
 import type { PresenterNote } from '../data/types'
 
 export function PresenterNotesPanel({ notes }: { notes?: PresenterNote }) {
   if (!notes) {
     return (
-      <div className="border-t border-border bg-bg-elevated px-6 py-4 text-sm text-text-muted">
-        No presenter notes for this slide.
+      <div className="border-t border-white/8 bg-bg-elevated/90 px-6 py-4 text-sm text-white/50 backdrop-blur-xl">
+        No presenter notes for this screen.
       </div>
     )
   }
@@ -19,20 +20,24 @@ export function PresenterNotesPanel({ notes }: { notes?: PresenterNote }) {
   ]
 
   return (
-    <div className="no-print max-h-[34vh] overflow-y-auto border-t border-border bg-bg-elevated px-6 py-4">
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="no-print max-h-[34vh] overflow-y-auto border-t border-white/8 bg-bg-elevated/90 px-6 py-4 backdrop-blur-xl"
+    >
       <p className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-accent uppercase">
         Presenter Notes
       </p>
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {rows.map((row) => (
-          <div key={row.label} className="rounded-lg border border-border/80 bg-bg-panel/60 p-3">
-            <p className="mb-1 text-[11px] font-semibold tracking-wide text-text-dim uppercase">
+          <div key={row.label} className="glass rounded-2xl p-3">
+            <p className="mb-1 text-[11px] font-semibold tracking-wide text-white/35 uppercase">
               {row.label}
             </p>
-            <p className="text-sm leading-relaxed text-text-muted">{row.value}</p>
+            <p className="text-sm leading-relaxed text-white/65">{row.value}</p>
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }

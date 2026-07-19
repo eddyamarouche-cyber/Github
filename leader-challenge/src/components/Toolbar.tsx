@@ -29,6 +29,37 @@ interface ToolbarProps {
   timerSlot: ReactNode
 }
 
+function ToolButton({
+  children,
+  onClick,
+  title,
+  active = false,
+  accent = false,
+}: {
+  children: ReactNode
+  onClick: () => void
+  title: string
+  active?: boolean
+  accent?: boolean
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      title={title}
+      className={`inline-flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 text-xs transition ${
+        accent
+          ? 'border border-accent/50 bg-accent text-bg hover:bg-accent-soft'
+          : active
+            ? 'border border-accent/40 bg-accent-dim text-accent'
+            : 'border border-white/10 bg-white/5 text-white/65 hover:border-white/20 hover:bg-white/8 hover:text-white'
+      }`}
+    >
+      {children}
+    </button>
+  )
+}
+
 export function Toolbar({
   slideNumber,
   totalSlides,
@@ -47,22 +78,18 @@ export function Toolbar({
   timerSlot,
 }: ToolbarProps) {
   return (
-    <div className="no-print flex flex-wrap items-center justify-between gap-3 border-b border-border bg-bg-elevated/95 px-4 py-2.5 backdrop-blur">
+    <div className="no-print flex flex-wrap items-center justify-between gap-3 border-b border-white/8 bg-bg-elevated/80 px-4 py-2.5 backdrop-blur-xl">
       <div className="flex flex-wrap items-center gap-2">
-        <button
-          type="button"
-          onClick={onToggleMenu}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-bg-panel px-2.5 py-1.5 text-xs text-text-muted transition hover:border-accent/50 hover:text-text"
-          title="Section menu (M)"
-        >
+        <ToolButton onClick={onToggleMenu} title="Section menu (M)">
           <Menu size={14} />
-          Sections
-        </button>
-        <div className="rounded-lg border border-border bg-bg-panel px-2.5 py-1.5 text-xs text-text-muted">
-          <span className="font-semibold text-text">
-            {slideNumber} / {totalSlides}
+          Workspace
+        </ToolButton>
+        <div className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white/60">
+          <span className="font-semibold text-white">
+            {slideNumber}
+            <span className="text-white/30"> / {totalSlides}</span>
           </span>
-          <span className="mx-2 text-border">|</span>
+          <span className="text-white/20">|</span>
           <span>{sectionLabel}</span>
         </div>
         {hasPlaceholders ? <PlaceholderBadge /> : null}
@@ -71,68 +98,35 @@ export function Toolbar({
       <div className="flex flex-wrap items-center gap-2">{timerSlot}</div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <button
-          type="button"
-          onClick={onPrev}
-          className="inline-flex items-center gap-1 rounded-lg border border-border bg-bg-panel px-2.5 py-1.5 text-xs text-text-muted transition hover:border-accent/50 hover:text-text"
-          title="Previous slide (←)"
-        >
+        <ToolButton onClick={onPrev} title="Previous (←)">
           <ChevronLeft size={14} />
           Prev
-        </button>
-        <button
-          type="button"
-          onClick={onNext}
-          className="inline-flex items-center gap-1 rounded-lg border border-border bg-bg-panel px-2.5 py-1.5 text-xs text-text-muted transition hover:border-accent/50 hover:text-text"
-          title="Next slide (→)"
-        >
+        </ToolButton>
+        <ToolButton onClick={onNext} title="Next (→)">
           Next
           <ChevronRight size={14} />
-        </button>
-        <button
-          type="button"
-          onClick={onToggleNotes}
-          className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs transition ${
-            showNotes
-              ? 'border-accent bg-accent-dim text-accent'
-              : 'border-border bg-bg-panel text-text-muted hover:border-accent/50 hover:text-text'
-          }`}
-          title="Presenter notes (N)"
-        >
+        </ToolButton>
+        <ToolButton onClick={onToggleNotes} title="Presenter notes (N)" active={showNotes}>
           <StickyNote size={14} />
           Notes
-        </button>
-        <button
-          type="button"
+        </ToolButton>
+        <ToolButton
           onClick={onTogglePresent}
-          className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs transition ${
-            isPresenting
-              ? 'border-accent bg-accent-dim text-accent'
-              : 'border-accent/60 bg-accent text-bg hover:bg-accent-soft'
-          }`}
           title="Presentation mode (P)"
+          accent={!isPresenting}
+          active={isPresenting}
         >
           <Presentation size={14} />
           Present
-        </button>
-        <button
-          type="button"
-          onClick={onToggleFullscreen}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-bg-panel px-2.5 py-1.5 text-xs text-text-muted transition hover:border-accent/50 hover:text-text"
-          title="Fullscreen (F)"
-        >
+        </ToolButton>
+        <ToolButton onClick={onToggleFullscreen} title="Fullscreen (F)">
           {isFullscreen ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
           {isFullscreen ? 'Exit' : 'Fullscreen'}
-        </button>
-        <button
-          type="button"
-          onClick={onPrint}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-bg-panel px-2.5 py-1.5 text-xs text-text-muted transition hover:border-accent/50 hover:text-text"
-          title="Print / Export to PDF"
-        >
+        </ToolButton>
+        <ToolButton onClick={onPrint} title="Print / Export to PDF">
           <FileDown size={14} />
           PDF
-        </button>
+        </ToolButton>
       </div>
     </div>
   )

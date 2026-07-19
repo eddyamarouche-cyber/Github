@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { sections } from '../data/slides'
 import { useIdleCursor } from '../hooks/useIdleCursor'
 import { usePresentation } from '../hooks/usePresentation'
@@ -27,7 +28,7 @@ export function PresentationApp() {
   return (
     <>
       <div
-        className={`presentation-shell flex h-full flex-col bg-bg ${
+        className={`presentation-shell flex h-full flex-col ${
           presentation.isPresenting ? 'overflow-hidden' : ''
         }`}
       >
@@ -76,12 +77,26 @@ export function PresentationApp() {
         <div className="relative min-h-0 flex-1">
           {!presentation.isPresenting ? (
             <div className="flex h-full items-center justify-center p-4 lg:p-6">
-              <div className="slide-stage w-full max-w-[1600px] overflow-hidden rounded-2xl border border-border bg-bg-elevated shadow-[0_20px_80px_rgba(0,0,0,0.45)]">
-                <SlideRenderer
-                  slide={presentation.slide}
-                  hasPlaceholders={presentation.hasPlaceholders}
-                />
-              </div>
+              <motion.div
+                layout
+                className="slide-stage glass-strong w-full max-w-[1600px] overflow-hidden rounded-[28px]"
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={presentation.slide.id}
+                    initial={{ opacity: 0, x: presentation.transitionDirection === 'next' ? 18 : -18 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: presentation.transitionDirection === 'next' ? -12 : 12 }}
+                    transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                    className="h-full w-full"
+                  >
+                    <SlideRenderer
+                      slide={presentation.slide}
+                      hasPlaceholders={presentation.hasPlaceholders}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </motion.div>
             </div>
           ) : null}
 
@@ -115,9 +130,9 @@ export function PresentationApp() {
         ) : null}
 
         {!presentation.isPresenting ? (
-          <div className="no-print border-t border-border px-4 py-2 text-[11px] text-text-dim">
-            Keyboard: ← → navigate · Space next · P present · N notes · M sections · F
-            fullscreen · Esc exit present · Home/End jump
+          <div className="no-print border-t border-white/8 px-4 py-2 text-[11px] text-white/35">
+            ← → navigate · Space next · P present · N notes · M workspace · F fullscreen · Esc
+            exit present
           </div>
         ) : null}
       </div>

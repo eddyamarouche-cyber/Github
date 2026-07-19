@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { Pause, Play, RotateCcw, Timer } from 'lucide-react'
 import { formatClock } from '../hooks/useTimer'
 
@@ -15,6 +16,38 @@ interface TimerControlsProps {
   cumulativeMinutes: number
 }
 
+function Chip({
+  children,
+  danger = false,
+  active = false,
+  onClick,
+  title,
+}: {
+  children: ReactNode
+  danger?: boolean
+  active?: boolean
+  onClick?: () => void
+  title?: string
+}) {
+  const className = `inline-flex items-center gap-1.5 rounded-xl border px-2.5 py-1.5 text-xs transition ${
+    danger
+      ? 'border-danger/40 bg-danger/10 text-danger'
+      : active
+        ? 'border-accent/40 bg-accent-dim text-accent'
+        : 'border-white/10 bg-white/5 text-white/65 hover:border-white/20 hover:text-white'
+  }`
+
+  if (onClick) {
+    return (
+      <button type="button" onClick={onClick} title={title} className={className}>
+        {children}
+      </button>
+    )
+  }
+
+  return <div className={className}>{children}</div>
+}
+
 export function TimerControls({
   remainingSeconds,
   elapsedSeconds,
@@ -30,65 +63,39 @@ export function TimerControls({
 }: TimerControlsProps) {
   return (
     <div className="flex flex-wrap items-center gap-2 text-xs">
-      <div
-        className={`flex items-center gap-2 rounded-lg border px-2.5 py-1.5 ${
-          isOvertime
-            ? 'border-danger/50 bg-danger/10 text-danger'
-            : 'border-border bg-bg-panel text-text'
-        }`}
-      >
+      <Chip danger={isOvertime}>
         <Timer size={14} className={isOvertime ? 'text-danger' : 'text-accent'} />
         <span className="font-semibold tracking-wide">
           {isOvertime
             ? `+${formatClock(overtimeSeconds)} overtime`
             : formatClock(remainingSeconds)}
         </span>
-        <span className="text-text-dim">/ 90:00</span>
-      </div>
+        <span className="text-white/30">/ 90:00</span>
+      </Chip>
 
-      <button
-        type="button"
-        onClick={onToggle}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-bg-panel px-2.5 py-1.5 text-text-muted transition hover:border-accent/50 hover:text-text"
-        title={isRunning ? 'Pause timer' : 'Start timer'}
-      >
+      <Chip onClick={onToggle} title={isRunning ? 'Pause timer' : 'Start timer'}>
         {isRunning ? <Pause size={14} /> : <Play size={14} />}
         {isRunning ? 'Pause' : 'Start'}
-      </button>
+      </Chip>
 
-      <button
-        type="button"
-        onClick={onReset}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-bg-panel px-2.5 py-1.5 text-text-muted transition hover:border-accent/50 hover:text-text"
-        title="Reset timer"
-      >
+      <Chip onClick={onReset} title="Reset timer">
         <RotateCcw size={14} />
         Reset
-      </button>
+      </Chip>
 
-      <button
-        type="button"
+      <Chip
         onClick={onToggleRehearsal}
-        className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 transition ${
-          isRehearsal
-            ? 'border-accent bg-accent-dim text-accent'
-            : 'border-border bg-bg-panel text-text-muted hover:border-accent/50 hover:text-text'
-        }`}
+        active={isRehearsal}
         title="Toggle rehearsal mode"
       >
         Rehearsal {isRehearsal ? 'On' : 'Off'}
-      </button>
+      </Chip>
 
-      {isRehearsal ? (
-        <div className="rounded-lg border border-border bg-bg-panel px-2.5 py-1.5 text-text-muted">
-          Slide {recommendedMinutes} min · Cumulative {cumulativeMinutes.toFixed(1)} min ·
-          Elapsed {formatClock(elapsedSeconds)}
-        </div>
-      ) : (
-        <div className="rounded-lg border border-border bg-bg-panel px-2.5 py-1.5 text-text-muted">
-          Recommended {recommendedMinutes} min
-        </div>
-      )}
+      <Chip>
+        {isRehearsal
+          ? `Slide ${recommendedMinutes} min · Cumulative ${cumulativeMinutes.toFixed(1)} min · Elapsed ${formatClock(elapsedSeconds)}`
+          : `Recommended ${recommendedMinutes} min`}
+      </Chip>
     </div>
   )
 }
