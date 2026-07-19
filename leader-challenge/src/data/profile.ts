@@ -11,7 +11,7 @@ export interface Profile {
  * They appear on the cover slide and in the presentation chrome.
  */
 export const profile: Profile = {
-  candidateName: '[ADD CANDIDATE NAME]',
+  candidateName: 'Eddy Amarouche',
   interviewDate: '[ADD INTERVIEW DATE]',
   role: 'Regional Director, Southern Europe',
   region: 'Southern Europe',

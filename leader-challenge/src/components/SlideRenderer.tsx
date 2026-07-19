@@ -333,29 +333,29 @@ function renderSlide(slide: Slide) {
 
 function CoverSlide({ content }: { content: CoverContent }) {
   return (
-    <div className="flex h-full flex-col justify-between px-12 py-12 lg:px-16 lg:py-14">
+    <div className="flex h-full flex-col justify-between px-14 py-12 lg:px-20 lg:py-16">
       <div>
-        <p className="mb-6 text-[11px] font-semibold tracking-[0.22em] text-accent uppercase">
-          Cursor · Leader Challenge
+        <p className="text-[11px] font-medium tracking-[0.2em] text-text-dim uppercase">
+          Cursor
         </p>
-        <h1 className="font-display max-w-5xl text-5xl leading-[1.05] font-bold tracking-tight lg:text-6xl">
+      </div>
+
+      <div className="max-w-4xl">
+        <div className="mb-8 h-px w-12 bg-accent" />
+        <h1 className="font-display text-4xl leading-[1.1] font-semibold tracking-tight text-text lg:text-5xl">
           {content.title}
         </h1>
-        <p className="mt-5 max-w-3xl text-xl text-text-muted lg:text-2xl">{content.subtitle}</p>
+        <p className="mt-5 text-xl font-medium tracking-tight text-text-muted lg:text-2xl">
+          {profile.candidateName}
+        </p>
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-dim lg:text-lg">
+          {content.subtitle}
+        </p>
       </div>
-      <div className="grid max-w-3xl gap-4 sm:grid-cols-2">
-        <SoftCard className="px-5 py-4">
-          <p className="text-[11px] font-semibold tracking-wide text-text-dim uppercase">
-            Candidate
-          </p>
-          <p className="mt-1 text-lg font-medium">{profile.candidateName}</p>
-        </SoftCard>
-        <SoftCard className="px-5 py-4">
-          <p className="text-[11px] font-semibold tracking-wide text-text-dim uppercase">
-            Interview date
-          </p>
-          <p className="mt-1 text-lg font-medium">{profile.interviewDate}</p>
-        </SoftCard>
+
+      <div className="flex items-end justify-between gap-6 border-t border-border/70 pt-6">
+        <p className="text-sm text-text-dim">{profile.role}</p>
+        <p className="text-sm text-text-dim">{profile.interviewDate}</p>
       </div>
     </div>
   )

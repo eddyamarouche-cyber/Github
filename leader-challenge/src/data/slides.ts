@@ -25,7 +25,7 @@ export const slides: Slide[] = [
     takeaway: 'Position as the future Regional Director building a Southern Europe growth engine.',
     recommendedMinutes: 2,
     content: {
-      title: 'Building the Southern Europe Growth Engine',
+      title: 'Southern Europe Leadership Plan',
       subtitle: 'Leader Challenge — Regional Director, Southern Europe',
     },
   },
