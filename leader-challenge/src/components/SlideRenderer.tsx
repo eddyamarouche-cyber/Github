@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { profile } from '../data/profile'
 import { sections } from '../data/slides'
 import type {
@@ -35,6 +35,7 @@ import type {
   StagesContent,
   ThesisContent,
   TwoColumnContent,
+  VisualHeroContent,
   WeekdayContent,
   Candidate,
   CoachingCase,
@@ -89,6 +90,8 @@ function renderSlide(slide: Slide) {
   switch (slide.type) {
     case 'cover':
       return <CoverScreen content={slide.content as CoverContent} />
+    case 'visual-hero':
+      return <VisualHeroScreen content={slide.content as VisualHeroContent} takeaway={slide.takeaway} />
     case 'thesis':
       return (
         <ScreenShell
@@ -187,7 +190,19 @@ function renderSlide(slide: Slide) {
           <ObjectionsScreen content={slide.content as ObjectionsContent} />
         </ScreenShell>
       )
-    case 'drivers':
+    case 'drivers': {
+      const driversContent = slide.content as DriversContent
+      const immersive = driversContent.drivers.some((driver) => Boolean(driver.image))
+      if (immersive) {
+        return (
+          <LeadershipRolesScreen
+            title={slide.title}
+            headline={slide.headline}
+            takeaway={slide.takeaway}
+            content={driversContent}
+          />
+        )
+      }
       return (
         <ScreenShell
           eyebrow={eyebrow}
@@ -195,9 +210,10 @@ function renderSlide(slide: Slide) {
           headline={slide.headline}
           takeaway={slide.takeaway}
         >
-          <DriversScreen content={slide.content as DriversContent} />
+          <DriversScreen content={driversContent} />
         </ScreenShell>
       )
+    }
     case 'framework':
       return (
         <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
@@ -682,129 +698,227 @@ function ObjectionsScreen({ content }: { content: ObjectionsContent }) {
   )
 }
 
-function DriversScreen({ content }: { content: DriversContent }) {
+function VisualHeroScreen({
+  content,
+  takeaway,
+}: {
+  content: VisualHeroContent
+  takeaway: string
+}) {
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <motion.img
+        src={content.image}
+        alt={content.title}
+        className="absolute inset-0 h-full w-full object-cover"
+        initial={{ scale: 1.08, opacity: 0.7 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+
+      <div className="relative flex h-full flex-col justify-between px-10 py-8 lg:px-14 lg:py-10">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md"
+        >
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+          <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
+            {content.eyebrow ?? 'Visual'}
+          </span>
+        </motion.div>
+
+        <div className="max-w-3xl">
+          <motion.h2
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.4 }}
+            className="font-display text-4xl leading-tight font-semibold text-white lg:text-5xl"
+          >
+            {content.title}
+          </motion.h2>
+          {content.subtitle ? (
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.4 }}
+              className="mt-4 max-w-2xl text-base text-white/75 lg:text-lg"
+            >
+              {content.subtitle}
+            </motion.p>
+          ) : null}
+          {content.points?.length ? (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45 }}
+              className="mt-6 flex flex-wrap gap-2"
+            >
+              {content.points.map((point) => (
+                <span
+                  key={point}
+                  className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-sm text-white backdrop-blur-md"
+                >
+                  {point}
+                </span>
+              ))}
+            </motion.div>
+          ) : null}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.55 }}
+          className="glass max-w-3xl rounded-2xl px-4 py-3"
+        >
+          <p className="text-sm text-white/70">
+            <span className="font-semibold text-accent">Insight</span>
+            <span className="mx-2 text-white/20">·</span>
+            {takeaway}
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  )
+}
+
+function LeadershipRolesScreen({
+  title,
+  headline,
+  takeaway,
+  content,
+}: {
+  title: string
+  headline?: string
+  takeaway: string
+  content: DriversContent
+}) {
   const [active, setActive] = useState(0)
+  const [autoPlay, setAutoPlay] = useState(true)
   const current = content.drivers[active]
-  const hasImages = content.drivers.some((driver) => Boolean(driver.image))
+
+  useEffect(() => {
+    if (!autoPlay) return
+    const timer = window.setInterval(() => {
+      setActive((value) => (value + 1) % content.drivers.length)
+    }, 5500)
+    return () => window.clearInterval(timer)
+  }, [autoPlay, content.drivers.length])
 
   return (
-    <div className="grid h-full min-h-0 gap-3 lg:grid-cols-[240px_1fr]">
-      <GlassCard className="flex min-h-0 flex-col overflow-hidden p-2">
-        <div className="px-2 py-2">
-          <p className="text-[10px] font-semibold tracking-[0.16em] text-white/35 uppercase">
-            Leadership roles
-          </p>
-          <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/8">
-            <motion.div
-              className="h-full rounded-full bg-accent"
-              initial={false}
-              animate={{ width: `${((active + 1) / content.drivers.length) * 100}%` }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            />
+    <div
+      className="relative h-full w-full overflow-hidden"
+      onMouseEnter={() => setAutoPlay(false)}
+      onMouseLeave={() => setAutoPlay(true)}
+    >
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={current.image ?? current.title}
+          src={current.image}
+          alt={current.title}
+          className="absolute inset-0 h-full w-full object-cover"
+          initial={{ opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.02 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/35" />
+
+      <div className="relative z-10 flex h-full flex-col gap-4 p-5 lg:p-7">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
+                Leadership system
+              </span>
+            </div>
+            <h1 className="font-display mt-3 text-2xl font-semibold text-white lg:text-3xl">
+              {title}
+            </h1>
+            {headline ? (
+              <p className="mt-1 max-w-2xl text-sm text-white/65 lg:text-base">{headline}</p>
+            ) : null}
+          </div>
+          <div className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[11px] text-white/70 backdrop-blur-md">
+            {autoPlay ? 'Auto-rotating' : 'Paused'} · {active + 1}/{content.drivers.length}
           </div>
         </div>
-        <div className="scrollbar-thin flex-1 space-y-1.5 overflow-auto p-1">
-          {content.drivers.map((driver, index) => {
-            const selected = active === index
-            return (
-              <button
-                key={driver.title}
-                type="button"
-                onClick={() => setActive(index)}
-                className={`flex w-full items-center gap-3 rounded-xl px-2 py-2 text-left transition ${
-                  selected
-                    ? 'bg-accent-dim ring-1 ring-accent/40'
-                    : 'hover:bg-white/5'
-                }`}
-              >
-                {driver.image ? (
-                  <img
-                    src={driver.image}
-                    alt=""
-                    className="h-11 w-11 shrink-0 rounded-lg object-cover"
-                  />
-                ) : (
-                  <span
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-xs font-semibold ${
-                      selected ? 'bg-accent text-bg' : 'bg-white/8 text-white/60'
-                    }`}
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                )}
-                <span className="min-w-0">
-                  <span
-                    className={`block truncate text-sm font-medium ${
-                      selected ? 'text-white' : 'text-white/70'
-                    }`}
-                  >
-                    {driver.title}
-                  </span>
-                  <span className="mt-0.5 block text-[11px] text-white/35">
-                    Role {index + 1} of {content.drivers.length}
-                  </span>
-                </span>
-              </button>
-            )
-          })}
-        </div>
-      </GlassCard>
 
-      <GlassCard className="relative min-h-0 overflow-hidden p-0">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current.title}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="flex h-full min-h-0 flex-col"
-          >
-            {hasImages && current.image ? (
-              <div className="relative h-[46%] min-h-[140px] w-full overflow-hidden">
-                <motion.img
-                  src={current.image}
-                  alt={current.title}
-                  className="h-full w-full object-cover"
-                  initial={{ scale: 1.06 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-elevated via-bg-elevated/20 to-transparent" />
-                <div className="absolute bottom-4 left-5 right-5">
-                  <p className="text-[10px] font-semibold tracking-[0.16em] text-accent uppercase">
-                    Selected role
-                  </p>
-                  <h3 className="font-display mt-1 text-2xl font-semibold text-white lg:text-3xl">
-                    {current.title}
-                  </h3>
-                </div>
-              </div>
-            ) : (
-              <div className="border-b border-white/8 px-5 py-4">
+        <div className="grid min-h-0 flex-1 gap-3 lg:grid-cols-[220px_1fr]">
+          <div className="glass flex flex-col gap-1.5 overflow-hidden rounded-2xl p-2 backdrop-blur-xl">
+            {content.drivers.map((driver, index) => {
+              const selected = active === index
+              return (
+                <button
+                  key={driver.title}
+                  type="button"
+                  onClick={() => {
+                    setActive(index)
+                    setAutoPlay(false)
+                  }}
+                  className={`flex items-center gap-3 rounded-xl px-2 py-2 text-left transition ${
+                    selected
+                      ? 'bg-accent text-bg shadow-[0_0_24px_rgba(255,107,44,0.35)]'
+                      : 'text-white/75 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  {driver.image ? (
+                    <img
+                      src={driver.image}
+                      alt=""
+                      className="h-10 w-10 shrink-0 rounded-lg object-cover"
+                    />
+                  ) : null}
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm font-semibold">{driver.title}</span>
+                    <span
+                      className={`mt-0.5 block text-[10px] ${
+                        selected ? 'text-bg/70' : 'text-white/40'
+                      }`}
+                    >
+                      0{index + 1}
+                    </span>
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.title}
+              initial={{ opacity: 0, x: 18 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -12 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="glass flex min-h-0 flex-col justify-between rounded-3xl p-5 backdrop-blur-xl lg:p-6"
+            >
+              <div>
                 <p className="text-[10px] font-semibold tracking-[0.16em] text-accent uppercase">
-                  Selected focus
+                  Active role
                 </p>
-                <h3 className="font-display mt-1 text-2xl font-semibold text-white">
+                <h2 className="font-display mt-2 text-3xl font-semibold text-white">
                   {current.title}
-                </h3>
-              </div>
-            )}
-
-            <div className="flex flex-1 flex-col justify-between gap-4 p-5">
-              <div className="space-y-4">
-                <p className="max-w-3xl text-base leading-relaxed text-white/70 lg:text-lg">
+                </h2>
+                <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/70">
                   {current.detail}
                 </p>
                 {current.bullets?.length ? (
-                  <div className="grid gap-2 sm:grid-cols-3">
+                  <div className="mt-5 grid gap-2 sm:grid-cols-3">
                     {current.bullets.map((bullet, index) => (
                       <motion.div
                         key={bullet}
-                        initial={{ opacity: 0, y: 8 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.08 + index * 0.05, duration: 0.25 }}
-                        className="rounded-xl border border-white/10 bg-white/5 px-3 py-3"
+                        transition={{ delay: 0.1 + index * 0.06 }}
+                        className="rounded-2xl border border-white/12 bg-black/25 px-3 py-3"
                       >
                         <p className="text-[10px] font-semibold tracking-[0.14em] text-accent uppercase">
                           {String(index + 1).padStart(2, '0')}
@@ -815,46 +929,64 @@ function DriversScreen({ content }: { content: DriversContent }) {
                   </div>
                 ) : null}
               </div>
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-3">
-                <div className="flex gap-1.5">
-                  {content.drivers.map((driver, index) => (
-                    <button
-                      key={driver.title}
-                      type="button"
-                      aria-label={`Show ${driver.title}`}
-                      onClick={() => setActive(index)}
-                      className={`h-1.5 rounded-full transition-all ${
-                        active === index ? 'w-8 bg-accent' : 'w-3 bg-white/20 hover:bg-white/35'
-                      }`}
-                    />
-                  ))}
-                </div>
+
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-4">
+                <p className="max-w-xl text-xs text-white/55">
+                  <span className="font-semibold text-accent">Insight</span>
+                  <span className="mx-1.5 text-white/20">·</span>
+                  {takeaway}
+                </p>
                 <div className="flex gap-2">
                   <button
                     type="button"
-                    disabled={active === 0}
-                    onClick={() => setActive((value) => Math.max(0, value - 1))}
-                    className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70 transition enabled:hover:border-white/20 enabled:hover:text-white disabled:opacity-30"
+                    onClick={() => {
+                      setAutoPlay(false)
+                      setActive((value) =>
+                        value === 0 ? content.drivers.length - 1 : value - 1,
+                      )
+                    }}
+                    className="rounded-xl border border-white/15 bg-white/10 px-3 py-1.5 text-xs text-white/80 hover:bg-white/15"
                   >
                     Previous
                   </button>
                   <button
                     type="button"
-                    disabled={active === content.drivers.length - 1}
-                    onClick={() =>
-                      setActive((value) => Math.min(content.drivers.length - 1, value + 1))
-                    }
-                    className="rounded-xl border border-accent/40 bg-accent px-3 py-1.5 text-xs font-medium text-bg transition enabled:hover:bg-accent-soft disabled:opacity-30"
+                    onClick={() => {
+                      setAutoPlay(false)
+                      setActive((value) => (value + 1) % content.drivers.length)
+                    }}
+                    className="rounded-xl bg-accent px-3 py-1.5 text-xs font-medium text-bg hover:bg-accent-soft"
                   >
                     Next role
                   </button>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </GlassCard>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
     </div>
+  )
+}
+
+function DriversScreen({ content }: { content: DriversContent }) {
+  const [active, setActive] = useState(0)
+
+  return (
+    <Stagger className="grid h-full gap-3 md:grid-cols-2 xl:grid-cols-4">
+      {content.drivers.map((driver, index) => (
+        <StaggerItem key={driver.title} className="h-full">
+          <GlassCard
+            active={active === index}
+            onClick={() => setActive(index)}
+            className="h-full p-5"
+          >
+            <h3 className="font-display text-lg font-semibold text-white">{driver.title}</h3>
+            <p className="mt-3 text-sm text-white/55">{driver.detail}</p>
+          </GlassCard>
+        </StaggerItem>
+      ))}
+    </Stagger>
   )
 }
 

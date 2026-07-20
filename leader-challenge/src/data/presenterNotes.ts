@@ -15,7 +15,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'The first five minutes establish how I manage before we enter the four working topics.',
     likelyQuestion: 'How would you prioritize if you joined with limited headcount?',
-    transition: 'Let me start with who I am as a leader.',
+    transition: 'Before the roles, I want to set the standard.',
+  },
+  'leadership-standard': {
+    opening: 'I use a simple image for a serious point.',
+    coreMessage:
+      'Elite performance is not improvisation. It is clarity, discipline and ownership under pressure.',
+    supportingExample:
+      'This is the standard I hold for myself and for the teams I build — before any process discussion.',
+    executiveImplication:
+      'If we agree on the standard, the operating system becomes much easier to inspect.',
+    likelyQuestion: 'How do you translate an elite standard into day-to-day sales management?',
+    transition: 'Here is how that standard shows up in four leadership roles.',
   },
   'who-i-am-as-a-leader': {
     opening: 'Before the workstreams, I want you to know how I show up as a manager.',

@@ -15,6 +15,7 @@ export interface SectionMeta {
 
 export type SlideType =
   | 'cover'
+  | 'visual-hero'
   | 'thesis'
   | 'agenda'
   | 'pillars'
@@ -73,6 +74,14 @@ export interface SlideBase {
 export interface CoverContent {
   title: string
   subtitle: string
+}
+
+export interface VisualHeroContent {
+  image: string
+  eyebrow?: string
+  title: string
+  subtitle?: string
+  points?: string[]
 }
 
 export interface ThesisContent {
@@ -288,6 +297,7 @@ export interface FeedbackContent {
 
 export type SlideContent =
   | CoverContent
+  | VisualHeroContent
   | ThesisContent
   | AgendaContent
   | PillarsContent
