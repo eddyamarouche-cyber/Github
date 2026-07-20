@@ -86,6 +86,7 @@ export const slides: Slide[] = [
           bullets: [
             'Translate company priorities into local execution',
             'Be the interface with GTM local team',
+            'Anticipation',
           ],
         },
       ],
