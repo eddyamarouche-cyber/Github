@@ -69,6 +69,10 @@ export const slides: Slide[] = [
           detail:
             'I escalate early, stay transparent and convert company priorities into local execution. [VALIDATE WITH CURSOR]',
           image: '/images/executive-partner.jpg',
+          bullets: [
+            'Translate company priorities into local execution',
+            'Be the interface with GTM local team',
+          ],
         },
       ],
     },
