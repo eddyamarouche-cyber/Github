@@ -18,13 +18,13 @@ export interface Profile {
  */
 export const profile: Profile = {
   candidateName: 'Eddy Amarouche',
-  interviewDate: 'Monday 27th July',
+  interviewDate: 'Monday 27th July 2026',
   role: 'Regional Director, Southern Europe',
   region: 'Southern Europe',
   company: 'Cursor',
   interlocutors: [
-    { name: 'Benjamin Caller' },
     { name: 'Ismail Elmas' },
+    { name: 'Benjamin Caller' },
     { name: 'Ricky Patel' },
   ],
 }
