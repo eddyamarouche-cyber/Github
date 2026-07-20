@@ -82,9 +82,9 @@ export const slides: Slide[] = [
           title: 'Executive partner',
           image: '/images/executive-partner.jpg',
           bullets: [
+            'Anticipation',
             'Translate company priorities into local execution',
             'Be the interface with GTM local team',
-            'Anticipation',
           ],
         },
       ],
