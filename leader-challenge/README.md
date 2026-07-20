@@ -85,6 +85,37 @@ Slide structure, headlines and takeaways live in [`src/data/slides.ts`](src/data
 
 The print stylesheet renders **one slide per page** at a 16:9 presentation ratio.
 
+## 9. Deploy to Vercel
+
+This app lives in the `leader-challenge/` folder of a monorepo. Deploy it as its own Vercel project with that folder as the **Root Directory**.
+
+### Option A — Vercel Dashboard (recommended)
+
+1. Open [vercel.com/new](https://vercel.com/new) and sign in with GitHub
+2. Import the repository `eddyamarouche-cyber/Github`
+3. Set **Root Directory** to `leader-challenge` (click Edit next to Root Directory)
+4. Confirm framework preset: **Vite**
+5. Confirm:
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Install Command: `npm install`
+6. Click **Deploy**
+7. Open the production URL Vercel gives you (e.g. `https://….vercel.app`)
+
+Later pushes to the connected branch will redeploy automatically.
+
+### Option B — Vercel CLI
+
+```bash
+cd leader-challenge
+npm install
+npx vercel login
+npx vercel        # preview deployment
+npx vercel --prod # production deployment
+```
+
+A `vercel.json` file is already included for SPA routing and Vite settings.
+
 ## Presentation controls
 
 | Control | Action |
