@@ -720,60 +720,69 @@ function VisualHeroScreen({
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/35" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/40" />
 
-      <div className="relative flex h-full flex-col justify-between px-10 py-8 lg:px-14 lg:py-10">
+      <div className="relative flex h-full flex-col justify-between px-8 py-7 lg:px-12 lg:py-9">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md"
+          transition={{ delay: 0.1 }}
+          className="flex flex-wrap items-center justify-between gap-3"
         >
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-          <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
-            {content.eyebrow ?? 'Visual'}
-          </span>
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+            <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
+              {content.eyebrow ?? 'Visual'}
+            </span>
+          </div>
+          <p className="font-display text-lg font-semibold text-white/80 lg:text-xl">
+            {content.title}
+          </p>
         </motion.div>
 
-        <div className="max-w-3xl">
-          <motion.h2
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.4 }}
-            className="font-display text-4xl leading-tight font-semibold text-white lg:text-5xl"
-          >
-            {content.title}
-          </motion.h2>
-          {content.subtitle ? (
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.4 }}
-              className="mt-4 max-w-2xl text-base text-white/75 lg:text-lg"
-            >
-              {content.subtitle}
-            </motion.p>
-          ) : null}
-          {content.points?.length ? (
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-              className="mt-8 flex flex-wrap gap-3"
-            >
-              {content.points.map((point) => (
-                <span
+        {content.points?.length ? (
+          <div className="flex min-h-0 flex-1 flex-col justify-center py-4">
+            <div className="grid w-full gap-4 md:grid-cols-3 md:gap-5">
+              {content.points.map((point, index) => (
+                <motion.div
                   key={point}
-                  className="rounded-2xl border border-white/20 bg-white/10 px-5 py-3 font-display text-2xl font-bold tracking-tight text-white backdrop-blur-md lg:text-3xl"
+                  initial={{ opacity: 0, y: 28 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + index * 0.08, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  className="glass flex min-h-[180px] items-center justify-center rounded-[28px] px-4 py-8 text-center backdrop-blur-xl lg:min-h-[240px] lg:px-6"
                 >
-                  {point}
-                </span>
+                  <p className="font-display text-4xl leading-none font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+                    {point}
+                  </p>
+                </motion.div>
               ))}
-            </motion.div>
-          ) : null}
-        </div>
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-1 items-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="font-display max-w-5xl text-5xl leading-tight font-bold text-white lg:text-7xl"
+            >
+              {content.title}
+            </motion.h2>
+          </div>
+        )}
 
+        {content.subtitle ? (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="max-w-4xl text-base text-white/65 lg:text-lg"
+          >
+            {content.subtitle}
+          </motion.p>
+        ) : (
+          <div />
+        )}
       </div>
     </div>
   )
