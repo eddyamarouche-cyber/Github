@@ -25,7 +25,7 @@ export const slides: Slide[] = [
     takeaway: 'Position as the future Regional Director building a Southern Europe growth engine.',
     recommendedMinutes: 2,
     content: {
-      title: 'Southern Europe Leadership Plan',
+      title: 'Regional Leader Italy - Iberia',
       subtitle: 'Leader Challenge — Regional Director, Southern Europe',
     },
   },
