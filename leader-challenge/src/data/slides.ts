@@ -60,6 +60,7 @@ export const slides: Slide[] = [
     recommendedMinutes: 0.5,
     content: {
       image: '/images/wild-geese.jpg',
+      title: 'One direction',
     },
   },
   {
