@@ -37,7 +37,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'If this frame feels right, the rest of the session is simply how I apply it at Cursor.',
     likelyQuestion: 'Which of these four roles do you lean on first in a new region?',
-    transition: 'That frame becomes a simple operating system.',
+    transition: 'There is one more image that captures how I think about teams.',
+  },
+  'wild-geese': {
+    opening: 'This image is intentional.',
+    coreMessage:
+      'A strong team moves in one direction, creates lift for each other and stays aligned under pressure.',
+    supportingExample:
+      'Wild geese fly farther together because every bird helps the flock and the V keeps reforming.',
+    executiveImplication:
+      'Talent density matters — but so does shared direction and mutual enablement.',
+    likelyQuestion: 'How do you keep a regional team flying in formation across markets?',
+    transition: 'That mindset becomes the operating system.',
   },
   'operating-system': {
     opening: 'Everything I do as a leader sits on four pillars.',
