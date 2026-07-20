@@ -913,19 +913,21 @@ function LeadershipRolesScreen({
                   {current.detail}
                 </p>
                 {current.bullets?.length ? (
-                  <div className="mt-5 grid gap-2 sm:grid-cols-3">
+                  <div className="mt-6 grid gap-3 sm:grid-cols-3">
                     {current.bullets.map((bullet, index) => (
                       <motion.div
                         key={bullet}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 + index * 0.06 }}
-                        className="rounded-2xl border border-white/12 bg-black/25 px-3 py-3"
+                        className="rounded-2xl border border-white/12 bg-black/30 px-4 py-5"
                       >
-                        <p className="text-[10px] font-semibold tracking-[0.14em] text-accent uppercase">
+                        <p className="font-display text-sm font-bold tracking-[0.14em] text-accent uppercase">
                           {String(index + 1).padStart(2, '0')}
                         </p>
-                        <p className="mt-1.5 text-sm font-medium text-white">{bullet}</p>
+                        <p className="font-display mt-3 text-2xl leading-tight font-bold tracking-tight text-white lg:text-3xl">
+                          {bullet}
+                        </p>
                       </motion.div>
                     ))}
                   </div>
