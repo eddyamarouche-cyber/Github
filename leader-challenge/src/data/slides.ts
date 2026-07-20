@@ -49,9 +49,25 @@ export const slides: Slide[] = [
       points: ['Persistency', 'Heart', 'Desire'],
     },
   },
+
+  {
+    id: 'wild-geese',
+    number: 3,
+    section: 'intro',
+    type: 'visual-hero',
+    title: 'One Direction',
+    takeaway: 'A high-performing team moves with shared direction and collective lift.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/wild-geese.jpg',
+      eyebrow: 'Team metaphor',
+      title: 'One flock. One direction.',
+      subtitle: 'Great teams create lift for each other and stay aligned on the destination.',
+    },
+  },
   {
     id: 'who-i-am-as-a-leader',
-    number: 3,
+    number: 4,
     section: 'intro',
     type: 'drivers',
     title: 'Who I Am as a Leader',
@@ -90,22 +106,6 @@ export const slides: Slide[] = [
       ],
     },
   },
-  {
-    id: 'wild-geese',
-    number: 4,
-    section: 'intro',
-    type: 'visual-hero',
-    title: 'One Direction',
-    takeaway: 'A high-performing team moves with shared direction and collective lift.',
-    recommendedMinutes: 0.5,
-    content: {
-      image: '/images/wild-geese.jpg',
-      eyebrow: 'Team metaphor',
-      title: 'One flock. One direction.',
-      subtitle: 'Great teams create lift for each other and stay aligned on the destination.',
-    },
-  },
-
   {
     id: 'operating-system',
     number: 5,

@@ -26,18 +26,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'If we agree on the standard, the operating system becomes much easier to inspect.',
     likelyQuestion: 'How do you translate an elite standard into day-to-day sales management?',
-    transition: 'Here is how that standard shows up in four leadership roles.',
-  },
-  'who-i-am-as-a-leader': {
-    opening: 'Before the workstreams, I want you to know how I show up as a manager.',
-    coreMessage:
-      'I lead as a talent builder, performance coach, operating leader and executive partner.',
-    supportingExample:
-      '[ADD MY EXAMPLE] — a concrete moment that shows how those four roles show up in practice.',
-    executiveImplication:
-      'If this frame feels right, the rest of the session is simply how I apply it at Cursor.',
-    likelyQuestion: 'Which of these four roles do you lean on first in a new region?',
-    transition: 'There is one more image that captures how I think about teams.',
+    transition: 'One more image — how elite teams actually move together.',
   },
   'wild-geese': {
     opening: 'This image is intentional.',
@@ -48,7 +37,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Talent density matters — but so does shared direction and mutual enablement.',
     likelyQuestion: 'How do you keep a regional team flying in formation across markets?',
-    transition: 'That mindset becomes the operating system.',
+    transition: 'Here is how that standard and that team mindset show up in four leadership roles.',
+  },
+  'who-i-am-as-a-leader': {
+    opening: 'Before the workstreams, I want you to know how I show up as a manager.',
+    coreMessage:
+      'I lead as a talent builder, performance coach, operating leader and executive partner.',
+    supportingExample:
+      '[ADD MY EXAMPLE] — a concrete moment that shows how those four roles show up in practice.',
+    executiveImplication:
+      'If this frame feels right, the rest of the session is simply how I apply it at Cursor.',
+    likelyQuestion: 'Which of these four roles do you lean on first in a new region?',
+    transition: 'That frame becomes a simple operating system.',
   },
   'operating-system': {
     opening: 'Everything I do as a leader sits on four pillars.',
