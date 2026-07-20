@@ -92,7 +92,7 @@ function renderSlide(slide: Slide) {
     case 'cover':
       return <CoverScreen content={slide.content as CoverContent} />
     case 'visual-hero':
-      return <VisualHeroScreen content={slide.content as VisualHeroContent} takeaway={slide.takeaway} />
+      return <VisualHeroScreen content={slide.content as VisualHeroContent} />
     case 'thesis':
       return (
         <ScreenShell
@@ -706,10 +706,9 @@ function ObjectionsScreen({ content }: { content: ObjectionsContent }) {
 
 function VisualHeroScreen({
   content,
-  takeaway,
 }: {
   content: VisualHeroContent
-  takeaway: string
+  takeaway?: string
 }) {
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -775,18 +774,6 @@ function VisualHeroScreen({
           ) : null}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.55 }}
-          className="glass max-w-3xl rounded-2xl px-4 py-3"
-        >
-          <p className="text-sm text-white/70">
-            <span className="font-semibold text-accent">Insight</span>
-            <span className="mx-2 text-white/20">·</span>
-            {takeaway}
-          </p>
-        </motion.div>
       </div>
     </div>
   )
