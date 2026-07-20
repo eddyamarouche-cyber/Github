@@ -690,10 +690,22 @@ function DriversScreen({ content }: { content: DriversContent }) {
           <GlassCard
             active={active === index}
             onClick={() => setActive(index)}
-            className="h-full p-5"
+            className="flex h-full flex-col overflow-hidden p-0"
           >
-            <h3 className="font-display text-lg font-semibold text-white">{driver.title}</h3>
-            <p className="mt-3 text-sm text-white/55">{driver.detail}</p>
+            {driver.image ? (
+              <div className="relative h-28 w-full overflow-hidden border-b border-white/10">
+                <img
+                  src={driver.image}
+                  alt={driver.title}
+                  className="h-full w-full object-cover"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-elevated/80 to-transparent" />
+              </div>
+            ) : null}
+            <div className="flex flex-1 flex-col p-5">
+              <h3 className="font-display text-lg font-semibold text-white">{driver.title}</h3>
+              <p className="mt-3 text-sm text-white/55">{driver.detail}</p>
+            </div>
           </GlassCard>
         </StaggerItem>
       ))}

@@ -47,6 +47,7 @@ export const slides: Slide[] = [
           title: 'Talent builder',
           detail:
             'I raise the bar on who joins, who stays and who leads. [ADD MY EXAMPLE]',
+          image: '/images/talent-builder.jpg',
         },
         {
           title: 'Performance coach',
