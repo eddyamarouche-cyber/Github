@@ -168,7 +168,7 @@ export interface ObjectionsContent {
 }
 
 export interface DriversContent {
-  drivers: { title: string; detail: string; image?: string; bullets?: string[] }[]
+  drivers: { title: string; detail?: string; image?: string; bullets?: string[] }[]
 }
 
 export interface FrameworkContent {

@@ -909,9 +909,11 @@ function LeadershipRolesScreen({
                 <h2 className="font-display mt-2 text-3xl font-semibold text-white">
                   {current.title}
                 </h2>
-                <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/70">
-                  {current.detail}
-                </p>
+                {current.detail ? (
+                  <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/70">
+                    {current.detail}
+                  </p>
+                ) : null}
                 {current.bullets?.length ? (
                   <div className="mt-6 grid gap-3 sm:grid-cols-3">
                     {current.bullets.map((bullet, index) => (

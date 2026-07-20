@@ -70,8 +70,6 @@ export const slides: Slide[] = [
         },
         {
           title: 'Performance coach',
-          detail:
-            'I diagnose skill, will and system gaps, then coach with evidence. [ADD MY EXAMPLE]',
           image: '/images/performance-coach.jpg',
           bullets: ['Identification', 'Enablement', 'Repeat'],
         },
