@@ -75,8 +75,6 @@ export const slides: Slide[] = [
         },
         {
           title: 'Operating leader',
-          detail:
-            'I install cadence for pipeline, forecast and decisions — not end-of-quarter heroics. [ADD MY RESULT]',
           image: '/images/operating-leader.jpg',
           bullets: ['Discipline', 'Accuracy', 'Pace'],
         },
