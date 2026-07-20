@@ -46,7 +46,7 @@ export const slides: Slide[] = [
       title: 'Operate to an elite standard',
       subtitle:
         'Clarity. Discipline. Ownership. The same principles that win under pressure apply to building a region.',
-      points: ['Clarity under pressure', 'Discipline in execution', 'Ownership without excuses'],
+      points: ['Persistency', 'Heart', 'Desire'],
     },
   },
   {
