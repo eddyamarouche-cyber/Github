@@ -64,8 +64,7 @@ export const slides: Slide[] = [
       drivers: [
         {
           title: 'Talent builder',
-          detail:
-            'I raise the bar on who joins, who stays and who leads. [ADD MY EXAMPLE]',
+          detail: 'Hunt the best profile and help them to grow.',
           image: '/images/talent-builder.jpg',
           bullets: ['Share the passion', 'Share perspective', 'Empower'],
         },
