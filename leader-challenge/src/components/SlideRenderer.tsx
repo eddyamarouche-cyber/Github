@@ -1107,7 +1107,7 @@ function MarketsScreen({ content }: { content: MarketsSlideContent }) {
               title={market.country}
               subtitle={market.marketMaturity}
               leading={
-                flag ? <MarketFlag code={flag} title={market.country} className="h-4 w-6" /> : null
+                flag ? <MarketFlag code={flag} title={market.country} className="h-6 w-9" /> : null
               }
             >
               <div className="space-y-1.5 text-xs">

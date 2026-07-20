@@ -1,5 +1,5 @@
 const flagClass =
-  'inline-block h-5 w-7 shrink-0 overflow-hidden rounded-[4px] border border-white/20 shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
+  'inline-block h-8 w-11 shrink-0 overflow-hidden rounded-md border border-white/20 shadow-[0_2px_8px_rgba(0,0,0,0.35)]'
 
 export type MarketFlagCode = 'IT' | 'ES' | 'PT' | 'FR'
 
