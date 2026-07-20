@@ -6,7 +6,7 @@ import type { SectionMeta, Slide } from './types'
 export const TOTAL_SESSION_MINUTES = 90
 
 export const sections: SectionMeta[] = [
-  { id: 'intro', label: 'Introduction & Thesis', allocatedMinutes: 8 },
+  { id: 'intro', label: 'Introduction & Leadership Principles', allocatedMinutes: 5 },
   { id: 'recruitment', label: 'Recruitment', allocatedMinutes: 25 },
   { id: 'roleplay', label: 'Candidate Role Play', allocatedMinutes: 15 },
   { id: 'retention', label: 'Retention & Coaching', allocatedMinutes: 15 },
@@ -22,57 +22,58 @@ export const slides: Slide[] = [
     section: 'intro',
     type: 'cover',
     title: 'Cover',
-    takeaway: 'Position as the future Regional Director building a Southern Europe growth engine.',
-    recommendedMinutes: 2,
+    takeaway:
+      'Set the leadership frame before entering recruitment, retention, revenue and partnership.',
+    recommendedMinutes: 0.5,
     content: {
       title: 'Regional Leader Italy - Iberia',
       subtitle: 'Leader Challenge — Regional Director, Southern Europe',
     },
   },
   {
-    id: 'executive-thesis',
+    id: 'who-i-am-as-a-leader',
     number: 2,
     section: 'intro',
-    type: 'thesis',
-    title: 'Executive Thesis',
+    type: 'drivers',
+    title: 'Who I Am as a Leader',
     headline:
-      'My goal is to build a high-talent, high-accountability and predictable growth organization.',
-    takeaway: 'Leadership starts with talent density, systems and local execution under one regional strategy.',
-    recommendedMinutes: 3,
+      'I build high-talent teams, coach for ownership and run the business through clear operating rhythm.',
+    takeaway:
+      'Establish the management frame before diving into the four working topics.',
+    recommendedMinutes: 1.5,
     content: {
-      convictions: [
-        'Great teams are built, not inherited',
-        'Predictable revenue starts with disciplined talent and pipeline systems',
-        'Southern Europe requires one regional strategy with strong local execution',
-      ],
-    },
-  },
-  {
-    id: 'agenda',
-    number: 3,
-    section: 'intro',
-    type: 'agenda',
-    title: 'Agenda',
-    takeaway: 'Five focused sections designed for a 90-minute executive working session.',
-    recommendedMinutes: 1,
-    content: {
-      items: [
-        { label: 'Recruitment', minutes: 25 },
-        { label: 'Retention and Development', minutes: 15 },
-        { label: 'Revenue Leadership', minutes: 20 },
-        { label: 'Partnership with Cursor Leadership', minutes: 5 },
-        { label: 'Feedback and Close', minutes: 2 },
+      drivers: [
+        {
+          title: 'Talent builder',
+          detail:
+            'I raise the bar on who joins, who stays and who leads. [ADD MY EXAMPLE]',
+        },
+        {
+          title: 'Performance coach',
+          detail:
+            'I diagnose skill, will and system gaps, then coach with evidence. [ADD MY EXAMPLE]',
+        },
+        {
+          title: 'Operating leader',
+          detail:
+            'I install cadence for pipeline, forecast and decisions — not end-of-quarter heroics. [ADD MY RESULT]',
+        },
+        {
+          title: 'Executive partner',
+          detail:
+            'I escalate early, stay transparent and convert company priorities into local execution. [VALIDATE WITH CURSOR]',
+        },
       ],
     },
   },
   {
     id: 'operating-system',
-    number: 4,
+    number: 3,
     section: 'intro',
     type: 'pillars',
     title: 'My Leadership Operating System',
     takeaway: 'Four pillars govern how I hire, coach, inspect and align with leadership.',
-    recommendedMinutes: 2,
+    recommendedMinutes: 1.5,
     content: {
       pillars: [
         {
@@ -90,6 +91,42 @@ export const slides: Slide[] = [
         {
           title: 'Executive Alignment',
           description: 'Convert global priorities into local execution with transparent escalation.',
+        },
+      ],
+    },
+  },
+  {
+    id: 'success-at-cursor',
+    number: 4,
+    section: 'intro',
+    type: 'pillars',
+    title: 'What Success Would Look Like at Cursor',
+    headline:
+      'Success is a high-talent Italy–Iberia engine with predictable growth and clear partnership with leadership.',
+    takeaway:
+      'Align on the outcomes that matter before we inspect how I hire, coach and run revenue.',
+    recommendedMinutes: 1.5,
+    content: {
+      pillars: [
+        {
+          title: 'Talent density',
+          description:
+            'A-player coverage in priority markets, with an always-on talent map. [VALIDATE WITH CURSOR]',
+        },
+        {
+          title: 'Coaching culture',
+          description:
+            'Managers run real 1:1s, deal coaching and development rhythm — not status updates. [ADD MY EXAMPLE]',
+        },
+        {
+          title: 'Predictable revenue',
+          description:
+            'Weekly pipeline creation, opportunity quality and forecast integrity. [ADD MY RESULT]',
+        },
+        {
+          title: 'One-team execution',
+          description:
+            'Local ownership with fast escalation, shared priorities and executive access used well. [VALIDATE WITH CURSOR]',
         },
       ],
     },

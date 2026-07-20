@@ -9,35 +9,24 @@ export const presenterNotes: Record<string, PresenterNote> = {
     opening:
       'Thank you for the time. I prepared this as a working session, not a pitch deck.',
     coreMessage:
-      'I want to show how I would build Southern Europe as a growth engine — talent first, then system, then scale.',
+      'I want to set my leadership frame first, then go deep on how I would hire, coach, run revenue and partner with you.',
     supportingExample:
       '[ADD MY EXAMPLE] — a moment where building the team and the operating system unlocked growth.',
     executiveImplication:
-      'You should leave with a clear view of how I hire, coach, inspect pipeline and partner with leadership.',
+      'The first five minutes establish how I manage before we enter the four working topics.',
     likelyQuestion: 'How would you prioritize if you joined with limited headcount?',
-    transition: 'Let me start with the thesis that drives every decision.',
+    transition: 'Let me start with who I am as a leader.',
   },
-  'executive-thesis': {
-    opening: 'My operating thesis is simple and non-negotiable.',
+  'who-i-am-as-a-leader': {
+    opening: 'Before the workstreams, I want you to know how I show up as a manager.',
     coreMessage:
-      'I build high-talent, high-accountability teams that produce predictable growth through systems, not heroics.',
+      'I lead as a talent builder, performance coach, operating leader and executive partner.',
     supportingExample:
-      '[ADD MY RESULT] — where talent density and pipeline discipline changed forecast reliability.',
+      '[ADD MY EXAMPLE] — a concrete moment that shows how those four roles show up in practice.',
     executiveImplication:
-      'Southern Europe should not be a collection of local efforts. It needs one strategy with strong local execution.',
-    likelyQuestion: 'What does high accountability look like in practice?',
-    transition: 'Here is how I would spend our ninety minutes.',
-  },
-  agenda: {
-    opening: 'I structured the session around the work of a Regional Director.',
-    coreMessage:
-      'We will go deep on recruitment, retention, revenue leadership, then partnership and close.',
-    supportingExample:
-      'I kept room for role play and challenge — that is where leadership judgment shows.',
-    executiveImplication:
-      'This is designed for dialogue. Please interrupt wherever the assumption feels weak.',
-    likelyQuestion: 'Where do you want to go deepest?',
-    transition: 'Before the sections, here is my leadership operating system.',
+      'If this frame feels right, the rest of the session is simply how I apply it at Cursor.',
+    likelyQuestion: 'Which of these four roles do you lean on first in a new region?',
+    transition: 'That frame becomes a simple operating system.',
   },
   'operating-system': {
     opening: 'Everything I do as a leader sits on four pillars.',
@@ -47,8 +36,19 @@ export const presenterNotes: Record<string, PresenterNote> = {
       '[ADD MY EXAMPLE] — how these pillars showed up in a weekly operating rhythm.',
     executiveImplication:
       'If one pillar is weak, growth becomes noisy. If all four are strong, the region compounds.',
-    likelyQuestion: 'Which pillar would you install first in Southern Europe?',
-    transition: 'Section one — recruitment and the A-player standard.',
+    likelyQuestion: 'Which pillar would you install first for Italy and Iberia?',
+    transition: 'Let me make success concrete in the Cursor context.',
+  },
+  'success-at-cursor': {
+    opening: 'I want alignment on what good looks like before we inspect the methods.',
+    coreMessage:
+      'Success is talent density, a real coaching culture, predictable revenue and one-team execution across Italy and Iberia.',
+    supportingExample:
+      '[VALIDATE WITH CURSOR] — I will adjust these outcomes to your current regional priorities.',
+    executiveImplication:
+      'Every section that follows should ladder back to these outcomes.',
+    likelyQuestion: 'Which of these outcomes matters most in the first two quarters?',
+    transition: 'With that frame set, let’s move into recruitment and the A-player standard.',
   },
   'a-player-profile': {
     opening: 'I do not hire for a résumé match. I hire for an A-player profile.',
