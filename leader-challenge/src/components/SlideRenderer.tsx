@@ -365,12 +365,11 @@ function CoverScreen({ content }: { content: CoverContent }) {
     <div className="flex h-full flex-col justify-between px-12 py-10 lg:px-16 lg:py-14">
       <Stagger>
         <StaggerItem>
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            <span className="text-[11px] font-semibold tracking-[0.16em] text-white/70 uppercase">
-              Cursor
-            </span>
-          </div>
+          <img
+            src="/images/cursor-logo.svg"
+            alt="Cursor"
+            className="h-8 w-auto lg:h-10"
+          />
         </StaggerItem>
       </Stagger>
 
