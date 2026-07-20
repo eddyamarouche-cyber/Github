@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { profile } from '../data/profile'
 import { sections } from '../data/slides'
@@ -683,33 +684,157 @@ function ObjectionsScreen({ content }: { content: ObjectionsContent }) {
 
 function DriversScreen({ content }: { content: DriversContent }) {
   const [active, setActive] = useState(0)
+  const current = content.drivers[active]
+  const hasImages = content.drivers.some((driver) => Boolean(driver.image))
+
   return (
-    <Stagger className="grid h-full gap-3 md:grid-cols-4">
-      {content.drivers.map((driver, index) => (
-        <StaggerItem key={driver.title} className="h-full">
-          <GlassCard
-            active={active === index}
-            onClick={() => setActive(index)}
-            className="flex h-full flex-col overflow-hidden p-0"
+    <div className="grid h-full min-h-0 gap-3 lg:grid-cols-[240px_1fr]">
+      <GlassCard className="flex min-h-0 flex-col overflow-hidden p-2">
+        <div className="px-2 py-2">
+          <p className="text-[10px] font-semibold tracking-[0.16em] text-white/35 uppercase">
+            Leadership roles
+          </p>
+          <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/8">
+            <motion.div
+              className="h-full rounded-full bg-accent"
+              initial={false}
+              animate={{ width: `${((active + 1) / content.drivers.length) * 100}%` }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            />
+          </div>
+        </div>
+        <div className="scrollbar-thin flex-1 space-y-1.5 overflow-auto p-1">
+          {content.drivers.map((driver, index) => {
+            const selected = active === index
+            return (
+              <button
+                key={driver.title}
+                type="button"
+                onClick={() => setActive(index)}
+                className={`flex w-full items-center gap-3 rounded-xl px-2 py-2 text-left transition ${
+                  selected
+                    ? 'bg-accent-dim ring-1 ring-accent/40'
+                    : 'hover:bg-white/5'
+                }`}
+              >
+                {driver.image ? (
+                  <img
+                    src={driver.image}
+                    alt=""
+                    className="h-11 w-11 shrink-0 rounded-lg object-cover"
+                  />
+                ) : (
+                  <span
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-xs font-semibold ${
+                      selected ? 'bg-accent text-bg' : 'bg-white/8 text-white/60'
+                    }`}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                )}
+                <span className="min-w-0">
+                  <span
+                    className={`block truncate text-sm font-medium ${
+                      selected ? 'text-white' : 'text-white/70'
+                    }`}
+                  >
+                    {driver.title}
+                  </span>
+                  <span className="mt-0.5 block text-[11px] text-white/35">
+                    Role {index + 1} of {content.drivers.length}
+                  </span>
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      </GlassCard>
+
+      <GlassCard className="relative min-h-0 overflow-hidden p-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current.title}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="flex h-full min-h-0 flex-col"
           >
-            {driver.image ? (
-              <div className="relative h-28 w-full overflow-hidden border-b border-white/10">
-                <img
-                  src={driver.image}
-                  alt={driver.title}
+            {hasImages && current.image ? (
+              <div className="relative h-[46%] min-h-[140px] w-full overflow-hidden">
+                <motion.img
+                  src={current.image}
+                  alt={current.title}
                   className="h-full w-full object-cover"
+                  initial={{ scale: 1.06 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-elevated/80 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-elevated via-bg-elevated/20 to-transparent" />
+                <div className="absolute bottom-4 left-5 right-5">
+                  <p className="text-[10px] font-semibold tracking-[0.16em] text-accent uppercase">
+                    Selected role
+                  </p>
+                  <h3 className="font-display mt-1 text-2xl font-semibold text-white lg:text-3xl">
+                    {current.title}
+                  </h3>
+                </div>
               </div>
-            ) : null}
-            <div className="flex flex-1 flex-col p-5">
-              <h3 className="font-display text-lg font-semibold text-white">{driver.title}</h3>
-              <p className="mt-3 text-sm text-white/55">{driver.detail}</p>
+            ) : (
+              <div className="border-b border-white/8 px-5 py-4">
+                <p className="text-[10px] font-semibold tracking-[0.16em] text-accent uppercase">
+                  Selected focus
+                </p>
+                <h3 className="font-display mt-1 text-2xl font-semibold text-white">
+                  {current.title}
+                </h3>
+              </div>
+            )}
+
+            <div className="flex flex-1 flex-col justify-between gap-4 p-5">
+              <p className="max-w-3xl text-base leading-relaxed text-white/70 lg:text-lg">
+                {current.detail}
+              </p>
+              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-3">
+                <div className="flex gap-1.5">
+                  {content.drivers.map((driver, index) => (
+                    <button
+                      key={driver.title}
+                      type="button"
+                      aria-label={`Show ${driver.title}`}
+                      onClick={() => setActive(index)}
+                      className={`h-1.5 rounded-full transition-all ${
+                        active === index ? 'w-8 bg-accent' : 'w-3 bg-white/20 hover:bg-white/35'
+                      }`}
+                    />
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    disabled={active === 0}
+                    onClick={() => setActive((value) => Math.max(0, value - 1))}
+                    className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70 transition enabled:hover:border-white/20 enabled:hover:text-white disabled:opacity-30"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    type="button"
+                    disabled={active === content.drivers.length - 1}
+                    onClick={() =>
+                      setActive((value) => Math.min(content.drivers.length - 1, value + 1))
+                    }
+                    className="rounded-xl border border-accent/40 bg-accent px-3 py-1.5 text-xs font-medium text-bg transition enabled:hover:bg-accent-soft disabled:opacity-30"
+                  >
+                    Next role
+                  </button>
+                </div>
+              </div>
             </div>
-          </GlassCard>
-        </StaggerItem>
-      ))}
-    </Stagger>
+          </motion.div>
+        </AnimatePresence>
+      </GlassCard>
+    </div>
   )
 }
 

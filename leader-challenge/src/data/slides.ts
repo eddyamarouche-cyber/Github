@@ -53,16 +53,19 @@ export const slides: Slide[] = [
           title: 'Performance coach',
           detail:
             'I diagnose skill, will and system gaps, then coach with evidence. [ADD MY EXAMPLE]',
+          image: '/images/performance-coach.jpg',
         },
         {
           title: 'Operating leader',
           detail:
             'I install cadence for pipeline, forecast and decisions — not end-of-quarter heroics. [ADD MY RESULT]',
+          image: '/images/operating-leader.jpg',
         },
         {
           title: 'Executive partner',
           detail:
             'I escalate early, stay transparent and convert company priorities into local execution. [VALIDATE WITH CURSOR]',
+          image: '/images/executive-partner.jpg',
         },
       ],
     },
