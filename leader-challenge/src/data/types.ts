@@ -159,7 +159,7 @@ export interface ObjectionsContent {
 }
 
 export interface DriversContent {
-  drivers: { title: string; detail: string; image?: string }[]
+  drivers: { title: string; detail: string; image?: string; bullets?: string[] }[]
 }
 
 export interface FrameworkContent {

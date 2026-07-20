@@ -48,6 +48,7 @@ export const slides: Slide[] = [
           detail:
             'I raise the bar on who joins, who stays and who leads. [ADD MY EXAMPLE]',
           image: '/images/talent-builder.jpg',
+          bullets: ['Share the passion', 'Share perspective', 'Empower'],
         },
         {
           title: 'Performance coach',

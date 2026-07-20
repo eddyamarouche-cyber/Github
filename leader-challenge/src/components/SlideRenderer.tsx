@@ -792,9 +792,29 @@ function DriversScreen({ content }: { content: DriversContent }) {
             )}
 
             <div className="flex flex-1 flex-col justify-between gap-4 p-5">
-              <p className="max-w-3xl text-base leading-relaxed text-white/70 lg:text-lg">
-                {current.detail}
-              </p>
+              <div className="space-y-4">
+                <p className="max-w-3xl text-base leading-relaxed text-white/70 lg:text-lg">
+                  {current.detail}
+                </p>
+                {current.bullets?.length ? (
+                  <div className="grid gap-2 sm:grid-cols-3">
+                    {current.bullets.map((bullet, index) => (
+                      <motion.div
+                        key={bullet}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.08 + index * 0.05, duration: 0.25 }}
+                        className="rounded-xl border border-white/10 bg-white/5 px-3 py-3"
+                      >
+                        <p className="text-[10px] font-semibold tracking-[0.14em] text-accent uppercase">
+                          {String(index + 1).padStart(2, '0')}
+                        </p>
+                        <p className="mt-1.5 text-sm font-medium text-white">{bullet}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
               <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-3">
                 <div className="flex gap-1.5">
                   {content.drivers.map((driver, index) => (
