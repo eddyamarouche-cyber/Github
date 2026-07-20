@@ -89,26 +89,30 @@ export function flagCodeForCountry(country: string): MarketFlagCode | null {
 
 export function MarketFlagRow({
   markets = priorityMarkets,
-  size = 'md',
+  size = 'lg',
 }: {
   markets?: { code: MarketFlagCode; label: string }[]
-  size?: 'sm' | 'md'
+  size?: 'sm' | 'md' | 'lg'
 }) {
+  const flagSize =
+    size === 'sm' ? 'h-4 w-6' : size === 'md' ? 'h-6 w-9' : 'h-9 w-14'
+  const labelSize = size === 'sm' ? 'text-xs' : size === 'md' ? 'text-sm' : 'text-base'
+  const padding = size === 'sm' ? 'px-2 py-1' : size === 'md' ? 'px-3 py-1.5' : 'px-4 py-2.5'
+  const gap = size === 'lg' ? 'gap-3' : 'gap-2'
+
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className={`flex flex-wrap items-center ${gap}`}>
       {markets.map((market) => (
         <div
           key={market.code}
-          className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 ${
-            size === 'sm' ? 'px-2 py-1' : 'px-3 py-1.5'
-          }`}
+          className={`inline-flex items-center ${gap} rounded-2xl border border-white/10 bg-white/5 ${padding}`}
         >
           <MarketFlag
             code={market.code}
             title={market.label}
-            className={size === 'sm' ? 'h-3.5 w-5' : 'h-5 w-7'}
+            className={flagSize}
           />
-          <span className={`font-medium text-white ${size === 'sm' ? 'text-xs' : 'text-sm'}`}>
+          <span className={`font-medium text-white ${labelSize}`}>
             {market.label}
           </span>
         </div>
