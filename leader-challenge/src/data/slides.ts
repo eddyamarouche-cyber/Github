@@ -80,8 +80,6 @@ export const slides: Slide[] = [
         },
         {
           title: 'Executive partner',
-          detail:
-            'I escalate early, stay transparent and convert company priorities into local execution. [VALIDATE WITH CURSOR]',
           image: '/images/executive-partner.jpg',
           bullets: [
             'Translate company priorities into local execution',
