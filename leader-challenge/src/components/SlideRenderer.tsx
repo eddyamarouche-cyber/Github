@@ -400,15 +400,15 @@ function CoverScreen({ content }: { content: CoverContent }) {
             </p>
           </StaggerItem>
           <StaggerItem>
-            <GlassCard className="mt-8 max-w-xl p-4">
+            <GlassCard className="mt-8 max-w-3xl p-5">
               <p className="text-[10px] font-semibold tracking-[0.16em] text-white/40 uppercase">
                 With
               </p>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="mt-3 flex flex-wrap gap-3">
                 {profile.interlocutors.map((person) => (
                   <span
                     key={person.name}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-white"
+                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 text-lg font-bold tracking-tight text-white lg:text-xl"
                   >
                     {person.name}
                   </span>
