@@ -710,80 +710,108 @@ function VisualHeroScreen({
   content: VisualHeroContent
   takeaway?: string
 }) {
+  const hasPoints = Boolean(content.points?.length)
+  const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints))
+  const hasTitleBlock = Boolean(content.title && !hasPoints)
+  const hasSubtitle = Boolean(content.subtitle)
+  const hasCopy = hasHeader || hasPoints || hasTitleBlock || hasSubtitle
+
   return (
     <div className="relative h-full w-full overflow-hidden">
       <motion.img
         src={content.image}
-        alt={content.title}
+        alt={content.title || 'Visual'}
         className="absolute inset-0 h-full w-full object-cover"
         initial={{ scale: 1.08, opacity: 0.7 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/35" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/40" />
+      {hasCopy ? (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/40" />
+        </>
+      ) : null}
 
-      <div className="relative flex h-full flex-col justify-between px-8 py-7 lg:px-12 lg:py-9">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="flex flex-wrap items-center justify-between gap-3"
-        >
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-            <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
-              {content.eyebrow ?? 'Visual'}
-            </span>
-          </div>
-          <p className="font-display text-lg font-semibold text-white/80 lg:text-xl">
-            {content.title}
-          </p>
-        </motion.div>
-
-        {content.points?.length ? (
-          <div className="flex min-h-0 flex-1 flex-col justify-center py-4">
-            <div className="grid w-full gap-4 md:grid-cols-3 md:gap-5">
-              {content.points.map((point, index) => (
-                <motion.div
-                  key={point}
-                  initial={{ opacity: 0, y: 28 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + index * 0.08, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="glass flex min-h-[180px] items-center justify-center rounded-[28px] px-4 py-8 text-center backdrop-blur-xl lg:min-h-[240px] lg:px-6"
-                >
-                  <p className="font-display text-4xl leading-none font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-                    {point}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="flex flex-1 items-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 18 }}
+      {hasCopy ? (
+        <div className="relative flex h-full flex-col justify-between px-8 py-7 lg:px-12 lg:py-9">
+          {hasHeader ? (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="font-display max-w-5xl text-5xl leading-tight font-bold text-white lg:text-7xl"
+              transition={{ delay: 0.1 }}
+              className="flex flex-wrap items-center justify-between gap-3"
             >
-              {content.title}
-            </motion.h2>
-          </div>
-        )}
+              {content.eyebrow ? (
+                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+                  <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
+                    {content.eyebrow}
+                  </span>
+                </div>
+              ) : (
+                <div />
+              )}
+              {content.title && hasPoints ? (
+                <p className="font-display text-lg font-semibold text-white/80 lg:text-xl">
+                  {content.title}
+                </p>
+              ) : null}
+            </motion.div>
+          ) : (
+            <div />
+          )}
 
-        {content.subtitle ? (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="max-w-4xl text-base text-white/65 lg:text-lg"
-          >
-            {content.subtitle}
-          </motion.p>
-        ) : (
-          <div />
-        )}
-      </div>
+          {hasPoints ? (
+            <div className="flex min-h-0 flex-1 flex-col justify-center py-4">
+              <div className="grid w-full gap-4 md:grid-cols-3 md:gap-5">
+                {content.points!.map((point, index) => (
+                  <motion.div
+                    key={point}
+                    initial={{ opacity: 0, y: 28 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      delay: 0.2 + index * 0.08,
+                      duration: 0.45,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="glass flex min-h-[180px] items-center justify-center rounded-[28px] px-4 py-8 text-center backdrop-blur-xl lg:min-h-[240px] lg:px-6"
+                  >
+                    <p className="font-display text-4xl leading-none font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+                      {point}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          ) : hasTitleBlock ? (
+            <div className="flex flex-1 items-center">
+              <motion.h2
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="font-display max-w-5xl text-5xl leading-tight font-bold text-white lg:text-7xl"
+              >
+                {content.title}
+              </motion.h2>
+            </div>
+          ) : (
+            <div className="flex-1" />
+          )}
+
+          {hasSubtitle ? (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="max-w-4xl text-base text-white/65 lg:text-lg"
+            >
+              {content.subtitle}
+            </motion.p>
+          ) : (
+            <div />
+          )}
+        </div>
+      ) : null}
     </div>
   )
 }

@@ -79,7 +79,7 @@ export interface CoverContent {
 export interface VisualHeroContent {
   image: string
   eyebrow?: string
-  title: string
+  title?: string
   subtitle?: string
   points?: string[]
 }

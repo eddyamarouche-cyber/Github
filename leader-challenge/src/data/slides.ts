@@ -60,9 +60,6 @@ export const slides: Slide[] = [
     recommendedMinutes: 0.5,
     content: {
       image: '/images/wild-geese.jpg',
-      eyebrow: 'Team metaphor',
-      title: 'One flock. One direction.',
-      subtitle: 'Great teams create lift for each other and stay aligned on the destination.',
     },
   },
   {
