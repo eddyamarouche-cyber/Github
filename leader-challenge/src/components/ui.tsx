@@ -264,12 +264,14 @@ export function Expandable({
   children,
   defaultOpen = false,
   badge,
+  leading,
 }: {
   title: string
   subtitle?: string
   children: ReactNode
   defaultOpen?: boolean
   badge?: string
+  leading?: ReactNode
 }) {
   const [open, setOpen] = useState(defaultOpen)
 
@@ -280,6 +282,7 @@ export function Expandable({
         onClick={() => setOpen((value) => !value)}
         className="flex w-full items-start gap-3 px-4 py-3 text-left"
       >
+        {leading ? <span className="mt-0.5 shrink-0">{leading}</span> : null}
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <p className="font-medium text-white">{title}</p>

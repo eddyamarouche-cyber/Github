@@ -41,6 +41,7 @@ import type {
   CoachingCase,
   MarketCard,
 } from '../data/types'
+import { MarketFlag, MarketFlagRow, flagCodeForCountry } from './Flags'
 import {
   Expandable,
   GlassCard,
@@ -382,6 +383,11 @@ function CoverScreen({ content }: { content: CoverContent }) {
             <h1 className="font-display text-4xl leading-[1.08] font-semibold tracking-tight text-white lg:text-5xl">
               {content.title}
             </h1>
+          </StaggerItem>
+          <StaggerItem>
+            <div className="mt-5">
+              <MarketFlagRow />
+            </div>
           </StaggerItem>
           <StaggerItem>
             <p className="mt-4 text-xl font-medium text-white lg:text-2xl">
@@ -1093,38 +1099,47 @@ function RhythmScreen({ content }: { content: RhythmContent }) {
 function MarketsScreen({ content }: { content: MarketsSlideContent }) {
   return (
     <Stagger className="grid h-full gap-2.5 md:grid-cols-5">
-      {content.markets.map((market) => (
-        <StaggerItem key={market.id}>
-          <Expandable title={market.country} subtitle={market.marketMaturity}>
-            <div className="space-y-1.5 text-xs">
-              <p>
-                <span className="text-white/40">Segments · </span>
-                {market.prioritySegments}
-              </p>
-              <p>
-                <span className="text-white/40">Accounts · </span>
-                {market.strategicAccounts}
-              </p>
-              <p>
-                <span className="text-white/40">Hiring · </span>
-                {market.hiringPriority}
-              </p>
-              <p>
-                <span className="text-white/40">Partners · </span>
-                {market.partnerOpportunity}
-              </p>
-              <p>
-                <span className="text-white/40">Risk · </span>
-                {market.keyRisk}
-              </p>
-              <p>
-                <span className="text-white/40">Next · </span>
-                {market.nextAction}
-              </p>
-            </div>
-          </Expandable>
-        </StaggerItem>
-      ))}
+      {content.markets.map((market) => {
+        const flag = flagCodeForCountry(market.country)
+        return (
+          <StaggerItem key={market.id}>
+            <Expandable
+              title={market.country}
+              subtitle={market.marketMaturity}
+              leading={
+                flag ? <MarketFlag code={flag} title={market.country} className="h-4 w-6" /> : null
+              }
+            >
+              <div className="space-y-1.5 text-xs">
+                <p>
+                  <span className="text-white/40">Segments · </span>
+                  {market.prioritySegments}
+                </p>
+                <p>
+                  <span className="text-white/40">Accounts · </span>
+                  {market.strategicAccounts}
+                </p>
+                <p>
+                  <span className="text-white/40">Hiring · </span>
+                  {market.hiringPriority}
+                </p>
+                <p>
+                  <span className="text-white/40">Partners · </span>
+                  {market.partnerOpportunity}
+                </p>
+                <p>
+                  <span className="text-white/40">Risk · </span>
+                  {market.keyRisk}
+                </p>
+                <p>
+                  <span className="text-white/40">Next · </span>
+                  {market.nextAction}
+                </p>
+              </div>
+            </Expandable>
+          </StaggerItem>
+        )
+      })}
     </Stagger>
   )
 }
