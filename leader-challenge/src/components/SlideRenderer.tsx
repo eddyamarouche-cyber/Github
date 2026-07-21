@@ -763,28 +763,19 @@ function ProfileScreen({
                 setActive(index)
                 setAutoPlay(false)
               }}
-              layout
-              className={`group relative flex min-h-0 flex-col overflow-hidden rounded-[22px] border text-left transition ${
+              className={`group relative flex h-full min-h-0 flex-col overflow-hidden rounded-[22px] border text-left transition ${
                 selected
                   ? 'border-accent/60 shadow-[0_20px_50px_rgba(255,107,44,0.28)]'
                   : 'border-white/10 hover:border-white/25'
               }`}
-              animate={{
-                scale: selected ? 1.01 : 1,
-                y: selected ? -2 : 0,
-              }}
-              transition={{ type: 'spring', stiffness: 280, damping: 24 }}
             >
               {criterion.image ? (
-                <motion.img
+                <img
                   src={criterion.image}
                   alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
-                  animate={{
-                    scale: selected ? 1.08 : 1.02,
-                    opacity: selected ? 1 : 0.78,
-                  }}
-                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  className={`absolute inset-0 h-full w-full object-cover transition duration-500 ${
+                    selected ? 'opacity-100' : 'opacity-75'
+                  }`}
                 />
               ) : (
                 <div className="absolute inset-0 bg-white/5" />
@@ -807,7 +798,7 @@ function ProfileScreen({
                 />
               ) : null}
 
-              <div className="relative z-10 flex h-full min-h-[150px] flex-col justify-between p-4 lg:p-5">
+              <div className="relative z-10 flex h-full min-h-0 flex-col justify-between p-4 lg:p-5">
                 <div className="flex items-start justify-between gap-2">
                   <p
                     className={`font-display text-2xl font-bold lg:text-3xl ${
@@ -823,7 +814,7 @@ function ProfileScreen({
                   ) : null}
                 </div>
 
-                <div>
+                <div className="min-h-[5.5rem]">
                   <h3 className="font-display text-lg leading-tight font-semibold text-white lg:text-xl">
                     {criterion.title}
                   </h3>
@@ -831,11 +822,11 @@ function ProfileScreen({
                     {selected ? (
                       <motion.p
                         key={`${criterion.title}-open`}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -6 }}
-                        transition={{ duration: 0.25 }}
-                        className="mt-2 text-sm leading-relaxed text-white/80"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="mt-2 line-clamp-4 text-sm leading-relaxed text-white/80"
                       >
                         {criterion.detail}
                       </motion.p>
