@@ -254,46 +254,55 @@ export const slides: Slide[] = [
           title: 'Patriots versus Mercenaries',
           detail:
             'Look for people who join the mission, not the highest bidder. Ownership beats short-term extraction.',
+          image: '/images/ap-patriots.jpg',
         },
         {
           title: 'No senators',
           detail:
             'Reject political operators. Prefer builders who create outcomes over people who manage appearances.',
+          image: '/images/ap-no-senators.jpg',
         },
         {
           title: 'Small organization backgrounds',
           detail:
             'Prefer candidates who have built without big-brand crutches — scarce resources, real ownership, real consequence.',
+          image: '/images/ap-small-org.jpg',
         },
         {
           title: 'Adaptable',
           detail:
             'Emerging categories change weekly. Hire people who learn fast, reframe quickly and stay effective in ambiguity.',
+          image: '/images/ap-adaptable.jpg',
         },
         {
           title: 'Punched in the face',
           detail:
             'Ask how they responded when they got hit hard — lost a deal, missed a quarter, got rejected. Resilience is the filter.',
+          image: '/images/ap-punched.jpg',
         },
         {
           title: 'Smart',
           detail:
             'Able to handle a technical discussion with software engineers and an outcome-based discussion with C-levels — without losing altitude either way.',
+          image: '/images/ap-smart.jpg',
         },
         {
           title: 'High tech IQ',
           detail:
             'Comfortable in a product-led, technical category. Can learn the stack fast enough to earn credibility with builders and buyers.',
+          image: '/images/ap-tech-iq.jpg',
         },
         {
           title: 'High slope',
           detail:
             'Trajectory matters more than pedigree. Prefer steep learners who compound quickly over flat high performers.',
+          image: '/images/ap-slope.jpg',
         },
         {
           title: 'Clock speed',
           detail:
             'Think and decide fast. High processing speed under ambiguity turns into better prioritization, sharper discovery and cleaner execution.',
+          image: '/images/ap-clock-speed.jpg',
         },
       ],
     },

@@ -112,6 +112,7 @@ export interface PillarsContent {
 export interface ProfileCriterion {
   title: string
   detail: string
+  image?: string
 }
 
 export interface ProfileContent {

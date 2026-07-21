@@ -132,7 +132,19 @@ function renderSlide(slide: Slide) {
           <PillarsScreen content={slide.content as PillarsContent} />
         </ScreenShell>
       )
-    case 'profile':
+    case 'profile': {
+      const profileContent = slide.content as ProfileContent
+      const immersive = profileContent.criteria.some((item) => Boolean(item.image))
+      if (immersive) {
+        return (
+          <ProfileScreen
+            title={slide.title}
+            headline={slide.headline}
+            takeaway={slide.takeaway}
+            content={profileContent}
+          />
+        )
+      }
       return (
         <ScreenShell
           eyebrow={eyebrow}
@@ -140,9 +152,10 @@ function renderSlide(slide: Slide) {
           headline={slide.headline}
           takeaway={slide.takeaway}
         >
-          <ProfileScreen content={slide.content as ProfileContent} />
+          <ProfileScreen content={profileContent} />
         </ScreenShell>
       )
+    }
     case 'scorecard':
       return (
         <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
@@ -671,107 +684,165 @@ function PillarsScreen({ content }: { content: PillarsContent }) {
   )
 }
 
-function ProfileScreen({ content }: { content: ProfileContent }) {
+function ProfileScreen({
+  title,
+  headline,
+  takeaway,
+  content,
+}: {
+  title?: string
+  headline?: string
+  takeaway?: string
+  content: ProfileContent
+}) {
   const [active, setActive] = useState(0)
   const [autoPlay, setAutoPlay] = useState(true)
   const current = content.criteria[active]
-  const columns =
-    content.criteria.length <= 5 ? 'md:grid-cols-5' : 'md:grid-cols-3'
+  const immersive = content.criteria.some((item) => Boolean(item.image))
 
   useEffect(() => {
     if (!autoPlay) return
     const timer = window.setInterval(() => {
       setActive((value) => (value + 1) % content.criteria.length)
-    }, 4000)
+    }, 4800)
     return () => window.clearInterval(timer)
   }, [autoPlay, content.criteria.length])
 
+  if (!immersive) {
+    return (
+      <Stagger className="grid grid-cols-2 gap-2.5 md:grid-cols-3">
+        {content.criteria.map((criterion) => (
+          <StaggerItem key={criterion.title}>
+            <GlassCard className="min-h-[100px] p-4">
+              <h3 className="font-display text-base font-semibold text-white">{criterion.title}</h3>
+              <p className="mt-2 text-sm text-white/55">{criterion.detail}</p>
+            </GlassCard>
+          </StaggerItem>
+        ))}
+      </Stagger>
+    )
+  }
+
   return (
     <div
-      className="flex h-full min-h-0 flex-col gap-4"
+      className="relative h-full w-full overflow-hidden"
       onMouseEnter={() => setAutoPlay(false)}
       onMouseLeave={() => setAutoPlay(true)}
     >
-      <div className={`grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 ${columns}`}>
-        {content.criteria.map((criterion, index) => {
-          const selected = active === index
-          return (
-            <motion.button
-              key={criterion.title}
-              type="button"
-              onClick={() => {
-                setActive(index)
-                setAutoPlay(false)
-              }}
-              layout
-              className={`relative flex h-full min-h-[140px] flex-col overflow-hidden rounded-[22px] border p-4 text-left transition lg:p-5 ${
-                selected
-                  ? 'border-accent/45 bg-gradient-to-b from-accent/20 via-white/[0.06] to-transparent shadow-[0_18px_48px_rgba(255,107,44,0.18)]'
-                  : 'border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]'
-              }`}
-              animate={{ scale: selected ? 1 : 0.985, y: selected ? 0 : 3 }}
-              transition={{ type: 'spring', stiffness: 280, damping: 26 }}
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={current.image ?? current.title}
+          src={current.image}
+          alt={current.title}
+          className="absolute inset-0 h-full w-full object-cover"
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.03 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/40" />
+
+      <div className="relative z-10 flex h-full flex-col gap-4 p-5 lg:p-7">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+              <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
+                Hiring filter
+              </span>
+            </div>
+            {title ? (
+              <h1 className="font-display mt-3 text-2xl font-semibold text-white lg:text-3xl">
+                {title}
+              </h1>
+            ) : null}
+            {headline ? (
+              <p className="mt-1 max-w-2xl text-sm text-white/65 lg:text-base">{headline}</p>
+            ) : null}
+          </div>
+          <div className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[11px] text-white/70 backdrop-blur-md">
+            {autoPlay ? 'Auto-rotating' : 'Paused'} · {active + 1}/{content.criteria.length}
+          </div>
+        </div>
+
+        <div className="grid min-h-0 flex-1 gap-3 lg:grid-cols-[280px_1fr]">
+          <div className="glass scrollbar-thin flex flex-col gap-1.5 overflow-auto rounded-2xl p-2 backdrop-blur-xl">
+            {content.criteria.map((criterion, index) => {
+              const selected = active === index
+              return (
+                <button
+                  key={criterion.title}
+                  type="button"
+                  onClick={() => {
+                    setActive(index)
+                    setAutoPlay(false)
+                  }}
+                  className={`flex items-center gap-3 rounded-xl px-2 py-2 text-left transition ${
+                    selected
+                      ? 'bg-accent text-bg shadow-[0_0_24px_rgba(255,107,44,0.35)]'
+                      : 'text-white/75 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  {criterion.image ? (
+                    <img
+                      src={criterion.image}
+                      alt=""
+                      className="h-11 w-11 shrink-0 rounded-lg object-cover"
+                    />
+                  ) : null}
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm font-semibold">{criterion.title}</span>
+                    <span
+                      className={`mt-0.5 block text-[10px] ${
+                        selected ? 'text-bg/70' : 'text-white/40'
+                      }`}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.title}
+              initial={{ opacity: 0, x: 22, scale: 0.98 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -14, scale: 0.99 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="glass relative flex min-h-0 flex-col justify-between overflow-hidden rounded-3xl p-5 backdrop-blur-xl lg:p-7"
             >
-              {selected ? (
-                <motion.div
-                  key={`profile-progress-${active}-${autoPlay}`}
-                  className="absolute inset-x-0 bottom-0 h-1 origin-left bg-accent"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 4, ease: 'linear' }}
-                />
-              ) : null}
-              <div className="flex items-start justify-between gap-3">
-                <p className="font-display text-2xl font-bold text-white/15 lg:text-3xl">
-                  {String(index + 1).padStart(2, '0')}
+              <motion.div
+                key={`profile-bar-${active}-${autoPlay}`}
+                className="absolute inset-x-0 top-0 h-1 origin-left bg-accent"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 4.8, ease: 'linear' }}
+              />
+              <div>
+                <p className="text-[10px] font-semibold tracking-[0.16em] text-accent uppercase">
+                  Active criterion
+                </p>
+                <h2 className="font-display mt-3 max-w-3xl text-3xl leading-tight font-semibold text-white lg:text-5xl">
+                  {current.title}
+                </h2>
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 lg:text-lg">
+                  {current.detail}
                 </p>
               </div>
-              <h3
-                className={`font-display mt-3 text-base leading-tight font-semibold tracking-tight lg:text-lg ${
-                  selected ? 'text-white' : 'text-white/80'
-                }`}
-              >
-                {criterion.title}
-              </h3>
-              <AnimatePresence mode="wait">
-                {selected ? (
-                  <motion.p
-                    key={criterion.title}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    className="mt-3 text-sm leading-relaxed text-white/65"
-                  >
-                    {criterion.detail}
-                  </motion.p>
-                ) : (
-                  <motion.p
-                    key={`${criterion.title}-teaser`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="mt-3 line-clamp-3 text-xs leading-relaxed text-white/40"
-                  >
-                    {criterion.detail}
-                  </motion.p>
-                )}
-              </AnimatePresence>
-            </motion.button>
-          )
-        })}
-      </div>
-
-      <div className="glass flex items-center justify-between gap-4 rounded-2xl px-4 py-3">
-        <div className="min-w-0">
-          <p className="text-[10px] font-semibold tracking-[0.16em] text-accent uppercase">
-            Active filter
-          </p>
-          <p className="font-display mt-1 truncate text-base font-semibold text-white">
-            {current.title}
-          </p>
+              <div className="mt-6 flex flex-wrap items-end justify-between gap-3 border-t border-white/10 pt-4">
+                <p className="max-w-xl text-xs text-white/50">{takeaway}</p>
+                <p className="font-display text-4xl font-bold text-white/10 lg:text-5xl">
+                  {String(active + 1).padStart(2, '0')}
+                </p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
-        <p className="shrink-0 text-[11px] text-white/45">
-          {autoPlay ? 'Auto-rotating' : 'Paused'} · {active + 1}/{content.criteria.length}
-        </p>
       </div>
     </div>
   )
