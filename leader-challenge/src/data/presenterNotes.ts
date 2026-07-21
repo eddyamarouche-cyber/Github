@@ -92,7 +92,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Every method that follows should map back to one of these three outcomes.',
     likelyQuestion: 'Where do you want the deepest inspection first?',
-    transition: 'Let’s start with recruitment and the A-player standard.',
+    transition: 'Recruitment starts with a simple image.',
+  },
+  'recruitment-opener': {
+    opening: 'This is how I think about hiring.',
+    coreMessage:
+      'In a sea of average options, the job is to find the one exceptional profile — and decide with discipline.',
+    supportingExample:
+      'One wrong hire costs quarters. One right hire compounds the whole region.',
+    executiveImplication:
+      'Talent density starts with selection quality, not hiring volume.',
+    likelyQuestion: 'How do you keep the bar high when the market is thin?',
+    transition: 'That standard becomes an A-player profile.',
   },
   'a-player-profile': {
     opening: 'I do not hire for a résumé match. I hire for an A-player profile.',
