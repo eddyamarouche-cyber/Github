@@ -67,6 +67,7 @@ type LinkedInTargetsContent = {
     country: string
     linkedinUrl: string
     signal: string
+    photo?: string
   }[]
 }
 type CaseStudyContent = { caseStudy: CoachingCase }
@@ -181,14 +182,12 @@ function renderSlide(slide: Slide) {
       )
     case 'linkedin-targets':
       return (
-        <ScreenShell
-          eyebrow={eyebrow}
+        <LinkedInTargetsScreen
           title={slide.title}
           headline={slide.headline}
           takeaway={slide.takeaway}
-        >
-          <LinkedInTargetsScreen content={slide.content as LinkedInTargetsContent} />
-        </ScreenShell>
+          content={slide.content as LinkedInTargetsContent}
+        />
       )
     case 'process':
       return (
@@ -1016,51 +1015,178 @@ function CandidatesScreen({ content }: { content: CandidatesContent }) {
   )
 }
 
-function LinkedInTargetsScreen({ content }: { content: LinkedInTargetsContent }) {
-  const [active, setActive] = useState<string | null>(content.profiles[0]?.id ?? null)
+function LinkedInTargetsScreen({
+  title,
+  headline,
+  takeaway,
+  content,
+}: {
+  title?: string
+  headline?: string
+  takeaway?: string
+  content: LinkedInTargetsContent
+}) {
+  const [active, setActive] = useState(0)
+  const current = content.profiles[active]
 
   return (
-    <Stagger className="grid h-full min-h-0 grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {content.profiles.map((profile, index) => {
-        const selected = active === profile.id
-        return (
-          <StaggerItem key={profile.id} className="min-h-0">
-            <GlassCard
-              active={selected}
-              onClick={() => setActive(profile.id)}
-              className="flex h-full flex-col p-4"
-            >
-              <div className="flex items-start justify-between gap-2">
-                <p className="font-display text-2xl font-bold text-white/15">
-                  {String(index + 1).padStart(2, '0')}
-                </p>
-                <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold tracking-[0.12em] text-white/45 uppercase">
-                  LinkedIn
-                </span>
+    <div className="relative flex h-full w-full flex-col overflow-hidden px-5 py-5 lg:px-7 lg:py-6">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(10,102,194,0.18),transparent_45%),radial-gradient(ellipse_at_90%_80%,rgba(255,107,44,0.12),transparent_40%)]" />
+
+      <div className="relative z-10 mb-4 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#0A66C2]" />
+            <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
+              Italy talent map
+            </span>
+          </div>
+          {title ? (
+            <h1 className="font-display mt-2 text-2xl font-semibold text-white lg:text-3xl">
+              {title}
+            </h1>
+          ) : null}
+          {headline ? (
+            <p className="mt-1 max-w-2xl text-sm text-white/60">{headline}</p>
+          ) : null}
+        </div>
+        <p className="text-[11px] text-white/45">
+          {content.profiles.length} named profiles · click to focus · open LinkedIn
+        </p>
+      </div>
+
+      <div className="relative z-10 grid min-h-0 flex-1 gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+        <motion.div
+          key={current.id}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="glass relative flex min-h-0 flex-col overflow-hidden rounded-[28px] border border-white/12"
+        >
+          <div className="absolute inset-0">
+            {current.photo ? (
+              <img
+                src={current.photo}
+                alt={current.fullName}
+                className="h-full w-full object-cover opacity-45 blur-2xl scale-110"
+              />
+            ) : null}
+            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/55 to-black/80" />
+          </div>
+
+          <div className="relative z-10 flex h-full flex-col justify-between p-6 lg:p-8">
+            <div className="flex items-start justify-between gap-4">
+              <div className="relative">
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[#0A66C2] via-accent/60 to-transparent opacity-80 blur-sm" />
+                {current.photo ? (
+                  <img
+                    src={current.photo}
+                    alt={current.fullName}
+                    className="relative h-36 w-36 rounded-full object-cover ring-2 ring-white/25 lg:h-44 lg:w-44"
+                  />
+                ) : (
+                  <div className="relative flex h-36 w-36 items-center justify-center rounded-full bg-white/10 text-3xl font-bold text-white lg:h-44 lg:w-44">
+                    {current.fullName
+                      .split(' ')
+                      .map((part) => part[0])
+                      .slice(0, 2)
+                      .join('')}
+                  </div>
+                )}
               </div>
-              <h3 className="font-display mt-3 text-lg font-semibold text-white">
-                {profile.fullName}
-              </h3>
-              <p className="mt-1 text-sm font-medium text-accent">{profile.currentRole}</p>
-              <p className="mt-0.5 text-sm text-white/55">
-                {profile.currentCompany} · {profile.country}
+              <div className="text-right">
+                <p className="font-display text-4xl font-bold text-white/15 lg:text-5xl">
+                  {String(active + 1).padStart(2, '0')}
+                </p>
+                <p className="mt-1 text-[11px] font-semibold tracking-[0.14em] text-white/40 uppercase">
+                  Target profile
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <h2 className="font-display text-3xl font-semibold text-white lg:text-4xl">
+                {current.fullName}
+              </h2>
+              <p className="mt-2 text-base font-medium text-accent lg:text-lg">
+                {current.currentRole}
               </p>
-              <p className="mt-3 flex-1 text-xs leading-relaxed text-white/55">{profile.signal}</p>
+              <p className="mt-1 text-sm text-white/55">
+                {current.currentCompany} · {current.country}
+              </p>
+              <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/70 lg:text-base">
+                {current.signal}
+              </p>
               <a
-                href={profile.linkedinUrl}
+                href={current.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={(event) => event.stopPropagation()}
-                className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl border border-[#0A66C2]/40 bg-[#0A66C2]/15 px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0A66C2]/30"
+                className="mt-6 inline-flex items-center gap-2 rounded-2xl border border-[#0A66C2]/50 bg-[#0A66C2]/20 px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#0A66C2]/35"
               >
                 <ExternalLink className="h-4 w-4" />
                 Open LinkedIn profile
               </a>
-            </GlassCard>
-          </StaggerItem>
-        )
-      })}
-    </Stagger>
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="scrollbar-thin grid min-h-0 grid-cols-2 gap-2.5 overflow-auto sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
+          {content.profiles.map((profile, index) => {
+            const selected = active === index
+            return (
+              <button
+                key={profile.id}
+                type="button"
+                onClick={() => setActive(index)}
+                className={`group relative flex flex-col overflow-hidden rounded-[22px] border text-left transition ${
+                  selected
+                    ? 'border-accent/50 shadow-[0_16px_40px_rgba(255,107,44,0.22)]'
+                    : 'border-white/10 hover:border-white/25'
+                }`}
+              >
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  {profile.photo ? (
+                    <img
+                      src={profile.photo}
+                      alt={profile.fullName}
+                      className={`h-full w-full object-cover transition duration-500 ${
+                        selected ? 'opacity-100' : 'opacity-80 group-hover:opacity-95'
+                      }`}
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center bg-white/5 text-xl font-bold text-white/40">
+                      {profile.fullName
+                        .split(' ')
+                        .map((part) => part[0])
+                        .slice(0, 2)
+                        .join('')}
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-3">
+                    <p className="font-display text-sm font-semibold text-white">
+                      {profile.fullName}
+                    </p>
+                    <p className="mt-0.5 line-clamp-1 text-[11px] text-white/60">
+                      {profile.currentCompany}
+                    </p>
+                  </div>
+                  {selected ? (
+                    <span className="absolute top-2 right-2 rounded-full border border-accent/40 bg-accent/20 px-2 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-accent uppercase backdrop-blur-md">
+                      Active
+                    </span>
+                  ) : null}
+                </div>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {takeaway ? (
+        <p className="relative z-10 mt-3 max-w-3xl text-xs text-white/45 lg:text-sm">{takeaway}</p>
+      ) : null}
+    </div>
   )
 }
 
