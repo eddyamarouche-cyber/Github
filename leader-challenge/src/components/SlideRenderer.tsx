@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { HeartHandshake, TrendingUp, Users } from 'lucide-react'
+import { ExternalLink, HeartHandshake, TrendingUp, Users } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { profile } from '../data/profile'
 import { sections } from '../data/slides'
@@ -58,6 +58,17 @@ import {
 } from './ui'
 
 type CandidatesContent = { candidates: Candidate[] }
+type LinkedInTargetsContent = {
+  profiles: {
+    id: string
+    fullName: string
+    currentRole: string
+    currentCompany: string
+    country: string
+    linkedinUrl: string
+    signal: string
+  }[]
+}
 type CaseStudyContent = { caseStudy: CoachingCase }
 type MarketsSlideContent = { markets: MarketCard[] }
 
@@ -166,6 +177,17 @@ function renderSlide(slide: Slide) {
       return (
         <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
           <CandidatesScreen content={slide.content as CandidatesContent} />
+        </ScreenShell>
+      )
+    case 'linkedin-targets':
+      return (
+        <ScreenShell
+          eyebrow={eyebrow}
+          title={slide.title}
+          headline={slide.headline}
+          takeaway={slide.takeaway}
+        >
+          <LinkedInTargetsScreen content={slide.content as LinkedInTargetsContent} />
         </ScreenShell>
       )
     case 'process':
@@ -990,6 +1012,54 @@ function CandidatesScreen({ content }: { content: CandidatesContent }) {
           </Expandable>
         </StaggerItem>
       ))}
+    </Stagger>
+  )
+}
+
+function LinkedInTargetsScreen({ content }: { content: LinkedInTargetsContent }) {
+  const [active, setActive] = useState<string | null>(content.profiles[0]?.id ?? null)
+
+  return (
+    <Stagger className="grid h-full min-h-0 grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {content.profiles.map((profile, index) => {
+        const selected = active === profile.id
+        return (
+          <StaggerItem key={profile.id} className="min-h-0">
+            <GlassCard
+              active={selected}
+              onClick={() => setActive(profile.id)}
+              className="flex h-full flex-col p-4"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <p className="font-display text-2xl font-bold text-white/15">
+                  {String(index + 1).padStart(2, '0')}
+                </p>
+                <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold tracking-[0.12em] text-white/45 uppercase">
+                  LinkedIn
+                </span>
+              </div>
+              <h3 className="font-display mt-3 text-lg font-semibold text-white">
+                {profile.fullName}
+              </h3>
+              <p className="mt-1 text-sm font-medium text-accent">{profile.currentRole}</p>
+              <p className="mt-0.5 text-sm text-white/55">
+                {profile.currentCompany} · {profile.country}
+              </p>
+              <p className="mt-3 flex-1 text-xs leading-relaxed text-white/55">{profile.signal}</p>
+              <a
+                href={profile.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(event) => event.stopPropagation()}
+                className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl border border-[#0A66C2]/40 bg-[#0A66C2]/15 px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0A66C2]/30"
+              >
+                <ExternalLink className="h-4 w-4" />
+                Open LinkedIn profile
+              </a>
+            </GlassCard>
+          </StaggerItem>
+        )
+      })}
     </Stagger>
   )
 }

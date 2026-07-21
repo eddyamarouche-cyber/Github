@@ -23,6 +23,7 @@ export type SlideType =
   | 'profile'
   | 'scorecard'
   | 'candidates'
+  | 'linkedin-targets'
   | 'process'
   | 'funnel'
   | 'outreach'
@@ -314,6 +315,18 @@ export interface FeedbackContent {
   prompts: string[]
 }
 
+export interface LinkedInTargetsContent {
+  profiles: {
+    id: string
+    fullName: string
+    currentRole: string
+    currentCompany: string
+    country: string
+    linkedinUrl: string
+    signal: string
+  }[]
+}
+
 export type SlideContent =
   | CoverContent
   | VisualHeroContent
@@ -324,6 +337,7 @@ export type SlideContent =
   | ProfileContent
   | ScorecardContent
   | { candidates: Candidate[] }
+  | LinkedInTargetsContent
   | ProcessContent
   | FunnelContent
   | OutreachContent

@@ -114,7 +114,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'This profile protects culture and raises talent density before any interview loop starts.',
     likelyQuestion: 'How do you test clock speed and slope in an interview?',
-    transition: 'That profile becomes a scorecard.',
+    transition: 'Here is the first live LinkedIn talent map for Italy.',
+  },
+  'linkedin-talent-map': {
+    opening: 'These are named profiles, not placeholders.',
+    coreMessage:
+      'Seven LinkedIn targets mapped against the A-player filter — open each profile and inspect for patriots, slope and technical altitude.',
+    supportingExample:
+      'Databricks, MongoDB, Adobe and analytics backgrounds give us a dense Italy shortlist to pressure-test.',
+    executiveImplication:
+      'A Regional Director should walk in with a live talent map, not a blank hiring request.',
+    likelyQuestion: 'Who would you activate first and why?',
+    transition: 'That map becomes a scorecard before outreach.',
   },
   'candidate-scorecard': {
     opening: 'This is the scoring model I would use before advancing any candidate.',
