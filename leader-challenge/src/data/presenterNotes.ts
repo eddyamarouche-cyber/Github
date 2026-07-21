@@ -15,7 +15,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'The first five minutes establish how I manage before we enter the four working topics.',
     likelyQuestion: 'How would you prioritize if you joined with limited headcount?',
-    transition: 'Before the roles, I want to set the standard.',
+    transition: 'Before the standard — one image of what winning looks like.',
+  },
+  'spanish-team-trophies': {
+    opening: 'This is the feeling I want in Iberia.',
+    coreMessage:
+      'Winning is not individual heroics. It is a team that wants the trophy together and celebrates as one.',
+    supportingExample:
+      'Spain’s best runs have always looked like this — shared pressure, shared joy, shared standard.',
+    executiveImplication:
+      'If we hire and coach for that culture, the operating system has something worth protecting.',
+    likelyQuestion: 'How do you build a winning culture across Spain, Portugal and Italy?',
+    transition: 'Now the personal standard behind that culture.',
   },
   'leadership-standard': {
     opening: 'I use a simple image for a serious point.',
