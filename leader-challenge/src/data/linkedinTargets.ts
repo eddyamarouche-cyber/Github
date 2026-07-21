@@ -90,7 +90,7 @@ export const linkedinTargets: LinkedInTarget[] = [
     currentRole: 'Enterprise Account Executive',
     currentCompany: 'Databricks',
     country: 'Italy',
-    linkedinUrl: 'https://www.linkedin.com/in/marialicepasquini/',
+    linkedinUrl: 'https://www.linkedin.com/in/marialicepasquini/?skipRedirect=true',
     signal: 'Enterprise AE; ex-Nutanix / VMware Southern Europe cloud GTM — data, AI and transformation.',
     photo: '/images/linkedin/marialice-pasquini.jpg',
   },
