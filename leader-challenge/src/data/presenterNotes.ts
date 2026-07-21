@@ -81,7 +81,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Every section that follows should ladder back to these outcomes.',
     likelyQuestion: 'Which of these outcomes matters most in the first two quarters?',
-    transition: 'With that frame set, let’s move into recruitment and the A-player standard.',
+    transition: 'Here is how the working session is structured.',
+  },
+  'session-summary': {
+    opening: 'I will run the rest of the session through three engines.',
+    coreMessage:
+      'Recruitment raises the bar. Retention grows the team. Revenue runs the business.',
+    supportingExample:
+      'If any one of these is weak, the region becomes noisy. If all three are strong, growth compounds.',
+    executiveImplication:
+      'Every method that follows should map back to one of these three outcomes.',
+    likelyQuestion: 'Where do you want the deepest inspection first?',
+    transition: 'Let’s start with recruitment and the A-player standard.',
   },
   'a-player-profile': {
     opening: 'I do not hire for a résumé match. I hire for an A-player profile.',

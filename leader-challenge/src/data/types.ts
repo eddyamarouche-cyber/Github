@@ -18,6 +18,7 @@ export type SlideType =
   | 'visual-hero'
   | 'thesis'
   | 'agenda'
+  | 'topics-summary'
   | 'pillars'
   | 'profile'
   | 'scorecard'
@@ -90,6 +91,18 @@ export interface ThesisContent {
 
 export interface AgendaContent {
   items: { label: string; minutes: number }[]
+}
+
+export interface TopicsSummaryItem {
+  title: string
+  subtitle: string
+  description: string
+  focuses: string[]
+  minutes: number
+}
+
+export interface TopicsSummaryContent {
+  topics: TopicsSummaryItem[]
 }
 
 export interface PillarsContent {
@@ -300,6 +313,7 @@ export type SlideContent =
   | VisualHeroContent
   | ThesisContent
   | AgendaContent
+  | TopicsSummaryContent
   | PillarsContent
   | ProfileContent
   | ScorecardContent

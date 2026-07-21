@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import { HeartHandshake, TrendingUp, Users } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { profile } from '../data/profile'
 import { sections } from '../data/slides'
@@ -34,6 +35,7 @@ import type {
   Slide,
   StagesContent,
   ThesisContent,
+  TopicsSummaryContent,
   TwoColumnContent,
   VisualHeroContent,
   WeekdayContent,
@@ -109,6 +111,15 @@ function renderSlide(slide: Slide) {
         <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
           <AgendaScreen content={slide.content as AgendaContent} />
         </ScreenShell>
+      )
+    case 'topics-summary':
+      return (
+        <TopicsSummaryScreen
+          title={slide.title}
+          headline={slide.headline}
+          takeaway={slide.takeaway}
+          content={slide.content as TopicsSummaryContent}
+        />
       )
     case 'pillars':
       return (
@@ -458,6 +469,180 @@ function AgendaScreen({ content }: { content: AgendaContent }) {
         detail: 'Working session block',
       }))}
     />
+  )
+}
+
+const topicIcons = [Users, HeartHandshake, TrendingUp] as const
+
+function TopicsSummaryScreen({
+  title,
+  headline,
+  takeaway,
+  content,
+}: {
+  title: string
+  headline?: string
+  takeaway: string
+  content: TopicsSummaryContent
+}) {
+  const [active, setActive] = useState(0)
+  const [autoPlay, setAutoPlay] = useState(true)
+
+  useEffect(() => {
+    if (!autoPlay) return
+    const timer = window.setInterval(() => {
+      setActive((value) => (value + 1) % content.topics.length)
+    }, 4200)
+    return () => window.clearInterval(timer)
+  }, [autoPlay, content.topics.length])
+
+  return (
+    <div
+      className="relative flex h-full flex-col overflow-hidden px-8 py-7 lg:px-12 lg:py-9"
+      onMouseEnter={() => setAutoPlay(false)}
+      onMouseLeave={() => setAutoPlay(true)}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(255,107,44,0.18),transparent_45%),radial-gradient(ellipse_at_90%_80%,rgba(255,255,255,0.05),transparent_40%)]" />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 left-1/3 h-64 w-64 rounded-full bg-accent/20 blur-3xl"
+        animate={{ opacity: [0.25, 0.45, 0.25], scale: [1, 1.15, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="relative z-10 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+            <span className="text-[11px] font-semibold tracking-[0.16em] text-white/75 uppercase">
+              Working session
+            </span>
+          </div>
+          <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+            {title}
+          </h1>
+          {headline ? (
+            <p className="mt-2 max-w-2xl text-base text-white/60 lg:text-lg">{headline}</p>
+          ) : null}
+        </div>
+        <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 text-[11px] text-white/55 backdrop-blur-md">
+          {autoPlay ? 'Auto-rotating' : 'Paused'} · {active + 1}/{content.topics.length}
+        </div>
+      </div>
+
+      <div className="relative z-10 mt-6 grid min-h-0 flex-1 gap-3 md:grid-cols-3 md:gap-4">
+        {content.topics.map((topic, index) => {
+          const selected = active === index
+          const Icon = topicIcons[index % topicIcons.length]
+          return (
+            <motion.button
+              key={topic.title}
+              type="button"
+              onClick={() => {
+                setActive(index)
+                setAutoPlay(false)
+              }}
+              layout
+              className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border text-left transition ${
+                selected
+                  ? 'border-accent/50 bg-gradient-to-b from-accent/25 via-white/8 to-white/[0.03] shadow-[0_20px_60px_rgba(255,107,44,0.22)]'
+                  : 'border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]'
+              }`}
+              animate={{
+                y: selected ? 0 : 6,
+                scale: selected ? 1 : 0.985,
+              }}
+              transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+            >
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+              {selected ? (
+                <motion.div
+                  className="absolute inset-x-0 bottom-0 h-1 origin-left bg-accent"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 4.2, ease: 'linear' }}
+                  key={`progress-${active}-${autoPlay}`}
+                />
+              ) : null}
+
+              <div className="flex h-full flex-col p-5 lg:p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${
+                      selected
+                        ? 'border-accent/40 bg-accent text-bg'
+                        : 'border-white/10 bg-white/5 text-white/70'
+                    }`}
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={2.2} />
+                  </div>
+                  <div className="text-right">
+                    <p className="font-display text-4xl leading-none font-bold text-white/15 lg:text-5xl">
+                      {String(index + 1).padStart(2, '0')}
+                    </p>
+                    <p className="mt-1 text-[11px] font-semibold tracking-[0.14em] text-white/40 uppercase">
+                      {topic.minutes} min
+                    </p>
+                  </div>
+                </div>
+
+                <p className="mt-6 text-[11px] font-semibold tracking-[0.16em] text-accent uppercase">
+                  {topic.subtitle}
+                </p>
+                <h2 className="font-display mt-2 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+                  {topic.title}
+                </h2>
+
+                <AnimatePresence mode="wait">
+                  {selected ? (
+                    <motion.div
+                      key={`${topic.title}-detail`}
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.28 }}
+                      className="mt-4 flex min-h-0 flex-1 flex-col"
+                    >
+                      <p className="text-sm leading-relaxed text-white/70 lg:text-base">
+                        {topic.description}
+                      </p>
+                      <div className="mt-5 space-y-2.5">
+                        {topic.focuses.map((focus, focusIndex) => (
+                          <motion.div
+                            key={focus}
+                            initial={{ opacity: 0, x: -8 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.08 + focusIndex * 0.05 }}
+                            className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/25 px-3.5 py-3"
+                          >
+                            <span className="font-display text-xs font-bold text-accent">
+                              {String(focusIndex + 1).padStart(2, '0')}
+                            </span>
+                            <span className="text-sm font-medium text-white">{focus}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.p
+                      key={`${topic.title}-teaser`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="mt-4 line-clamp-3 text-sm leading-relaxed text-white/45"
+                    >
+                      {topic.description}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.button>
+          )
+        })}
+      </div>
+
+      <p className="relative z-10 mt-5 max-w-3xl text-sm text-white/45">{takeaway}</p>
+    </div>
   )
 }
 
