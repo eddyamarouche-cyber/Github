@@ -108,12 +108,12 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'a-player-profile': {
     opening: 'Before process or scorecards, this is the filter.',
     coreMessage:
-      'Patriots over mercenaries. No senators. Small-org builders. Adaptable. And I always ask how they responded when they got punched in the face.',
+      'Character first — patriots, no senators, small-org builders, adaptable, resilient. Then cognition — smart across engineer and C-level conversations, high tech IQ, high slope, high clock speed.',
     supportingExample:
-      'A polished big-brand résumé without ownership scars is a warning, not a win.',
+      'A polished big-brand résumé without ownership scars or learning slope is a warning, not a win.',
     executiveImplication:
       'This profile protects culture and raises talent density before any interview loop starts.',
-    likelyQuestion: 'How do you test “punched in the face” in an interview?',
+    likelyQuestion: 'How do you test clock speed and slope in an interview?',
     transition: 'That profile becomes a scorecard.',
   },
   'candidate-scorecard': {

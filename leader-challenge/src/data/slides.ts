@@ -244,9 +244,9 @@ export const slides: Slide[] = [
     section: 'recruitment',
     type: 'profile',
     title: 'A Player Profile',
-    headline: 'Five non-negotiables before anyone enters the process.',
+    headline: 'Character filters and cognitive filters — both are non-negotiable.',
     takeaway:
-      'Hire patriots who build, adapt and recover — not senators, mercenaries or fragile résumés.',
+      'Hire patriots with high slope and clock speed — people who can go deep with engineers and sharp with C-levels.',
     recommendedMinutes: 3,
     content: {
       criteria: [
@@ -274,6 +274,26 @@ export const slides: Slide[] = [
           title: 'Punched in the face',
           detail:
             'Ask how they responded when they got hit hard — lost a deal, missed a quarter, got rejected. Resilience is the filter.',
+        },
+        {
+          title: 'Smart',
+          detail:
+            'Able to handle a technical discussion with software engineers and an outcome-based discussion with C-levels — without losing altitude either way.',
+        },
+        {
+          title: 'High tech IQ',
+          detail:
+            'Comfortable in a product-led, technical category. Can learn the stack fast enough to earn credibility with builders and buyers.',
+        },
+        {
+          title: 'High slope',
+          detail:
+            'Trajectory matters more than pedigree. Prefer steep learners who compound quickly over flat high performers.',
+        },
+        {
+          title: 'Clock speed',
+          detail:
+            'Think and decide fast. High processing speed under ambiguity turns into better prioritization, sharper discovery and cleaner execution.',
         },
       ],
     },

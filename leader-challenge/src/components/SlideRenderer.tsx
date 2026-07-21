@@ -675,12 +675,14 @@ function ProfileScreen({ content }: { content: ProfileContent }) {
   const [active, setActive] = useState(0)
   const [autoPlay, setAutoPlay] = useState(true)
   const current = content.criteria[active]
+  const columns =
+    content.criteria.length <= 5 ? 'md:grid-cols-5' : 'md:grid-cols-3'
 
   useEffect(() => {
     if (!autoPlay) return
     const timer = window.setInterval(() => {
       setActive((value) => (value + 1) % content.criteria.length)
-    }, 4500)
+    }, 4000)
     return () => window.clearInterval(timer)
   }, [autoPlay, content.criteria.length])
 
@@ -690,7 +692,7 @@ function ProfileScreen({ content }: { content: ProfileContent }) {
       onMouseEnter={() => setAutoPlay(false)}
       onMouseLeave={() => setAutoPlay(true)}
     >
-      <div className="grid min-h-0 flex-1 gap-3 md:grid-cols-5">
+      <div className={`grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 ${columns}`}>
         {content.criteria.map((criterion, index) => {
           const selected = active === index
           return (
@@ -702,12 +704,12 @@ function ProfileScreen({ content }: { content: ProfileContent }) {
                 setAutoPlay(false)
               }}
               layout
-              className={`relative flex h-full flex-col overflow-hidden rounded-[24px] border p-4 text-left transition lg:p-5 ${
+              className={`relative flex h-full min-h-[140px] flex-col overflow-hidden rounded-[22px] border p-4 text-left transition lg:p-5 ${
                 selected
-                  ? 'border-accent/45 bg-gradient-to-b from-accent/20 via-white/[0.06] to-transparent shadow-[0_18px_48px_rgba(255,107,44,0.18)] md:col-span-1'
+                  ? 'border-accent/45 bg-gradient-to-b from-accent/20 via-white/[0.06] to-transparent shadow-[0_18px_48px_rgba(255,107,44,0.18)]'
                   : 'border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]'
               }`}
-              animate={{ scale: selected ? 1 : 0.98, y: selected ? 0 : 4 }}
+              animate={{ scale: selected ? 1 : 0.985, y: selected ? 0 : 3 }}
               transition={{ type: 'spring', stiffness: 280, damping: 26 }}
             >
               {selected ? (
@@ -716,14 +718,16 @@ function ProfileScreen({ content }: { content: ProfileContent }) {
                   className="absolute inset-x-0 bottom-0 h-1 origin-left bg-accent"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: 4.5, ease: 'linear' }}
+                  transition={{ duration: 4, ease: 'linear' }}
                 />
               ) : null}
-              <p className="font-display text-3xl font-bold text-white/15 lg:text-4xl">
-                {String(index + 1).padStart(2, '0')}
-              </p>
+              <div className="flex items-start justify-between gap-3">
+                <p className="font-display text-2xl font-bold text-white/15 lg:text-3xl">
+                  {String(index + 1).padStart(2, '0')}
+                </p>
+              </div>
               <h3
-                className={`font-display mt-4 text-lg leading-tight font-semibold tracking-tight lg:text-xl ${
+                className={`font-display mt-3 text-base leading-tight font-semibold tracking-tight lg:text-lg ${
                   selected ? 'text-white' : 'text-white/80'
                 }`}
               >
@@ -733,10 +737,10 @@ function ProfileScreen({ content }: { content: ProfileContent }) {
                 {selected ? (
                   <motion.p
                     key={criterion.title}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
-                    className="mt-4 text-sm leading-relaxed text-white/65"
+                    className="mt-3 text-sm leading-relaxed text-white/65"
                   >
                     {criterion.detail}
                   </motion.p>
@@ -745,7 +749,7 @@ function ProfileScreen({ content }: { content: ProfileContent }) {
                     key={`${criterion.title}-teaser`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="mt-4 line-clamp-4 text-xs leading-relaxed text-white/40"
+                    className="mt-3 line-clamp-3 text-xs leading-relaxed text-white/40"
                   >
                     {criterion.detail}
                   </motion.p>
@@ -757,13 +761,15 @@ function ProfileScreen({ content }: { content: ProfileContent }) {
       </div>
 
       <div className="glass flex items-center justify-between gap-4 rounded-2xl px-4 py-3">
-        <div>
+        <div className="min-w-0">
           <p className="text-[10px] font-semibold tracking-[0.16em] text-accent uppercase">
             Active filter
           </p>
-          <p className="font-display mt-1 text-base font-semibold text-white">{current.title}</p>
+          <p className="font-display mt-1 truncate text-base font-semibold text-white">
+            {current.title}
+          </p>
         </div>
-        <p className="text-[11px] text-white/45">
+        <p className="shrink-0 text-[11px] text-white/45">
           {autoPlay ? 'Auto-rotating' : 'Paused'} · {active + 1}/{content.criteria.length}
         </p>
       </div>
