@@ -696,16 +696,33 @@ function ProfileScreen({
   content: ProfileContent
 }) {
   const [active, setActive] = useState(0)
+  const [expanded, setExpanded] = useState(false)
   const [autoPlay, setAutoPlay] = useState(true)
+  const current = content.criteria[active]
   const immersive = content.criteria.some((item) => Boolean(item.image))
 
   useEffect(() => {
-    if (!autoPlay) return
+    if (!autoPlay || expanded) return
     const timer = window.setInterval(() => {
       setActive((value) => (value + 1) % content.criteria.length)
     }, 4200)
     return () => window.clearInterval(timer)
-  }, [autoPlay, content.criteria.length])
+  }, [autoPlay, expanded, content.criteria.length])
+
+  useEffect(() => {
+    if (!expanded) return
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setExpanded(false)
+      if (event.key === 'ArrowRight') {
+        setActive((value) => (value + 1) % content.criteria.length)
+      }
+      if (event.key === 'ArrowLeft') {
+        setActive((value) => (value - 1 + content.criteria.length) % content.criteria.length)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [expanded, content.criteria.length])
 
   if (!immersive) {
     return (
@@ -726,7 +743,9 @@ function ProfileScreen({
     <div
       className="relative flex h-full w-full flex-col overflow-hidden px-5 py-5 lg:px-7 lg:py-6"
       onMouseEnter={() => setAutoPlay(false)}
-      onMouseLeave={() => setAutoPlay(true)}
+      onMouseLeave={() => {
+        if (!expanded) setAutoPlay(true)
+      }}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,107,44,0.12),transparent_50%)]" />
 
@@ -748,7 +767,7 @@ function ProfileScreen({
           ) : null}
         </div>
         <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 text-[11px] text-white/55 backdrop-blur-md">
-          {autoPlay ? 'Auto-rotating' : 'Paused'} · {active + 1}/{content.criteria.length}
+          Click a card to enlarge · {active + 1}/{content.criteria.length}
         </div>
       </div>
 
@@ -756,12 +775,13 @@ function ProfileScreen({
         {content.criteria.map((criterion, index) => {
           const selected = active === index
           return (
-            <motion.button
+            <button
               key={criterion.title}
               type="button"
               onClick={() => {
                 setActive(index)
                 setAutoPlay(false)
+                setExpanded(true)
               }}
               className={`group relative flex h-full min-h-0 flex-col overflow-hidden rounded-[22px] border text-left transition ${
                 selected
@@ -788,16 +808,6 @@ function ProfileScreen({
                 }`}
               />
 
-              {selected ? (
-                <motion.div
-                  key={`card-progress-${active}-${autoPlay}`}
-                  className="absolute inset-x-0 bottom-0 z-20 h-1 origin-left bg-accent"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 4.2, ease: 'linear' }}
-                />
-              ) : null}
-
               <div className="relative z-10 flex h-full min-h-0 flex-col justify-between p-4 lg:p-5">
                 <div className="flex items-start justify-between gap-2">
                   <p
@@ -807,43 +817,21 @@ function ProfileScreen({
                   >
                     {String(index + 1).padStart(2, '0')}
                   </p>
-                  {selected ? (
-                    <span className="rounded-full border border-accent/40 bg-accent/20 px-2 py-0.5 text-[10px] font-semibold tracking-[0.12em] text-accent uppercase backdrop-blur-md">
-                      Active
-                    </span>
-                  ) : null}
+                  <span className="rounded-full border border-white/15 bg-black/30 px-2 py-0.5 text-[10px] font-semibold tracking-[0.12em] text-white/70 uppercase backdrop-blur-md opacity-0 transition group-hover:opacity-100">
+                    Enlarge
+                  </span>
                 </div>
 
                 <div className="min-h-[5.5rem]">
                   <h3 className="font-display text-lg leading-tight font-semibold text-white lg:text-xl">
                     {criterion.title}
                   </h3>
-                  <AnimatePresence mode="wait">
-                    {selected ? (
-                      <motion.p
-                        key={`${criterion.title}-open`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="mt-2 line-clamp-4 text-sm leading-relaxed text-white/80"
-                      >
-                        {criterion.detail}
-                      </motion.p>
-                    ) : (
-                      <motion.p
-                        key={`${criterion.title}-closed`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="mt-2 line-clamp-2 text-xs leading-relaxed text-white/55"
-                      >
-                        {criterion.detail}
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
+                  <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-white/55">
+                    {criterion.detail}
+                  </p>
                 </div>
               </div>
-            </motion.button>
+            </button>
           )
         })}
       </div>
@@ -851,6 +839,86 @@ function ProfileScreen({
       {takeaway ? (
         <p className="relative z-10 mt-3 max-w-3xl text-xs text-white/45 lg:text-sm">{takeaway}</p>
       ) : null}
+
+      <AnimatePresence>
+        {expanded && current.image ? (
+          <motion.div
+            className="absolute inset-0 z-40 flex items-center justify-center p-4 lg:p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <button
+              type="button"
+              aria-label="Close enlarged image"
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              onClick={() => setExpanded(false)}
+            />
+            <motion.div
+              key={current.title}
+              initial={{ opacity: 0, scale: 0.92, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 8 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="relative z-10 flex h-full max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-[28px] border border-white/15 bg-black shadow-[0_30px_80px_rgba(0,0,0,0.65)]"
+            >
+              <img
+                src={current.image}
+                alt={current.title}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/40" />
+
+              <div className="relative z-10 flex items-start justify-between gap-3 p-5 lg:p-6">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 backdrop-blur-md">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  <span className="text-[11px] font-semibold tracking-[0.14em] text-white/80 uppercase">
+                    {String(active + 1).padStart(2, '0')} / {String(content.criteria.length).padStart(2, '0')}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setActive((value) => (value - 1 + content.criteria.length) % content.criteria.length)
+                    }
+                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
+                  >
+                    Prev
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActive((value) => (value + 1) % content.criteria.length)}
+                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
+                  >
+                    Next
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setExpanded(false)}
+                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md hover:bg-white/10"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+
+              <div className="relative z-10 mt-auto max-w-3xl p-5 lg:p-8">
+                <p className="text-[11px] font-semibold tracking-[0.16em] text-accent uppercase">
+                  A Player filter
+                </p>
+                <h2 className="font-display mt-2 text-3xl font-semibold text-white lg:text-5xl">
+                  {current.title}
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-white/80 lg:text-lg">
+                  {current.detail}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   )
 }
