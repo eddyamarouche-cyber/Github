@@ -672,21 +672,102 @@ function PillarsScreen({ content }: { content: PillarsContent }) {
 }
 
 function ProfileScreen({ content }: { content: ProfileContent }) {
-  const [selected, setSelected] = useState<string | null>(null)
+  const [active, setActive] = useState(0)
+  const [autoPlay, setAutoPlay] = useState(true)
+  const current = content.criteria[active]
+
+  useEffect(() => {
+    if (!autoPlay) return
+    const timer = window.setInterval(() => {
+      setActive((value) => (value + 1) % content.criteria.length)
+    }, 4500)
+    return () => window.clearInterval(timer)
+  }, [autoPlay, content.criteria.length])
+
   return (
-    <Stagger className="grid grid-cols-2 gap-2.5 md:grid-cols-5">
-      {content.traits.map((trait) => (
-        <StaggerItem key={trait}>
-          <GlassCard
-            active={selected === trait}
-            onClick={() => setSelected(trait)}
-            className="flex min-h-[88px] items-center p-3.5 text-sm font-medium leading-snug text-white"
-          >
-            {trait}
-          </GlassCard>
-        </StaggerItem>
-      ))}
-    </Stagger>
+    <div
+      className="flex h-full min-h-0 flex-col gap-4"
+      onMouseEnter={() => setAutoPlay(false)}
+      onMouseLeave={() => setAutoPlay(true)}
+    >
+      <div className="grid min-h-0 flex-1 gap-3 md:grid-cols-5">
+        {content.criteria.map((criterion, index) => {
+          const selected = active === index
+          return (
+            <motion.button
+              key={criterion.title}
+              type="button"
+              onClick={() => {
+                setActive(index)
+                setAutoPlay(false)
+              }}
+              layout
+              className={`relative flex h-full flex-col overflow-hidden rounded-[24px] border p-4 text-left transition lg:p-5 ${
+                selected
+                  ? 'border-accent/45 bg-gradient-to-b from-accent/20 via-white/[0.06] to-transparent shadow-[0_18px_48px_rgba(255,107,44,0.18)] md:col-span-1'
+                  : 'border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]'
+              }`}
+              animate={{ scale: selected ? 1 : 0.98, y: selected ? 0 : 4 }}
+              transition={{ type: 'spring', stiffness: 280, damping: 26 }}
+            >
+              {selected ? (
+                <motion.div
+                  key={`profile-progress-${active}-${autoPlay}`}
+                  className="absolute inset-x-0 bottom-0 h-1 origin-left bg-accent"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 4.5, ease: 'linear' }}
+                />
+              ) : null}
+              <p className="font-display text-3xl font-bold text-white/15 lg:text-4xl">
+                {String(index + 1).padStart(2, '0')}
+              </p>
+              <h3
+                className={`font-display mt-4 text-lg leading-tight font-semibold tracking-tight lg:text-xl ${
+                  selected ? 'text-white' : 'text-white/80'
+                }`}
+              >
+                {criterion.title}
+              </h3>
+              <AnimatePresence mode="wait">
+                {selected ? (
+                  <motion.p
+                    key={criterion.title}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    className="mt-4 text-sm leading-relaxed text-white/65"
+                  >
+                    {criterion.detail}
+                  </motion.p>
+                ) : (
+                  <motion.p
+                    key={`${criterion.title}-teaser`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="mt-4 line-clamp-4 text-xs leading-relaxed text-white/40"
+                  >
+                    {criterion.detail}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          )
+        })}
+      </div>
+
+      <div className="glass flex items-center justify-between gap-4 rounded-2xl px-4 py-3">
+        <div>
+          <p className="text-[10px] font-semibold tracking-[0.16em] text-accent uppercase">
+            Active filter
+          </p>
+          <p className="font-display mt-1 text-base font-semibold text-white">{current.title}</p>
+        </div>
+        <p className="text-[11px] text-white/45">
+          {autoPlay ? 'Auto-rotating' : 'Paused'} · {active + 1}/{content.criteria.length}
+        </p>
+      </div>
+    </div>
   )
 }
 

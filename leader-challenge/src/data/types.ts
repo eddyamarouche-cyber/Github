@@ -109,8 +109,13 @@ export interface PillarsContent {
   pillars: { title: string; description: string }[]
 }
 
+export interface ProfileCriterion {
+  title: string
+  detail: string
+}
+
 export interface ProfileContent {
-  traits: string[]
+  criteria: ProfileCriterion[]
 }
 
 export interface ScorecardCriterion {

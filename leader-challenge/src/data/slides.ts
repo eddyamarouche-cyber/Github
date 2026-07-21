@@ -243,23 +243,38 @@ export const slides: Slide[] = [
     number: 10,
     section: 'recruitment',
     type: 'profile',
-    title: 'The Profile of an A-Player',
-    headline:
-      'An A-player combines performance, learning velocity and category-building ability.',
-    takeaway: 'Hire for ownership, learning speed and the ability to sell an emerging category.',
+    title: 'A Player Profile',
+    headline: 'Five non-negotiables before anyone enters the process.',
+    takeaway:
+      'Hire patriots who build, adapt and recover — not senators, mercenaries or fragile résumés.',
     recommendedMinutes: 3,
     content: {
-      traits: [
-        'High learning velocity',
-        'Strong business curiosity',
-        'Enterprise sales discipline',
-        'Ability to sell an emerging category',
-        'Credibility with technical and executive buyers',
-        'Strong ownership',
-        'Coachability',
-        'Consistent performance',
-        'Ability to operate in ambiguity',
-        'Positive cultural contribution',
+      criteria: [
+        {
+          title: 'Patriots versus Mercenaries',
+          detail:
+            'Look for people who join the mission, not the highest bidder. Ownership beats short-term extraction.',
+        },
+        {
+          title: 'No senators',
+          detail:
+            'Reject political operators. Prefer builders who create outcomes over people who manage appearances.',
+        },
+        {
+          title: 'Small organization backgrounds',
+          detail:
+            'Prefer candidates who have built without big-brand crutches — scarce resources, real ownership, real consequence.',
+        },
+        {
+          title: 'Adaptable',
+          detail:
+            'Emerging categories change weekly. Hire people who learn fast, reframe quickly and stay effective in ambiguity.',
+        },
+        {
+          title: 'Punched in the face',
+          detail:
+            'Ask how they responded when they got hit hard — lost a deal, missed a quarter, got rejected. Resilience is the filter.',
+        },
       ],
     },
   },

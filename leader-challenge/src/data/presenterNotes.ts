@@ -106,14 +106,14 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'That standard becomes an A-player profile.',
   },
   'a-player-profile': {
-    opening: 'I do not hire for a résumé match. I hire for an A-player profile.',
+    opening: 'Before process or scorecards, this is the filter.',
     coreMessage:
-      'The bar is performance plus learning velocity plus the ability to help build a category.',
+      'Patriots over mercenaries. No senators. Small-org builders. Adaptable. And I always ask how they responded when they got punched in the face.',
     supportingExample:
-      '[ADD MY EXAMPLE] — a hire who succeeded because of ownership and learning speed, not just pedigree.',
+      'A polished big-brand résumé without ownership scars is a warning, not a win.',
     executiveImplication:
-      'In an emerging category, coachability and ambiguity tolerance matter as much as past attainment.',
-    likelyQuestion: 'How do you detect learning velocity in an interview?',
+      'This profile protects culture and raises talent density before any interview loop starts.',
+    likelyQuestion: 'How do you test “punched in the face” in an interview?',
     transition: 'That profile becomes a scorecard.',
   },
   'candidate-scorecard': {
