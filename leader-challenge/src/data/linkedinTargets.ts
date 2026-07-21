@@ -84,4 +84,14 @@ export const linkedinTargets: LinkedInTarget[] = [
     signal: 'Enterprise AE; ex-Dynatrace / Vodafone — C-level value selling and MEDDIC discipline.',
     photo: '/images/linkedin/luca-parravicini.jpg',
   },
+  {
+    id: 'marialice-pasquini',
+    fullName: 'Marialice Pasquini',
+    currentRole: 'Enterprise Account Executive',
+    currentCompany: 'Databricks',
+    country: 'Italy',
+    linkedinUrl: 'https://www.linkedin.com/in/marialicepasquini/',
+    signal: 'Enterprise AE; ex-Nutanix / VMware Southern Europe cloud GTM — data, AI and transformation.',
+    photo: '/images/linkedin/marialice-pasquini.jpg',
+  },
 ]
