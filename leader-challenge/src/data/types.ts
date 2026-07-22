@@ -25,6 +25,7 @@ export type SlideType =
   | 'candidates'
   | 'linkedin-targets'
   | 'process'
+  | 'subdivisions'
   | 'funnel'
   | 'outreach'
   | 'roleplay-prep'
@@ -150,6 +151,10 @@ export interface Candidate {
 
 export interface ProcessContent {
   steps: string[]
+}
+
+export interface SubdivisionsContent {
+  items: { title: string; detail?: string }[]
 }
 
 export interface FunnelContent {
@@ -342,6 +347,7 @@ export type SlideContent =
   | { candidates: Candidate[] }
   | LinkedInTargetsContent
   | ProcessContent
+  | SubdivisionsContent
   | FunnelContent
   | OutreachContent
   | RoleplayPrepContent

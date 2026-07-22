@@ -125,7 +125,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Time-to-hire collapses when sourcing is continuous. Reactive hiring is already late.',
     likelyQuestion: 'How early do you start conversations relative to headcount approval?',
-    transition: 'That hunt needs a scorecard before outreach.',
+    transition: 'Here is how the hunt breaks into five moves.',
+  },
+  'how-subdivisions': {
+    opening: 'This is the operating system behind How.',
+    coreMessage:
+      'ICP defines the target. Talent Map names the field. Sourcing opens conversations. Potential versus experience protects slope. Structured process turns judgment into repeatable decisions.',
+    supportingExample:
+      'Skip one and the system leaks — a sharp ICP with no map is theory; a map with no process is noise.',
+    executiveImplication:
+      'Recruitment quality is a system design problem, not a calendar of interviews.',
+    likelyQuestion: 'Which of the five do you start with in a new market?',
+    transition: 'That system needs a scorecard before outreach.',
   },
   'candidate-scorecard': {
     opening: 'This is the scoring model I would use before advancing any candidate.',

@@ -39,6 +39,7 @@ import type {
   ScorecardContent,
   Slide,
   StagesContent,
+  SubdivisionsContent,
   ThesisContent,
   TopicsSummaryContent,
   TwoColumnContent,
@@ -204,6 +205,15 @@ function renderSlide(slide: Slide) {
         >
           <ProcessScreen content={slide.content as ProcessContent} />
         </ScreenShell>
+      )
+    case 'subdivisions':
+      return (
+        <SubdivisionsScreen
+          title={slide.title}
+          headline={slide.headline}
+          takeaway={slide.takeaway}
+          content={slide.content as SubdivisionsContent}
+        />
       )
     case 'funnel':
       return (
@@ -1279,6 +1289,79 @@ function LinkedInTargetsScreen({
 function ProcessScreen({ content }: { content: ProcessContent }) {
   return (
     <Timeline items={content.steps.map((step) => ({ title: step }))} />
+  )
+}
+
+function SubdivisionsScreen({
+  title,
+  headline,
+  takeaway,
+  content,
+}: {
+  title: string
+  headline?: string
+  takeaway?: string
+  content: SubdivisionsContent
+}) {
+  return (
+    <div className="relative flex h-full w-full flex-col overflow-hidden px-6 py-5 lg:px-10 lg:py-7">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(255,107,44,0.16),transparent_42%),radial-gradient(ellipse_at_90%_85%,rgba(255,255,255,0.04),transparent_40%)]" />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute top-10 right-8 h-56 w-56 rounded-full bg-accent/15 blur-3xl"
+        animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.12, 1] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="relative z-10 shrink-0">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+          <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
+            How?
+          </span>
+        </div>
+        <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+          {title}
+        </h1>
+        {headline ? (
+          <p className="mt-2 max-w-2xl text-sm text-white/55 lg:text-base">{headline}</p>
+        ) : null}
+      </div>
+
+      <div className="relative z-10 mt-5 grid min-h-0 flex-1 content-center gap-2.5 sm:gap-3">
+        {content.items.map((item, index) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, x: -18 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              delay: 0.08 + index * 0.07,
+              duration: 0.4,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="group flex items-baseline gap-4 border-b border-white/10 pb-2.5 last:border-b-0 lg:gap-6 lg:pb-3"
+          >
+            <span className="font-display w-10 shrink-0 text-2xl font-bold tracking-tight text-accent lg:w-14 lg:text-4xl">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div className="min-w-0 flex-1">
+              <h2 className="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-5xl">
+                {item.title}
+              </h2>
+              {item.detail ? (
+                <p className="mt-1 max-w-3xl text-sm text-white/45 lg:text-base">{item.detail}</p>
+              ) : null}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {takeaway ? (
+        <p className="relative z-10 mt-4 max-w-3xl shrink-0 text-xs text-white/40 lg:text-sm">
+          {takeaway}
+        </p>
+      ) : null}
+    </div>
   )
 }
 
