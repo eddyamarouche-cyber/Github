@@ -15,7 +15,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'The first five minutes establish how I manage before we enter the four working topics.',
     likelyQuestion: 'How would you prioritize if you joined with limited headcount?',
-    transition: 'Before the standard — one image of what winning looks like.',
+    transition: 'Before the operating system — the objective I will own with clients.',
+  },
+  'win-the-stage': {
+    opening: 'This is the objective I want to anchor with you.',
+    coreMessage:
+      'Win the stage with every client — earn the room, own the narrative and make Cursor the obvious choice.',
+    supportingExample:
+      'That means presence in the account, credibility with technical and executive buyers, and a team that shows up ready to lead the conversation.',
+    executiveImplication:
+      'Everything that follows — hiring, coaching, pipeline and partnership — exists to put us on that stage and keep us there.',
+    likelyQuestion: 'What does winning the stage look like in the first 90 days?',
+    transition: 'Next — the winning culture that makes that objective sustainable.',
   },
   'spanish-team-trophies': {
     opening: 'This is the feeling I want in Iberia.',
