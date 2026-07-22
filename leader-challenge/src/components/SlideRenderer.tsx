@@ -532,7 +532,7 @@ function TopicsSummaryScreen({
 
   return (
     <div
-      className="relative flex h-full flex-col overflow-hidden px-8 py-7 lg:px-12 lg:py-9"
+      className="relative flex h-full flex-col overflow-hidden px-6 py-5 lg:px-10 lg:py-7"
       onMouseEnter={() => setAutoPlay(false)}
       onMouseLeave={() => setAutoPlay(true)}
     >
@@ -544,27 +544,27 @@ function TopicsSummaryScreen({
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      <div className="relative z-10 flex flex-wrap items-end justify-between gap-4">
+      <div className="relative z-10 flex shrink-0 flex-wrap items-end justify-between gap-3">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-            <span className="text-[11px] font-semibold tracking-[0.16em] text-white/75 uppercase">
+            <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
               Working session
             </span>
           </div>
-          <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+          <h1 className="font-display mt-2 text-2xl font-semibold tracking-tight text-white lg:text-3xl">
             {title}
           </h1>
           {headline ? (
-            <p className="mt-2 max-w-2xl text-base text-white/60 lg:text-lg">{headline}</p>
+            <p className="mt-1 max-w-2xl text-sm text-white/55 lg:text-base">{headline}</p>
           ) : null}
         </div>
-        <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 text-[11px] text-white/55 backdrop-blur-md">
+        <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[10px] text-white/55 backdrop-blur-md">
           {autoPlay ? 'Auto-rotating' : 'Paused'} · {active + 1}/{content.topics.length}
         </div>
       </div>
 
-      <div className="relative z-10 mt-6 grid min-h-0 flex-1 gap-3 md:grid-cols-3 md:gap-4">
+      <div className="relative z-10 mt-4 grid min-h-0 flex-1 gap-3 md:grid-cols-3 md:gap-4">
         {content.topics.map((topic, index) => {
           const selected = active === index
           const Icon = topicIcons[index % topicIcons.length]
@@ -599,10 +599,10 @@ function TopicsSummaryScreen({
                 />
               ) : null}
 
-              <div className="flex h-full flex-col p-5 lg:p-6">
-                <div className="flex items-start justify-between gap-3">
+              <div className="flex h-full min-h-0 flex-col p-4 lg:p-5">
+                <div className="flex shrink-0 items-start justify-between gap-3">
                   <div
-                    className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${
+                    className={`flex h-10 w-10 items-center justify-center rounded-2xl border lg:h-11 lg:w-11 ${
                       selected
                         ? 'border-accent/40 bg-accent text-bg'
                         : 'border-white/10 bg-white/5 text-white/70'
@@ -611,19 +611,19 @@ function TopicsSummaryScreen({
                     <Icon className="h-5 w-5" strokeWidth={2.2} />
                   </div>
                   <div className="text-right">
-                    <p className="font-display text-4xl leading-none font-bold text-white/15 lg:text-5xl">
+                    <p className="font-display text-3xl leading-none font-bold text-white/15 lg:text-4xl">
                       {String(index + 1).padStart(2, '0')}
                     </p>
-                    <p className="mt-1 text-[11px] font-semibold tracking-[0.14em] text-white/40 uppercase">
+                    <p className="mt-1 text-[10px] font-semibold tracking-[0.14em] text-white/40 uppercase">
                       {topic.minutes} min
                     </p>
                   </div>
                 </div>
 
-                <p className="mt-6 text-[11px] font-semibold tracking-[0.16em] text-accent uppercase">
+                <p className="mt-4 shrink-0 text-[10px] font-semibold tracking-[0.16em] text-accent uppercase lg:mt-5 lg:text-[11px]">
                   {topic.subtitle}
                 </p>
-                <h2 className="font-display mt-2 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+                <h2 className="font-display mt-1 shrink-0 text-2xl font-semibold tracking-tight text-white lg:text-3xl">
                   {topic.title}
                 </h2>
 
@@ -635,34 +635,38 @@ function TopicsSummaryScreen({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
                       transition={{ duration: 0.28 }}
-                      className="mt-4 flex min-h-0 flex-1 flex-col"
+                      className="mt-3 flex min-h-0 flex-1 flex-col"
                     >
                       {topic.description ? (
-                        <p className="text-sm leading-relaxed text-white/55 lg:text-[15px]">
+                        <p className="mb-3 shrink-0 text-sm leading-relaxed text-white/55 lg:text-[15px]">
                           {topic.description}
                         </p>
                       ) : null}
                       <div
-                        className={`mt-5 grid min-h-0 flex-1 content-center gap-2.5 ${
-                          topic.focuses.length === 4 ? 'grid-cols-2' : 'grid-cols-1'
-                        } ${topic.description ? '' : 'mt-2'}`}
+                        className={`grid h-full min-h-0 flex-1 gap-2 ${
+                          topic.focuses.length === 4
+                            ? 'grid-cols-2 grid-rows-2'
+                            : topic.focuses.length === 3
+                              ? 'grid-cols-1 grid-rows-3'
+                              : 'grid-cols-1'
+                        }`}
                       >
                         {topic.focuses.map((focus, focusIndex) => (
                           <motion.div
                             key={focus}
-                            initial={{ opacity: 0, y: 14, scale: 0.96 }}
+                            initial={{ opacity: 0, y: 10, scale: 0.97 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             transition={{
-                              delay: 0.08 + focusIndex * 0.06,
-                              duration: 0.35,
+                              delay: 0.06 + focusIndex * 0.05,
+                              duration: 0.3,
                               ease: [0.22, 1, 0.36, 1],
                             }}
-                            className="relative flex min-h-[88px] flex-col items-center justify-center overflow-hidden rounded-[22px] border border-white/12 bg-gradient-to-b from-white/[0.1] to-black/35 px-3 py-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] lg:min-h-[104px]"
+                            className="relative flex h-full min-h-0 flex-col items-center justify-center overflow-hidden rounded-[18px] border border-white/12 bg-gradient-to-b from-white/[0.1] to-black/35 px-2.5 py-2 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
                           >
-                            <span className="absolute top-2.5 left-3 font-display text-[10px] font-bold tracking-[0.14em] text-accent/90">
+                            <span className="absolute top-1.5 left-2 font-display text-[9px] font-bold tracking-[0.14em] text-accent/90">
                               {String(focusIndex + 1).padStart(2, '0')}
                             </span>
-                            <span className="font-display text-[1.35rem] leading-none font-bold tracking-tight text-white sm:text-2xl lg:text-[1.75rem] xl:text-3xl">
+                            <span className="font-display max-w-full px-1 text-base leading-tight font-bold tracking-tight text-balance text-white sm:text-lg lg:text-xl xl:text-[1.35rem]">
                               {focus}
                             </span>
                           </motion.div>
@@ -675,20 +679,29 @@ function TopicsSummaryScreen({
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="mt-5 flex min-h-0 flex-1 flex-col justify-end"
+                      className="mt-4 flex min-h-0 flex-1 flex-col"
                     >
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                      <div
+                        className={`grid h-full min-h-0 flex-1 gap-2 ${
+                          topic.focuses.length === 4
+                            ? 'grid-cols-2 grid-rows-2'
+                            : topic.focuses.length === 3
+                              ? 'grid-cols-1 grid-rows-3'
+                              : 'grid-cols-1'
+                        }`}
+                      >
                         {topic.focuses.map((focus, focusIndex) => (
-                          <span key={focus} className="inline-flex items-center gap-2">
-                            {focusIndex > 0 ? (
-                              <span className="text-accent/70" aria-hidden>
-                                ·
-                              </span>
-                            ) : null}
-                            <span className="font-display text-sm font-semibold tracking-tight text-white/55 lg:text-base">
+                          <div
+                            key={focus}
+                            className="relative flex h-full min-h-0 flex-col items-center justify-center overflow-hidden rounded-[18px] border border-white/8 bg-white/[0.03] px-2.5 py-2 text-center"
+                          >
+                            <span className="absolute top-1.5 left-2 font-display text-[9px] font-bold tracking-[0.14em] text-white/30">
+                              {String(focusIndex + 1).padStart(2, '0')}
+                            </span>
+                            <span className="font-display max-w-full px-1 text-sm leading-tight font-semibold tracking-tight text-balance text-white/50 sm:text-base lg:text-lg">
                               {focus}
                             </span>
-                          </span>
+                          </div>
                         ))}
                       </div>
                     </motion.div>
@@ -700,7 +713,9 @@ function TopicsSummaryScreen({
         })}
       </div>
 
-      <p className="relative z-10 mt-5 max-w-3xl text-sm text-white/45">{takeaway}</p>
+      <p className="relative z-10 mt-3 max-w-3xl shrink-0 text-xs text-white/40 lg:text-sm">
+        {takeaway}
+      </p>
     </div>
   )
 }
