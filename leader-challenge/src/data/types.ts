@@ -153,8 +153,15 @@ export interface ProcessContent {
   steps: string[]
 }
 
+export interface SubdivisionItem {
+  title: string
+  detail?: string
+  image: string
+  theme?: string
+}
+
 export interface SubdivisionsContent {
-  items: { title: string; detail?: string }[]
+  items: SubdivisionItem[]
 }
 
 export interface FunnelContent {

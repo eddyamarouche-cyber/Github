@@ -1303,6 +1303,46 @@ function SubdivisionsScreen({
   takeaway?: string
   content: SubdivisionsContent
 }) {
+  const [active, setActive] = useState(0)
+  const [expanded, setExpanded] = useState(false)
+  const current = content.items[active]
+  const lastIndex = content.items.length - 1
+
+  useEffect(() => {
+    if (!expanded) return
+    return registerSlideInnerNav({
+      next: () => {
+        if (active >= lastIndex) {
+          setExpanded(false)
+          return false
+        }
+        setActive((value) => value + 1)
+        return true
+      },
+      prev: () => {
+        if (active <= 0) {
+          setExpanded(false)
+          return false
+        }
+        setActive((value) => value - 1)
+        return true
+      },
+    })
+  }, [expanded, active, lastIndex])
+
+  useEffect(() => {
+    if (!expanded) return
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        setExpanded(false)
+      }
+    }
+    window.addEventListener('keydown', onKey, true)
+    return () => window.removeEventListener('keydown', onKey, true)
+  }, [expanded])
+
   return (
     <div className="relative flex h-full w-full flex-col overflow-hidden px-6 py-5 lg:px-10 lg:py-7">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(255,107,44,0.16),transparent_42%),radial-gradient(ellipse_at_90%_85%,rgba(255,255,255,0.04),transparent_40%)]" />
@@ -1313,25 +1353,31 @@ function SubdivisionsScreen({
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      <div className="relative z-10 shrink-0">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-          <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
-            How?
-          </span>
+      <div className="relative z-10 flex shrink-0 flex-wrap items-end justify-between gap-3">
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+            <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
+              How?
+            </span>
+          </div>
+          <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+            {title}
+          </h1>
+          {headline ? (
+            <p className="mt-2 max-w-2xl text-sm text-white/55 lg:text-base">{headline}</p>
+          ) : null}
         </div>
-        <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
-          {title}
-        </h1>
-        {headline ? (
-          <p className="mt-2 max-w-2xl text-sm text-white/55 lg:text-base">{headline}</p>
-        ) : null}
+        <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 text-[11px] text-white/55 backdrop-blur-md">
+          Click a topic to open · {content.items.length} pages
+        </div>
       </div>
 
-      <div className="relative z-10 mt-5 grid min-h-0 flex-1 content-center gap-2.5 sm:gap-3">
+      <div className="relative z-10 mt-5 grid min-h-0 flex-1 content-center gap-2 sm:gap-2.5">
         {content.items.map((item, index) => (
-          <motion.div
+          <motion.button
             key={item.title}
+            type="button"
             initial={{ opacity: 0, x: -18 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
@@ -1339,20 +1385,31 @@ function SubdivisionsScreen({
               duration: 0.4,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="group flex items-baseline gap-4 border-b border-white/10 pb-2.5 last:border-b-0 lg:gap-6 lg:pb-3"
+            onClick={() => {
+              setActive(index)
+              setExpanded(true)
+            }}
+            className="group flex w-full items-baseline gap-4 border-b border-white/10 pb-2.5 text-left transition last:border-b-0 hover:border-accent/40 lg:gap-6 lg:pb-3"
           >
-            <span className="font-display w-10 shrink-0 text-2xl font-bold tracking-tight text-accent lg:w-14 lg:text-4xl">
+            <span className="font-display w-10 shrink-0 text-2xl font-bold tracking-tight text-accent transition group-hover:text-accent-soft lg:w-14 lg:text-4xl">
               {String(index + 1).padStart(2, '0')}
             </span>
             <div className="min-w-0 flex-1">
-              <h2 className="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-5xl">
-                {item.title}
-              </h2>
-              {item.detail ? (
-                <p className="mt-1 max-w-3xl text-sm text-white/45 lg:text-base">{item.detail}</p>
-              ) : null}
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h2 className="font-display text-2xl font-semibold tracking-tight text-white transition group-hover:text-white sm:text-3xl lg:text-5xl">
+                  {item.title}
+                </h2>
+                {item.theme ? (
+                  <span className="text-[11px] font-semibold tracking-[0.14em] text-white/35 uppercase">
+                    {item.theme}
+                  </span>
+                ) : null}
+              </div>
             </div>
-          </motion.div>
+            <span className="shrink-0 text-[10px] font-semibold tracking-[0.14em] text-white/30 uppercase opacity-0 transition group-hover:opacity-100">
+              Open
+            </span>
+          </motion.button>
         ))}
       </div>
 
@@ -1361,6 +1418,101 @@ function SubdivisionsScreen({
           {takeaway}
         </p>
       ) : null}
+
+      <AnimatePresence>
+        {expanded && current?.image ? (
+          <motion.div
+            className="absolute inset-0 z-40 overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <motion.img
+              key={current.image}
+              src={current.image}
+              alt={current.title}
+              className="absolute inset-0 h-full w-full object-cover"
+              initial={{ scale: 1.06, opacity: 0.75 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/35" />
+
+            <div className="relative z-10 flex h-full flex-col justify-between px-6 py-5 lg:px-10 lg:py-7">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 backdrop-blur-md">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  <span className="text-[11px] font-semibold tracking-[0.14em] text-white/80 uppercase">
+                    {String(active + 1).padStart(2, '0')} /{' '}
+                    {String(content.items.length).padStart(2, '0')}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (active <= 0) {
+                        setExpanded(false)
+                        requestDeckPrev()
+                        return
+                      }
+                      setActive((value) => value - 1)
+                    }}
+                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
+                  >
+                    Prev
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (active >= lastIndex) {
+                        setExpanded(false)
+                        requestDeckNext()
+                        return
+                      }
+                      setActive((value) => value + 1)
+                    }}
+                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
+                  >
+                    Next
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setExpanded(false)}
+                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md hover:bg-white/10"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+
+              <motion.div
+                key={current.title}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="max-w-4xl"
+              >
+                {current.theme ? (
+                  <p className="text-[11px] font-semibold tracking-[0.16em] text-accent uppercase">
+                    {current.theme}
+                  </p>
+                ) : null}
+                <h2 className="font-display mt-2 text-5xl font-bold tracking-tight text-white lg:text-7xl">
+                  {current.title}
+                </h2>
+                {current.detail ? (
+                  <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75 lg:text-lg">
+                    {current.detail}
+                  </p>
+                ) : null}
+              </motion.div>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   )
 }

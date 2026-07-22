@@ -128,11 +128,11 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'Here is how the hunt breaks into five moves.',
   },
   'how-subdivisions': {
-    opening: 'This is the operating system behind How.',
+    opening: 'This is the operating system behind How — open each move.',
     coreMessage:
-      'ICP defines the target. Talent Map names the field. Sourcing opens conversations. Potential versus experience protects slope. Structured process turns judgment into repeatable decisions.',
+      'ICP is rarity. Talent Map is an active pipeline. Sourcing runs multiple channels. Potential versus experience looks beyond pedigree. Structured process is Swiss-watch precision.',
     supportingExample:
-      'Skip one and the system leaks — a sharp ICP with no map is theory; a map with no process is noise.',
+      'Click through live: rarity, pipeline, channels, look beyond, precision — five images, one hiring system.',
     executiveImplication:
       'Recruitment quality is a system design problem, not a calendar of interviews.',
     likelyQuestion: 'Which of the five do you start with in a new market?',

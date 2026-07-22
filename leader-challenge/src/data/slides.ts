@@ -294,14 +294,39 @@ export const slides: Slide[] = [
     headline: 'Five moves that turn the hunt into a system.',
     takeaway:
       'ICP, talent map, sourcing, potential versus experience, and a structured process — in that order.',
-    recommendedMinutes: 1,
+    recommendedMinutes: 2,
     content: {
       items: [
-        { title: 'ICP' },
-        { title: 'Talent Map' },
-        { title: 'Sourcing' },
-        { title: 'Potential vs experience' },
-        { title: 'Structured process' },
+        {
+          title: 'ICP',
+          theme: 'Rarity',
+          detail: 'Define the rare profile worth hunting — not a broad market average.',
+          image: '/images/how-icp-rarity.jpg',
+        },
+        {
+          title: 'Talent Map',
+          theme: 'Active pipeline',
+          detail: 'Keep a living map of named talent already in motion.',
+          image: '/images/how-talent-map-pipeline.jpg',
+        },
+        {
+          title: 'Sourcing',
+          theme: 'Multiple channels',
+          detail: 'Open conversations across network, inbound, partners and direct outreach.',
+          image: '/images/how-sourcing-channels.jpg',
+        },
+        {
+          title: 'Potential vs experience',
+          theme: 'Look beyond',
+          detail: 'Hire slope and capacity to grow — not pedigree alone.',
+          image: '/images/how-potential-look-beyond.jpg',
+        },
+        {
+          title: 'Structured process',
+          theme: 'Swiss watch precision',
+          detail: 'Repeatable evaluation with the same precision every time.',
+          image: '/images/how-structured-precision.jpg',
+        },
       ],
     },
   },
