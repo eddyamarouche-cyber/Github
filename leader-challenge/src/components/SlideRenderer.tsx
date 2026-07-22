@@ -1,6 +1,11 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ExternalLink, HeartHandshake, TrendingUp, Users } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import {
+  registerSlideInnerNav,
+  requestDeckNext,
+  requestDeckPrev,
+} from '../hooks/slideInnerNav'
 import { profile } from '../data/profile'
 import { sections } from '../data/slides'
 import type {
@@ -761,29 +766,58 @@ function ProfileScreen({
   const [autoPlay, setAutoPlay] = useState(true)
   const current = content.criteria[active]
   const immersive = content.criteria.some((item) => Boolean(item.image))
+  const lastIndex = content.criteria.length - 1
 
   useEffect(() => {
     if (!autoPlay || expanded) return
     const timer = window.setInterval(() => {
-      setActive((value) => (value + 1) % content.criteria.length)
+      setActive((value) => {
+        // Stop on the last topic (Smart) — next navigation advances the deck.
+        if (value >= lastIndex) return value
+        return value + 1
+      })
     }, 4200)
     return () => window.clearInterval(timer)
-  }, [autoPlay, expanded, content.criteria.length])
+  }, [autoPlay, expanded, lastIndex])
+
+  useEffect(() => {
+    // Only intercept deck navigation while a topic is enlarged.
+    // On the grid overview, Next still advances to the next slide.
+    if (!immersive || !expanded) return
+    return registerSlideInnerNav({
+      next: () => {
+        if (active >= lastIndex) {
+          setExpanded(false)
+          return false
+        }
+        setAutoPlay(false)
+        setActive((value) => value + 1)
+        return true
+      },
+      prev: () => {
+        if (active <= 0) {
+          setExpanded(false)
+          return false
+        }
+        setAutoPlay(false)
+        setActive((value) => value - 1)
+        return true
+      },
+    })
+  }, [immersive, expanded, active, lastIndex])
 
   useEffect(() => {
     if (!expanded) return
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setExpanded(false)
-      if (event.key === 'ArrowRight') {
-        setActive((value) => (value + 1) % content.criteria.length)
-      }
-      if (event.key === 'ArrowLeft') {
-        setActive((value) => (value - 1 + content.criteria.length) % content.criteria.length)
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        setExpanded(false)
       }
     }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [expanded, content.criteria.length])
+    window.addEventListener('keydown', onKey, true)
+    return () => window.removeEventListener('keydown', onKey, true)
+  }, [expanded])
 
   if (!immersive) {
     return (
@@ -941,16 +975,28 @@ function ProfileScreen({
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
-                    onClick={() =>
-                      setActive((value) => (value - 1 + content.criteria.length) % content.criteria.length)
-                    }
+                    onClick={() => {
+                      if (active <= 0) {
+                        setExpanded(false)
+                        requestDeckPrev()
+                        return
+                      }
+                      setActive((value) => value - 1)
+                    }}
                     className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
                   >
                     Prev
                   </button>
                   <button
                     type="button"
-                    onClick={() => setActive((value) => (value + 1) % content.criteria.length)}
+                    onClick={() => {
+                      if (active >= lastIndex) {
+                        setExpanded(false)
+                        requestDeckNext()
+                        return
+                      }
+                      setActive((value) => value + 1)
+                    }}
                     className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
                   >
                     Next

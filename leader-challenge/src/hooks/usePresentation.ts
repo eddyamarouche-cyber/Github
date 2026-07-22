@@ -2,6 +2,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { getCumulativeMinutes, slides } from '../data/slides'
 import { presenterNotes } from '../data/presenterNotes'
 import { slideHasPlaceholders } from '../utils/placeholders'
+import {
+  bindDeckAdvance,
+  consumeSlideInnerNext,
+  consumeSlideInnerPrev,
+} from './slideInnerNav'
 
 export function usePresentation() {
   const [index, setIndex] = useState(0)
@@ -33,8 +38,20 @@ export function usePresentation() {
     setShowMenu(false)
   }, [])
 
-  const next = useCallback(() => goTo(indexRef.current + 1, 'next'), [goTo])
-  const prev = useCallback(() => goTo(indexRef.current - 1, 'prev'), [goTo])
+  const advanceNext = useCallback(() => goTo(indexRef.current + 1, 'next'), [goTo])
+  const advancePrev = useCallback(() => goTo(indexRef.current - 1, 'prev'), [goTo])
+
+  const next = useCallback(() => {
+    if (consumeSlideInnerNext()) return
+    advanceNext()
+  }, [advanceNext])
+
+  const prev = useCallback(() => {
+    if (consumeSlideInnerPrev()) return
+    advancePrev()
+  }, [advancePrev])
+
+  useEffect(() => bindDeckAdvance({ next: advanceNext, prev: advancePrev }), [advanceNext, advancePrev])
 
   const toggleFullscreen = useCallback(async () => {
     if (!document.fullscreenElement) {
