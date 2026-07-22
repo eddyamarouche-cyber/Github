@@ -637,13 +637,15 @@ function TopicsSummaryScreen({
                       transition={{ duration: 0.28 }}
                       className="mt-4 flex min-h-0 flex-1 flex-col"
                     >
-                      <p className="text-sm leading-relaxed text-white/55 lg:text-[15px]">
-                        {topic.description}
-                      </p>
+                      {topic.description ? (
+                        <p className="text-sm leading-relaxed text-white/55 lg:text-[15px]">
+                          {topic.description}
+                        </p>
+                      ) : null}
                       <div
                         className={`mt-5 grid min-h-0 flex-1 content-center gap-2.5 ${
                           topic.focuses.length === 4 ? 'grid-cols-2' : 'grid-cols-1'
-                        }`}
+                        } ${topic.description ? '' : 'mt-2'}`}
                       >
                         {topic.focuses.map((focus, focusIndex) => (
                           <motion.div
