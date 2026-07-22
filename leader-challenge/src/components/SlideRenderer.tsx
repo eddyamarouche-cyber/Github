@@ -1488,7 +1488,11 @@ function VisualHeroScreen({
               <motion.h2
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="font-display max-w-5xl text-5xl leading-tight font-bold text-white lg:text-7xl"
+                className={`font-display max-w-5xl font-bold tracking-tight text-white ${
+                  content.titleSize === 'display'
+                    ? 'text-7xl leading-[0.9] sm:text-8xl lg:text-[9.5rem]'
+                    : 'text-5xl leading-tight lg:text-7xl'
+                }`}
               >
                 {content.title}
               </motion.h2>

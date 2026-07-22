@@ -84,6 +84,8 @@ export interface VisualHeroContent {
   title?: string
   subtitle?: string
   points?: string[]
+  /** Oversized display title for short hero words like "How?" */
+  titleSize?: 'default' | 'display'
 }
 
 export interface ThesisContent {

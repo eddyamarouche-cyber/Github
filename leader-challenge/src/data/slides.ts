@@ -275,14 +275,14 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'How?',
     takeaway:
-      'Hiring is proactive — map, engage and warm the market before a seat opens.',
+      'Hiring is a hunt — proactive, targeted and already in motion before the seat opens.',
     recommendedMinutes: 0.5,
     content: {
-      image: '/images/how-proactivity.jpg',
-      eyebrow: 'How?',
-      title: 'Proactivity',
+      image: '/images/how-hunting.jpg',
+      title: 'How?',
+      titleSize: 'display',
       subtitle:
-        'Do not wait for the requisition. Build the talent map, open conversations and arrive ready when the seat opens.',
+        'Hunt before you need. Map the market, open conversations and arrive ready when the seat opens.',
     },
   },
   {
