@@ -114,7 +114,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'A Regional Director should walk in with a live talent map, not a blank hiring request.',
     likelyQuestion: 'Who would you activate first and why?',
-    transition: 'That map becomes a scorecard before outreach.',
+    transition: 'The map only works if we work it before the seat opens.',
+  },
+  'how-proactivity': {
+    opening: 'How do we recruit at this standard? Proactivity.',
+    coreMessage:
+      'Do not wait for the requisition. Map talent, open conversations and warm the market while the seat is still closed.',
+    supportingExample:
+      'When a role opens, the region should already be in dialogue with two or three qualified names — not starting from LinkedIn cold.',
+    executiveImplication:
+      'Time-to-hire collapses when sourcing is continuous. Reactive hiring is already late.',
+    likelyQuestion: 'How early do you start conversations relative to headcount approval?',
+    transition: 'That discipline needs a scorecard before outreach.',
   },
   'candidate-scorecard': {
     opening: 'This is the scoring model I would use before advancing any candidate.',
