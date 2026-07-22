@@ -31,7 +31,6 @@ export const slides: Slide[] = [
       subtitle: 'Leader Challenge — Regional Director, Southern Europe',
     },
   },
-
   {
     id: 'win-the-stage',
     number: 2,
@@ -49,7 +48,6 @@ export const slides: Slide[] = [
         'With every client — earn the room, own the narrative and make Cursor the obvious choice.',
     },
   },
-
   {
     id: 'spanish-team-trophies',
     number: 3,
@@ -64,7 +62,6 @@ export const slides: Slide[] = [
       title: 'One team',
     },
   },
-
   {
     id: 'leadership-standard',
     number: 4,
@@ -83,7 +80,6 @@ export const slides: Slide[] = [
       points: ['Persistency', 'Heart', 'Desire'],
     },
   },
-
   {
     id: 'wild-geese',
     number: 5,
@@ -139,73 +135,8 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'operating-system',
-    number: 7,
-    section: 'intro',
-    type: 'pillars',
-    title: 'My Leadership Operating System',
-    takeaway: 'Four pillars govern how I hire, coach, inspect and align with leadership.',
-    recommendedMinutes: 1.5,
-    content: {
-      pillars: [
-        {
-          title: 'Talent Density',
-          description: 'Raise the bar continuously so the region compounds through people quality.',
-        },
-        {
-          title: 'Coaching Cadence',
-          description: 'Create performance through structured diagnosis, practice and reinforcement.',
-        },
-        {
-          title: 'Pipeline Discipline',
-          description: 'Treat pipeline creation and opportunity quality as a weekly operating habit.',
-        },
-        {
-          title: 'Executive Alignment',
-          description: 'Convert global priorities into local execution with transparent escalation.',
-        },
-      ],
-    },
-  },
-  {
-    id: 'success-at-cursor',
-    number: 8,
-    section: 'intro',
-    type: 'pillars',
-    title: 'What Success Would Look Like at Cursor',
-    headline:
-      'Success is a high-talent Italy–Iberia engine with predictable growth and clear partnership with leadership.',
-    takeaway:
-      'Align on the outcomes that matter before we inspect how I hire, coach and run revenue.',
-    recommendedMinutes: 1.5,
-    content: {
-      pillars: [
-        {
-          title: 'Talent density',
-          description:
-            'A-player coverage in priority markets, with an always-on talent map. [VALIDATE WITH CURSOR]',
-        },
-        {
-          title: 'Coaching culture',
-          description:
-            'Managers run real 1:1s, deal coaching and development rhythm — not status updates. [ADD MY EXAMPLE]',
-        },
-        {
-          title: 'Predictable revenue',
-          description:
-            'Weekly pipeline creation, opportunity quality and forecast integrity. [ADD MY RESULT]',
-        },
-        {
-          title: 'One-team execution',
-          description:
-            'Local ownership with fast escalation, shared priorities and executive access used well. [VALIDATE WITH CURSOR]',
-        },
-      ],
-    },
-  },
-  {
     id: 'session-summary',
-    number: 9,
+    number: 7,
     section: 'intro',
     type: 'topics-summary',
     title: 'Session Summary',
@@ -238,6 +169,71 @@ export const slides: Slide[] = [
             'Install weekly pipeline creation, opportunity quality and forecast integrity.',
           focuses: ['Pipeline discipline', 'Deal inspection', 'Forecast accuracy'],
           minutes: 20,
+        },
+      ],
+    },
+  },
+  {
+    id: 'operating-system',
+    number: 8,
+    section: 'intro',
+    type: 'pillars',
+    title: 'My Leadership Operating System',
+    takeaway: 'Four pillars govern how I hire, coach, inspect and align with leadership.',
+    recommendedMinutes: 1.5,
+    content: {
+      pillars: [
+        {
+          title: 'Talent Density',
+          description: 'Raise the bar continuously so the region compounds through people quality.',
+        },
+        {
+          title: 'Coaching Cadence',
+          description: 'Create performance through structured diagnosis, practice and reinforcement.',
+        },
+        {
+          title: 'Pipeline Discipline',
+          description: 'Treat pipeline creation and opportunity quality as a weekly operating habit.',
+        },
+        {
+          title: 'Executive Alignment',
+          description: 'Convert global priorities into local execution with transparent escalation.',
+        },
+      ],
+    },
+  },
+  {
+    id: 'success-at-cursor',
+    number: 9,
+    section: 'intro',
+    type: 'pillars',
+    title: 'What Success Would Look Like at Cursor',
+    headline:
+      'Success is a high-talent Italy–Iberia engine with predictable growth and clear partnership with leadership.',
+    takeaway:
+      'Align on the outcomes that matter before we inspect how I hire, coach and run revenue.',
+    recommendedMinutes: 1.5,
+    content: {
+      pillars: [
+        {
+          title: 'Talent density',
+          description:
+            'A-player coverage in priority markets, with an always-on talent map. [VALIDATE WITH CURSOR]',
+        },
+        {
+          title: 'Coaching culture',
+          description:
+            'Managers run real 1:1s, deal coaching and development rhythm — not status updates. [ADD MY EXAMPLE]',
+        },
+        {
+          title: 'Predictable revenue',
+          description:
+            'Weekly pipeline creation, opportunity quality and forecast integrity. [ADD MY RESULT]',
+        },
+        {
+          title: 'One-team execution',
+          description:
+            'Local ownership with fast escalation, shared priorities and executive access used well. [VALIDATE WITH CURSOR]',
         },
       ],
     },

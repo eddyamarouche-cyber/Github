@@ -70,6 +70,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'If this frame feels right, the rest of the session is simply how I apply it at Cursor.',
     likelyQuestion: 'Which of these four roles do you lean on first in a new region?',
+    transition: 'Here is how the working session is structured.',
+  },
+  'session-summary': {
+    opening: 'I will run the rest of the session through three engines.',
+    coreMessage:
+      'Recruitment raises the bar. Retention grows the team. Revenue runs the business.',
+    supportingExample:
+      'If any one of these is weak, the region becomes noisy. If all three are strong, growth compounds.',
+    executiveImplication:
+      'Every method that follows should map back to one of these three outcomes.',
+    likelyQuestion: 'Where do you want the deepest inspection first?',
     transition: 'That frame becomes a simple operating system.',
   },
   'operating-system': {
@@ -92,17 +103,6 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Every section that follows should ladder back to these outcomes.',
     likelyQuestion: 'Which of these outcomes matters most in the first two quarters?',
-    transition: 'Here is how the working session is structured.',
-  },
-  'session-summary': {
-    opening: 'I will run the rest of the session through three engines.',
-    coreMessage:
-      'Recruitment raises the bar. Retention grows the team. Revenue runs the business.',
-    supportingExample:
-      'If any one of these is weak, the region becomes noisy. If all three are strong, growth compounds.',
-    executiveImplication:
-      'Every method that follows should map back to one of these three outcomes.',
-    likelyQuestion: 'Where do you want the deepest inspection first?',
     transition: 'Recruitment starts with a simple image.',
   },
   'recruitment-opener': {
