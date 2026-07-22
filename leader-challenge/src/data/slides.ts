@@ -149,8 +149,7 @@ export const slides: Slide[] = [
         {
           title: 'Recruitment',
           subtitle: 'Raise the bar',
-          description:
-            'Build an always-on talent map and hire A-players who can sell an emerging category.',
+          description: '',
           focuses: ['A Player', 'First 5', 'How?', 'Role play'],
           minutes: 25,
         },
