@@ -637,36 +637,59 @@ function TopicsSummaryScreen({
                       transition={{ duration: 0.28 }}
                       className="mt-4 flex min-h-0 flex-1 flex-col"
                     >
-                      <p className="text-sm leading-relaxed text-white/70 lg:text-base">
+                      <p className="text-sm leading-relaxed text-white/55 lg:text-[15px]">
                         {topic.description}
                       </p>
-                      <div className="mt-5 space-y-2.5">
+                      <div
+                        className={`mt-5 grid min-h-0 flex-1 content-center gap-2.5 ${
+                          topic.focuses.length === 4 ? 'grid-cols-2' : 'grid-cols-1'
+                        }`}
+                      >
                         {topic.focuses.map((focus, focusIndex) => (
                           <motion.div
                             key={focus}
-                            initial={{ opacity: 0, x: -8 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.08 + focusIndex * 0.05 }}
-                            className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/25 px-3.5 py-3"
+                            initial={{ opacity: 0, y: 14, scale: 0.96 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{
+                              delay: 0.08 + focusIndex * 0.06,
+                              duration: 0.35,
+                              ease: [0.22, 1, 0.36, 1],
+                            }}
+                            className="relative flex min-h-[88px] flex-col items-center justify-center overflow-hidden rounded-[22px] border border-white/12 bg-gradient-to-b from-white/[0.1] to-black/35 px-3 py-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] lg:min-h-[104px]"
                           >
-                            <span className="font-display text-xs font-bold text-accent">
+                            <span className="absolute top-2.5 left-3 font-display text-[10px] font-bold tracking-[0.14em] text-accent/90">
                               {String(focusIndex + 1).padStart(2, '0')}
                             </span>
-                            <span className="text-sm font-medium text-white">{focus}</span>
+                            <span className="font-display text-[1.35rem] leading-none font-bold tracking-tight text-white sm:text-2xl lg:text-[1.75rem] xl:text-3xl">
+                              {focus}
+                            </span>
                           </motion.div>
                         ))}
                       </div>
                     </motion.div>
                   ) : (
-                    <motion.p
+                    <motion.div
                       key={`${topic.title}-teaser`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="mt-4 line-clamp-3 text-sm leading-relaxed text-white/45"
+                      className="mt-5 flex min-h-0 flex-1 flex-col justify-end"
                     >
-                      {topic.description}
-                    </motion.p>
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                        {topic.focuses.map((focus, focusIndex) => (
+                          <span key={focus} className="inline-flex items-center gap-2">
+                            {focusIndex > 0 ? (
+                              <span className="text-accent/70" aria-hidden>
+                                ·
+                              </span>
+                            ) : null}
+                            <span className="font-display text-sm font-semibold tracking-tight text-white/55 lg:text-base">
+                              {focus}
+                            </span>
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
                   )}
                 </AnimatePresence>
               </div>
