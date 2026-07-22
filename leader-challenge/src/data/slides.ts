@@ -252,6 +252,24 @@ export const slides: Slide[] = [
     content: {
       criteria: [
         {
+          title: 'Clock speed',
+          detail:
+            'Think and decide fast. High processing speed under ambiguity turns into better prioritization, sharper discovery and cleaner execution.',
+          image: '/images/ap-clock-speed.jpg',
+        },
+        {
+          title: 'High slope',
+          detail:
+            'Trajectory matters more than pedigree. Prefer steep learners who compound quickly over flat high performers.',
+          image: '/images/ap-slope.jpg',
+        },
+        {
+          title: 'High tech IQ',
+          detail:
+            'Comfortable in a product-led, technical category. Can learn the stack fast enough to earn credibility with builders and buyers.',
+          image: '/images/ap-tech-iq.jpg',
+        },
+        {
           title: 'Patriots versus Mercenaries',
           detail:
             'Look for people who join the mission, not the highest bidder. Ownership beats short-term extraction.',
@@ -286,24 +304,6 @@ export const slides: Slide[] = [
           detail:
             'Able to handle a technical discussion with software engineers and an outcome-based discussion with C-levels — without losing altitude either way.',
           image: '/images/ap-smart.jpg',
-        },
-        {
-          title: 'High tech IQ',
-          detail:
-            'Comfortable in a product-led, technical category. Can learn the stack fast enough to earn credibility with builders and buyers.',
-          image: '/images/ap-tech-iq.jpg',
-        },
-        {
-          title: 'High slope',
-          detail:
-            'Trajectory matters more than pedigree. Prefer steep learners who compound quickly over flat high performers.',
-          image: '/images/ap-slope.jpg',
-        },
-        {
-          title: 'Clock speed',
-          detail:
-            'Think and decide fast. High processing speed under ambiguity turns into better prioritization, sharper discovery and cleaner execution.',
-          image: '/images/ap-clock-speed.jpg',
         },
       ],
     },
