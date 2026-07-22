@@ -81,28 +81,6 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Every method that follows should map back to one of these three outcomes.',
     likelyQuestion: 'Where do you want the deepest inspection first?',
-    transition: 'That frame becomes a simple operating system.',
-  },
-  'operating-system': {
-    opening: 'Everything I do as a leader sits on four pillars.',
-    coreMessage:
-      'Talent density, coaching cadence, pipeline discipline and executive alignment.',
-    supportingExample:
-      '[ADD MY EXAMPLE] — how these pillars showed up in a weekly operating rhythm.',
-    executiveImplication:
-      'If one pillar is weak, growth becomes noisy. If all four are strong, the region compounds.',
-    likelyQuestion: 'Which pillar would you install first for Italy and Iberia?',
-    transition: 'Let me make success concrete in the Cursor context.',
-  },
-  'success-at-cursor': {
-    opening: 'I want alignment on what good looks like before we inspect the methods.',
-    coreMessage:
-      'Success is talent density, a real coaching culture, predictable revenue and one-team execution across Italy and Iberia.',
-    supportingExample:
-      '[VALIDATE WITH CURSOR] — I will adjust these outcomes to your current regional priorities.',
-    executiveImplication:
-      'Every section that follows should ladder back to these outcomes.',
-    likelyQuestion: 'Which of these outcomes matters most in the first two quarters?',
     transition: 'Recruitment starts with a simple image.',
   },
   'recruitment-opener': {
