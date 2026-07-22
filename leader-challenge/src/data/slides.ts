@@ -156,16 +156,14 @@ export const slides: Slide[] = [
         {
           title: 'Retention',
           subtitle: 'Grow the team',
-          description:
-            'Create performance through coaching cadence, clarity and accountability — not perks.',
+          description: '',
           focuses: ['Coaching rhythm', 'Performance diagnosis', 'Ownership culture'],
           minutes: 15,
         },
         {
           title: 'Revenue',
           subtitle: 'Run the business',
-          description:
-            'Install weekly pipeline creation, opportunity quality and forecast integrity.',
+          description: '',
           focuses: ['Pipeline discipline', 'Deal inspection', 'Forecast accuracy'],
           minutes: 20,
         },
