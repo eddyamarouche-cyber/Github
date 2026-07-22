@@ -26,17 +26,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Everything that follows — hiring, coaching, pipeline and partnership — exists to put us on that stage and keep us there.',
     likelyQuestion: 'What does winning the stage look like in the first 90 days?',
-    transition: 'Next — the winning culture that makes that objective sustainable.',
+    transition: 'Next — the one-team culture that makes that objective sustainable.',
   },
   'spanish-team-trophies': {
     opening: 'This is the feeling I want in Iberia.',
     coreMessage:
-      'Winning is not individual heroics. It is a team that wants the trophy together and celebrates as one.',
+      'One team — not individual heroics. Shared pressure, shared joy, one standard.',
     supportingExample:
-      'Spain’s best runs have always looked like this — shared pressure, shared joy, shared standard.',
+      'Spain’s best runs have always looked like this — together under pressure, celebrating as one.',
     executiveImplication:
-      'If we hire and coach for that culture, the operating system has something worth protecting.',
-    likelyQuestion: 'How do you build a winning culture across Spain, Portugal and Italy?',
+      'If we hire and coach for one team across Italy and Iberia, the operating system has something worth protecting.',
+    likelyQuestion: 'How do you build one team across Spain, Portugal and Italy?',
     transition: 'Now the personal standard behind that culture.',
   },
   'leadership-standard': {

@@ -55,13 +55,13 @@ export const slides: Slide[] = [
     number: 3,
     section: 'intro',
     type: 'visual-hero',
-    title: 'Winning Culture',
+    title: 'One Team',
     takeaway:
       'A high-performing Iberian team plays to win — together, under pressure, for the trophy.',
     recommendedMinutes: 0.5,
     content: {
       image: '/images/spanish-team-trophies.jpg',
-      title: 'Winning culture',
+      title: 'One team',
     },
   },
 
