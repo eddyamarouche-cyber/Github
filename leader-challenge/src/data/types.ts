@@ -162,6 +162,8 @@ export interface SubdivisionItem {
 
 export interface SubdivisionsContent {
   items: SubdivisionItem[]
+  /** Bold lines shown under the page title */
+  statements?: string[]
 }
 
 export interface FunnelContent {

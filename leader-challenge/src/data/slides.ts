@@ -307,11 +307,11 @@ export const slides: Slide[] = [
     section: 'recruitment',
     type: 'subdivisions',
     title: 'How we hire?',
-    headline: 'Five moves that turn the hunt into a system.',
     takeaway:
       'ICP, talent map, sourcing, potential versus experience, and a structured process — in that order.',
     recommendedMinutes: 2,
     content: {
+      statements: ['Being pro active', 'Best candidates are rarely applying'],
       items: [
         {
           title: 'ICP',

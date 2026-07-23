@@ -1365,7 +1365,18 @@ function SubdivisionsScreen({
           <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
             {title}
           </h1>
-          {headline ? (
+          {content.statements?.length ? (
+            <div className="mt-3 space-y-1">
+              {content.statements.map((line) => (
+                <p
+                  key={line}
+                  className="max-w-2xl text-base font-bold text-white lg:text-lg"
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
+          ) : headline ? (
             <p className="mt-2 max-w-2xl text-sm text-white/55 lg:text-base">{headline}</p>
           ) : null}
         </div>
