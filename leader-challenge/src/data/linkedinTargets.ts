@@ -94,6 +94,17 @@ export const linkedinTargets: LinkedInTarget[] = [
     signal: 'Enterprise AE; ex-Nutanix / VMware Southern Europe cloud GTM — data, AI and transformation.',
     photo: '/images/linkedin/marialice-pasquini.jpg',
   },
+  {
+    id: 'giacomo-ballerini',
+    fullName: 'Giacomo Ballerini',
+    currentRole: 'Regional Sales Manager — Large Enterprise',
+    currentCompany: 'Zscaler',
+    country: 'Italy · Milan',
+    linkedinUrl: 'https://www.linkedin.com/in/giacomo-ballerini-60135b106/',
+    signal:
+      'Large-enterprise cyber seller; Zero Trust / cloud security GTM in Italy — Global 2000 coverage.',
+    photo: '/images/linkedin/giacomo-ballerini.jpg',
+  },
 ]
 
 /**
