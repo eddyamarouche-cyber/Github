@@ -88,6 +88,8 @@ export interface VisualHeroContent {
   points?: string[]
   /** Oversized display title for short hero words like "How?" */
   titleSize?: 'default' | 'display'
+  /** Reveal point blocks one-by-one on click / Next */
+  revealPointsOnClick?: boolean
 }
 
 export interface RevealContent {

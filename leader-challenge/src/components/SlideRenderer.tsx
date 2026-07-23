@@ -1723,13 +1723,58 @@ function VisualHeroScreen({
   takeaway?: string
 }) {
   const hasPoints = Boolean(content.points?.length)
+  const revealOnClick = Boolean(content.revealPointsOnClick && hasPoints)
+  const points = content.points ?? []
+  const [visibleCount, setVisibleCount] = useState(revealOnClick ? 0 : points.length)
   const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints))
   const hasTitleBlock = Boolean(content.title && !hasPoints)
   const hasSubtitle = Boolean(content.subtitle)
   const hasCopy = hasHeader || hasPoints || hasTitleBlock || hasSubtitle
 
+  useEffect(() => {
+    setVisibleCount(revealOnClick ? 0 : points.length)
+  }, [revealOnClick, points.length, content.image, content.title])
+
+  useEffect(() => {
+    if (!revealOnClick) return
+    return registerSlideInnerNav({
+      next: () => {
+        if (visibleCount >= points.length) return false
+        setVisibleCount((value) => value + 1)
+        return true
+      },
+      prev: () => {
+        if (visibleCount <= 0) return false
+        setVisibleCount((value) => value - 1)
+        return true
+      },
+    })
+  }, [revealOnClick, visibleCount, points.length])
+
+  const revealNext = () => {
+    if (!revealOnClick) return
+    if (visibleCount < points.length) {
+      setVisibleCount((value) => value + 1)
+    }
+  }
+
   return (
-    <div className="relative h-full w-full overflow-hidden">
+    <div
+      className="relative h-full w-full overflow-hidden"
+      onClick={revealOnClick ? revealNext : undefined}
+      role={revealOnClick ? 'button' : undefined}
+      tabIndex={revealOnClick ? 0 : undefined}
+      onKeyDown={
+        revealOnClick
+          ? (event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                revealNext()
+              }
+            }
+          : undefined
+      }
+    >
       <motion.img
         src={content.image}
         alt={content.title || 'Visual'}
@@ -1764,11 +1809,20 @@ function VisualHeroScreen({
               ) : (
                 <div />
               )}
-              {content.title && hasPoints ? (
-                <p className="font-display text-lg font-semibold text-white/80 lg:text-xl">
-                  {content.title}
-                </p>
-              ) : null}
+              <div className="flex flex-wrap items-center gap-3">
+                {content.title && hasPoints ? (
+                  <p className="font-display text-lg font-semibold text-white/80 lg:text-xl">
+                    {content.title}
+                  </p>
+                ) : null}
+                {revealOnClick ? (
+                  <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[11px] text-white/55 backdrop-blur-md">
+                    {visibleCount >= points.length
+                      ? 'All revealed · Next to continue'
+                      : `Click to reveal · ${visibleCount}/${points.length}`}
+                  </div>
+                ) : null}
+              </div>
             </motion.div>
           ) : (
             <div />
@@ -1778,24 +1832,28 @@ function VisualHeroScreen({
             <div className="flex min-h-0 flex-1 flex-col justify-center py-3">
               <div
                 className={`grid w-full gap-3 md:gap-4 ${
-                  content.points!.length >= 5
+                  points.length >= 5
                     ? 'md:grid-cols-6'
-                    : content.points!.length === 4
+                    : points.length === 4
                       ? 'md:grid-cols-2 lg:grid-cols-4'
                       : 'md:grid-cols-3'
                 }`}
               >
-                {content.points!.map((point, index) => {
+                {points.map((point, index) => {
                   const long = point.length > 48
                   const medium = point.length > 24
-                  const fiveUp = content.points!.length >= 5
+                  const fiveUp = points.length >= 5
+                  const visible = index < visibleCount
                   return (
                     <motion.div
                       key={point}
-                      initial={{ opacity: 0, y: 28 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={false}
+                      animate={
+                        visible
+                          ? { opacity: 1, y: 0, scale: 1 }
+                          : { opacity: 0, y: 24, scale: 0.96 }
+                      }
                       transition={{
-                        delay: 0.2 + index * 0.08,
                         duration: 0.45,
                         ease: [0.22, 1, 0.36, 1],
                       }}
@@ -1803,9 +1861,10 @@ function VisualHeroScreen({
                         fiveUp
                           ? 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
                           : 'min-h-[180px] lg:min-h-[240px] lg:py-8'
-                      } ${
-                        fiveUp && index === 3 ? 'md:col-start-2' : ''
+                      } ${fiveUp && index === 3 ? 'md:col-start-2' : ''} ${
+                        visible ? '' : 'pointer-events-none'
                       }`}
+                      aria-hidden={!visible}
                     >
                       <p
                         className={`font-display font-bold tracking-tight text-balance text-white ${
