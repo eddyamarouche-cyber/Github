@@ -147,7 +147,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Recruitment quality is a system design problem, not a calendar of interviews.',
     likelyQuestion: 'Which of the five do you start with in a new market?',
-    transition: 'That system needs a scorecard before outreach.',
+    transition: 'Now we role-play the conversation — a huge opportunity on the table.',
+  },
+  'roleplay-opener': {
+    opening: 'This is where hiring becomes live.',
+    coreMessage:
+      'Role play the candidate conversation as a huge opportunity — for them, for Cursor and for the region — not a requisition walkthrough.',
+    supportingExample:
+      'The best A-players do not respond to job descriptions. They respond to ownership, category impact and a credible next chapter.',
+    executiveImplication:
+      'If we cannot sell the opportunity in the room, we will not win the talent in market.',
+    likelyQuestion: 'What is the one sentence that makes this opportunity feel huge?',
+    transition: 'That opportunity still needs a scorecard before outreach.',
   },
   'candidate-scorecard': {
     opening: 'This is the scoring model I would use before advancing any candidate.',
