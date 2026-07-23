@@ -449,7 +449,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
     coreMessage:
       'Attainment, coverage, forecast, hiring, retention risk, strategic deals, market risks and decisions needed.',
     supportingExample:
-      'Every red or amber item should map to an owner and a date.',
+      'Top strategic deals starts with Pierre Fabre — every red or amber item should map to an owner and a date.',
     executiveImplication:
       'This is also how I would communicate upward with Cursor leadership.',
     likelyQuestion: 'Which metric would you put at the top in the first quarter?',
