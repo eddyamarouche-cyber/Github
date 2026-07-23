@@ -33,6 +33,7 @@ import type {
   ProcessContent,
   ProfileContent,
   QuestionsContent,
+  RevealContent,
   RisksContent,
   RoleplayPrepContent,
   RhythmContent,
@@ -114,6 +115,8 @@ function renderSlide(slide: Slide) {
       return <CoverScreen content={slide.content as CoverContent} />
     case 'visual-hero':
       return <VisualHeroScreen content={slide.content as VisualHeroContent} />
+    case 'reveal':
+      return <RevealScreen content={slide.content as RevealContent} />
     case 'thesis':
       return (
         <ScreenShell
@@ -1649,6 +1652,67 @@ function ObjectionsScreen({ content }: { content: ObjectionsContent }) {
         </StaggerItem>
       ))}
     </Stagger>
+  )
+}
+
+function RevealScreen({ content }: { content: RevealContent }) {
+  const [showAnswer, setShowAnswer] = useState(false)
+  const delay = content.answerDelayMs ?? 2200
+
+  useEffect(() => {
+    setShowAnswer(false)
+    const timer = window.setTimeout(() => setShowAnswer(true), delay)
+    return () => window.clearTimeout(timer)
+  }, [delay, content.question, content.answer])
+
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <motion.img
+        src={content.image}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        initial={{ scale: 1.12, opacity: 0.55 }}
+        animate={{ scale: 1.02, opacity: 1 }}
+        transition={{ duration: 4.5, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/70" />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08),transparent_55%)]"
+        animate={{ opacity: showAnswer ? [0.35, 0.7, 0.45] : 0.25 }}
+        transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-8 py-10 text-center lg:px-16">
+        <motion.p
+          initial={{ opacity: 0, y: 28 }}
+          animate={{
+            opacity: 1,
+            y: showAnswer ? -36 : 0,
+            scale: showAnswer ? 0.92 : 1,
+          }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="font-display max-w-5xl text-2xl leading-snug font-semibold text-balance text-white/90 sm:text-3xl lg:text-4xl"
+        >
+          {content.question}
+        </motion.p>
+
+        <AnimatePresence>
+          {showAnswer ? (
+            <motion.h2
+              key={content.answer}
+              initial={{ opacity: 0, scale: 0.72, y: 40, filter: 'blur(10px)' }}
+              animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+              className="font-display mt-2 text-7xl leading-none font-bold tracking-tight text-white sm:text-8xl lg:text-[10rem]"
+            >
+              {content.answer}
+            </motion.h2>
+          ) : null}
+        </AnimatePresence>
+      </div>
+    </div>
   )
 }
 

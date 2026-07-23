@@ -158,7 +158,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'If we cannot make the opportunity feel huge in the room, we will not win the talent in market.',
     likelyQuestion: 'What is the one sentence that makes this opportunity feel huge?',
-    transition: 'That opportunity still needs a scorecard before outreach.',
+    transition: 'Then the ambition — what the best GTM team can build in four years.',
+  },
+  'gtm-100bn': {
+    opening: 'Hold the question. Then land the answer.',
+    coreMessage:
+      'What can we do with the best GTM team in the world in the next four years? 100Bn$.',
+    supportingExample:
+      'The opportunity story must end in a number big enough to make an A-player lean forward.',
+    executiveImplication:
+      'Ambition attracts ambition. Small targets do not recruit category winners.',
+    likelyQuestion: 'How do you keep 100Bn$ credible without sounding like hype?',
+    transition: 'That ambition still needs a scorecard before outreach.',
   },
   'candidate-scorecard': {
     opening: 'This is the scoring model I would use before advancing any candidate.',

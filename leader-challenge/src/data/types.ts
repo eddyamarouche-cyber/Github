@@ -16,6 +16,7 @@ export interface SectionMeta {
 export type SlideType =
   | 'cover'
   | 'visual-hero'
+  | 'reveal'
   | 'thesis'
   | 'agenda'
   | 'topics-summary'
@@ -87,6 +88,14 @@ export interface VisualHeroContent {
   points?: string[]
   /** Oversized display title for short hero words like "How?" */
   titleSize?: 'default' | 'display'
+}
+
+export interface RevealContent {
+  image: string
+  question: string
+  answer: string
+  /** Delay before the answer appears, in ms */
+  answerDelayMs?: number
 }
 
 export interface ThesisContent {
@@ -348,6 +357,7 @@ export interface LinkedInTargetsContent {
 export type SlideContent =
   | CoverContent
   | VisualHeroContent
+  | RevealContent
   | ThesisContent
   | AgendaContent
   | TopicsSummaryContent
