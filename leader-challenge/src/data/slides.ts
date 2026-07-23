@@ -1088,7 +1088,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
         { label: 'Forecast status', value: '[ADD]', status: 'watch' },
         { label: 'Hiring progress', value: '[ADD]', status: 'watch' },
         { label: 'Retention risk', value: '[ADD]', status: 'risk' },
-        { label: 'Top strategic deals', value: '[ADD COMPANY]', status: 'neutral' },
+        { label: 'Top strategic deals', value: 'Pierre Fabre', status: 'neutral' },
         { label: 'Market risks', value: '[ADD MARKET ASSUMPTION]', status: 'watch' },
         { label: 'Leadership decisions required', value: '[VALIDATE WITH CURSOR]', status: 'risk' },
       ],

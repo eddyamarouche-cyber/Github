@@ -10,7 +10,7 @@ export const markets: MarketCard[] = [
     country: 'France',
     marketMaturity: '[ADD MARKET ASSUMPTION]',
     prioritySegments: '[VALIDATE WITH CURSOR] — priority ICP segments',
-    strategicAccounts: '[ADD COMPANY] / [ADD COMPANY]',
+    strategicAccounts: 'Pierre Fabre / [ADD COMPANY]',
     hiringPriority: '[VALIDATE WITH CURSOR] — hiring sequence and role mix',
     partnerOpportunity: '[ADD MARKET ASSUMPTION] — partner motion to explore',
     keyRisk: '[ADD MARKET ASSUMPTION]',

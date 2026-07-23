@@ -351,7 +351,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
     coreMessage:
       'France, Spain, Italy, Portugal and additional markets each get a card with assumptions to validate.',
     supportingExample:
-      '[VALIDATE WITH CURSOR] — ICP, references and hiring sequence need your current view.',
+      'France starts with Pierre Fabre as a named strategic account — Southern Europe footprint, digital & AI acceleration, engineering density worth winning as a reference.',
     executiveImplication:
       'One regional strategy, local execution plans, explicit risks and next actions.',
     likelyQuestion: 'Which market would you prioritize in the first two quarters?',
