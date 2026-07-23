@@ -2,6 +2,7 @@ import { candidates } from './candidates'
 import { linkedinTargets, linkedinTargetsSpain } from './linkedinTargets'
 import { coachingCases } from './coachingCases'
 import { markets } from './markets'
+import { pierreFabrePortfolio } from './pierreFabre'
 import type { SectionMeta, Slide } from './types'
 
 export const TOTAL_SESSION_MINUTES = 90
@@ -852,8 +853,19 @@ I would value 20 minutes to understand what you are optimizing for in your next 
     content: { markets },
   },
   {
-    id: 'pipeline-culture',
+    id: 'pierre-fabre',
     number: 33,
+    section: 'revenue',
+    type: 'brand-portfolio',
+    title: 'Pierre Fabre',
+    takeaway:
+      'A Southern Europe reference account — dermo-cosmetics brands and medical care under one French group.',
+    recommendedMinutes: 1.5,
+    content: pierreFabrePortfolio,
+  },
+  {
+    id: 'pipeline-culture',
+    number: 34,
     section: 'revenue',
     type: 'culture',
     title: 'Pipeline Culture',
@@ -872,7 +884,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'weekly-pipeline-cadence',
-    number: 34,
+    number: 35,
     section: 'revenue',
     type: 'weekday',
     title: 'Weekly Pipeline Generation Cadence',
@@ -890,7 +902,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'pipeline-dashboard',
-    number: 35,
+    number: 36,
     section: 'revenue',
     type: 'dashboard',
     title: 'Pipeline Health Dashboard',
@@ -914,7 +926,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'opportunity-qualification',
-    number: 36,
+    number: 37,
     section: 'revenue',
     type: 'meddpicc',
     title: 'Opportunity Qualification',
@@ -983,7 +995,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'deal-inspection',
-    number: 37,
+    number: 38,
     section: 'revenue',
     type: 'questions',
     title: 'Deal Inspection',
@@ -1006,7 +1018,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'forecast-categories',
-    number: 38,
+    number: 39,
     section: 'revenue',
     type: 'definitions',
     title: 'Forecast Categories',
@@ -1035,7 +1047,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'forecast-philosophy',
-    number: 39,
+    number: 40,
     section: 'revenue',
     type: 'philosophy',
     title: 'Forecast Philosophy',
@@ -1055,7 +1067,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'effective-one-on-ones',
-    number: 40,
+    number: 41,
     section: 'revenue',
     type: 'one-on-one',
     title: 'Effective 1:1s',
@@ -1074,7 +1086,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'regional-dashboard',
-    number: 41,
+    number: 42,
     section: 'revenue',
     type: 'dashboard',
     title: 'Regional Director Dashboard',
@@ -1096,7 +1108,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'leadership-asks',
-    number: 42,
+    number: 43,
     section: 'partnership',
     type: 'asks',
     title: 'Three Things I Need from Cursor Leadership',
@@ -1129,7 +1141,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'mutual-commitment',
-    number: 43,
+    number: 44,
     section: 'partnership',
     type: 'two-column',
     title: 'Mutual Commitment',
@@ -1158,7 +1170,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'first-30-days',
-    number: 44,
+    number: 45,
     section: 'partnership',
     type: 'plan',
     title: 'First 30 Days',
@@ -1179,7 +1191,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'days-31-60',
-    number: 45,
+    number: 46,
     section: 'partnership',
     type: 'plan',
     title: 'Days 31–60',
@@ -1200,7 +1212,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'days-61-90',
-    number: 46,
+    number: 47,
     section: 'partnership',
     type: 'plan',
     title: 'Days 61–90',
@@ -1220,7 +1232,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'key-risks',
-    number: 47,
+    number: 48,
     section: 'partnership',
     type: 'risks',
     title: 'Key Risks and Mitigations',
@@ -1249,7 +1261,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'closing',
-    number: 48,
+    number: 49,
     section: 'close',
     type: 'closing',
     title: 'Closing',
@@ -1267,7 +1279,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'discussion-feedback',
-    number: 49,
+    number: 50,
     section: 'close',
     type: 'feedback',
     title: 'Discussion and Feedback',

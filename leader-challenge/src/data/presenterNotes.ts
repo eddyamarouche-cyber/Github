@@ -355,6 +355,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'One regional strategy, local execution plans, explicit risks and next actions.',
     likelyQuestion: 'Which market would you prioritize in the first two quarters?',
+    transition: 'Here is who Pierre Fabre is — and what they sell.',
+  },
+  'pierre-fabre': {
+    opening: 'Pierre Fabre is the France strategic account I would open with.',
+    coreMessage:
+      'A French healthcare group — second worldwide in dermo-cosmetics, with oncology and medical dermatology alongside pharmacy brands.',
+    supportingExample:
+      'Avène, Ducray, Klorane, René Furterer, A-Derma, Même, Elgydium, Dexeryl — plus medical care in oncology and dermatology.',
+    executiveImplication:
+      'Large engineering and digital footprint across Southern Europe — a reference logo that opens doors in healthcare and consumer health.',
+    likelyQuestion: 'Why start with Pierre Fabre rather than a pure digital native?',
     transition: 'Strategy only works if the culture creates pipeline every week.',
   },
   'pipeline-culture': {

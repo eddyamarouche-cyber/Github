@@ -46,6 +46,7 @@ import type {
   TwoColumnContent,
   VisualHeroContent,
   WeekdayContent,
+  BrandPortfolioContent,
   Candidate,
   CoachingCase,
   MarketCard,
@@ -314,6 +315,13 @@ function renderSlide(slide: Slide) {
         <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
           <MarketsScreen content={slide.content as MarketsSlideContent} />
         </ScreenShell>
+      )
+    case 'brand-portfolio':
+      return (
+        <BrandPortfolioScreen
+          content={slide.content as BrandPortfolioContent}
+          takeaway={slide.takeaway}
+        />
       )
     case 'culture':
       return (
@@ -2273,6 +2281,90 @@ function MarketsScreen({ content }: { content: MarketsSlideContent }) {
         )
       })}
     </Stagger>
+  )
+}
+
+function BrandPortfolioScreen({
+  content,
+  takeaway,
+}: {
+  content: BrandPortfolioContent
+  takeaway: string
+}) {
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(900px 520px at 50% -5%, rgba(46, 110, 184, 0.35), transparent 55%), radial-gradient(700px 420px at 90% 100%, rgba(0, 61, 124, 0.45), transparent 50%), linear-gradient(180deg, #07101c 0%, #0a1524 45%, #061018 100%)',
+        }}
+      />
+      <motion.img
+        src={content.productsImage}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.18] blur-[2px]"
+        initial={{ scale: 1.06, opacity: 0 }}
+        animate={{ scale: 1, opacity: 0.18 }}
+        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#061018]/70 via-transparent to-[#061018]/90" />
+
+      <div className="relative flex h-full flex-col px-8 py-6 lg:px-12 lg:py-7">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-center text-center"
+        >
+          <img
+            src={content.logo}
+            alt={content.logoAlt}
+            className="h-[4.25rem] w-auto max-w-[min(92vw,420px)] drop-shadow-[0_12px_40px_rgba(0,0,0,0.45)] lg:h-24"
+          />
+          <p className="mt-3 max-w-3xl text-sm text-white/60 lg:text-base">{content.tagline}</p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 flex min-h-0 flex-1 items-center justify-center"
+        >
+          <img
+            src={content.productsImage}
+            alt={content.productsImageAlt}
+            className="max-h-full w-full max-w-5xl object-contain"
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.28, duration: 0.45 }}
+          className="mt-3"
+        >
+          <div className="flex flex-wrap items-baseline justify-center gap-x-5 gap-y-2 border-t border-white/10 pt-3">
+            {content.products.map((product, index) => (
+              <motion.div
+                key={product.name}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.32 + index * 0.04 }}
+                className="text-center"
+              >
+                <p className="font-display text-sm font-semibold tracking-tight text-white lg:text-[15px]">
+                  {product.name}
+                </p>
+                <p className="text-[10px] tracking-wide text-white/40 uppercase">{product.category}</p>
+              </motion.div>
+            ))}
+          </div>
+          <p className="mt-3 text-center text-xs text-white/45 lg:text-sm">{takeaway}</p>
+        </motion.div>
+      </div>
+    </div>
   )
 }
 

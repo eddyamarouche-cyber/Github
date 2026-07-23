@@ -40,6 +40,7 @@ export type SlideType =
   | 'metrics'
   | 'rhythm'
   | 'markets'
+  | 'brand-portfolio'
   | 'culture'
   | 'weekday'
   | 'dashboard'
@@ -356,6 +357,23 @@ export interface LinkedInTargetsContent {
   regionLabel?: string
 }
 
+export interface BrandPortfolioProduct {
+  name: string
+  category: string
+  focus: string
+}
+
+export interface BrandPortfolioContent {
+  logo: string
+  logoAlt: string
+  /** Optional circular brand mark shown above the wordmark */
+  icon?: string
+  productsImage: string
+  productsImageAlt: string
+  tagline: string
+  products: BrandPortfolioProduct[]
+}
+
 export type SlideContent =
   | CoverContent
   | VisualHeroContent
@@ -383,6 +401,7 @@ export type SlideContent =
   | MetricsContent
   | RhythmContent
   | { markets: MarketCard[] }
+  | BrandPortfolioContent
   | CultureContent
   | WeekdayContent
   | DashboardContent
