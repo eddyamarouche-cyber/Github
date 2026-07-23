@@ -95,3 +95,54 @@ export const linkedinTargets: LinkedInTarget[] = [
     photo: '/images/linkedin/marialice-pasquini.jpg',
   },
 ]
+
+/**
+ * Public LinkedIn targets for the Spain / Iberia talent map.
+ * Roles/companies taken from public LinkedIn profile pages — validate before interview.
+ */
+export const linkedinTargetsSpain: LinkedInTarget[] = [
+  {
+    id: 'raphael-sublet',
+    fullName: 'Raphaël Sublet',
+    currentRole: 'GTM & Country Lead Iberia',
+    currentCompany: 'CloudBees',
+    country: 'Spain · Madrid',
+    linkedinUrl: 'https://www.linkedin.com/in/raphaelsublet/?skipRedirect=true',
+    signal:
+      'Country lead for Iberia; ex-Grafana / Kong / Sprinklr enterprise AE with Spain–Italy coverage.',
+    photo: '/images/linkedin/raphael-sublet.jpg',
+  },
+  {
+    id: 'jorge-munoz',
+    fullName: 'Jorge Muñoz',
+    currentRole: 'Named Account Executive',
+    currentCompany: 'Databricks',
+    country: 'Spain · Madrid',
+    linkedinUrl: 'https://www.linkedin.com/in/jorge-munoz-akamai/?skipRedirect=true',
+    signal:
+      'Named AE at Databricks; ex-Akamai SDR of the year → ServiceNow enterprise path into data & AI.',
+    photo: '/images/linkedin/jorge-munoz.jpg',
+  },
+  {
+    id: 'anna-acuna',
+    fullName: 'Anna Acuña',
+    currentRole: 'Account Executive — Strategic Accounts Telefónica',
+    currentCompany: 'MongoDB',
+    country: 'Spain · Barcelona',
+    linkedinUrl: 'https://www.linkedin.com/in/anna-acuna/',
+    signal:
+      'Strategic AE on Telefónica; ex-HPE Ericsson account path — enterprise tech selling in Spain.',
+    photo: '/images/linkedin/anna-acuna.jpg',
+  },
+  {
+    id: 'francesca-cartia',
+    fullName: 'Francesca Cartia',
+    currentRole: 'Account Executive — Strategic Accounts',
+    currentCompany: 'MongoDB',
+    country: 'Spain · Barcelona',
+    linkedinUrl: 'https://www.linkedin.com/in/francescacartia/',
+    signal:
+      'Strategic AE (FSI); MongoDB EAD → AE path; ex-dentsu account manager with builder background.',
+    photo: '/images/linkedin/francesca-cartia.jpg',
+  },
+]

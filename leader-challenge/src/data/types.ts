@@ -340,6 +340,7 @@ export interface LinkedInTargetsContent {
     signal: string
     photo?: string
   }[]
+  regionLabel?: string
 }
 
 export type SlideContent =

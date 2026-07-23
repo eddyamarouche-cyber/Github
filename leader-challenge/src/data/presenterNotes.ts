@@ -106,14 +106,25 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'Here is the first live LinkedIn talent map for Italy.',
   },
   'linkedin-talent-map': {
-    opening: 'These are named profiles, not placeholders.',
+    opening: 'These are named Italy profiles, not placeholders.',
     coreMessage:
-      'Seven LinkedIn targets mapped against the A-player filter — open each profile and inspect for patriots, slope and technical altitude.',
+      'Italy LinkedIn targets mapped against the A-player filter — open each profile and inspect for patriots, slope and technical altitude.',
     supportingExample:
       'Databricks, MongoDB, Adobe and analytics backgrounds give us a dense Italy shortlist to pressure-test.',
     executiveImplication:
       'A Regional Director should walk in with a live talent map, not a blank hiring request.',
     likelyQuestion: 'Who would you activate first and why?',
+    transition: 'Same discipline for Spain — here is the Iberia map.',
+  },
+  'linkedin-talent-map-spain': {
+    opening: 'Spain needs the same named map — not a second-hand Italy list.',
+    coreMessage:
+      'Four Iberia profiles: CloudBees country lead, Databricks named AE, and two MongoDB strategic AEs in Barcelona.',
+    supportingExample:
+      'Raphaël Sublet, Jorge Muñoz, Anna Acuña and Francesca Cartia — open each live and pressure-test against the A-player filter.',
+    executiveImplication:
+      'Italy and Spain are one region in strategy, two markets in talent density — both need an always-on map.',
+    likelyQuestion: 'Who is the first Spain conversation you would open?',
     transition: 'The map only works if we work it before the seat opens.',
   },
   'how-proactivity': {

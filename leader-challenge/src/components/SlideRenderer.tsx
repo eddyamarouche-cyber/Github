@@ -75,6 +75,7 @@ type LinkedInTargetsContent = {
     signal: string
     photo?: string
   }[]
+  regionLabel?: string
 }
 type CaseStudyContent = { caseStudy: CoachingCase }
 type MarketsSlideContent = { markets: MarketCard[] }
@@ -1134,7 +1135,7 @@ function LinkedInTargetsScreen({
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#0A66C2]" />
             <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
-              Italy talent map
+              {content.regionLabel ?? 'LinkedIn talent map'}
             </span>
           </div>
           {title ? (
