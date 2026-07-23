@@ -1375,11 +1375,11 @@ function SubdivisionsScreen({
       </div>
 
       {content.statements?.length ? (
-        <div className="relative z-10 my-auto flex shrink-0 flex-col items-center justify-center gap-2 py-4 text-center lg:gap-3 lg:py-6">
+        <div className="relative z-10 my-auto grid shrink-0 grid-cols-1 items-center gap-4 py-4 text-center sm:grid-cols-2 sm:gap-8 lg:gap-12 lg:py-6">
           {content.statements.map((line) => (
             <p
               key={line}
-              className="font-display max-w-5xl text-3xl leading-tight font-bold tracking-tight text-balance text-white sm:text-4xl lg:text-6xl"
+              className="font-display text-2xl leading-tight font-bold tracking-tight text-balance text-white sm:text-3xl lg:text-5xl"
             >
               {line}
             </p>
