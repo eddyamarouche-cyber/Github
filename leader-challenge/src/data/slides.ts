@@ -210,6 +210,12 @@ export const slides: Slide[] = [
           image: '/images/ap-slope.jpg',
         },
         {
+          title: 'Resilient',
+          detail:
+            'Ask how they responded when they got hit hard — lost a deal, missed a quarter, got rejected. Resilience is the filter.',
+          image: '/images/ap-punched.jpg',
+        },
+        {
           title: 'High tech IQ',
           detail:
             'Comfortable in a product-led, technical category. Can learn the stack fast enough to earn credibility with builders and buyers.',
@@ -228,7 +234,7 @@ export const slides: Slide[] = [
           image: '/images/ap-no-senators.jpg',
         },
         {
-          title: 'Small organization backgrounds',
+          title: 'Ownership',
           detail:
             'Prefer candidates who have built without big-brand crutches — scarce resources, real ownership, real consequence.',
           image: '/images/ap-small-org.jpg',
@@ -238,12 +244,6 @@ export const slides: Slide[] = [
           detail:
             'Emerging categories change weekly. Hire people who learn fast, reframe quickly and stay effective in ambiguity.',
           image: '/images/ap-adaptable.jpg',
-        },
-        {
-          title: 'Punched in the face',
-          detail:
-            'Ask how they responded when they got hit hard — lost a deal, missed a quarter, got rejected. Resilience is the filter.',
-          image: '/images/ap-punched.jpg',
         },
         {
           title: 'Smart',
