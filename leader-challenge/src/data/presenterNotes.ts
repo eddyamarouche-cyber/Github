@@ -110,7 +110,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
     coreMessage:
       'Italy LinkedIn targets mapped against the A-player filter — open each profile and inspect for patriots, slope and technical altitude.',
     supportingExample:
-      'Databricks, MongoDB, Adobe and analytics backgrounds give us a dense Italy shortlist to pressure-test.',
+      'Databricks, MongoDB, Adobe, Zscaler and analytics backgrounds give us a dense Italy shortlist to pressure-test.',
     executiveImplication:
       'A Regional Director should walk in with a live talent map, not a blank hiring request.',
     likelyQuestion: 'Who would you activate first and why?',
