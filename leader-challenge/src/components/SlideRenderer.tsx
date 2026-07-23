@@ -1365,18 +1365,7 @@ function SubdivisionsScreen({
           <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
             {title}
           </h1>
-          {content.statements?.length ? (
-            <div className="mt-3 space-y-1">
-              {content.statements.map((line) => (
-                <p
-                  key={line}
-                  className="max-w-2xl text-base font-bold text-white lg:text-lg"
-                >
-                  {line}
-                </p>
-              ))}
-            </div>
-          ) : headline ? (
+          {headline && !content.statements?.length ? (
             <p className="mt-2 max-w-2xl text-sm text-white/55 lg:text-base">{headline}</p>
           ) : null}
         </div>
@@ -1384,6 +1373,19 @@ function SubdivisionsScreen({
           Click a topic to open · {content.items.length} pages
         </div>
       </div>
+
+      {content.statements?.length ? (
+        <div className="relative z-10 my-auto flex shrink-0 flex-col items-center justify-center gap-2 py-4 text-center lg:gap-3 lg:py-6">
+          {content.statements.map((line) => (
+            <p
+              key={line}
+              className="font-display max-w-5xl text-3xl leading-tight font-bold tracking-tight text-balance text-white sm:text-4xl lg:text-6xl"
+            >
+              {line}
+            </p>
+          ))}
+        </div>
+      ) : null}
 
       <div className="relative z-10 mt-5 grid min-h-0 flex-1 content-center gap-2 sm:gap-2.5">
         {content.items.map((item, index) => (
