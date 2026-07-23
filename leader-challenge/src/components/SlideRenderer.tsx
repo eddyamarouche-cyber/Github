@@ -1713,23 +1713,35 @@ function VisualHeroScreen({
           {hasPoints ? (
             <div className="flex min-h-0 flex-1 flex-col justify-center py-4">
               <div className="grid w-full gap-4 md:grid-cols-3 md:gap-5">
-                {content.points!.map((point, index) => (
-                  <motion.div
-                    key={point}
-                    initial={{ opacity: 0, y: 28 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: 0.2 + index * 0.08,
-                      duration: 0.45,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="glass flex min-h-[180px] items-center justify-center rounded-[28px] px-4 py-8 text-center backdrop-blur-xl lg:min-h-[240px] lg:px-6"
-                  >
-                    <p className="font-display text-4xl leading-none font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
-                      {point}
-                    </p>
-                  </motion.div>
-                ))}
+                {content.points!.map((point, index) => {
+                  const long = point.length > 48
+                  const medium = point.length > 24
+                  return (
+                    <motion.div
+                      key={point}
+                      initial={{ opacity: 0, y: 28 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        delay: 0.2 + index * 0.08,
+                        duration: 0.45,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="glass flex min-h-[180px] items-center justify-center rounded-[28px] px-4 py-8 text-center backdrop-blur-xl lg:min-h-[240px] lg:px-6"
+                    >
+                      <p
+                        className={`font-display font-bold tracking-tight text-balance text-white ${
+                          long
+                            ? 'text-xl leading-snug sm:text-2xl lg:text-3xl'
+                            : medium
+                              ? 'text-2xl leading-tight sm:text-3xl lg:text-4xl'
+                              : 'text-4xl leading-none sm:text-5xl lg:text-6xl xl:text-7xl'
+                        }`}
+                      >
+                        {point}
+                      </p>
+                    </motion.div>
+                  )
+                })}
               </div>
             </div>
           ) : hasTitleBlock ? (

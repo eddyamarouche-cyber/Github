@@ -150,13 +150,13 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'Now we role-play the conversation — a huge opportunity on the table.',
   },
   'roleplay-opener': {
-    opening: 'This is where hiring becomes live.',
+    opening: 'This is where hiring becomes live — sell a huge opportunity.',
     coreMessage:
-      'Role play the candidate conversation as a huge opportunity — for them, for Cursor and for the region — not a requisition walkthrough.',
+      'Every company is racing to turn AI into engineering output. The TAM is in the hundreds of billions. The unlock is software engineers plus the power of compute — that is the story we role-play.',
     supportingExample:
-      'The best A-players do not respond to job descriptions. They respond to ownership, category impact and a credible next chapter.',
+      'The best A-players do not respond to job descriptions. They respond to ownership of that race and a credible next chapter.',
     executiveImplication:
-      'If we cannot sell the opportunity in the room, we will not win the talent in market.',
+      'If we cannot make the opportunity feel huge in the room, we will not win the talent in market.',
     likelyQuestion: 'What is the one sentence that makes this opportunity feel huge?',
     transition: 'That opportunity still needs a scorecard before outreach.',
   },

@@ -354,12 +354,16 @@ export const slides: Slide[] = [
     title: 'Role play',
     takeaway:
       'Role play the conversation where a huge opportunity meets a rare A-player — earn trust and close the next step.',
-    recommendedMinutes: 0.5,
+    recommendedMinutes: 1,
     content: {
       image: '/images/roleplay-opportunity.jpg',
+      eyebrow: 'Huge opportunity',
       title: 'Role play',
-      titleSize: 'display',
-      subtitle: 'A huge opportunity — for the candidate, for Cursor, for the region.',
+      points: [
+        'Every company is trying to turn AI into engineering output faster than their competitors',
+        "100's Bn$ TAM",
+        'Software Engineers + Power of compute',
+      ],
     },
   },
   {
