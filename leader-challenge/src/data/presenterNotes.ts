@@ -264,7 +264,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
     coreMessage:
       'Increase in qualified opportunities. PG quarter attainment. Time in stage. Coaching-to-behavior-change. Self-sourced pipeline — five control tower signals.',
     supportingExample:
-      'Click to reveal each metric. Like air traffic control, you watch leading indicators and act before problems land.',
+      'Walk through Pipe Gen QTD — Francesco Vitti at 267% pro-rata attainment. Click to reveal each control tower signal above the table.',
     executiveImplication:
       'Leaders who monitor retain. Leaders who only react lose A-players quietly.',
     likelyQuestion: 'Which of these four signals is weakest in your team today?',

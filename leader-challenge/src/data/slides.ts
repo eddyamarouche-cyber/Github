@@ -669,6 +669,34 @@ export const slides: Slide[] = [
         'Self-sourced pipeline',
       ],
       revealPointsOnClick: true,
+      table: {
+        title: 'Pipe Gen QTD',
+        columns: [
+          'Name',
+          '# U1 QTD',
+          '# U2 QTD',
+          '$ Pipe Gen QTD',
+          '# Pipe Gen QTD',
+          'Pipe Gen Target',
+          'Pro-Rata Pipe Gen Attain',
+          'QTD Pipe Gen ASP',
+        ],
+        rows: [
+          {
+            cells: [
+              'Francesco Vitti',
+              '42',
+              '33',
+              '$532.5k',
+              '28',
+              '$216.0k',
+              '267%',
+              '$19.0k',
+            ],
+            highlight: { 6: 'good' },
+          },
+        ],
+      },
     },
   },
   {

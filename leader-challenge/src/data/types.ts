@@ -105,6 +105,19 @@ export interface VisualHeroContent {
   /** Optional external link shown at the bottom of the hero */
   linkUrl?: string
   linkLabel?: string
+  /** Optional data table shown below points */
+  table?: VisualHeroTable
+}
+
+export interface VisualHeroTableRow {
+  cells: string[]
+  highlight?: Partial<Record<number, 'good' | 'watch' | 'risk'>>
+}
+
+export interface VisualHeroTable {
+  title: string
+  columns: string[]
+  rows: VisualHeroTableRow[]
 }
 
 export interface RevealContent {

@@ -44,6 +44,7 @@ import type {
   TopicsSummaryContent,
   TwoColumnContent,
   VisualHeroContent,
+  VisualHeroTable,
   WeekdayContent,
   BrandPortfolioContent,
   Candidate,
@@ -1820,6 +1821,64 @@ function RevealScreen({ content }: { content: RevealContent }) {
   )
 }
 
+function HeroDataTable({ table }: { table: VisualHeroTable }) {
+  const statusClass = {
+    good: 'font-semibold text-emerald-400',
+    watch: 'font-semibold text-amber-300',
+    risk: 'font-semibold text-rose-400',
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full overflow-hidden rounded-2xl border border-white/15 bg-black/55 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+      onClick={(event) => event.stopPropagation()}
+    >
+      <div className="border-b border-white/10 px-4 py-2.5 lg:px-5 lg:py-3">
+        <p className="font-display text-sm font-semibold text-white lg:text-base">{table.title}</p>
+      </div>
+      <div className="scrollbar-thin overflow-x-auto">
+        <table className="w-full min-w-[920px] text-left text-[11px] lg:text-sm">
+          <thead>
+            <tr className="border-b border-white/10 bg-white/[0.04]">
+              {table.columns.map((column) => (
+                <th
+                  key={column}
+                  className="px-3 py-2.5 font-semibold tracking-wide whitespace-nowrap text-white/65 uppercase lg:px-4 lg:py-3"
+                >
+                  {column}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {table.rows.map((row, rowIndex) => (
+              <tr key={rowIndex} className="border-b border-white/8 last:border-0">
+                {row.cells.map((cell, cellIndex) => (
+                  <td
+                    key={`${rowIndex}-${cellIndex}`}
+                    className={`px-3 py-2.5 whitespace-nowrap lg:px-4 lg:py-3 ${
+                      row.highlight?.[cellIndex]
+                        ? statusClass[row.highlight[cellIndex]!]
+                        : cellIndex === 0
+                          ? 'font-medium text-white'
+                          : 'text-white/85'
+                    }`}
+                  >
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </motion.div>
+  )
+}
+
 function VisualHeroScreen({
   content,
 }: {
@@ -1834,6 +1893,7 @@ function VisualHeroScreen({
   const hasChips = chips.length > 0
   const hasLogos = logos.length > 0
   const hasLink = Boolean(content.linkUrl)
+  const hasTable = Boolean(content.table)
   const centeredPoints = content.pointsLayout === 'center' && hasPoints
   const displayTitleWithPoints =
     content.titleSize === 'display' && hasPoints && Boolean(content.title)
@@ -1845,7 +1905,7 @@ function VisualHeroScreen({
   const hasBottomCopy =
     (hasSubtitle && !displayTitleWithPoints && !headerTitle) || hasChips || hasLogos
   const hasCopy =
-    hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips || hasLogos || hasLink
+    hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips || hasLogos || hasLink || hasTable
 
   useEffect(() => {
     setVisibleCount(revealOnClick ? 0 : points.length)
@@ -1992,9 +2052,9 @@ function VisualHeroScreen({
 
           {hasPoints ? (
             <div
-              className={`flex min-h-0 flex-1 flex-col py-3 ${
-                centeredPoints ? 'items-center justify-center' : 'justify-center'
-              }`}
+              className={`flex flex-col ${
+                hasTable ? 'shrink-0 py-2' : 'min-h-0 flex-1 py-3'
+              } ${centeredPoints ? 'items-center justify-center' : 'justify-center'}`}
             >
               <div
                 className={
@@ -2004,12 +2064,14 @@ function VisualHeroScreen({
                           ? 'max-w-4xl gap-3 lg:max-w-5xl lg:gap-5'
                           : 'max-w-5xl gap-5 lg:gap-8'
                       }`
-                    : `grid w-full gap-3 md:gap-4 ${
-                        points.length >= 5
-                          ? 'md:grid-cols-6'
-                          : points.length === 4
-                            ? 'md:grid-cols-2 lg:grid-cols-4'
-                            : 'md:grid-cols-3'
+                    : `grid w-full gap-2 md:gap-3 ${
+                        hasTable && points.length >= 5
+                          ? 'md:grid-cols-5'
+                          : points.length >= 5
+                            ? 'md:grid-cols-6'
+                            : points.length === 4
+                              ? 'md:grid-cols-2 lg:grid-cols-4'
+                              : 'md:grid-cols-3'
                       }`
                 }
               >
@@ -2038,9 +2100,13 @@ function VisualHeroScreen({
                             }`
                           : `px-4 py-6 lg:px-5 ${
                               fiveUp
-                                ? 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
-                                : 'min-h-[180px] lg:min-h-[240px] lg:py-8'
-                            } ${fiveUp && points.length === 5 && index === 3 ? 'md:col-start-2' : ''}`
+                                ? hasTable
+                                  ? 'min-h-[72px] py-3 lg:min-h-[88px]'
+                                  : 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
+                                : hasTable
+                                  ? 'min-h-[100px] py-4 lg:min-h-[120px]'
+                                  : 'min-h-[180px] lg:min-h-[240px] lg:py-8'
+                            } ${fiveUp && points.length === 5 && index === 3 && !hasTable ? 'md:col-start-2' : ''}`
                       } ${visible ? '' : 'pointer-events-none'}`}
                       aria-hidden={!visible}
                     >
@@ -2067,7 +2133,9 @@ function VisualHeroScreen({
                               : medium
                                 ? 'text-xl leading-tight sm:text-2xl lg:text-3xl'
                                 : fiveUp
-                                  ? 'text-2xl leading-none sm:text-3xl lg:text-4xl'
+                                  ? hasTable
+                                    ? 'text-sm leading-snug sm:text-base lg:text-lg'
+                                    : 'text-2xl leading-none sm:text-3xl lg:text-4xl'
                                   : 'text-4xl leading-none sm:text-5xl lg:text-6xl xl:text-7xl'
                         }`}
                       >
@@ -2184,6 +2252,12 @@ function VisualHeroScreen({
           ) : (
             <div />
           )}
+
+          {hasTable && content.table ? (
+            <div className="relative z-10 mt-2 min-h-0 shrink-0 lg:mt-3">
+              <HeroDataTable table={content.table} />
+            </div>
+          ) : null}
 
           {hasLink ? (
             <motion.div
