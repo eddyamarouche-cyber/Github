@@ -105,6 +105,8 @@ export interface VisualHeroContent {
 export interface RevealContent {
   image: string
   question: string
+  /** Supporting line shown below the question before the answer reveals */
+  questionSubtitle?: string
   answer: string
   /** Line shown just below the answer once it reveals */
   answerSubtitle?: string

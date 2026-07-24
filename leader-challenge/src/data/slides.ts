@@ -518,12 +518,14 @@ export const slides: Slide[] = [
     type: 'reveal',
     title: '100Bn$',
     takeaway:
-      'With the best GTM team in the world, the next four years aim at a $100Bn outcome.',
+      'With a world-class GTM team of experienced executives, the next four years aim at a $100Bn outcome.',
     recommendedMinutes: 0.5,
     content: {
       image: '/images/gtm-galaxy.jpg',
       question:
-        'What can we do with best GTM team in the world in the next 4 years ?',
+        'What can we do with best world class GTM team in the world in the next 4 years ?',
+      questionSubtitle:
+        'Experienced executives with the best track record to pilot the rocket ship',
       answer: '100Bn$',
       answerSubtitle: 'Operating system for AI software engineering',
       answerDelayMs: 2200,
