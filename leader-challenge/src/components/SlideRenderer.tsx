@@ -3,8 +3,6 @@ import { ExternalLink, HeartHandshake, TrendingUp, Users } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import {
   registerSlideInnerNav,
-  requestDeckNext,
-  requestDeckPrev,
 } from '../hooks/slideInnerNav'
 import { profile } from '../data/profile'
 import { sections } from '../data/slides'
@@ -1109,43 +1107,6 @@ function ProfileScreen({
                     {String(active + 1).padStart(2, '0')} / {String(content.criteria.length).padStart(2, '0')}
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (active <= 0) {
-                        setExpanded(false)
-                        requestDeckPrev()
-                        return
-                      }
-                      setActive((value) => value - 1)
-                    }}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
-                  >
-                    Prev
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (active >= lastIndex) {
-                        setExpanded(false)
-                        requestDeckNext()
-                        return
-                      }
-                      setActive((value) => value + 1)
-                    }}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
-                  >
-                    Next
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setExpanded(false)}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md hover:bg-white/10"
-                  >
-                    Close
-                  </button>
-                </div>
               </div>
 
               <div className="relative z-10 mt-auto max-w-3xl p-5 lg:p-8">
@@ -1617,43 +1578,6 @@ function SubdivisionsScreen({
                     {String(active + 1).padStart(2, '0')} /{' '}
                     {String(content.items.length).padStart(2, '0')}
                   </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (active <= 0) {
-                        setExpanded(false)
-                        requestDeckPrev()
-                        return
-                      }
-                      setActive((value) => value - 1)
-                    }}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
-                  >
-                    Prev
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (active >= lastIndex) {
-                        setExpanded(false)
-                        requestDeckNext()
-                        return
-                      }
-                      setActive((value) => value + 1)
-                    }}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
-                  >
-                    Next
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setExpanded(false)}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md hover:bg-white/10"
-                  >
-                    Close
-                  </button>
                 </div>
               </div>
 
