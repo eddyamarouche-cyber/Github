@@ -178,7 +178,6 @@ export const slides: Slide[] = [
           bullets: [
             'Initial land to long-term strategic growth',
             'Repeatable GTM engine',
-            'Repeat, Leverage and Expand',
             '20+ recruitments in Italy',
           ],
         },
