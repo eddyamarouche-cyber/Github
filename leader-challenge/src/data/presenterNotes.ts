@@ -187,7 +187,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
     coreMessage:
       'Market opportunity 2 trillion $. Every company is racing to turn AI into engineering output faster than their competitors.',
     supportingExample:
-      'The best A-players do not respond to job descriptions. They respond to ownership of that race and a credible next chapter.',
+      'Open Role play prep on the slide for the Google Doc guide before you run the conversation.',
     executiveImplication:
       'If we cannot make the opportunity feel huge in the room, we will not win the talent in market.',
     likelyQuestion: 'What is the one sentence that makes this opportunity feel huge?',

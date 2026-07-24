@@ -1824,6 +1824,7 @@ function VisualHeroScreen({
   const logos = content.logos ?? []
   const hasChips = chips.length > 0
   const hasLogos = logos.length > 0
+  const hasLink = Boolean(content.linkUrl)
   const centeredPoints = content.pointsLayout === 'center' && hasPoints
   const displayTitleWithPoints =
     content.titleSize === 'display' && hasPoints && Boolean(content.title)
@@ -1834,7 +1835,7 @@ function VisualHeroScreen({
   const hasBottomCopy =
     (hasSubtitle && !displayTitleWithPoints) || hasChips || hasLogos
   const hasCopy =
-    hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips || hasLogos
+    hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips || hasLogos || hasLink
 
   useEffect(() => {
     setVisibleCount(revealOnClick ? 0 : points.length)
@@ -2146,6 +2147,26 @@ function VisualHeroScreen({
           ) : (
             <div />
           )}
+
+          {hasLink ? (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className={`shrink-0 ${centeredPoints ? 'mx-auto' : ''}`}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <a
+                href={content.linkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-accent/35 bg-accent/15 px-4 py-2.5 font-display text-sm font-semibold text-white shadow-[0_0_18px_rgba(255,107,44,0.18)] backdrop-blur-md transition hover:bg-accent/25 lg:px-5 lg:text-base"
+              >
+                {content.linkLabel ?? 'Open link'}
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </motion.div>
+          ) : null}
         </div>
       ) : null}
     </div>

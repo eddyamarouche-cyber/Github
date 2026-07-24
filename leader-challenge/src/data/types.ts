@@ -100,6 +100,9 @@ export interface VisualHeroContent {
   revealPointsOnClick?: boolean
   /** Stack and center points as large hero statements */
   pointsLayout?: 'default' | 'center'
+  /** Optional external link shown at the bottom of the hero */
+  linkUrl?: string
+  linkLabel?: string
 }
 
 export interface RevealContent {

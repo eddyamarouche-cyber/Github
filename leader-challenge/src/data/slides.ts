@@ -484,6 +484,9 @@ export const slides: Slide[] = [
       ],
       pointsLayout: 'center',
       revealPointsOnClick: true,
+      linkUrl:
+        'https://docs.google.com/document/d/1eXZXcwJ6RkJk-LZM-_S7DXudu3VY-SihYmWD-sjiYAg/edit?tab=t.0#heading=h.6qinwgp4ub0z',
+      linkLabel: 'Role play prep',
     },
   },
   {
