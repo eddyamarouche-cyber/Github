@@ -37,10 +37,10 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Every method that follows should map back to one of these three outcomes.',
     likelyQuestion: 'Where do you want the deepest inspection first?',
-    transition: 'Before the workstreams — how I show up as a manager.',
+    transition: 'Before the workstreams — why I am here.',
   },
   'who-i-am-as-a-leader': {
-    opening: 'Before the workstreams, I want you to know how I show up as a manager.',
+    opening: 'Why am I here? Because of how I lead.',
     coreMessage:
       'I lead as a talent builder, performance coach, operating leader and executive partner.',
     supportingExample:

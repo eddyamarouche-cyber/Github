@@ -128,11 +128,11 @@ export const slides: Slide[] = [
     number: 4,
     section: 'intro',
     type: 'drivers',
-    title: 'Who I Am as a Leader',
+    title: 'Why am I here?',
     headline:
       'I build high-talent teams, coach for ownership and run the business through clear operating rhythm.',
     takeaway:
-      'Establish the management frame before diving into the four working topics.',
+      'This is why I am in the room — the four ways I lead before we enter the working topics.',
     recommendedMinutes: 1.5,
     content: {
       drivers: [
