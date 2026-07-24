@@ -169,7 +169,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Ambition attracts ambition. Small targets do not recruit category winners.',
     likelyQuestion: 'How do you keep 100Bn$ credible without sounding like hype?',
-    transition: 'That ambition still needs a scorecard before outreach.',
+    transition: 'Ambition is useless if people do not grow and stay — Retention.',
+  },
+  'retention-opener': {
+    opening: 'Hiring is the seed. Retention is the harvest.',
+    coreMessage:
+      'We do not just find A-players — we grow them until the region compounds.',
+    supportingExample:
+      'A plant does not survive on soil alone. It needs light, rhythm and space to grow.',
+    executiveImplication:
+      'If talent leaves, the recruitment engine was wasted spend.',
+    likelyQuestion: 'What actually keeps top sellers at Cursor-scale ambition?',
+    transition: 'That still needs a scorecard before we hire the next one.',
   },
   'candidate-scorecard': {
     opening: 'This is the scoring model I would use before advancing any candidate.',
