@@ -326,7 +326,7 @@ export const slides: Slide[] = [
     title: 'A Player Profile',
     headline: 'Character filters and cognitive filters — both are non-negotiable.',
     takeaway:
-      'Hire patriots with high slope and clock speed — people who can go deep with engineers and sharp with C-levels.',
+      'Hire patriots with high slope and clock speed — people who own outcomes and stay resilient under pressure.',
     recommendedMinutes: 3,
     content: {
       criteria: [
@@ -349,40 +349,16 @@ export const slides: Slide[] = [
           image: '/images/ap-punched.jpg',
         },
         {
-          title: 'High tech IQ',
-          detail:
-            'Comfortable in a product-led, technical category. Can learn the stack fast enough to earn credibility with builders and buyers.',
-          image: '/images/ap-tech-iq.jpg',
-        },
-        {
           title: 'Patriots versus Mercenaries',
           detail:
             'Look for people who join the mission, not the highest bidder. Ownership beats short-term extraction.',
           image: '/images/ap-patriots.jpg',
         },
         {
-          title: 'No senators',
-          detail:
-            'Reject political operators. Prefer builders who create outcomes over people who manage appearances.',
-          image: '/images/ap-no-senators.jpg',
-        },
-        {
           title: 'Ownership',
           detail:
             'Prefer candidates who have built without big-brand crutches — scarce resources, real ownership, real consequence.',
           image: '/images/ap-small-org.jpg',
-        },
-        {
-          title: 'Adaptable',
-          detail:
-            'Emerging categories change weekly. Hire people who learn fast, reframe quickly and stay effective in ambiguity.',
-          image: '/images/ap-adaptable.jpg',
-        },
-        {
-          title: 'Smart',
-          detail:
-            'Able to handle a technical discussion with software engineers and an outcome-based discussion with C-levels — without losing altitude either way.',
-          image: '/images/ap-smart.jpg',
         },
       ],
     },
@@ -395,7 +371,7 @@ export const slides: Slide[] = [
     title: 'LinkedIn Talent Map · Italy',
     headline: 'First named Italy profiles against the A-player filter.',
     takeaway:
-      'Open each LinkedIn profile live — validate fit against patriots, slope, tech IQ and clock speed.',
+      'Open each LinkedIn profile live — validate fit against patriots, slope, ownership and clock speed.',
     recommendedMinutes: 3,
     content: {
       regionLabel: 'Italy talent map',
@@ -410,7 +386,7 @@ export const slides: Slide[] = [
     title: 'LinkedIn Talent Map · Spain',
     headline: 'First named Spain / Iberia profiles against the A-player filter.',
     takeaway:
-      'Open each LinkedIn profile live — validate fit against patriots, slope, tech IQ and clock speed.',
+      'Open each LinkedIn profile live — validate fit against patriots, slope, ownership and clock speed.',
     recommendedMinutes: 2,
     content: {
       regionLabel: 'Spain talent map',

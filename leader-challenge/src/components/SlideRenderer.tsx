@@ -899,7 +899,7 @@ function ProfileScreen({
     if (!autoPlay || expanded) return
     const timer = window.setInterval(() => {
       setActive((value) => {
-        // Stop on the last topic (Smart) — next navigation advances the deck.
+        // Stop on the last topic — next navigation advances the deck.
         if (value >= lastIndex) return value
         return value + 1
       })
