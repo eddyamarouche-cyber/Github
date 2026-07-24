@@ -48,6 +48,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Southern Europe at Cursor needs a builder who has already done the zero-to-scale journey — not a caretaker.',
     likelyQuestion: 'Which of Build / Lead / Sell / Scale transfers fastest to Cursor?',
+    transition: 'Then my leadership principles — starting with leading by example.',
+  },
+  'leadership-principles': {
+    opening: 'My leadership principles start here.',
+    coreMessage:
+      'Lead by example. Go first. Set the standard in public before asking the team to follow.',
+    supportingExample:
+      'People do not copy slides. They copy what the leader does under pressure.',
+    executiveImplication:
+      'If the Regional Director does not model the standard, the operating system becomes optional.',
+    likelyQuestion: 'What does leading by example look like week to week?',
     transition: 'Next — the objective I will own with clients.',
   },
   'win-the-stage': {

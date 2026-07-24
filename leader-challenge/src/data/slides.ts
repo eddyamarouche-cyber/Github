@@ -184,6 +184,21 @@ export const slides: Slide[] = [
     },
   },
   {
+    id: 'leadership-principles',
+    number: 5,
+    section: 'intro',
+    type: 'visual-hero',
+    title: 'My leadership principles',
+    takeaway:
+      'Leadership starts by going first — set the standard in public, then ask the team to follow.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/leadership-by-example.jpg',
+      title: 'My leadership principles',
+      subtitle: 'Lead by example.',
+    },
+  },
+  {
     id: 'win-the-stage',
     number: 5,
     section: 'intro',
