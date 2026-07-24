@@ -625,7 +625,7 @@ export const slides: Slide[] = [
       eyebrow: 'Retention',
       title: 'Call to action',
       titleSize: 'display',
-      points: ['Role play', 'Shadowing', 'Level of activities'],
+      points: ['Role play', 'Shadowing', 'Direct feedback'],
       pointsLayout: 'center',
       revealPointsOnClick: true,
     },

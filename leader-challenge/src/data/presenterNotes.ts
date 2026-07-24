@@ -251,7 +251,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'retention-cta': {
     opening: 'Framework is not enough. Now make it real.',
     coreMessage:
-      'Call to action: Role play, Shadowing, and Level of activities — three ways leaders turn retention from slides into daily practice.',
+      'Call to action: Role play, Shadowing, and Direct feedback — three ways leaders turn retention from slides into daily practice.',
     supportingExample:
       'Click to reveal each lever. Role play the hard conversations. Shadow top performers. Calibrate activity levels so coaching is intentional, not accidental.',
     executiveImplication:
