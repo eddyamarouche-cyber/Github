@@ -196,7 +196,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'roleplay-proof': {
     opening: 'Market size is not enough — they need proof Cursor can win.',
     coreMessage:
-      'Unique acceleration first — engineers plus compute, fastest SaaS climb, $6Bn ARR mostly PLG. Then model agnosticity, frontier SpaceX / xAI compute, harness better models as compounding advantage, and 64% of Fortune 500 companies.',
+      'Model agnosticity, frontier SpaceX / xAI compute, harness better models as compounding advantage, and 64% of Fortune 500 companies.',
     supportingExample:
       'These proof points turn a huge TAM into a credible place to bet a career — momentum plus structural advantage.',
     executiveImplication:

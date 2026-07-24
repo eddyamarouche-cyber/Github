@@ -502,9 +502,6 @@ export const slides: Slide[] = [
       titleSize: 'display',
       subtitle: 'Unique acceleration',
       points: [
-        'Software Engineers + Power of compute',
-        'Fastest SaaS climb from $1M to $1B ARR in history',
-        '6Bn$ ARR mostly with PLG',
         'Model agnosticity',
         "Frontier SpaceX / xAI's massive compute",
         'Harness better models — the compounding advantage',
