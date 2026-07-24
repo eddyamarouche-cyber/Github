@@ -1846,12 +1846,15 @@ function VisualHeroScreen({
   const revealOnClick = Boolean(content.revealPointsOnClick && hasPoints)
   const points = content.points ?? []
   const chips = content.chips ?? []
+  const logos = content.logos ?? []
   const hasChips = chips.length > 0
+  const hasLogos = logos.length > 0
   const [visibleCount, setVisibleCount] = useState(revealOnClick ? 0 : points.length)
   const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints))
   const hasTitleBlock = Boolean(content.title && !hasPoints)
   const hasSubtitle = Boolean(content.subtitle)
-  const hasCopy = hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips
+  const hasCopy =
+    hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips || hasLogos
 
   useEffect(() => {
     setVisibleCount(revealOnClick ? 0 : points.length)
@@ -2024,15 +2027,15 @@ function VisualHeroScreen({
             <div className="flex-1" />
           )}
 
-          {hasSubtitle || hasChips ? (
-            <div className="max-w-5xl space-y-4">
+          {hasSubtitle || hasChips || hasLogos ? (
+            <div className="max-w-6xl space-y-4">
               {hasSubtitle ? (
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
                   className={
-                    hasChips
+                    hasChips || hasLogos
                       ? 'font-display text-xl leading-snug font-semibold text-balance text-white lg:text-2xl'
                       : 'text-base text-white/65 lg:text-lg'
                   }
@@ -2040,7 +2043,42 @@ function VisualHeroScreen({
                   {content.subtitle}
                 </motion.p>
               ) : null}
-              {hasChips ? (
+              {hasLogos ? (
+                <div>
+                  {content.chipsLabel ? (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.55 }}
+                      className="text-sm font-medium text-white/70 lg:text-base"
+                    >
+                      {content.chipsLabel}:
+                    </motion.p>
+                  ) : null}
+                  <div className="mt-3 flex flex-wrap items-center gap-2.5 lg:gap-3">
+                    {logos.map((logo, index) => (
+                      <motion.div
+                        key={logo.name}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: 0.6 + index * 0.03,
+                          duration: 0.35,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        title={logo.name}
+                        className="flex h-12 items-center justify-center rounded-2xl border border-white/15 bg-white px-3.5 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.25)] lg:h-14 lg:px-4"
+                      >
+                        <img
+                          src={logo.src}
+                          alt={logo.name}
+                          className="max-h-7 max-w-[108px] object-contain lg:max-h-8 lg:max-w-[120px]"
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              ) : hasChips ? (
                 <div>
                   {content.chipsLabel ? (
                     <motion.p

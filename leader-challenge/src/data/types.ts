@@ -90,7 +90,9 @@ export interface VisualHeroContent {
   points?: string[]
   /** Accent name chips under the subtitle (must-win logos, etc.) */
   chips?: string[]
-  /** Small label above the chip row */
+  /** Brand logos shown under the subtitle */
+  logos?: { name: string; src: string }[]
+  /** Small label above the chip / logo row */
   chipsLabel?: string
   /** Oversized display title for short hero words like "How?" */
   titleSize?: 'default' | 'display'
