@@ -321,18 +321,6 @@ export function Expandable({
   )
 }
 
-export function PlaceholderBadge() {
-  return (
-    <span
-      className="inline-flex items-center gap-1.5 rounded-full border border-warning/30 bg-warning/10 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-warning uppercase"
-      title="This screen still contains unresolved placeholders"
-    >
-      <span className="h-1.5 w-1.5 rounded-full bg-warning" />
-      Placeholders
-    </span>
-  )
-}
-
 export function StatusDot({
   status,
 }: {

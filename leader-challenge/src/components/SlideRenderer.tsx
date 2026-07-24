@@ -58,7 +58,6 @@ import {
   GlassCard,
   KpiWidget,
   MotionPage,
-  PlaceholderBadge,
   ScreenShell,
   Stagger,
   StaggerItem,
@@ -89,20 +88,13 @@ function sectionLabel(sectionId: string): string {
 
 export function SlideRenderer({
   slide,
-  hasPlaceholders,
 }: {
   slide: Slide
-  hasPlaceholders: boolean
 }) {
   return (
     <div className="app-surface relative h-full w-full overflow-hidden text-text">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[length:48px_48px] opacity-40" />
       <div className="relative h-full">
-        {hasPlaceholders ? (
-          <div className="absolute top-4 right-5 z-10 no-print">
-            <PlaceholderBadge />
-          </div>
-        ) : null}
         <MotionPage id={slide.id}>{renderSlide(slide)}</MotionPage>
       </div>
     </div>

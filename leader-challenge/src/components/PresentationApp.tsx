@@ -38,7 +38,6 @@ export function PresentationApp() {
               slideNumber={presentation.slide.number}
               totalSlides={presentation.totalSlides}
               sectionLabel={sectionLabel}
-              hasPlaceholders={presentation.hasPlaceholders}
               showNotes={presentation.showNotes}
               isFullscreen={presentation.isFullscreen}
               isPresenting={presentation.isPresenting}
@@ -90,10 +89,7 @@ export function PresentationApp() {
                     transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                     className="h-full w-full"
                   >
-                    <SlideRenderer
-                      slide={presentation.slide}
-                      hasPlaceholders={presentation.hasPlaceholders}
-                    />
+                    <SlideRenderer slide={presentation.slide} />
                   </motion.div>
                 </AnimatePresence>
               </motion.div>
@@ -140,7 +136,6 @@ export function PresentationApp() {
       {presentation.isPresenting ? (
         <PresentMode
           slide={presentation.slide}
-          hasPlaceholders={false}
           transitionDirection={presentation.transitionDirection}
           cursorHidden={cursorHidden}
           onExit={() => {
