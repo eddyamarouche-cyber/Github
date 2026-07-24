@@ -127,6 +127,7 @@ export const linkedinTargetsSpain: LinkedInTarget[] = [
     signal:
       'Country lead for Iberia; ex-Grafana / Kong / Sprinklr enterprise AE with Spain–Italy coverage.',
     photo: '/images/linkedin/raphael-sublet.jpg',
+    filters: ['Builder'],
   },
   {
     id: 'jorge-munoz',
