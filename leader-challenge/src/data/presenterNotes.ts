@@ -227,15 +227,15 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'Ambition is useless if people do not grow and stay — Retention.',
   },
   'retention-opener': {
-    opening: 'Hiring is the seed. Retention is the harvest.',
+    opening: 'Hiring is the seed. Retention is the harvest — in three moves.',
     coreMessage:
-      'We do not just find A-players — we grow them until the region compounds.',
+      'Retention in summary: The approach, Call to action, and Monitoring.',
     supportingExample:
-      'A plant does not survive on soil alone. It needs light, rhythm and space to grow.',
+      'Frame the section before you open each slide — operating system, daily practice, then control tower.',
     executiveImplication:
       'If talent leaves, the recruitment engine was wasted spend.',
     likelyQuestion: 'What actually keeps top sellers at Cursor-scale ambition?',
-    transition: 'Here is the operating system — four clickable levers.',
+    transition: 'Start with the approach — four levers that keep A-players compounding.',
   },
   'retention-system': {
     opening: 'Keep your best performers engaged and committed for long-term success.',

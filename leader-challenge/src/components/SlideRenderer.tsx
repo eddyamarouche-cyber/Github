@@ -1901,9 +1901,12 @@ function VisualHeroScreen({
   const [visibleCount, setVisibleCount] = useState(revealOnClick ? 0 : points.length)
   const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints) || headerTitle)
   const hasTitleBlock = Boolean(content.title && !hasPoints && !headerTitle)
-  const hasSubtitle = Boolean(content.subtitle)
+  const hasSubtitles = Boolean(content.subtitles?.length)
+  const hasSubtitle = Boolean(content.subtitle) || hasSubtitles
   const hasBottomCopy =
-    (hasSubtitle && !displayTitleWithPoints && !headerTitle) || hasChips || hasLogos
+    (hasSubtitle && !displayTitleWithPoints && !headerTitle && !hasSubtitles) ||
+    hasChips ||
+    hasLogos
   const hasCopy =
     hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips || hasLogos || hasLink || hasTable
   const showTable =
@@ -2151,7 +2154,7 @@ function VisualHeroScreen({
               </div>
             </div>
           ) : hasTitleBlock ? (
-            <div className="flex flex-1 items-center">
+            <div className="flex flex-1 flex-col items-center justify-center text-center">
               <motion.h2
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -2163,6 +2166,21 @@ function VisualHeroScreen({
               >
                 {content.title}
               </motion.h2>
+              {hasSubtitles ? (
+                <div className="mt-6 space-y-2 lg:mt-8 lg:space-y-3">
+                  {content.subtitles!.map((line, index) => (
+                    <motion.p
+                      key={line}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.15 + index * 0.08 }}
+                      className="font-display text-xl leading-snug font-semibold text-balance text-white/90 lg:text-2xl"
+                    >
+                      {line}
+                    </motion.p>
+                  ))}
+                </div>
+              ) : null}
             </div>
           ) : (
             <div className="flex-1" />

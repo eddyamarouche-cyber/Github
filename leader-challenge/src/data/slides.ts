@@ -555,14 +555,14 @@ export const slides: Slide[] = [
     number: 21,
     section: 'retention',
     type: 'visual-hero',
-    title: 'Retention',
+    title: 'Retention in summary',
     takeaway:
-      'Retention is how hired talent becomes compounding advantage — grow people, keep the ones who grow the region.',
+      'Retention in three moves — the approach, call to action, and monitoring.',
     recommendedMinutes: 0.5,
     content: {
       image: '/images/retention-growth.jpg',
-      title: 'Retention',
-      subtitle: 'Grow what you hire. Make talent compound.',
+      title: 'Retention in summary',
+      subtitles: ['The approach', 'Call to action', 'Monitoring'],
     },
   },
   {

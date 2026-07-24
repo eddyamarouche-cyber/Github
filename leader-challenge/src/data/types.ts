@@ -87,6 +87,8 @@ export interface VisualHeroContent {
   eyebrow?: string
   title?: string
   subtitle?: string
+  /** Multiple subtitle lines shown under the title */
+  subtitles?: string[]
   points?: string[]
   /** Accent name chips under the subtitle (must-win logos, etc.) */
   chips?: string[]
