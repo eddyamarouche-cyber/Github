@@ -2128,15 +2128,15 @@ function VisualHeroScreen({
                                   : long
                                     ? 'text-lg leading-snug sm:text-xl lg:text-3xl xl:text-4xl'
                                     : 'text-xl leading-tight sm:text-2xl lg:text-4xl xl:text-5xl'
-                            : long
-                              ? 'text-lg leading-snug sm:text-xl lg:text-2xl'
-                              : medium
-                                ? 'text-xl leading-tight sm:text-2xl lg:text-3xl'
-                                : fiveUp
-                                  ? hasTable
-                                    ? 'text-sm leading-snug sm:text-base lg:text-lg'
-                                    : 'text-2xl leading-none sm:text-3xl lg:text-4xl'
-                                  : 'text-4xl leading-none sm:text-5xl lg:text-6xl xl:text-7xl'
+                            : fiveUp && hasTable
+                              ? 'text-sm leading-snug sm:text-base lg:text-lg'
+                              : long
+                                ? 'text-lg leading-snug sm:text-xl lg:text-2xl'
+                                : medium
+                                  ? 'text-xl leading-tight sm:text-2xl lg:text-3xl'
+                                  : fiveUp
+                                    ? 'text-2xl leading-none sm:text-3xl lg:text-4xl'
+                                    : 'text-4xl leading-none sm:text-5xl lg:text-6xl xl:text-7xl'
                         }`}
                       >
                         {point}
