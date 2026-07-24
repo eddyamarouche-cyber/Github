@@ -47,6 +47,7 @@ export const linkedinTargets: LinkedInTarget[] = [
     linkedinUrl: 'https://www.linkedin.com/in/sofia-poggi-0692a911a/',
     signal: 'Public-sector AE; ex-Adobe / Accenture; PhD in Economy and Finance.',
     photo: '/images/linkedin/sofia-poggi.jpg',
+    filters: ['Resilient'],
   },
   {
     id: 'mauro-cenerelli',
