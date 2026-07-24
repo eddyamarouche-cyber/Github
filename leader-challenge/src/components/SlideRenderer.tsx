@@ -1863,7 +1863,7 @@ function RevealScreen({ content }: { content: RevealContent }) {
                 {content.answer}
               </h2>
               {content.answerSubtitle ? (
-                <p className="mt-5 max-w-3xl text-lg font-medium tracking-wide text-white/80 sm:text-xl lg:mt-6 lg:text-2xl">
+                <p className="mt-5 max-w-5xl text-2xl leading-snug font-semibold tracking-tight text-balance text-white/90 sm:text-3xl lg:mt-6 lg:text-4xl xl:text-5xl">
                   {content.answerSubtitle}
                 </p>
               ) : null}
