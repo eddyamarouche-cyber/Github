@@ -207,7 +207,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'gtm-100bn': {
     opening: 'Hold the question. Then land the answer.',
     coreMessage:
-      'What can we do with the best world-class GTM team in the world in the next four years? Experienced executives with the best track record to pilot the rocket ship — then 100Bn$.',
+      'What can we do with the best world-class GTM team in the world in the next four years? Experienced executives with the best track record to pilot the rocket ship — then 100Bn$. Close with the once-in-a-lifetime opportunity to grow and contribute at the most iconic AI company in history.',
     supportingExample:
       'The opportunity story must end in a number big enough to make an A-player lean forward.',
     executiveImplication:

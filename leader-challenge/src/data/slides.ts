@@ -518,7 +518,7 @@ export const slides: Slide[] = [
     type: 'reveal',
     title: '100Bn$',
     takeaway:
-      'With a world-class GTM team of experienced executives, the next four years aim at a $100Bn outcome.',
+      'A world-class GTM team, a $100Bn ambition, and a once-in-a-lifetime chance to grow at the most iconic AI company in history.',
     recommendedMinutes: 0.5,
     content: {
       image: '/images/gtm-galaxy.jpg',
@@ -527,7 +527,8 @@ export const slides: Slide[] = [
       questionSubtitle:
         'Experienced executives with the best track record to pilot the rocket ship',
       answer: '100Bn$',
-      answerSubtitle: 'Operating system for AI software engineering',
+      answerSubtitle:
+        "It's a once in a lifetime opportunity to grow and contribute to the most iconic AI company in history",
       answerDelayMs: 2200,
     },
   },
