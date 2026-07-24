@@ -33,8 +33,63 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'session-summary',
+    id: 'challenge-brief',
     number: 2,
+    section: 'intro',
+    type: 'challenge-brief',
+    title: 'Leader Challenge',
+    takeaway:
+      'Ninety minutes across Recruitment, Retention, Revenue, leadership asks — then feedback and close.',
+    recommendedMinutes: 1,
+    content: {
+      brandTitle: 'Leader Challenge',
+      planPoints: [
+        'Plan to lead a 90 minute meeting',
+        'Goal is to present on each topic',
+        'Add whatever slides you need to address each topic',
+      ],
+      prepLabel: 'Cursor Prep for Challenge',
+      prepUrl:
+        'https://www.notion.so/cursorai/Updated-2026-Cursor-GTM-Discovery-Deal-Review-Interview-Prep-322da74ef045808ea580c7f90c99d946',
+      topics: [
+        {
+          label: 'TOPIC 1: Recruitment',
+          items: [
+            'Describe what makes someone a top potential candidate (Profile of an "A" player)',
+            'Identity first 5 Candidates you would bring to Cursor.',
+            'What is your approach for finding top candidates?',
+            'Select one of your target candidates (from the 5 you identified) and role play an initial call with the candidate, including the way you would position and "sell" the opportunity to join Cursor (market opportunity, why Cursor, career opportunity)',
+          ],
+        },
+        {
+          label: 'TOPIC 2: Retention',
+          items: [
+            'Describe your approach to coaching & development',
+            'Walk through examples: Showcase how you diagnose and how you have worked with someone to make them better?',
+            'How did you measure improvement?',
+          ],
+        },
+        {
+          label: 'TOPIC 3: Revenue',
+          items: [
+            'Describe your approach for building a culture of consistent pipeline generation',
+            'How do you inspect/qualify opportunities and evaluate Pipeline Health to ensure forecast accuracy?',
+            'How do you run and use effective 1:1’s?',
+          ],
+        },
+        {
+          label: 'TOPIC 4:',
+          items: [
+            'What are THREE things you need from Cursor leadership to be successful.',
+          ],
+        },
+      ],
+      closeLabel: 'Feedback & Close',
+    },
+  },
+  {
+    id: 'session-summary',
+    number: 3,
     section: 'intro',
     type: 'topics-summary',
     title: 'Session Summary',
@@ -70,7 +125,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'win-the-stage',
-    number: 3,
+    number: 4,
     section: 'intro',
     type: 'visual-hero',
     title: 'Win the Stage',
@@ -87,7 +142,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'spanish-team-trophies',
-    number: 4,
+    number: 5,
     section: 'intro',
     type: 'visual-hero',
     title: 'One Team',
@@ -101,7 +156,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'leadership-standard',
-    number: 5,
+    number: 6,
     section: 'intro',
     type: 'visual-hero',
     title: 'The Standard',
@@ -119,7 +174,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'wild-geese',
-    number: 6,
+    number: 7,
     section: 'intro',
     type: 'visual-hero',
     title: 'One Direction',
@@ -132,7 +187,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'who-i-am-as-a-leader',
-    number: 7,
+    number: 8,
     section: 'intro',
     type: 'drivers',
     title: 'Who I Am as a Leader',
@@ -174,7 +229,7 @@ export const slides: Slide[] = [
 
   {
     id: 'recruitment-opener',
-    number: 8,
+    number: 9,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Recruitment',
@@ -189,7 +244,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'a-player-profile',
-    number: 9,
+    number: 10,
     section: 'recruitment',
     type: 'profile',
     title: 'A Player Profile',
@@ -258,7 +313,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'linkedin-talent-map',
-    number: 10,
+    number: 11,
     section: 'recruitment',
     type: 'linkedin-targets',
     title: 'LinkedIn Talent Map · Italy',
@@ -273,7 +328,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'linkedin-talent-map-spain',
-    number: 11,
+    number: 12,
     section: 'recruitment',
     type: 'linkedin-targets',
     title: 'LinkedIn Talent Map · Spain',
@@ -288,7 +343,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'how-proactivity',
-    number: 12,
+    number: 13,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'How?',
@@ -305,7 +360,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'how-subdivisions',
-    number: 13,
+    number: 14,
     section: 'recruitment',
     type: 'subdivisions',
     title: 'How we hire?',
@@ -350,7 +405,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'roleplay-opener',
-    number: 14,
+    number: 15,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Role play',
@@ -373,7 +428,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'gtm-100bn',
-    number: 15,
+    number: 16,
     section: 'recruitment',
     type: 'reveal',
     title: '100Bn$',
@@ -391,7 +446,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-opener',
-    number: 16,
+    number: 17,
     section: 'retention',
     type: 'visual-hero',
     title: 'Retention',
@@ -406,7 +461,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-system',
-    number: 17,
+    number: 18,
     section: 'retention',
     type: 'subdivisions',
     title: 'How we retain?',
@@ -455,7 +510,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'candidate-scorecard',
-    number: 18,
+    number: 19,
     section: 'recruitment',
     type: 'scorecard',
     title: 'Candidate Scorecard',
@@ -525,7 +580,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'first-five-candidates',
-    number: 19,
+    number: 20,
     section: 'recruitment',
     type: 'candidates',
     title: 'First Five Target Candidates',
@@ -535,7 +590,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'talent-mapping',
-    number: 20,
+    number: 21,
     section: 'recruitment',
     type: 'process',
     title: 'Talent Mapping Strategy',
@@ -555,7 +610,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'sourcing-funnel',
-    number: 21,
+    number: 22,
     section: 'recruitment',
     type: 'funnel',
     title: 'Candidate Sourcing Funnel',
@@ -575,7 +630,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'candidate-outreach',
-    number: 22,
+    number: 23,
     section: 'recruitment',
     type: 'outreach',
     title: 'Candidate Outreach',
@@ -593,7 +648,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'roleplay-profile',
-    number: 23,
+    number: 24,
     section: 'roleplay',
     type: 'roleplay-prep',
     title: 'Role-Play Candidate Profile',
@@ -617,7 +672,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'initial-call',
-    number: 24,
+    number: 25,
     section: 'roleplay',
     type: 'stages',
     title: 'Initial Candidate Call Structure',
@@ -656,7 +711,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'selling-opportunity',
-    number: 25,
+    number: 26,
     section: 'roleplay',
     type: 'pitch',
     title: 'Selling the Opportunity',
@@ -697,7 +752,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'candidate-objections',
-    number: 26,
+    number: 27,
     section: 'roleplay',
     type: 'objections',
     title: 'Candidate Objections',
@@ -730,7 +785,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'retention-philosophy',
-    number: 27,
+    number: 28,
     section: 'retention',
     type: 'drivers',
     title: 'Retention Philosophy',
@@ -760,7 +815,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'coaching-framework',
-    number: 28,
+    number: 29,
     section: 'retention',
     type: 'framework',
     title: 'Coaching Framework',
@@ -779,7 +834,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'performance-diagnosis',
-    number: 29,
+    number: 30,
     section: 'retention',
     type: 'diagnosis',
     title: 'Performance Diagnosis',
@@ -828,7 +883,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'coaching-case-study',
-    number: 30,
+    number: 31,
     section: 'retention',
     type: 'case-study',
     title: 'Coaching Case Study',
@@ -838,7 +893,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'measuring-improvement',
-    number: 31,
+    number: 32,
     section: 'retention',
     type: 'metrics',
     title: 'Measuring Improvement',
@@ -862,7 +917,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'development-rhythm',
-    number: 32,
+    number: 33,
     section: 'retention',
     type: 'rhythm',
     title: 'Development Rhythm',
@@ -880,7 +935,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'revenue-operating-system',
-    number: 33,
+    number: 34,
     section: 'revenue',
     type: 'pillars',
     title: 'Revenue Operating System',
@@ -910,7 +965,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'growth-thesis',
-    number: 34,
+    number: 35,
     section: 'revenue',
     type: 'markets',
     title: 'Southern Europe Growth Thesis',
@@ -920,7 +975,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'pierre-fabre',
-    number: 35,
+    number: 36,
     section: 'revenue',
     type: 'brand-portfolio',
     title: 'Pierre Fabre',
@@ -931,7 +986,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'pipeline-culture',
-    number: 36,
+    number: 37,
     section: 'revenue',
     type: 'culture',
     title: 'Pipeline Culture',
@@ -950,7 +1005,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'weekly-pipeline-cadence',
-    number: 37,
+    number: 38,
     section: 'revenue',
     type: 'weekday',
     title: 'Weekly Pipeline Generation Cadence',
@@ -968,7 +1023,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'pipeline-dashboard',
-    number: 38,
+    number: 39,
     section: 'revenue',
     type: 'dashboard',
     title: 'Pipeline Health Dashboard',
@@ -992,7 +1047,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'opportunity-qualification',
-    number: 39,
+    number: 40,
     section: 'revenue',
     type: 'meddpicc',
     title: 'Opportunity Qualification',
@@ -1061,7 +1116,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'deal-inspection',
-    number: 40,
+    number: 41,
     section: 'revenue',
     type: 'questions',
     title: 'Deal Inspection',
@@ -1084,7 +1139,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'forecast-categories',
-    number: 41,
+    number: 42,
     section: 'revenue',
     type: 'definitions',
     title: 'Forecast Categories',
@@ -1113,7 +1168,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'forecast-philosophy',
-    number: 42,
+    number: 43,
     section: 'revenue',
     type: 'philosophy',
     title: 'Forecast Philosophy',
@@ -1133,7 +1188,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'effective-one-on-ones',
-    number: 43,
+    number: 44,
     section: 'revenue',
     type: 'one-on-one',
     title: 'Effective 1:1s',
@@ -1152,7 +1207,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'regional-dashboard',
-    number: 44,
+    number: 45,
     section: 'revenue',
     type: 'dashboard',
     title: 'Regional Director Dashboard',
@@ -1174,7 +1229,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'leadership-asks',
-    number: 45,
+    number: 46,
     section: 'partnership',
     type: 'asks',
     title: 'Three Things I Need from Cursor Leadership',
@@ -1207,7 +1262,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'mutual-commitment',
-    number: 46,
+    number: 47,
     section: 'partnership',
     type: 'two-column',
     title: 'Mutual Commitment',
@@ -1236,7 +1291,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'first-30-days',
-    number: 47,
+    number: 48,
     section: 'partnership',
     type: 'plan',
     title: 'First 30 Days',
@@ -1257,7 +1312,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'days-31-60',
-    number: 48,
+    number: 49,
     section: 'partnership',
     type: 'plan',
     title: 'Days 31–60',
@@ -1278,7 +1333,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'days-61-90',
-    number: 49,
+    number: 50,
     section: 'partnership',
     type: 'plan',
     title: 'Days 61–90',
@@ -1298,7 +1353,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'key-risks',
-    number: 50,
+    number: 51,
     section: 'partnership',
     type: 'risks',
     title: 'Key Risks and Mitigations',
@@ -1327,7 +1382,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'closing',
-    number: 51,
+    number: 52,
     section: 'close',
     type: 'closing',
     title: 'Closing',
@@ -1345,7 +1400,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'discussion-feedback',
-    number: 52,
+    number: 53,
     section: 'close',
     type: 'feedback',
     title: 'Discussion and Feedback',

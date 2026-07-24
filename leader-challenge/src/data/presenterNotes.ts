@@ -15,7 +15,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'The first five minutes establish how I manage before we enter the four working topics.',
     likelyQuestion: 'How would you prioritize if you joined with limited headcount?',
-    transition: 'First — the map of the session: three engines.',
+    transition: 'Here is the official Leader Challenge brief.',
+  },
+  'challenge-brief': {
+    opening: 'This is the brief I am answering in this room.',
+    coreMessage:
+      'Ninety minutes. Recruitment, Retention, Revenue, three leadership asks — then feedback and close.',
+    supportingExample:
+      'Cursor Prep for Challenge is linked for the role-play knowledge. Everything that follows maps to these topics.',
+    executiveImplication:
+      'I will not wander. Every slide should land one of these asks.',
+    likelyQuestion: 'Where do you want the deepest inspection first?',
+    transition: 'Here is how I structure that into three engines.',
   },
   'session-summary': {
     opening: 'I will run the rest of the session through three engines.',

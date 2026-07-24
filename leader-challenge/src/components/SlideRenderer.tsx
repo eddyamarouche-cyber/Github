@@ -11,6 +11,7 @@ import { sections } from '../data/slides'
 import type {
   AgendaContent,
   AsksContent,
+  ChallengeBriefContent,
   ClosingContent,
   CoverContent,
   CultureContent,
@@ -144,6 +145,8 @@ function renderSlide(slide: Slide) {
           content={slide.content as TopicsSummaryContent}
         />
       )
+    case 'challenge-brief':
+      return <ChallengeBriefScreen content={slide.content as ChallengeBriefContent} />
     case 'pillars':
       return (
         <ScreenShell
@@ -530,6 +533,106 @@ function AgendaScreen({ content }: { content: AgendaContent }) {
         detail: 'Working session block',
       }))}
     />
+  )
+}
+
+function ChallengeBriefScreen({ content }: { content: ChallengeBriefContent }) {
+  return (
+    <div className="relative flex h-full w-full flex-col overflow-hidden px-6 py-5 lg:px-10 lg:py-7">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_10%_0%,rgba(255,107,44,0.14),transparent_42%),radial-gradient(ellipse_at_90%_100%,rgba(255,255,255,0.04),transparent_40%)]" />
+
+      <div className="relative z-10 mb-4 flex shrink-0 items-center gap-3">
+        <img
+          src="/images/cursor-logo.svg"
+          alt=""
+          className="h-8 w-8 brightness-0 invert lg:h-9 lg:w-9"
+        />
+        <h1 className="font-display text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+          {content.brandTitle}
+        </h1>
+      </div>
+
+      <div className="relative z-10 grid min-h-0 flex-1 gap-5 lg:grid-cols-[0.85fr_1.35fr] lg:gap-8">
+        <motion.aside
+          initial={{ opacity: 0, x: -16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col justify-between rounded-[24px] border border-white/18 bg-white/[0.03] p-5 lg:p-6"
+        >
+          <ul className="space-y-4">
+            {content.planPoints.map((point) => (
+              <li
+                key={point}
+                className="font-display text-base leading-snug text-white/85 italic lg:text-lg"
+              >
+                {point}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-6">
+            <p className="font-display text-sm leading-snug text-white/70 italic lg:text-base">
+              Cursor knowledge needed to prepare for role play can be found here
+            </p>
+            <a
+              href={content.prepUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center gap-2 font-display text-base font-semibold text-accent underline decoration-accent/60 underline-offset-4 transition hover:text-accent-soft lg:text-lg"
+            >
+              {content.prepLabel}
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
+        </motion.aside>
+
+        <div className="scrollbar-thin min-h-0 space-y-4 overflow-auto pr-1 lg:space-y-5">
+          {content.topics.map((topic, index) => (
+            <motion.section
+              key={topic.label}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.08 + index * 0.06,
+                duration: 0.4,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <h2 className="font-display text-lg font-semibold tracking-tight text-accent lg:text-xl">
+                {topic.label}
+              </h2>
+              <ul className="mt-1.5 space-y-1">
+                {topic.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-2 text-sm leading-snug text-white/75 italic lg:text-[15px]"
+                  >
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/45" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.section>
+          ))}
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.4 }}
+            className="font-display pt-1 text-lg font-semibold tracking-[0.08em] text-accent uppercase lg:text-xl"
+          >
+            {content.closeLabel}
+          </motion.p>
+        </div>
+      </div>
+
+      <div className="relative z-10 mt-3 flex shrink-0 justify-end">
+        <img
+          src="/images/cursor-logo.svg"
+          alt=""
+          className="h-5 w-5 opacity-50 brightness-0 invert"
+        />
+      </div>
+    </div>
   )
 }
 

@@ -20,6 +20,7 @@ export type SlideType =
   | 'thesis'
   | 'agenda'
   | 'topics-summary'
+  | 'challenge-brief'
   | 'pillars'
   | 'profile'
   | 'scorecard'
@@ -121,6 +122,20 @@ export interface TopicsSummaryItem {
 
 export interface TopicsSummaryContent {
   topics: TopicsSummaryItem[]
+}
+
+export interface ChallengeBriefTopic {
+  label: string
+  items: string[]
+}
+
+export interface ChallengeBriefContent {
+  brandTitle: string
+  planPoints: string[]
+  prepLabel: string
+  prepUrl: string
+  topics: ChallengeBriefTopic[]
+  closeLabel: string
 }
 
 export interface PillarsContent {
@@ -385,6 +400,7 @@ export type SlideContent =
   | ThesisContent
   | AgendaContent
   | TopicsSummaryContent
+  | ChallengeBriefContent
   | PillarsContent
   | ProfileContent
   | ScorecardContent
