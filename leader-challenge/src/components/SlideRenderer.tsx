@@ -2047,9 +2047,9 @@ function VisualHeroScreen({
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.55 }}
-                      className="font-display text-[11px] font-semibold tracking-[0.16em] text-accent uppercase"
+                      className="text-sm font-medium text-white/70 lg:text-base"
                     >
-                      {content.chipsLabel}
+                      {content.chipsLabel}:
                     </motion.p>
                   ) : null}
                   <div className="mt-2.5 flex flex-wrap gap-2">
