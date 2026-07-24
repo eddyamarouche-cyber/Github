@@ -147,22 +147,6 @@ export const slides: Slide[] = [
             '7 years of experience building French and Italian business from the ground up',
           ],
         },
-        {
-          title: 'Early European journey',
-          detail: 'Joined Databricks at an early stage of the European journey.',
-          image: '/images/performance-coach.jpg',
-        },
-        {
-          title: 'AE → Strategic → Sales Director Italy',
-          detail: 'Account Executive → Strategic Accounts → Sales Director Italy.',
-          image: '/images/operating-leader.jpg',
-        },
-        {
-          title: 'Ground-up builder',
-          detail:
-            '7 years of experience building French and Italian business from the ground up.',
-          image: '/images/executive-partner.jpg',
-        },
       ],
     },
   },
