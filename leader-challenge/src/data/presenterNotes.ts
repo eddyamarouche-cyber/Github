@@ -86,7 +86,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'spanish-team-trophies': {
     opening: 'This is the feeling I want in Iberia.',
     coreMessage:
-      'One team — not individual heroics. Shared pressure, shared joy, one standard.',
+      'One team — no top guns, no rock stars or diva. Shared pressure, shared joy, one standard.',
     supportingExample:
       'Spain’s best runs have always looked like this — together under pressure, celebrating as one.',
     executiveImplication:

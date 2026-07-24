@@ -264,11 +264,12 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'One Team',
     takeaway:
-      'A high-performing Iberian team plays to win — together, under pressure, for the trophy.',
+      'One team — no top guns, no rock stars, no divas. Shared pressure, shared joy, one standard.',
     recommendedMinutes: 0.5,
     content: {
       image: '/images/spanish-team-trophies.jpg',
       title: 'One team',
+      subtitle: 'No top guns, no rock stars or diva',
     },
   },
   {

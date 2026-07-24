@@ -2037,7 +2037,9 @@ function VisualHeroScreen({
                   className={
                     hasChips || hasLogos
                       ? 'font-display text-xl leading-snug font-semibold text-balance text-white lg:text-2xl'
-                      : 'text-base text-white/65 lg:text-lg'
+                      : hasTitleBlock
+                        ? 'font-display text-xl leading-snug font-bold text-balance text-white lg:text-2xl'
+                        : 'text-base text-white/65 lg:text-lg'
                   }
                 >
                   {content.subtitle}
