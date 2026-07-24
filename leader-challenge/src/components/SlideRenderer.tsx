@@ -1889,6 +1889,8 @@ function VisualHeroScreen({
   const hasChips = chips.length > 0
   const hasLogos = logos.length > 0
   const centeredPoints = content.pointsLayout === 'center' && hasPoints
+  const displayTitleWithPoints =
+    content.titleSize === 'display' && hasPoints && Boolean(content.title)
   const [visibleCount, setVisibleCount] = useState(revealOnClick ? 0 : points.length)
   const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints))
   const hasTitleBlock = Boolean(content.title && !hasPoints)
@@ -1975,7 +1977,7 @@ function VisualHeroScreen({
                 <div />
               )}
               <div className="flex flex-wrap items-center gap-3">
-                {content.title && hasPoints ? (
+                {content.title && hasPoints && !displayTitleWithPoints ? (
                   <p className="font-display text-lg font-semibold text-white/80 lg:text-xl">
                     {content.title}
                   </p>
@@ -1985,6 +1987,28 @@ function VisualHeroScreen({
           ) : (
             <div />
           )}
+
+          {displayTitleWithPoints ? (
+            <div className="shrink-0">
+              <motion.h2
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="font-display max-w-5xl text-5xl leading-[0.95] font-bold tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl"
+              >
+                {content.title}
+              </motion.h2>
+              {hasSubtitle ? (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="mt-3 max-w-3xl text-base text-white/65 lg:text-lg"
+                >
+                  {content.subtitle}
+                </motion.p>
+              ) : null}
+            </div>
+          ) : null}
 
           {hasPoints ? (
             <div
@@ -2076,7 +2100,7 @@ function VisualHeroScreen({
 
           {hasSubtitle || hasChips || hasLogos ? (
             <div className="max-w-6xl space-y-4">
-              {hasSubtitle ? (
+              {hasSubtitle && !displayTitleWithPoints ? (
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}

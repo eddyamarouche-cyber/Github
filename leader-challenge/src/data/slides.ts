@@ -491,14 +491,15 @@ export const slides: Slide[] = [
     number: 18,
     section: 'recruitment',
     type: 'visual-hero',
-    title: 'Why Cursor',
+    title: 'Why Cursor?',
     takeaway:
       'Engineers plus compute, the fastest SaaS climb in history, and $6Bn ARR mostly PLG — proof the opportunity is real.',
     recommendedMinutes: 0.5,
     content: {
       image: '/images/unique-acceleration.jpg',
       eyebrow: 'Role play',
-      title: 'Why Cursor',
+      title: 'Why Cursor?',
+      titleSize: 'display',
       subtitle: 'Unique acceleration',
       points: [
         'Software Engineers + Power of compute',
