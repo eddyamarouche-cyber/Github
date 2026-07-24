@@ -2050,12 +2050,12 @@ function VisualHeroScreen({
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.55 }}
-                      className="text-sm font-medium text-white/70 lg:text-base"
+                      className="font-display text-xl leading-snug font-bold text-balance text-white lg:text-2xl"
                     >
-                      {content.chipsLabel}:
+                      {content.chipsLabel}
                     </motion.p>
                   ) : null}
-                  <div className="mt-3 flex flex-wrap items-center gap-2.5 lg:gap-3">
+                  <div className="mt-4 flex flex-wrap items-center gap-2.5 lg:gap-3">
                     {logos.map((logo, index) => (
                       <motion.div
                         key={logo.name}
