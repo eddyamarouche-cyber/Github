@@ -494,7 +494,7 @@ export const slides: Slide[] = [
     title: 'Why Cursor?',
     takeaway:
       'Unique acceleration plus model agnosticity, frontier compute, compounding model advantage, and Fortune 500 adoption — proof the opportunity is real.',
-    recommendedMinutes: 1,
+    recommendedMinutes: 0.5,
     content: {
       image: '/images/unique-acceleration.jpg',
       eyebrow: 'Role play',
@@ -507,6 +507,7 @@ export const slides: Slide[] = [
         'Harness better models — the compounding advantage',
         '64% of Fortune 500 companies',
       ],
+      pointsLayout: 'center',
       revealPointsOnClick: true,
     },
   },
