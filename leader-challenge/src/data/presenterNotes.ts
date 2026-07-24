@@ -108,12 +108,12 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'wild-geese': {
     opening: 'This image is intentional.',
     coreMessage:
-      'A strong team moves in one direction, creates lift for each other and stays aligned under pressure.',
+      'One direction, just doers — fellow miners who move together, share the load and get the work done.',
     supportingExample:
-      'Wild geese fly farther together because every bird helps the flock and the V keeps reforming.',
+      'No top guns. No divas. A team that points the same way and executes.',
     executiveImplication:
       'Talent density matters — but so does shared direction and mutual enablement.',
-    likelyQuestion: 'How do you keep a regional team flying in formation across markets?',
+    likelyQuestion: 'How do you keep a regional team aligned across markets?',
     transition: 'Recruitment starts with a simple image.',
   },
   'recruitment-opener': {

@@ -296,11 +296,12 @@ export const slides: Slide[] = [
     section: 'intro',
     type: 'visual-hero',
     title: 'One Direction',
-    takeaway: 'A high-performing team moves with shared direction and collective lift.',
+    takeaway: 'One direction, just doers — shared purpose and collective lift, not individual heroics.',
     recommendedMinutes: 0.5,
     content: {
-      image: '/images/wild-geese.jpg',
+      image: '/images/fellow-miners.jpg',
       title: 'One direction',
+      subtitle: 'Just doers',
     },
   },
 
