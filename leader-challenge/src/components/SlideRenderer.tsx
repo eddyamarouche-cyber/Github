@@ -1906,6 +1906,10 @@ function VisualHeroScreen({
     (hasSubtitle && !displayTitleWithPoints && !headerTitle) || hasChips || hasLogos
   const hasCopy =
     hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips || hasLogos || hasLink || hasTable
+  const showTable =
+    hasTable &&
+    Boolean(content.table) &&
+    (!hasPoints || !revealOnClick || visibleCount >= points.length)
 
   useEffect(() => {
     setVisibleCount(revealOnClick ? 0 : points.length)
@@ -2253,10 +2257,12 @@ function VisualHeroScreen({
             <div />
           )}
 
-          {hasTable && content.table ? (
+          {showTable && content.table ? (
             <div className="relative z-10 mt-2 min-h-0 shrink-0 lg:mt-3">
               <HeroDataTable table={content.table} />
             </div>
+          ) : hasTable && hasPoints ? (
+            <div className="flex-1" />
           ) : null}
 
           {hasLink ? (
