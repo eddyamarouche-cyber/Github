@@ -569,7 +569,7 @@ export const slides: Slide[] = [
     number: 22,
     section: 'retention',
     type: 'subdivisions',
-    title: 'How we retain?',
+    title: 'The approach',
     headline:
       'Keep your best performers engaged and committed for long-term success.',
     takeaway:
