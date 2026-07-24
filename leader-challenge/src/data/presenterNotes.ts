@@ -42,7 +42,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'who-i-am-as-a-leader': {
     opening: 'Why am I here? Builder mindset.',
     coreMessage:
-      'Joined Databricks early in Europe. AE → Strategic Accounts → Sales Director Italy. Seven years building French and Italian business from the ground up.',
+      'Joined Databricks early in Europe. AE → Strategic Accounts → Sales Director Italy. Seven years building French and Italian business from the ground up — 50K$ to 11M$ ARR, five-time President Club.',
     supportingExample:
       'That path is the proof: I do not inherit a region — I build it.',
     executiveImplication:
