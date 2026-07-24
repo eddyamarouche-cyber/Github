@@ -564,9 +564,8 @@ export const slides: Slide[] = [
       items: [
         {
           title: 'Growth Opportunities',
-          theme: 'AI Sales tool',
           detail:
-            'Provide clear advancement paths and stretch assignments that challenge top performers — with an AI Sales tool that raises their ceiling.',
+            'Provide clear advancement paths and stretch assignments that challenge top performers.',
           image: '/images/retention-growth-paths.jpg',
         },
         {

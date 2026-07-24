@@ -229,7 +229,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'retention-system': {
     opening: 'Keep your best performers engaged and committed for long-term success.',
     coreMessage:
-      'Growth Opportunities with an AI Sales tool. Coaching Excellence as an operating rhythm with Enablement. Culture of Belonging through team identity rituals. Work-Life Integration that respects boundaries.',
+      'Growth Opportunities through advancement paths and stretch assignments. Coaching Excellence as an operating rhythm with Enablement. Culture of Belonging through team identity rituals. Work-Life Integration that respects boundaries.',
     supportingExample:
       'Click each topic open — advancement paths, 1:1 cadence, dinners and events, flexible arrangements.',
     executiveImplication:
