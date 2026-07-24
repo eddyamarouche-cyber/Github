@@ -104,7 +104,7 @@ export interface VisualHeroContent {
 
 export interface RevealContent {
   image: string
-  question: string
+  question?: string
   /** Supporting line shown below the question before the answer reveals */
   questionSubtitle?: string
   answer: string
@@ -112,6 +112,8 @@ export interface RevealContent {
   answerSubtitle?: string
   /** Delay before the answer appears, in ms */
   answerDelayMs?: number
+  /** Show only the answer block — for split reveal slides */
+  answerOnly?: boolean
 }
 
 export interface ThesisContent {

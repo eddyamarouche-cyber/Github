@@ -1732,14 +1732,17 @@ function ObjectionsScreen({ content }: { content: ObjectionsContent }) {
 }
 
 function RevealScreen({ content }: { content: RevealContent }) {
+  const answerOnly = Boolean(content.answerOnly)
   const [showAnswer, setShowAnswer] = useState(false)
-  const delay = content.answerDelayMs ?? 2200
+  const delay = content.answerDelayMs ?? (answerOnly ? 1200 : 2200)
 
   useEffect(() => {
     setShowAnswer(false)
     const timer = window.setTimeout(() => setShowAnswer(true), delay)
     return () => window.clearTimeout(timer)
-  }, [delay, content.question, content.questionSubtitle, content.answer, content.answerSubtitle])
+  }, [delay, content.question, content.questionSubtitle, content.answer, content.answerSubtitle, answerOnly])
+
+  const showQuestion = !answerOnly && Boolean(content.question)
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -1760,25 +1763,27 @@ function RevealScreen({ content }: { content: RevealContent }) {
       />
 
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-8 py-10 text-center lg:px-16">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{
-            opacity: 1,
-            y: showAnswer ? -36 : 0,
-            scale: showAnswer ? 0.92 : 1,
-          }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl space-y-4"
-        >
-          <p className="font-display text-2xl leading-snug font-semibold text-balance text-white/90 sm:text-3xl lg:text-4xl">
-            {content.question}
-          </p>
-          {content.questionSubtitle ? (
-            <p className="mx-auto max-w-4xl text-lg leading-relaxed font-medium text-balance text-white/75 sm:text-xl lg:text-2xl">
-              {content.questionSubtitle}
+        {showQuestion ? (
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{
+              opacity: 1,
+              y: showAnswer ? -36 : 0,
+              scale: showAnswer ? 0.92 : 1,
+            }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-5xl space-y-4"
+          >
+            <p className="font-display text-2xl leading-snug font-semibold text-balance text-white/90 sm:text-3xl lg:text-4xl">
+              {content.question}
             </p>
-          ) : null}
-        </motion.div>
+            {content.questionSubtitle ? (
+              <p className="font-display mx-auto max-w-4xl text-2xl leading-snug font-semibold text-balance text-white/90 sm:text-3xl lg:text-4xl">
+                {content.questionSubtitle}
+              </p>
+            ) : null}
+          </motion.div>
+        ) : null}
 
         <AnimatePresence>
           {showAnswer ? (
@@ -1788,7 +1793,7 @@ function RevealScreen({ content }: { content: RevealContent }) {
               animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-2 flex flex-col items-center"
+              className={answerOnly ? 'flex flex-col items-center' : 'mt-2 flex flex-col items-center'}
             >
               <h2 className="font-display text-7xl leading-none font-bold tracking-tight text-white sm:text-8xl lg:text-[10rem]">
                 {content.answer}
@@ -2004,11 +2009,13 @@ function VisualHeroScreen({
                       <p
                         className={`font-display font-bold tracking-tight text-balance text-white ${
                           centeredPoints
-                            ? points.length === 2 && index === 0
-                              ? 'text-3xl leading-tight sm:text-4xl lg:text-6xl xl:text-7xl'
-                              : points.length === 2
-                                ? 'text-xl leading-snug sm:text-2xl lg:text-4xl xl:text-5xl'
-                                : points.length >= 4
+                            ? points.length === 2
+                              ? long
+                                ? 'text-2xl leading-snug sm:text-3xl lg:text-4xl xl:text-5xl'
+                                : medium
+                                  ? 'text-2xl leading-tight sm:text-3xl lg:text-5xl xl:text-6xl'
+                                  : 'text-3xl leading-tight sm:text-4xl lg:text-5xl xl:text-6xl'
+                              : points.length >= 4
                                   ? long
                                     ? 'text-base leading-snug sm:text-lg lg:text-2xl xl:text-3xl'
                                     : medium

@@ -204,12 +204,23 @@ export const presenterNotes: Record<string, PresenterNote> = {
     likelyQuestion: 'Which proof point lands hardest with senior sellers?',
     transition: 'Then the ambition — what the best GTM team can build in four years.',
   },
-  'gtm-100bn': {
-    opening: 'Hold the question. Then land the answer.',
+  'gtm-ambition': {
+    opening: 'Hold the room with the question, then the team behind it.',
     coreMessage:
-      'What can we do with the best world-class GTM team in the world in the next four years? Experienced executives with the best track record to pilot the rocket ship — then 100Bn$. Close with the once-in-a-lifetime opportunity to grow and contribute at the most iconic AI company in history.',
+      'What can we do with the best world-class GTM team in the world in the next four years? Experienced executives with the best track record to pilot the rocket ship — both lines land at equal weight.',
     supportingExample:
-      'The opportunity story must end in a number big enough to make an A-player lean forward.',
+      'Click to reveal each line. The executives line is not a footnote — it is the proof the rocket ship has pilots.',
+    executiveImplication:
+      'Ambition without operators is fantasy. Name the team that can execute.',
+    likelyQuestion: 'Who specifically is on that GTM bench?',
+    transition: 'Now land the number.',
+  },
+  'gtm-100bn': {
+    opening: 'Pause. Then reveal the outcome.',
+    coreMessage:
+      '100Bn$. Becoming the operating system for AI-native software engineering.',
+    supportingExample:
+      'The opportunity story must end in a number big enough to make an A-player lean forward — with a category definition underneath.',
     executiveImplication:
       'Ambition attracts ambition. Small targets do not recruit category winners.',
     likelyQuestion: 'How do you keep 100Bn$ credible without sounding like hype?',
