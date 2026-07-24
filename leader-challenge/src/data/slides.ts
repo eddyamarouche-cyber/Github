@@ -33,8 +33,44 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'win-the-stage',
+    id: 'session-summary',
     number: 2,
+    section: 'intro',
+    type: 'topics-summary',
+    title: 'Session Summary',
+    headline: 'Three engines that make Italy–Iberia compound.',
+    takeaway:
+      'Everything that follows lands in three working topics: Recruitment, Retention and Revenue.',
+    recommendedMinutes: 1,
+    content: {
+      topics: [
+        {
+          title: 'Recruitment',
+          subtitle: 'Raise the bar',
+          description: '',
+          focuses: ['A Player', 'First 5', 'How?', 'Role play'],
+          minutes: 25,
+        },
+        {
+          title: 'Retention',
+          subtitle: 'Grow the team',
+          description: '',
+          focuses: ['Coaching rhythm', 'Performance diagnosis', 'Ownership culture'],
+          minutes: 15,
+        },
+        {
+          title: 'Revenue',
+          subtitle: 'Run the business',
+          description: '',
+          focuses: ['Pipeline discipline', 'Deal inspection', 'Forecast accuracy'],
+          minutes: 20,
+        },
+      ],
+    },
+  },
+  {
+    id: 'win-the-stage',
+    number: 3,
     section: 'intro',
     type: 'visual-hero',
     title: 'Win the Stage',
@@ -51,7 +87,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'spanish-team-trophies',
-    number: 3,
+    number: 4,
     section: 'intro',
     type: 'visual-hero',
     title: 'One Team',
@@ -65,7 +101,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'leadership-standard',
-    number: 4,
+    number: 5,
     section: 'intro',
     type: 'visual-hero',
     title: 'The Standard',
@@ -83,7 +119,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'wild-geese',
-    number: 5,
+    number: 6,
     section: 'intro',
     type: 'visual-hero',
     title: 'One Direction',
@@ -96,7 +132,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'who-i-am-as-a-leader',
-    number: 6,
+    number: 7,
     section: 'intro',
     type: 'drivers',
     title: 'Who I Am as a Leader',
@@ -135,42 +171,7 @@ export const slides: Slide[] = [
       ],
     },
   },
-  {
-    id: 'session-summary',
-    number: 7,
-    section: 'intro',
-    type: 'topics-summary',
-    title: 'Session Summary',
-    headline: 'Three engines that make Italy–Iberia compound.',
-    takeaway:
-      'Everything that follows lands in three working topics: Recruitment, Retention and Revenue.',
-    recommendedMinutes: 1,
-    content: {
-      topics: [
-        {
-          title: 'Recruitment',
-          subtitle: 'Raise the bar',
-          description: '',
-          focuses: ['A Player', 'First 5', 'How?', 'Role play'],
-          minutes: 25,
-        },
-        {
-          title: 'Retention',
-          subtitle: 'Grow the team',
-          description: '',
-          focuses: ['Coaching rhythm', 'Performance diagnosis', 'Ownership culture'],
-          minutes: 15,
-        },
-        {
-          title: 'Revenue',
-          subtitle: 'Run the business',
-          description: '',
-          focuses: ['Pipeline discipline', 'Deal inspection', 'Forecast accuracy'],
-          minutes: 20,
-        },
-      ],
-    },
-  },
+
   {
     id: 'recruitment-opener',
     number: 8,

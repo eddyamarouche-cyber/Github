@@ -15,7 +15,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'The first five minutes establish how I manage before we enter the four working topics.',
     likelyQuestion: 'How would you prioritize if you joined with limited headcount?',
-    transition: 'Before the operating system — the objective I will own with clients.',
+    transition: 'First — the map of the session: three engines.',
+  },
+  'session-summary': {
+    opening: 'I will run the rest of the session through three engines.',
+    coreMessage:
+      'Recruitment raises the bar — A Player, First 5, How?, Role play. Retention grows the team. Revenue runs the business.',
+    supportingExample:
+      'If any one of these is weak, the region becomes noisy. If all three are strong, growth compounds.',
+    executiveImplication:
+      'Every method that follows should map back to one of these three outcomes.',
+    likelyQuestion: 'Where do you want the deepest inspection first?',
+    transition: 'Before we go deep — the objective I will own with clients.',
   },
   'win-the-stage': {
     opening: 'This is the objective I want to anchor with you.',
@@ -70,17 +81,6 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'If this frame feels right, the rest of the session is simply how I apply it at Cursor.',
     likelyQuestion: 'Which of these four roles do you lean on first in a new region?',
-    transition: 'Here is how the working session is structured.',
-  },
-  'session-summary': {
-    opening: 'I will run the rest of the session through three engines.',
-    coreMessage:
-      'Recruitment raises the bar — A Player, First 5, How?, Role play. Retention grows the team. Revenue runs the business.',
-    supportingExample:
-      'If any one of these is weak, the region becomes noisy. If all three are strong, growth compounds.',
-    executiveImplication:
-      'Every method that follows should map back to one of these three outcomes.',
-    likelyQuestion: 'Where do you want the deepest inspection first?',
     transition: 'Recruitment starts with a simple image.',
   },
   'recruitment-opener': {
