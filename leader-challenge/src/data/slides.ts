@@ -147,6 +147,7 @@ export const slides: Slide[] = [
             '7 years of experience building French and Italian business from the ground up',
             '50K$ to 11M$ ARR',
             '5 times President Club',
+            'First M$ and MM$ deals France and Italy',
           ],
         },
       ],
