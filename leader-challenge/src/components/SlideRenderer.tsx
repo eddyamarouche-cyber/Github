@@ -1485,9 +1485,6 @@ function SubdivisionsScreen({
             <p className="mt-2 max-w-2xl text-sm text-white/55 lg:text-base">{headline}</p>
           ) : null}
         </div>
-        <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 text-[11px] text-white/55 backdrop-blur-md">
-          Click a topic to open · {content.items.length} pages
-        </div>
       </div>
 
       {content.statements?.length ? (
