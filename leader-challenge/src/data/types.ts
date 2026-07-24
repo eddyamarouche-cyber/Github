@@ -98,6 +98,8 @@ export interface VisualHeroContent {
   titleSize?: 'default' | 'display'
   /** Reveal point blocks one-by-one on click / Next */
   revealPointsOnClick?: boolean
+  /** Stack and center points as large hero statements */
+  pointsLayout?: 'default' | 'center'
 }
 
 export interface RevealContent {

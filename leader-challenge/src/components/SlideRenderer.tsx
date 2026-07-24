@@ -1888,6 +1888,7 @@ function VisualHeroScreen({
   const logos = content.logos ?? []
   const hasChips = chips.length > 0
   const hasLogos = logos.length > 0
+  const centeredPoints = content.pointsLayout === 'center' && hasPoints
   const [visibleCount, setVisibleCount] = useState(revealOnClick ? 0 : points.length)
   const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints))
   const hasTitleBlock = Boolean(content.title && !hasPoints)
@@ -1986,15 +1987,23 @@ function VisualHeroScreen({
           )}
 
           {hasPoints ? (
-            <div className="flex min-h-0 flex-1 flex-col justify-center py-3">
+            <div
+              className={`flex min-h-0 flex-1 flex-col py-3 ${
+                centeredPoints ? 'items-center justify-center' : 'justify-center'
+              }`}
+            >
               <div
-                className={`grid w-full gap-3 md:gap-4 ${
-                  points.length >= 5
-                    ? 'md:grid-cols-6'
-                    : points.length === 4
-                      ? 'md:grid-cols-2 lg:grid-cols-4'
-                      : 'md:grid-cols-3'
-                }`}
+                className={
+                  centeredPoints
+                    ? 'flex w-full max-w-5xl flex-col items-center justify-center gap-5 lg:gap-8'
+                    : `grid w-full gap-3 md:gap-4 ${
+                        points.length >= 5
+                          ? 'md:grid-cols-6'
+                          : points.length === 4
+                            ? 'md:grid-cols-2 lg:grid-cols-4'
+                            : 'md:grid-cols-3'
+                      }`
+                }
               >
                 {points.map((point, index) => {
                   const long = point.length > 48
@@ -2014,24 +2023,30 @@ function VisualHeroScreen({
                         duration: 0.45,
                         ease: [0.22, 1, 0.36, 1],
                       }}
-                      className={`glass flex items-center justify-center rounded-[28px] px-4 py-6 text-center backdrop-blur-xl lg:px-5 ${
-                        fiveUp
-                          ? 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
-                          : 'min-h-[180px] lg:min-h-[240px] lg:py-8'
-                      } ${fiveUp && points.length === 5 && index === 3 ? 'md:col-start-2' : ''} ${
-                        visible ? '' : 'pointer-events-none'
-                      }`}
+                      className={`glass flex items-center justify-center rounded-[28px] text-center backdrop-blur-xl ${
+                        centeredPoints
+                          ? 'w-full max-w-4xl px-6 py-8 lg:px-10 lg:py-12'
+                          : `px-4 py-6 lg:px-5 ${
+                              fiveUp
+                                ? 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
+                                : 'min-h-[180px] lg:min-h-[240px] lg:py-8'
+                            } ${fiveUp && points.length === 5 && index === 3 ? 'md:col-start-2' : ''}`
+                      } ${visible ? '' : 'pointer-events-none'}`}
                       aria-hidden={!visible}
                     >
                       <p
                         className={`font-display font-bold tracking-tight text-balance text-white ${
-                          long
-                            ? 'text-lg leading-snug sm:text-xl lg:text-2xl'
-                            : medium
-                              ? 'text-xl leading-tight sm:text-2xl lg:text-3xl'
-                              : fiveUp
-                                ? 'text-2xl leading-none sm:text-3xl lg:text-4xl'
-                                : 'text-4xl leading-none sm:text-5xl lg:text-6xl xl:text-7xl'
+                          centeredPoints
+                            ? index === 0
+                              ? 'text-3xl leading-tight sm:text-4xl lg:text-6xl xl:text-7xl'
+                              : 'text-xl leading-snug sm:text-2xl lg:text-4xl xl:text-5xl'
+                            : long
+                              ? 'text-lg leading-snug sm:text-xl lg:text-2xl'
+                              : medium
+                                ? 'text-xl leading-tight sm:text-2xl lg:text-3xl'
+                                : fiveUp
+                                  ? 'text-2xl leading-none sm:text-3xl lg:text-4xl'
+                                  : 'text-4xl leading-none sm:text-5xl lg:text-6xl xl:text-7xl'
                         }`}
                       >
                         {point}

@@ -482,6 +482,7 @@ export const slides: Slide[] = [
         'Market opportunity : 2 trillion $',
         'Every company is trying to turn AI into engineering output faster than their competitors',
       ],
+      pointsLayout: 'center',
       revealPointsOnClick: true,
     },
   },
