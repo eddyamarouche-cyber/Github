@@ -44,7 +44,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
     coreMessage:
       'BUILD — early European Databricks path to Sales Director Italy. LEAD — demand and pipeline from zero, five-time President Club. SELL — strategic logos from 50K$ to 11M$ ARR. SCALE — repeat, leverage, expand, 20+ hires in Italy.',
     supportingExample:
-      'Stellantis, Michelin, Danone, Sanofi, Barilla, Kiko — complex enterprise wins that compound into a repeatable GTM engine.',
+      'Stellantis, Michelin, Danone, Sanofi, CNH, Iveco, Prada, Fastweb, Barilla, Kiko — complex enterprise wins that compound into a repeatable GTM engine.',
     executiveImplication:
       'Southern Europe at Cursor needs a builder who has already done the zero-to-scale journey — not a caretaker.',
     likelyQuestion: 'Which of Build / Lead / Sell / Scale transfers fastest to Cursor?',
