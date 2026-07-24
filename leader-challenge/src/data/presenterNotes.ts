@@ -191,6 +191,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'If we cannot make the opportunity feel huge in the room, we will not win the talent in market.',
     likelyQuestion: 'What is the one sentence that makes this opportunity feel huge?',
+    transition: 'Then the proof — why Cursor is winning that race.',
+  },
+  'roleplay-proof': {
+    opening: 'Market size is not enough — they need proof Cursor can win.',
+    coreMessage:
+      'Software Engineers plus power of compute. Fastest SaaS climb from $1M to $1B ARR in history. $6Bn ARR mostly with PLG.',
+    supportingExample:
+      'These are the three proof points that turn a huge TAM into a credible place to bet a career.',
+    executiveImplication:
+      'A-players join momentum they can verify — not slides alone.',
+    likelyQuestion: 'Which proof point lands hardest with senior sellers?',
     transition: 'Then the ambition — what the best GTM team can build in four years.',
   },
   'gtm-100bn': {
