@@ -362,7 +362,7 @@ export const slides: Slide[] = [
       title: 'Role play',
       points: [
         'Every company is trying to turn AI into engineering output faster than their competitors',
-        "100's Bn$ TAM",
+        '2Trn$ TAM',
         'Software Engineers + Power of compute',
         'Fastest SaaS climb from $1M to $1B ARR in history',
         '6Bn$ ARR mostly with PLG',
