@@ -2227,6 +2227,25 @@ function LeadershipRolesScreen({
   )
 }
 
+function emphasizeMetrics(text: string) {
+  const parts = text.split(/(\d[\d.,]*\+?\s*(?:K\$|M\$|\$)?|\d+\+|\$\d[\d.,]*[KM]?)/gi)
+  return parts.map((part, index) => {
+    if (!part) return null
+    const isMetric = /^\d/.test(part) || part.startsWith('$')
+    if (isMetric) {
+      return (
+        <span
+          key={`${part}-${index}`}
+          className="font-display font-bold tracking-tight text-accent"
+        >
+          {part}
+        </span>
+      )
+    }
+    return <span key={`${part}-${index}`}>{part}</span>
+  })
+}
+
 function DriversColumnsScreen({
   title,
   headline,
@@ -2274,7 +2293,7 @@ function DriversColumnsScreen({
               duration: 0.45,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="group relative flex min-h-0 flex-col overflow-hidden rounded-[26px] border border-white/12 bg-gradient-to-b from-white/[0.09] via-white/[0.04] to-transparent p-4 lg:p-5"
+            className="group relative flex min-h-0 flex-col overflow-hidden rounded-[28px] border border-white/12 bg-gradient-to-b from-white/[0.1] via-white/[0.04] to-transparent p-4 lg:p-5"
           >
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
             <div className="absolute -top-16 left-1/2 h-28 w-28 -translate-x-1/2 rounded-full bg-accent/20 opacity-0 blur-2xl transition group-hover:opacity-100" />
@@ -2286,7 +2305,7 @@ function DriversColumnsScreen({
               <div className="h-px flex-1 bg-gradient-to-r from-accent/50 to-transparent" />
             </div>
 
-            <h2 className="font-display relative mt-3 text-2xl font-bold tracking-tight text-white lg:text-3xl">
+            <h2 className="font-display relative mt-3 text-3xl font-bold tracking-tight text-white lg:text-4xl">
               {driver.title}
             </h2>
             {driver.detail ? (
@@ -2294,14 +2313,17 @@ function DriversColumnsScreen({
             ) : null}
 
             {driver.bullets?.length ? (
-              <ul className="relative mt-5 flex min-h-0 flex-1 flex-col gap-3">
-                {driver.bullets.map((bullet) => (
-                  <li
-                    key={bullet}
-                    className="flex gap-2.5 text-sm leading-snug text-white/75 lg:text-[15px]"
-                  >
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_10px_rgba(255,107,44,0.55)]" />
-                    <span>{bullet}</span>
+              <ul className="relative mt-6 flex min-h-0 flex-1 flex-col gap-3.5 lg:gap-4">
+                {driver.bullets.map((bullet, bulletIndex) => (
+                  <li key={bullet}>
+                    <div className="rounded-2xl border border-white/10 bg-black/25 px-3.5 py-3 backdrop-blur-sm transition group-hover:border-white/15 lg:px-4 lg:py-3.5">
+                      <p className="font-display text-[10px] font-semibold tracking-[0.16em] text-white/35 uppercase">
+                        {String(bulletIndex + 1).padStart(2, '0')}
+                      </p>
+                      <p className="mt-1.5 text-base leading-snug font-medium text-white/90 lg:text-lg lg:leading-snug">
+                        {emphasizeMetrics(bullet)}
+                      </p>
+                    </div>
                   </li>
                 ))}
               </ul>

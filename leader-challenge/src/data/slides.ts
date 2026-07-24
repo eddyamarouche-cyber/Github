@@ -158,7 +158,7 @@ export const slides: Slide[] = [
           title: 'SELL',
           bullets: [
             'Win complex, strategic enterprise deals (Stellantis, Michelin, Danone, Sanofi, Barilla, Kiko…)',
-            'Business value outcome — from 50K$ to 11M$ ARR',
+            '50K$ → 11M$ ARR — business value outcome',
           ],
         },
         {
