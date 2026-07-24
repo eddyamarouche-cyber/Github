@@ -2067,12 +2067,12 @@ function VisualHeroScreen({
                           ease: [0.22, 1, 0.36, 1],
                         }}
                         title={logo.name}
-                        className="flex h-12 items-center justify-center rounded-2xl border border-white/15 bg-white px-3.5 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.25)] lg:h-14 lg:px-4"
+                        className="flex h-14 w-[148px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-white px-2.5 shadow-[0_8px_24px_rgba(0,0,0,0.25)] lg:h-16 lg:w-[168px]"
                       >
                         <img
                           src={logo.src}
                           alt={logo.name}
-                          className="max-h-7 max-w-[108px] object-contain lg:max-h-8 lg:max-w-[120px]"
+                          className="h-full w-full object-contain p-1.5"
                         />
                       </motion.div>
                     ))}
