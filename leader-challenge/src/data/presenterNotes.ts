@@ -257,6 +257,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Retention improves when managers rehearse, observe, and measure — not when they only agree on principles.',
     likelyQuestion: 'What does good shadowing look like in week one?',
+    transition: 'Then monitoring — the control tower view.',
+  },
+  'retention-monitoring': {
+    opening: 'Practice without visibility is hope. Monitoring is the control tower.',
+    coreMessage:
+      'Retention needs a control tower — signals, visibility, and early intervention before top performers drift.',
+    supportingExample:
+      'Like air traffic control, you watch leading indicators — engagement, pipeline quality, coaching cadence — and act before problems land.',
+    executiveImplication:
+      'Leaders who monitor retain. Leaders who only react lose A-players quietly.',
+    likelyQuestion: 'What are your top three retention signals?',
     transition: 'That discipline still needs a scorecard before we hire the next one.',
   },
   'candidate-scorecard': {
