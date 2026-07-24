@@ -384,6 +384,7 @@ export const slides: Slide[] = [
       question:
         'What can we do with best GTM team in the world in the next 4 years ?',
       answer: '100Bn$',
+      answerSubtitle: 'Operating system for AI software engineering',
       answerDelayMs: 2200,
     },
   },

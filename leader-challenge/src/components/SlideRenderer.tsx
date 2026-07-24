@@ -1671,7 +1671,7 @@ function RevealScreen({ content }: { content: RevealContent }) {
     setShowAnswer(false)
     const timer = window.setTimeout(() => setShowAnswer(true), delay)
     return () => window.clearTimeout(timer)
-  }, [delay, content.question, content.answer])
+  }, [delay, content.question, content.answer, content.answerSubtitle])
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -1707,16 +1707,23 @@ function RevealScreen({ content }: { content: RevealContent }) {
 
         <AnimatePresence>
           {showAnswer ? (
-            <motion.h2
+            <motion.div
               key={content.answer}
               initial={{ opacity: 0, scale: 0.72, y: 40, filter: 'blur(10px)' }}
               animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display mt-2 text-7xl leading-none font-bold tracking-tight text-white sm:text-8xl lg:text-[10rem]"
+              className="mt-2 flex flex-col items-center"
             >
-              {content.answer}
-            </motion.h2>
+              <h2 className="font-display text-7xl leading-none font-bold tracking-tight text-white sm:text-8xl lg:text-[10rem]">
+                {content.answer}
+              </h2>
+              {content.answerSubtitle ? (
+                <p className="mt-5 max-w-3xl text-lg font-medium tracking-wide text-white/80 sm:text-xl lg:mt-6 lg:text-2xl">
+                  {content.answerSubtitle}
+                </p>
+              ) : null}
+            </motion.div>
           ) : null}
         </AnimatePresence>
       </div>

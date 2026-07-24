@@ -97,6 +97,8 @@ export interface RevealContent {
   image: string
   question: string
   answer: string
+  /** Line shown just below the answer once it reveals */
+  answerSubtitle?: string
   /** Delay before the answer appears, in ms */
   answerDelayMs?: number
 }
