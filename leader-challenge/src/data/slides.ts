@@ -328,7 +328,7 @@ export const slides: Slide[] = [
     title: 'A Player Profile',
     headline: 'Character filters and cognitive filters — both are non-negotiable.',
     takeaway:
-      'Hire patriots with high slope and clock speed — people who own outcomes and stay resilient under pressure.',
+      'Hire patriots with clock speed and resilience — people who learn in the struggle and own outcomes.',
     recommendedMinutes: 3,
     content: {
       criteria: [
@@ -339,9 +339,9 @@ export const slides: Slide[] = [
           image: '/images/ap-clock-speed.jpg',
         },
         {
-          title: 'High slope',
+          title: 'Learning happens in the struggle.',
           detail:
-            'Trajectory matters more than pedigree. Prefer steep learners who compound quickly over flat high performers.',
+            'Trajectory matters more than pedigree. Look for people who grow through friction — steep learners who compound when it gets hard.',
           image: '/images/ap-slope.jpg',
         },
         {

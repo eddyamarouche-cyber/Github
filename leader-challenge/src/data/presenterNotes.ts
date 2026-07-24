@@ -130,7 +130,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'a-player-profile': {
     opening: 'Before process or scorecards, this is the filter.',
     coreMessage:
-      'Character and cognition that compound — patriots, ownership, resilient, high slope, high clock speed.',
+      'Character and cognition that compound — patriots, ownership, resilient, learning in the struggle, high clock speed.',
     supportingExample:
       'A polished big-brand résumé without ownership scars or learning slope is a warning, not a win.',
     executiveImplication:
