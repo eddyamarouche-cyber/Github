@@ -618,7 +618,7 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'Call to action',
     takeaway:
-      'Move from framework to practice — role play, shadowing, and calibrated activity levels turn retention into daily leadership.',
+      'Move from framework to practice — role play, shadowing, and direct feedback turn retention into daily leadership.',
     recommendedMinutes: 0.5,
     content: {
       image: '/images/call-to-action.jpg',
