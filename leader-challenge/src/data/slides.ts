@@ -577,10 +577,6 @@ export const slides: Slide[] = [
     recommendedMinutes: 2,
     content: {
       eyebrow: 'Retention',
-      statements: [
-        'Keep your best performers engaged',
-        'Committed for long-term success',
-      ],
       items: [
         {
           title: 'Growth Opportunities',
