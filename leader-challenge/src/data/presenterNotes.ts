@@ -130,12 +130,12 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'a-player-profile': {
     opening: 'Before process or scorecards, this is the filter.',
     coreMessage:
-      'Character and cognition that compound — patriots, ownership, resilient, learning in the struggle, high clock speed.',
+      'Character and cognition that compound — builders, patriots, ownership, resilient, learning in the struggle, high clock speed.',
     supportingExample:
-      'A polished big-brand résumé without ownership scars or learning slope is a warning, not a win.',
+      'A polished big-brand résumé without ownership scars or struggle-tested learning is a warning, not a win.',
     executiveImplication:
       'This profile protects culture and raises talent density before any interview loop starts.',
-    likelyQuestion: 'How do you test clock speed and slope in an interview?',
+    likelyQuestion: 'How do you test clock speed and learning in the struggle in an interview?',
     transition: 'Here is the first live LinkedIn talent map for Italy.',
   },
   'linkedin-talent-map': {

@@ -328,7 +328,7 @@ export const slides: Slide[] = [
     title: 'A Player Profile',
     headline: 'Character filters and cognitive filters — both are non-negotiable.',
     takeaway:
-      'Hire patriots with clock speed and resilience — people who learn in the struggle and own outcomes.',
+      'Hire builders with clock speed and resilience — patriots who learn in the struggle and own outcomes.',
     recommendedMinutes: 3,
     content: {
       criteria: [
@@ -361,6 +361,12 @@ export const slides: Slide[] = [
           detail:
             'Prefer candidates who have built without big-brand crutches — scarce resources, real ownership, real consequence.',
           image: '/images/ap-small-org.jpg',
+        },
+        {
+          title: 'Builder',
+          detail:
+            'Hire people who lay foundations — create structure, process and pipeline before they need the spotlight.',
+          image: '/images/ap-foundations.jpg',
         },
       ],
     },
