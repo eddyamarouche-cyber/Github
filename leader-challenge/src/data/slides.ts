@@ -662,7 +662,6 @@ export const slides: Slide[] = [
       image: '/images/monitoring-control-tower.jpg',
       eyebrow: 'Retention',
       title: 'Monitoring',
-      titleSize: 'display',
     },
   },
   {
