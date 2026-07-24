@@ -124,70 +124,8 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'win-the-stage',
-    number: 4,
-    section: 'intro',
-    type: 'visual-hero',
-    title: 'Win the Stage',
-    takeaway:
-      'Anchor the objective: win the stage with clients — own the narrative, the trust and the outcome.',
-    recommendedMinutes: 0.5,
-    content: {
-      image: '/images/win-the-stage.jpg',
-      eyebrow: 'The objective',
-      title: 'Win the stage',
-      subtitle:
-        'With every client — earn the room, own the narrative and make Cursor the obvious choice.',
-    },
-  },
-  {
-    id: 'spanish-team-trophies',
-    number: 5,
-    section: 'intro',
-    type: 'visual-hero',
-    title: 'One Team',
-    takeaway:
-      'A high-performing Iberian team plays to win — together, under pressure, for the trophy.',
-    recommendedMinutes: 0.5,
-    content: {
-      image: '/images/spanish-team-trophies.jpg',
-      title: 'One team',
-    },
-  },
-  {
-    id: 'leadership-standard',
-    number: 6,
-    section: 'intro',
-    type: 'visual-hero',
-    title: 'The Standard',
-    takeaway:
-      'High performance starts with an elite standard before any operating system.',
-    recommendedMinutes: 0.5,
-    content: {
-      image: '/images/leadership-standard.jpg',
-      eyebrow: 'Leadership mindset',
-      title: 'Operate to an elite standard',
-      subtitle:
-        'Persistency. Heart. Desire. The same principles that win under pressure apply to building a region.',
-      points: ['Persistency', 'Heart', 'Desire'],
-    },
-  },
-  {
-    id: 'wild-geese',
-    number: 7,
-    section: 'intro',
-    type: 'visual-hero',
-    title: 'One Direction',
-    takeaway: 'A high-performing team moves with shared direction and collective lift.',
-    recommendedMinutes: 0.5,
-    content: {
-      image: '/images/wild-geese.jpg',
-      title: 'One direction',
-    },
-  },
-  {
     id: 'who-i-am-as-a-leader',
-    number: 8,
+    number: 4,
     section: 'intro',
     type: 'drivers',
     title: 'Who I Am as a Leader',
@@ -224,6 +162,68 @@ export const slides: Slide[] = [
           ],
         },
       ],
+    },
+  },
+  {
+    id: 'win-the-stage',
+    number: 5,
+    section: 'intro',
+    type: 'visual-hero',
+    title: 'Win the Stage',
+    takeaway:
+      'Anchor the objective: win the stage with clients — own the narrative, the trust and the outcome.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/win-the-stage.jpg',
+      eyebrow: 'The objective',
+      title: 'Win the stage',
+      subtitle:
+        'With every client — earn the room, own the narrative and make Cursor the obvious choice.',
+    },
+  },
+  {
+    id: 'spanish-team-trophies',
+    number: 6,
+    section: 'intro',
+    type: 'visual-hero',
+    title: 'One Team',
+    takeaway:
+      'A high-performing Iberian team plays to win — together, under pressure, for the trophy.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/spanish-team-trophies.jpg',
+      title: 'One team',
+    },
+  },
+  {
+    id: 'leadership-standard',
+    number: 7,
+    section: 'intro',
+    type: 'visual-hero',
+    title: 'The Standard',
+    takeaway:
+      'High performance starts with an elite standard before any operating system.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/leadership-standard.jpg',
+      eyebrow: 'Leadership mindset',
+      title: 'Operate to an elite standard',
+      subtitle:
+        'Persistency. Heart. Desire. The same principles that win under pressure apply to building a region.',
+      points: ['Persistency', 'Heart', 'Desire'],
+    },
+  },
+  {
+    id: 'wild-geese',
+    number: 8,
+    section: 'intro',
+    type: 'visual-hero',
+    title: 'One Direction',
+    takeaway: 'A high-performing team moves with shared direction and collective lift.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/wild-geese.jpg',
+      title: 'One direction',
     },
   },
 

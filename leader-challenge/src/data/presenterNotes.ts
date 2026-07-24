@@ -37,7 +37,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Every method that follows should map back to one of these three outcomes.',
     likelyQuestion: 'Where do you want the deepest inspection first?',
-    transition: 'Before we go deep — the objective I will own with clients.',
+    transition: 'Before the workstreams — how I show up as a manager.',
+  },
+  'who-i-am-as-a-leader': {
+    opening: 'Before the workstreams, I want you to know how I show up as a manager.',
+    coreMessage:
+      'I lead as a talent builder, performance coach, operating leader and executive partner.',
+    supportingExample:
+      '[ADD MY EXAMPLE] — a concrete moment that shows how those four roles show up in practice.',
+    executiveImplication:
+      'If this frame feels right, the rest of the session is simply how I apply it at Cursor.',
+    likelyQuestion: 'Which of these four roles do you lean on first in a new region?',
+    transition: 'Next — the objective I will own with clients.',
   },
   'win-the-stage': {
     opening: 'This is the objective I want to anchor with you.',
@@ -81,17 +92,6 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Talent density matters — but so does shared direction and mutual enablement.',
     likelyQuestion: 'How do you keep a regional team flying in formation across markets?',
-    transition: 'Here is how that standard and that team mindset show up in four leadership roles.',
-  },
-  'who-i-am-as-a-leader': {
-    opening: 'Before the workstreams, I want you to know how I show up as a manager.',
-    coreMessage:
-      'I lead as a talent builder, performance coach, operating leader and executive partner.',
-    supportingExample:
-      '[ADD MY EXAMPLE] — a concrete moment that shows how those four roles show up in practice.',
-    executiveImplication:
-      'If this frame feels right, the rest of the session is simply how I apply it at Cursor.',
-    likelyQuestion: 'Which of these four roles do you lean on first in a new region?',
     transition: 'Recruitment starts with a simple image.',
   },
   'recruitment-opener': {
