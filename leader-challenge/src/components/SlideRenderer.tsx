@@ -971,7 +971,7 @@ function ProfileScreen({
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,107,44,0.12),transparent_50%)]" />
 
-      <div className="relative z-10 mb-4 flex flex-wrap items-end justify-between gap-3">
+      <div className="relative z-10 mb-4">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
@@ -987,9 +987,6 @@ function ProfileScreen({
           {headline ? (
             <p className="mt-1 max-w-2xl text-sm text-white/60">{headline}</p>
           ) : null}
-        </div>
-        <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 text-[11px] text-white/55 backdrop-blur-md">
-          Click a card to enlarge · {active + 1}/{content.criteria.length}
         </div>
       </div>
 
