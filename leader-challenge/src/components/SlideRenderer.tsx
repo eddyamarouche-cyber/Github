@@ -1974,7 +1974,11 @@ function VisualHeroScreen({
       ) : null}
 
       {hasCopy ? (
-        <div className="relative flex h-full flex-col justify-between px-8 py-7 lg:px-12 lg:py-9">
+        <div
+          className={`relative flex h-full flex-col px-8 py-7 lg:px-12 lg:py-9 ${
+            hasTable ? 'justify-start gap-2 lg:gap-3' : 'justify-between'
+          }`}
+        >
           {hasHeader ? (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -2060,7 +2064,7 @@ function VisualHeroScreen({
           {hasPoints ? (
             <div
               className={`flex flex-col ${
-                hasTable ? 'shrink-0 py-2' : 'min-h-0 flex-1 py-3'
+                hasTable ? 'shrink-0 py-1' : 'min-h-0 flex-1 py-3'
               } ${centeredPoints ? 'items-center justify-center' : 'justify-center'}`}
             >
               <div
@@ -2276,11 +2280,9 @@ function VisualHeroScreen({
           )}
 
           {showTable && content.table ? (
-            <div className="relative z-10 mt-2 min-h-0 shrink-0 lg:mt-3">
+            <div className="relative z-10 min-h-0 shrink-0">
               <HeroDataTable table={content.table} />
             </div>
-          ) : hasTable && hasPoints ? (
-            <div className="flex-1" />
           ) : null}
 
           {hasLink ? (
