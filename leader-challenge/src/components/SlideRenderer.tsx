@@ -993,9 +993,16 @@ function ProfileScreen({
         </div>
       </div>
 
-      <div className="relative z-10 grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+      <div
+        className={`relative z-10 grid min-h-0 flex-1 gap-3 ${
+          content.criteria.length === 5
+            ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-6 xl:grid-cols-5'
+            : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
+        }`}
+      >
         {content.criteria.map((criterion, index) => {
           const selected = active === index
+          const fiveUp = content.criteria.length === 5
           return (
             <button
               key={criterion.title}
@@ -1006,6 +1013,10 @@ function ProfileScreen({
                 setExpanded(true)
               }}
               className={`group relative flex h-full min-h-0 flex-col overflow-hidden rounded-[22px] border text-left transition ${
+                fiveUp ? 'md:col-span-2 xl:col-span-1' : ''
+              } ${fiveUp && index === 3 ? 'md:col-start-2 xl:col-start-auto' : ''} ${
+                fiveUp && index === 4 && !expanded ? 'sm:col-span-2 sm:max-w-md sm:justify-self-center xl:col-span-1 xl:max-w-none xl:justify-self-stretch' : ''
+              } ${
                 selected
                   ? 'border-accent/60 shadow-[0_20px_50px_rgba(255,107,44,0.28)]'
                   : 'border-white/10 hover:border-white/25'
@@ -1044,7 +1055,7 @@ function ProfileScreen({
                   </span>
                 </div>
 
-                <div className="min-h-[5.5rem]">
+                <div className="flex min-h-[6.5rem] flex-col justify-end">
                   <h3 className="font-display text-lg leading-tight font-semibold text-white lg:text-xl">
                     {criterion.title}
                   </h3>
