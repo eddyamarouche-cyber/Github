@@ -262,7 +262,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'retention-monitoring': {
     opening: 'Practice without visibility is hope. Monitoring is the control tower.',
     coreMessage:
-      'Increase in qualified opportunities. PG quarter attainment % incr. Time in stage. Coaching-to-behavior-change. Self-sourced pipeline — five control tower signals.',
+      'Increase in qualified opportunities - 3 per week. PG quarter attainment % incr. Time in stage. Coaching-to-behavior-change. Self-sourced pipeline — five control tower signals.',
     supportingExample:
       'Walk through Pipe Gen QTD — Francesco Vitti at 267% pro-rata attainment. Click to reveal each control tower signal above the table.',
     executiveImplication:

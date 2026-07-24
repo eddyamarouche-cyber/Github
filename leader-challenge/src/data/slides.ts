@@ -654,7 +654,7 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'Monitoring',
     takeaway:
-      'Monitor qualified opportunities, PG quarter attainment % incr., time in stage, coaching-to-behavior-change, and self-sourced pipeline — the control tower signals.',
+      'Monitor qualified opportunities (3 per week), PG quarter attainment % incr., time in stage, coaching-to-behavior-change, and self-sourced pipeline — the control tower signals.',
     recommendedMinutes: 1,
     content: {
       image: '/images/monitoring-control-tower.jpg',
@@ -662,7 +662,7 @@ export const slides: Slide[] = [
       title: 'Monitoring',
       titleLayout: 'header',
       points: [
-        'Increase in qualified opportunities',
+        'Increase in qualified opportunities - 3 per week',
         'PG quarter attainment % incr.',
         'Time in stage',
         'Coaching-to-behavior-change',
