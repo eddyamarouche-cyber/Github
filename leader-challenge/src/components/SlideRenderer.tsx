@@ -2049,7 +2049,9 @@ function VisualHeroScreen({
                       }}
                       className={`glass flex items-center justify-center rounded-[28px] text-center backdrop-blur-xl ${
                         centeredPoints
-                          ? 'w-full max-w-4xl px-6 py-8 lg:px-10 lg:py-12'
+                          ? `w-full max-w-4xl px-6 lg:px-10 ${
+                              points.length > 2 ? 'py-5 lg:py-7' : 'py-8 lg:py-12'
+                            }`
                           : `px-4 py-6 lg:px-5 ${
                               fiveUp
                                 ? 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
@@ -2061,9 +2063,13 @@ function VisualHeroScreen({
                       <p
                         className={`font-display font-bold tracking-tight text-balance text-white ${
                           centeredPoints
-                            ? index === 0
+                            ? points.length === 2 && index === 0
                               ? 'text-3xl leading-tight sm:text-4xl lg:text-6xl xl:text-7xl'
-                              : 'text-xl leading-snug sm:text-2xl lg:text-4xl xl:text-5xl'
+                              : points.length === 2
+                                ? 'text-xl leading-snug sm:text-2xl lg:text-4xl xl:text-5xl'
+                                : long
+                                  ? 'text-lg leading-snug sm:text-xl lg:text-3xl xl:text-4xl'
+                                  : 'text-xl leading-tight sm:text-2xl lg:text-4xl xl:text-5xl'
                             : long
                               ? 'text-lg leading-snug sm:text-xl lg:text-2xl'
                               : medium
