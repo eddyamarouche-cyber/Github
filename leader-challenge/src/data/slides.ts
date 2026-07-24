@@ -654,13 +654,20 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'Monitoring',
     takeaway:
-      'Retention needs a control tower — visibility, signals, and early intervention before talent drifts.',
-    recommendedMinutes: 0.5,
+      'Monitor qualified opportunities, PG quarter attainment, time in stage, and coaching-to-behavior-change — the control tower signals.',
+    recommendedMinutes: 1,
     content: {
       image: '/images/monitoring-control-tower.jpg',
       eyebrow: 'Retention',
       title: 'Monitoring',
       titleLayout: 'header',
+      points: [
+        'Increase in qualified opportunities',
+        'PG quarter attainment',
+        'Time in stage',
+        'Coaching-to-behavior-change',
+      ],
+      revealPointsOnClick: true,
     },
   },
   {

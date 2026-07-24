@@ -262,12 +262,12 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'retention-monitoring': {
     opening: 'Practice without visibility is hope. Monitoring is the control tower.',
     coreMessage:
-      'Retention needs a control tower — signals, visibility, and early intervention before top performers drift.',
+      'Increase in qualified opportunities. PG quarter attainment. Time in stage. Coaching-to-behavior-change — four control tower signals.',
     supportingExample:
-      'Like air traffic control, you watch leading indicators — engagement, pipeline quality, coaching cadence — and act before problems land.',
+      'Click to reveal each metric. Like air traffic control, you watch leading indicators and act before problems land.',
     executiveImplication:
       'Leaders who monitor retain. Leaders who only react lose A-players quietly.',
-    likelyQuestion: 'What are your top three retention signals?',
+    likelyQuestion: 'Which of these four signals is weakest in your team today?',
     transition: 'That discipline still needs a scorecard before we hire the next one.',
   },
   'candidate-scorecard': {
