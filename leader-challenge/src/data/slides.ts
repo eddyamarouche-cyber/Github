@@ -129,37 +129,39 @@ export const slides: Slide[] = [
     section: 'intro',
     type: 'drivers',
     title: 'Why am I here?',
-    headline:
-      'I build high-talent teams, coach for ownership and run the business through clear operating rhythm.',
+    headline: 'Builder mindset — from early European Databricks to Sales Director Italy.',
     takeaway:
-      'This is why I am in the room — the four ways I lead before we enter the working topics.',
+      'Seven years building French and Italian business from the ground up: AE → Strategic Accounts → Sales Director Italy.',
     recommendedMinutes: 1.5,
     content: {
+      eyebrow: 'Why I am here',
       drivers: [
         {
-          title: 'Talent builder',
-          detail: 'Hunt the best profile and help them to grow.',
+          title: 'Builder mindset',
+          detail:
+            'Joined Databricks at an early stage of the European journey — and stayed to build.',
           image: '/images/talent-builder.jpg',
-          bullets: ['Share the passion', 'Share perspective', 'Empower'],
-        },
-        {
-          title: 'Performance coach',
-          image: '/images/performance-coach.jpg',
-          bullets: ['Identification', 'Enablement', 'Repeat'],
-        },
-        {
-          title: 'Operating leader',
-          image: '/images/operating-leader.jpg',
-          bullets: ['Discipline', 'Accuracy', 'Pace'],
-        },
-        {
-          title: 'Executive partner',
-          image: '/images/executive-partner.jpg',
           bullets: [
-            'Anticipation',
-            'Translate company priorities into local execution',
-            'Cross Functional',
+            'Joined Databricks at an early stage of the European journey',
+            'Account Executive → Strategic Accounts → Sales Director Italy',
+            '7 years of experience building French and Italian business from the ground up',
           ],
+        },
+        {
+          title: 'Early European journey',
+          detail: 'Joined Databricks at an early stage of the European journey.',
+          image: '/images/performance-coach.jpg',
+        },
+        {
+          title: 'AE → Strategic → Sales Director Italy',
+          detail: 'Account Executive → Strategic Accounts → Sales Director Italy.',
+          image: '/images/operating-leader.jpg',
+        },
+        {
+          title: 'Ground-up builder',
+          detail:
+            '7 years of experience building French and Italian business from the ground up.',
+          image: '/images/executive-partner.jpg',
         },
       ],
     },

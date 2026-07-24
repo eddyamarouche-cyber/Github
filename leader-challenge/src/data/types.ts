@@ -236,6 +236,8 @@ export interface ObjectionsContent {
 
 export interface DriversContent {
   drivers: { title: string; detail?: string; image?: string; bullets?: string[] }[]
+  /** Small pill label above the title */
+  eyebrow?: string
 }
 
 export interface FrameworkContent {

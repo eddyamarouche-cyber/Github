@@ -40,14 +40,14 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'Before the workstreams — why I am here.',
   },
   'who-i-am-as-a-leader': {
-    opening: 'Why am I here? Because of how I lead.',
+    opening: 'Why am I here? Builder mindset.',
     coreMessage:
-      'I lead as a talent builder, performance coach, operating leader and executive partner.',
+      'Joined Databricks early in Europe. AE → Strategic Accounts → Sales Director Italy. Seven years building French and Italian business from the ground up.',
     supportingExample:
-      '[ADD MY EXAMPLE] — a concrete moment that shows how those four roles show up in practice.',
+      'That path is the proof: I do not inherit a region — I build it.',
     executiveImplication:
-      'If this frame feels right, the rest of the session is simply how I apply it at Cursor.',
-    likelyQuestion: 'Which of these four roles do you lean on first in a new region?',
+      'Southern Europe at Cursor needs the same early-stage builder energy, not a caretaker.',
+    likelyQuestion: 'What did you learn building Databricks Italy that transfers here?',
     transition: 'Next — the objective I will own with clients.',
   },
   'win-the-stage': {
