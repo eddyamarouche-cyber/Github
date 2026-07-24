@@ -202,6 +202,8 @@ export interface SubdivisionItem {
   detail?: string
   image: string
   theme?: string
+  linkUrl?: string
+  linkLabel?: string
 }
 
 export interface SubdivisionsContent {

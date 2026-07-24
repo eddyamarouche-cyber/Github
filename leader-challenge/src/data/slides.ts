@@ -615,19 +615,38 @@ export const slides: Slide[] = [
     id: 'retention-cta',
     number: 23,
     section: 'retention',
-    type: 'visual-hero',
+    type: 'subdivisions',
     title: 'Call to action',
+    headline:
+      'Move from framework to practice — role play, shadowing, and direct feedback.',
     takeaway:
-      'Move from framework to practice — role play, shadowing, and direct feedback turn retention into daily leadership.',
-    recommendedMinutes: 0.5,
+      'Role play, shadowing, and direct feedback turn retention from slides into daily leadership.',
+    recommendedMinutes: 1,
     content: {
-      image: '/images/call-to-action.jpg',
       eyebrow: 'Retention',
-      title: 'Call to action',
-      titleSize: 'display',
-      points: ['Role play', 'Shadowing', 'Direct feedback'],
-      pointsLayout: 'center',
-      revealPointsOnClick: true,
+      items: [
+        {
+          title: 'Role play',
+          detail:
+            'Rehearse the hard conversations before they happen in market.',
+          image: '/images/roleplay-opportunity.jpg',
+          linkUrl:
+            'https://docs.google.com/document/d/1eXZXcwJ6RkJk-LZM-_S7DXudu3VY-SihYmWD-sjiYAg/edit?tab=t.0#heading=h.6qinwgp4ub0z',
+          linkLabel: 'Role play prep',
+        },
+        {
+          title: 'Shadowing',
+          detail:
+            'Observe top performers in real conversations and debrief what worked.',
+          image: '/images/performance-coach.jpg',
+        },
+        {
+          title: 'Direct feedback',
+          detail:
+            'Give clear, timely feedback so coaching is intentional — not accidental.',
+          image: '/images/retention-coaching-rhythm.jpg',
+        },
+      ],
     },
   },
   {

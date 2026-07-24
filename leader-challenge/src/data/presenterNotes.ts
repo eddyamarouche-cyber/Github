@@ -253,7 +253,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
     coreMessage:
       'Call to action: Role play, Shadowing, and Direct feedback — three ways leaders turn retention from slides into daily practice.',
     supportingExample:
-      'Click to reveal each lever. Role play the hard conversations. Shadow top performers. Give direct feedback so coaching is intentional, not accidental.',
+      'Click each topic open — role play prep doc, shadowing in the field, direct feedback in 1:1s.',
     executiveImplication:
       'Retention improves when managers rehearse, observe, and measure — not when they only agree on principles.',
     likelyQuestion: 'What does good shadowing look like in week one?',

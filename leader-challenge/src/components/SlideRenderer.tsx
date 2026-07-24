@@ -1601,6 +1601,18 @@ function SubdivisionsScreen({
                     {current.detail}
                   </p>
                 ) : null}
+                {current.linkUrl ? (
+                  <a
+                    href={current.linkUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(event) => event.stopPropagation()}
+                    className="mt-5 inline-flex items-center gap-2 font-display text-base font-semibold text-accent underline decoration-accent/60 underline-offset-4 transition hover:text-accent-soft lg:text-lg"
+                  >
+                    {current.linkLabel ?? 'Open link'}
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                ) : null}
               </motion.div>
             </div>
           </motion.div>
