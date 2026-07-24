@@ -389,6 +389,7 @@ export interface LinkedInTargetsContent {
     linkedinUrl: string
     signal: string
     photo?: string
+    filters?: string[]
   }[]
   regionLabel?: string
 }

@@ -76,6 +76,7 @@ type LinkedInTargetsContent = {
     linkedinUrl: string
     signal: string
     photo?: string
+    filters?: string[]
   }[]
   regionLabel?: string
 }
@@ -1338,6 +1339,18 @@ function LinkedInTargetsScreen({
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/70 lg:text-base">
                 {current.signal}
               </p>
+              {current.filters?.length ? (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {current.filters.map((filter) => (
+                    <span
+                      key={filter}
+                      className="inline-flex items-center rounded-full border border-accent/35 bg-accent/15 px-3 py-1.5 font-display text-xs font-bold tracking-wide text-white shadow-[0_0_18px_rgba(255,107,44,0.18)] lg:text-sm"
+                    >
+                      {filter}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
               <a
                 href={current.linkedinUrl}
                 target="_blank"

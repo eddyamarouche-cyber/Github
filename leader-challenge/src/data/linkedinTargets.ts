@@ -7,6 +7,8 @@ export interface LinkedInTarget {
   linkedinUrl: string
   signal: string
   photo: string
+  /** A Player filter tags validated against this profile */
+  filters?: string[]
 }
 
 /**
@@ -23,6 +25,7 @@ export const linkedinTargets: LinkedInTarget[] = [
     linkedinUrl: 'https://www.linkedin.com/in/guido-zanetti/',
     signal: 'Enterprise AE with Twilio → Databricks path; strong Italy / Iberia digital-native coverage.',
     photo: '/images/linkedin/guido-zanetti.jpg',
+    filters: ['Clock speed', 'Resilient'],
   },
   {
     id: 'andrea-lupi',
