@@ -185,7 +185,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'roleplay-opener': {
     opening: 'This is where hiring becomes live — sell a huge opportunity.',
     coreMessage:
-      'Market opportunity : 2 trillion $. Every company is racing to turn AI into engineering output. Engineers plus compute. Cursor is the fastest SaaS climb from $1M to $1B ARR — now ~$6Bn ARR, mostly PLG.',
+      'Market opportunity : 2 trillion $. Every company is racing to turn AI into engineering output faster than their competitors.',
     supportingExample:
       'The best A-players do not respond to job descriptions. They respond to ownership of that race and a credible next chapter.',
     executiveImplication:

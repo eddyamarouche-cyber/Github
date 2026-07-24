@@ -481,9 +481,6 @@ export const slides: Slide[] = [
       points: [
         'Market opportunity : 2 trillion $',
         'Every company is trying to turn AI into engineering output faster than their competitors',
-        'Software Engineers + Power of compute',
-        'Fastest SaaS climb from $1M to $1B ARR in history',
-        '6Bn$ ARR mostly with PLG',
       ],
       revealPointsOnClick: true,
     },
