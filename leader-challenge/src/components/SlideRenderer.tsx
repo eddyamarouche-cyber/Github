@@ -1979,13 +1979,6 @@ function VisualHeroScreen({
                     {content.title}
                   </p>
                 ) : null}
-                {revealOnClick ? (
-                  <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[11px] text-white/55 backdrop-blur-md">
-                    {visibleCount >= points.length
-                      ? 'All revealed · Next to continue'
-                      : `Click to reveal · ${visibleCount}/${points.length}`}
-                  </div>
-                ) : null}
               </div>
             </motion.div>
           ) : (
