@@ -36,6 +36,7 @@ export const linkedinTargets: LinkedInTarget[] = [
     linkedinUrl: 'https://www.linkedin.com/in/andrealupi19/',
     signal: 'Data & AI enterprise seller; ex-AWS / Oracle / HP with fashion & luxury adjacency.',
     photo: '/images/linkedin/andrea-lupi.jpg',
+    filters: ['Patriot', 'Ownership'],
   },
   {
     id: 'sofia-poggi',
