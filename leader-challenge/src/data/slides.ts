@@ -476,8 +476,6 @@ export const slides: Slide[] = [
     recommendedMinutes: 1,
     content: {
       image: '/images/roleplay-opportunity.jpg',
-      eyebrow: 'Role play',
-      title: 'Role play',
       points: [
         'Every company is trying to turn AI into engineering output faster than their competitors',
         'Market opportunity 2 trillion $',
