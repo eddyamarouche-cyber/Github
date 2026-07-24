@@ -180,6 +180,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'If talent leaves, the recruitment engine was wasted spend.',
     likelyQuestion: 'What actually keeps top sellers at Cursor-scale ambition?',
+    transition: 'Here is the operating system — four clickable levers.',
+  },
+  'retention-system': {
+    opening: 'Keep your best performers engaged and committed for long-term success.',
+    coreMessage:
+      'Growth Opportunities with an AI Sales tool. Coaching Excellence as an operating rhythm with Enablement. Culture of Belonging through team identity rituals. Work-Life Integration that respects boundaries.',
+    supportingExample:
+      'Click each topic open — advancement paths, 1:1 cadence, dinners and events, flexible arrangements.',
+    executiveImplication:
+      'Retention is designed, not hoped for. Each lever has an owner and a rhythm.',
+    likelyQuestion: 'Which lever is weakest in Southern Europe today?',
     transition: 'That still needs a scorecard before we hire the next one.',
   },
   'candidate-scorecard': {

@@ -1370,7 +1370,7 @@ function SubdivisionsScreen({
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
             <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
-              How?
+              {content.eyebrow ?? 'How?'}
             </span>
           </div>
           <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">

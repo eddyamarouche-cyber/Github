@@ -178,6 +178,8 @@ export interface SubdivisionsContent {
   items: SubdivisionItem[]
   /** Bold lines shown under the page title */
   statements?: string[]
+  /** Small pill label above the title (defaults to How?) */
+  eyebrow?: string
 }
 
 export interface FunnelContent {
