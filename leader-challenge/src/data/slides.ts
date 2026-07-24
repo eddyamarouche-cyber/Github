@@ -151,6 +151,7 @@ export const slides: Slide[] = [
             'Create demand & pipeline from zero',
             'Land strategic enterprise accounts',
             'Repeatable GTM engine',
+            '5 times President Club',
           ],
         },
         {
