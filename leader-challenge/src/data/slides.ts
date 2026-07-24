@@ -317,7 +317,7 @@ export const slides: Slide[] = [
     content: {
       image: '/images/recruitment-right-choice.jpg',
       title: 'Recruitment',
-      subtitle: 'Pick the right egg. Make the right decision.',
+      subtitle: 'Make the right decision.',
     },
   },
   {
