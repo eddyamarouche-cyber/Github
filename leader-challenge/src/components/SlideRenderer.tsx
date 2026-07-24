@@ -253,6 +253,16 @@ function renderSlide(slide: Slide) {
       )
     case 'drivers': {
       const driversContent = slide.content as DriversContent
+      if (driversContent.layout === 'columns') {
+        return (
+          <DriversColumnsScreen
+            title={slide.title}
+            headline={slide.headline}
+            takeaway={slide.takeaway}
+            content={driversContent}
+          />
+        )
+      }
       const immersive = driversContent.drivers.some((driver) => Boolean(driver.image))
       if (immersive) {
         return (
@@ -2213,6 +2223,98 @@ function LeadershipRolesScreen({
           </AnimatePresence>
         </div>
       </div>
+    </div>
+  )
+}
+
+function DriversColumnsScreen({
+  title,
+  headline,
+  takeaway,
+  content,
+}: {
+  title: string
+  headline?: string
+  takeaway?: string
+  content: DriversContent
+}) {
+  return (
+    <div className="relative flex h-full w-full flex-col overflow-hidden px-5 py-5 lg:px-9 lg:py-7">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(255,107,44,0.18),transparent_42%),radial-gradient(ellipse_at_85%_100%,rgba(255,255,255,0.05),transparent_40%)]" />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute top-16 right-[18%] h-48 w-48 rounded-full bg-accent/15 blur-3xl"
+        animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.12, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="relative z-10 shrink-0">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+          <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
+            {content.eyebrow ?? 'Why I am here'}
+          </span>
+        </div>
+        <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+          {title}
+        </h1>
+        {headline ? (
+          <p className="mt-2 max-w-3xl text-sm text-white/55 lg:text-base">{headline}</p>
+        ) : null}
+      </div>
+
+      <div className="relative z-10 mt-5 grid min-h-0 flex-1 gap-3 sm:grid-cols-2 xl:grid-cols-4 xl:gap-4">
+        {content.drivers.map((driver, index) => (
+          <motion.article
+            key={driver.title}
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.08 + index * 0.08,
+              duration: 0.45,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="group relative flex min-h-0 flex-col overflow-hidden rounded-[26px] border border-white/12 bg-gradient-to-b from-white/[0.09] via-white/[0.04] to-transparent p-4 lg:p-5"
+          >
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+            <div className="absolute -top-16 left-1/2 h-28 w-28 -translate-x-1/2 rounded-full bg-accent/20 opacity-0 blur-2xl transition group-hover:opacity-100" />
+
+            <div className="relative flex items-baseline justify-between gap-2">
+              <p className="font-display text-[11px] font-semibold tracking-[0.2em] text-accent uppercase">
+                {String(index + 1).padStart(2, '0')}
+              </p>
+              <div className="h-px flex-1 bg-gradient-to-r from-accent/50 to-transparent" />
+            </div>
+
+            <h2 className="font-display relative mt-3 text-2xl font-bold tracking-tight text-white lg:text-3xl">
+              {driver.title}
+            </h2>
+            {driver.detail ? (
+              <p className="relative mt-2 text-sm leading-snug text-white/50">{driver.detail}</p>
+            ) : null}
+
+            {driver.bullets?.length ? (
+              <ul className="relative mt-5 flex min-h-0 flex-1 flex-col gap-3">
+                {driver.bullets.map((bullet) => (
+                  <li
+                    key={bullet}
+                    className="flex gap-2.5 text-sm leading-snug text-white/75 lg:text-[15px]"
+                  >
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_10px_rgba(255,107,44,0.55)]" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </motion.article>
+        ))}
+      </div>
+
+      {takeaway ? (
+        <p className="relative z-10 mt-4 max-w-4xl shrink-0 text-xs text-white/40 lg:text-sm">
+          {takeaway}
+        </p>
+      ) : null}
     </div>
   )
 }

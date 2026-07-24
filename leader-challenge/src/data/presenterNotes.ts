@@ -40,14 +40,14 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'Before the workstreams — why I am here.',
   },
   'who-i-am-as-a-leader': {
-    opening: 'Why am I here? Builder mindset.',
+    opening: 'Why am I here? Four words: Build. Lead. Sell. Scale.',
     coreMessage:
-      'Joined Databricks early in Europe. AE → Strategic Accounts → Sales Director Italy. Seven years building French and Italian business from the ground up — 50K$ to 11M$ ARR, five-time President Club, first M$ and MM$ deals in France and Italy.',
+      'BUILD — early European Databricks path to Sales Director Italy. LEAD — demand and pipeline from zero. SELL — strategic logos from 50K$ to 11M$ ARR. SCALE — repeat, leverage, expand, 20+ hires in Italy.',
     supportingExample:
-      'That path is the proof: I do not inherit a region — I build it.',
+      'Stellantis, Michelin, Danone, Sanofi, Barilla, Kiko — complex enterprise wins that compound into a repeatable GTM engine.',
     executiveImplication:
-      'Southern Europe at Cursor needs the same early-stage builder energy, not a caretaker.',
-    likelyQuestion: 'What did you learn building Databricks Italy that transfers here?',
+      'Southern Europe at Cursor needs a builder who has already done the zero-to-scale journey — not a caretaker.',
+    likelyQuestion: 'Which of Build / Lead / Sell / Scale transfers fastest to Cursor?',
     transition: 'Next — the objective I will own with clients.',
   },
   'win-the-stage': {

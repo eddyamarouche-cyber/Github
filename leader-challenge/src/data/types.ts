@@ -238,6 +238,8 @@ export interface DriversContent {
   drivers: { title: string; detail?: string; image?: string; bullets?: string[] }[]
   /** Small pill label above the title */
   eyebrow?: string
+  /** Full-bleed four-column proof-point layout */
+  layout?: 'columns'
 }
 
 export interface FrameworkContent {

@@ -129,25 +129,42 @@ export const slides: Slide[] = [
     section: 'intro',
     type: 'drivers',
     title: 'Why am I here?',
-    headline: 'Builder mindset — from early European Databricks to Sales Director Italy.',
+    headline: 'Build. Lead. Sell. Scale — the operating path from early Europe to Sales Director Italy.',
     takeaway:
-      'Seven years building French and Italian business from the ground up: AE → Strategic Accounts → Sales Director Italy.',
-    recommendedMinutes: 1.5,
+      'A builder who created demand from zero, won strategic enterprise deals, and scaled a repeatable Italian GTM engine.',
+    recommendedMinutes: 2,
     content: {
       eyebrow: 'Why I am here',
+      layout: 'columns',
       drivers: [
         {
-          title: 'Builder mindset',
-          detail:
-            'Joined Databricks at an early stage of the European journey — and stayed to build.',
-          image: '/images/talent-builder.jpg',
+          title: 'BUILD',
           bullets: [
             'Joined Databricks at an early stage of the European journey',
             'Account Executive → Strategic Accounts → Sales Director Italy',
-            '7 years of experience building French and Italian business from the ground up',
-            '50K$ to 11M$ ARR',
-            '5 times President Club',
-            'First M$ and MM$ deals France and Italy',
+            '7 years building French and Italian business from the ground up',
+          ],
+        },
+        {
+          title: 'LEAD',
+          bullets: [
+            'Create demand & pipeline from zero',
+            'Land strategic enterprise accounts',
+            'Repeatable GTM engine',
+          ],
+        },
+        {
+          title: 'SELL',
+          bullets: [
+            'Win complex, strategic enterprise deals (Stellantis, Michelin, Danone, Sanofi, Barilla, Kiko…)',
+            'Business value outcome — from 50K$ to 11M$ ARR',
+          ],
+        },
+        {
+          title: 'SCALE',
+          bullets: [
+            'Repeat, Leverage and Expand',
+            '20+ recruitments in Italy',
           ],
         },
       ],
