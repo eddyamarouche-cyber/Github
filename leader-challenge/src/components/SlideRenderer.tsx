@@ -2236,7 +2236,7 @@ function emphasizeMetrics(text: string) {
       return (
         <span
           key={`${part}-${index}`}
-          className="font-display font-bold tracking-tight text-accent"
+          className="font-display inline-block text-[1.35em] font-bold leading-none tracking-tight text-accent drop-shadow-[0_0_18px_rgba(255,107,44,0.35)] lg:text-[1.45em]"
         >
           {part}
         </span>
@@ -2320,7 +2320,7 @@ function DriversColumnsScreen({
                       <p className="font-display text-[10px] font-semibold tracking-[0.16em] text-white/35 uppercase">
                         {String(bulletIndex + 1).padStart(2, '0')}
                       </p>
-                      <p className="mt-1.5 text-base leading-snug font-medium text-white/90 lg:text-lg lg:leading-snug">
+                      <p className="mt-1.5 text-base leading-relaxed font-medium text-white/90 lg:text-lg lg:leading-relaxed">
                         {emphasizeMetrics(bullet)}
                       </p>
                     </div>
