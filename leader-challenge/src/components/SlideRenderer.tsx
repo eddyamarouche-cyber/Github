@@ -2031,7 +2031,11 @@ function VisualHeroScreen({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="text-base text-white/65 lg:text-lg"
+                  className={
+                    hasChips
+                      ? 'font-display text-xl leading-snug font-semibold text-balance text-white lg:text-2xl'
+                      : 'text-base text-white/65 lg:text-lg'
+                  }
                 >
                   {content.subtitle}
                 </motion.p>
