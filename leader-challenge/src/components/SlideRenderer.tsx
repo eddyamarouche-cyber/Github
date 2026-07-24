@@ -1845,11 +1845,13 @@ function VisualHeroScreen({
   const hasPoints = Boolean(content.points?.length)
   const revealOnClick = Boolean(content.revealPointsOnClick && hasPoints)
   const points = content.points ?? []
+  const chips = content.chips ?? []
+  const hasChips = chips.length > 0
   const [visibleCount, setVisibleCount] = useState(revealOnClick ? 0 : points.length)
   const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints))
   const hasTitleBlock = Boolean(content.title && !hasPoints)
   const hasSubtitle = Boolean(content.subtitle)
-  const hasCopy = hasHeader || hasPoints || hasTitleBlock || hasSubtitle
+  const hasCopy = hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips
 
   useEffect(() => {
     setVisibleCount(revealOnClick ? 0 : points.length)
@@ -2022,15 +2024,50 @@ function VisualHeroScreen({
             <div className="flex-1" />
           )}
 
-          {hasSubtitle ? (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="max-w-4xl text-base text-white/65 lg:text-lg"
-            >
-              {content.subtitle}
-            </motion.p>
+          {hasSubtitle || hasChips ? (
+            <div className="max-w-5xl space-y-4">
+              {hasSubtitle ? (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="text-base text-white/65 lg:text-lg"
+                >
+                  {content.subtitle}
+                </motion.p>
+              ) : null}
+              {hasChips ? (
+                <div>
+                  {content.chipsLabel ? (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.55 }}
+                      className="font-display text-[11px] font-semibold tracking-[0.16em] text-accent uppercase"
+                    >
+                      {content.chipsLabel}
+                    </motion.p>
+                  ) : null}
+                  <div className="mt-2.5 flex flex-wrap gap-2">
+                    {chips.map((name, index) => (
+                      <motion.span
+                        key={name}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: 0.6 + index * 0.03,
+                          duration: 0.35,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="inline-flex items-center rounded-full border border-accent/35 bg-accent/15 px-3 py-1.5 font-display text-xs font-bold tracking-wide text-white shadow-[0_0_18px_rgba(255,107,44,0.18)] lg:text-sm"
+                      >
+                        {name}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           ) : (
             <div />
           )}

@@ -88,6 +88,10 @@ export interface VisualHeroContent {
   title?: string
   subtitle?: string
   points?: string[]
+  /** Accent name chips under the subtitle (must-win logos, etc.) */
+  chips?: string[]
+  /** Small label above the chip row */
+  chipsLabel?: string
   /** Oversized display title for short hero words like "How?" */
   titleSize?: 'default' | 'display'
   /** Reveal point blocks one-by-one on click / Next */

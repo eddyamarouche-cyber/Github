@@ -73,14 +73,14 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'Next — the objective I will own with clients.',
   },
   'win-the-stage': {
-    opening: 'This is the objective I want to anchor with you.',
+    opening: 'This is the objective I want to own with you.',
     coreMessage:
-      'Win the stage with every client — earn the room, own the narrative and make Cursor the obvious choice.',
+      'Make Cursor the Number 1 SDLC platform in Spain and Italy — and land the must-win logos in the next 12 months.',
     supportingExample:
-      'That means presence in the account, credibility with technical and executive buyers, and a team that shows up ready to lead the conversation.',
+      'BBVA, Santander, Telefonica, Inditex, Amadeus, Adevinta in Spain. Unicredit, Fastweb, Telecom Italia, Nexi, Reply, Bending Spoons, Engineering in Italy — plus Vodafone, Indra, Odigeo.',
     executiveImplication:
-      'Everything that follows — hiring, coaching, pipeline and partnership — exists to put us on that stage and keep us there.',
-    likelyQuestion: 'What does winning the stage look like in the first 90 days?',
+      'Everything that follows — hiring, coaching, pipeline and partnership — exists to win these stages and keep them.',
+    likelyQuestion: 'Which must-win accounts do you prioritize in the first two quarters?',
     transition: 'Next — the one-team culture that makes that objective sustainable.',
   },
   'spanish-team-trophies': {
