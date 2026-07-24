@@ -383,6 +383,7 @@ export const slides: Slide[] = [
     recommendedMinutes: 3,
     content: {
       regionLabel: 'Italy talent map',
+      regionFlag: '/images/flags/italy.svg',
       profiles: linkedinTargets,
     },
   },

@@ -392,6 +392,8 @@ export interface LinkedInTargetsContent {
     filters?: string[]
   }[]
   regionLabel?: string
+  /** Optional flag icon shown beside the region label and title */
+  regionFlag?: string
 }
 
 export interface BrandPortfolioProduct {

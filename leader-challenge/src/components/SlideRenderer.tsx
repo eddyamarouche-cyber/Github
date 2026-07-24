@@ -79,6 +79,7 @@ type LinkedInTargetsContent = {
     filters?: string[]
   }[]
   regionLabel?: string
+  regionFlag?: string
 }
 type CaseStudyContent = { caseStudy: CoachingCase }
 type MarketsSlideContent = { markets: MarketCard[] }
@@ -1258,14 +1259,31 @@ function LinkedInTargetsScreen({
       <div className="relative z-10 mb-4 flex flex-wrap items-end justify-between gap-3">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#0A66C2]" />
+            {content.regionFlag ? (
+              <img
+                src={content.regionFlag}
+                alt=""
+                aria-hidden
+                className="h-3.5 w-5 rounded-[2px] object-cover shadow-sm ring-1 ring-white/20"
+              />
+            ) : (
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#0A66C2]" />
+            )}
             <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
               {content.regionLabel ?? 'LinkedIn talent map'}
             </span>
           </div>
           {title ? (
-            <h1 className="font-display mt-2 text-2xl font-semibold text-white lg:text-3xl">
-              {title}
+            <h1 className="font-display mt-2 flex items-center gap-2.5 text-2xl font-semibold text-white lg:text-3xl">
+              {content.regionFlag ? (
+                <img
+                  src={content.regionFlag}
+                  alt=""
+                  aria-hidden
+                  className="h-5 w-7 rounded-[3px] object-cover shadow-md ring-1 ring-white/25 lg:h-6 lg:w-9"
+                />
+              ) : null}
+              <span>{title}</span>
             </h1>
           ) : null}
           {headline ? (
