@@ -141,7 +141,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'linkedin-talent-map': {
     opening: 'These are named Italy profiles, not placeholders.',
     coreMessage:
-      'Italy LinkedIn targets mapped against the A-player filter — open each profile and inspect for patriots, slope and technical altitude.',
+      'Italy LinkedIn targets mapped against the A-player filter — open each profile and inspect for patriots, slope and ownership.',
     supportingExample:
       'Databricks, MongoDB, Adobe, Zscaler and analytics backgrounds give us a dense Italy shortlist to pressure-test.',
     executiveImplication:
