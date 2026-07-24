@@ -479,8 +479,8 @@ export const slides: Slide[] = [
       eyebrow: 'Role play',
       title: 'Role play',
       points: [
-        'Market opportunity 2 trillion $',
         'Every company is trying to turn AI into engineering output faster than their competitors',
+        'Market opportunity 2 trillion $',
       ],
       pointsLayout: 'center',
       revealPointsOnClick: true,

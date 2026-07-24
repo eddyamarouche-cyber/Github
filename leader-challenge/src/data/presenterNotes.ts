@@ -185,7 +185,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'roleplay-opener': {
     opening: 'This is where hiring becomes live — sell a huge opportunity.',
     coreMessage:
-      'Market opportunity 2 trillion $. Every company is racing to turn AI into engineering output faster than their competitors.',
+      'Every company is racing to turn AI into engineering output faster than their competitors. Then land market opportunity 2 trillion $.',
     supportingExample:
       'Open Role play prep on the slide for the Google Doc guide before you run the conversation.',
     executiveImplication:
