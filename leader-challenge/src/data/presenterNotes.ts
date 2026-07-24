@@ -37,7 +37,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Every method that follows should map back to one of these three outcomes.',
     likelyQuestion: 'Where do you want the deepest inspection first?',
-    transition: 'Before the workstreams — why I am here.',
+    transition: 'First — a personal frame before the professional one.',
+  },
+  'personal-side': {
+    opening: 'Before the operating story — who I am outside the job.',
+    coreMessage:
+      'Married, two kids, multicultural. Kickboxing, football and cooking keep me grounded and competitive.',
+    supportingExample:
+      'That mix of family, discipline and curiosity is the same energy I bring into a team.',
+    executiveImplication:
+      'You are hiring a whole person — not a slide of metrics.',
+    likelyQuestion: 'What does multicultural mean in your day-to-day leadership?',
+    transition: 'Now — why I am here.',
   },
   'who-i-am-as-a-leader': {
     opening: 'Why am I here? Four words: Build. Lead. Sell. Scale.',

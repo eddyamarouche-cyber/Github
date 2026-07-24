@@ -1981,7 +1981,7 @@ function VisualHeroScreen({
                         fiveUp
                           ? 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
                           : 'min-h-[180px] lg:min-h-[240px] lg:py-8'
-                      } ${fiveUp && index === 3 ? 'md:col-start-2' : ''} ${
+                      } ${fiveUp && points.length === 5 && index === 3 ? 'md:col-start-2' : ''} ${
                         visible ? '' : 'pointer-events-none'
                       }`}
                       aria-hidden={!visible}
