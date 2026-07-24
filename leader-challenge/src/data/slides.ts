@@ -518,14 +518,14 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'GTM ambition',
     takeaway:
-      'The best world-class GTM team in the world — experienced executives with the track record to pilot the rocket ship.',
+      'The best world-class GTM team in the world — experienced executives with the best track record.',
     recommendedMinutes: 0.5,
     content: {
       image: '/images/gtm-galaxy.jpg',
       eyebrow: 'Role play',
       points: [
         'What can we do with best world class GTM team in the world in the next 4 years ?',
-        'Experienced executives with the best track record to pilot the rocket ship',
+        'Experienced executives with the best track record',
       ],
       pointsLayout: 'center',
       revealPointsOnClick: true,
