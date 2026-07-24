@@ -145,6 +145,8 @@ export const slides: Slide[] = [
             'Joined Databricks at an early stage of the European journey',
             'Account Executive → Strategic Accounts → Sales Director Italy',
             '7 years of experience building French and Italian business from the ground up',
+            '50K$ to 11M$ ARR',
+            '5 times President Club',
           ],
         },
       ],
