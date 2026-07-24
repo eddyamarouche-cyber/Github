@@ -75,9 +75,9 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'win-the-stage': {
     opening: 'This is the objective I want to own with you.',
     coreMessage:
-      'Make Cursor the Number 1 SDLC platform in Spain and Italy — and land the must-win logos in the next 12 months.',
+      'Make Cursor THE Number 1 SDLC Platform in Italy and Iberia — and land the must-win accounts in the next 12 months.',
     supportingExample:
-      'BBVA, Santander, Telefonica, Inditex, Amadeus, Adevinta in Spain. Unicredit, Fastweb, Telecom Italia, Nexi, Reply, Bending Spoons, Engineering in Italy — plus Vodafone, Indra, Odigeo.',
+      'BBVA, Santander, Telefonica, Inditex, Amadeus, Adevinta across Iberia. Unicredit, Fastweb, Telecom Italia, Nexi, Reply, Bending Spoons, Engineering in Italy — plus Vodafone, Indra, Odigeo.',
     executiveImplication:
       'Everything that follows — hiring, coaching, pipeline and partnership — exists to win these stages and keep them.',
     likelyQuestion: 'Which must-win accounts do you prioritize in the first two quarters?',

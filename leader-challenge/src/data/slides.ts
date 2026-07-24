@@ -228,15 +228,15 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'Win the Stage',
     takeaway:
-      'Make Cursor the Number 1 SDLC platform in Spain and Italy — land the must-win logos in the next 12 months.',
+      'Make Cursor THE Number 1 SDLC Platform in Italy and Iberia — land the must-win accounts in the next 12 months.',
     recommendedMinutes: 1,
     content: {
       image: '/images/win-the-stage.jpg',
       eyebrow: 'The objective',
       title: 'Win the stage',
       subtitle:
-        'Cursor — Number 1 SDLC Platform in Spain and Italy. Land the must-win clients in the next 12 months.',
-      chipsLabel: 'Must win',
+        'Make Cursor THE Number 1 SDLC Platform in Italy and Iberia',
+      chipsLabel: 'Must-win accounts in the next 12 months',
       chips: [
         'BBVA',
         'Bending Spoons',
