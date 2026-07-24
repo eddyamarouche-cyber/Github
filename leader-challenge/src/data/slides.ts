@@ -157,8 +157,20 @@ export const slides: Slide[] = [
         {
           title: 'SELL',
           bullets: [
-            'Win complex, strategic enterprise deals (Stellantis, Michelin, Danone, Sanofi, CNH, Iveco, Prada, Fastweb, Barilla, Kiko…)',
+            'Win complex, strategic enterprise deals',
             '50K$ → 11M$ ARR — business value outcome',
+          ],
+          highlights: [
+            'Stellantis',
+            'Michelin',
+            'Danone',
+            'Sanofi',
+            'CNH',
+            'Iveco',
+            'Prada',
+            'Fastweb',
+            'Barilla',
+            'Kiko',
           ],
         },
         {

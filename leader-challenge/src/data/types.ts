@@ -235,7 +235,14 @@ export interface ObjectionsContent {
 }
 
 export interface DriversContent {
-  drivers: { title: string; detail?: string; image?: string; bullets?: string[] }[]
+  drivers: {
+    title: string
+    detail?: string
+    image?: string
+    bullets?: string[]
+    /** Logo / name chips to insist on visually */
+    highlights?: string[]
+  }[]
   /** Small pill label above the title */
   eyebrow?: string
   /** Full-bleed four-column proof-point layout */

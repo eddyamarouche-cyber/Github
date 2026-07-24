@@ -2328,6 +2328,31 @@ function DriversColumnsScreen({
                 ))}
               </ul>
             ) : null}
+
+            {driver.highlights?.length ? (
+              <div className="relative mt-4">
+                <p className="font-display text-[10px] font-semibold tracking-[0.16em] text-accent uppercase">
+                  Named logos
+                </p>
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                  {driver.highlights.map((name, nameIndex) => (
+                    <motion.span
+                      key={name}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        delay: 0.2 + nameIndex * 0.04,
+                        duration: 0.35,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="inline-flex items-center rounded-full border border-accent/35 bg-accent/15 px-2.5 py-1 font-display text-[11px] font-bold tracking-wide text-white shadow-[0_0_18px_rgba(255,107,44,0.18)] lg:text-xs"
+                    >
+                      {name}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </motion.article>
         ))}
       </div>
