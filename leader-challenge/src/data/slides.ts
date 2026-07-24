@@ -495,9 +495,10 @@ export const slides: Slide[] = [
       'Engineers plus compute, the fastest SaaS climb in history, and $6Bn ARR mostly PLG — proof the opportunity is real.',
     recommendedMinutes: 0.5,
     content: {
-      image: '/images/operating-leader.jpg',
+      image: '/images/unique-acceleration.jpg',
       eyebrow: 'Role play',
       title: 'Why Cursor',
+      subtitle: 'Unique acceleration',
       points: [
         'Software Engineers + Power of compute',
         'Fastest SaaS climb from $1M to $1B ARR in history',
