@@ -1837,12 +1837,13 @@ function VisualHeroScreen({
   const centeredPoints = content.pointsLayout === 'center' && hasPoints
   const displayTitleWithPoints =
     content.titleSize === 'display' && hasPoints && Boolean(content.title)
+  const headerTitle = content.titleLayout === 'header' && Boolean(content.title)
   const [visibleCount, setVisibleCount] = useState(revealOnClick ? 0 : points.length)
-  const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints))
-  const hasTitleBlock = Boolean(content.title && !hasPoints)
+  const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints) || headerTitle)
+  const hasTitleBlock = Boolean(content.title && !hasPoints && !headerTitle)
   const hasSubtitle = Boolean(content.subtitle)
   const hasBottomCopy =
-    (hasSubtitle && !displayTitleWithPoints) || hasChips || hasLogos
+    (hasSubtitle && !displayTitleWithPoints && !headerTitle) || hasChips || hasLogos
   const hasCopy =
     hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips || hasLogos || hasLink
 
@@ -1912,25 +1913,52 @@ function VisualHeroScreen({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="flex flex-wrap items-center justify-between gap-3"
+              className={
+                headerTitle
+                  ? 'shrink-0'
+                  : 'flex flex-wrap items-center justify-between gap-3'
+              }
             >
-              {content.eyebrow ? (
-                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-                  <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
-                    {content.eyebrow}
-                  </span>
+              {headerTitle ? (
+                <div>
+                  {content.eyebrow ? (
+                    <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+                      <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
+                        {content.eyebrow}
+                      </span>
+                    </div>
+                  ) : null}
+                  <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+                    {content.title}
+                  </h1>
+                  {hasSubtitle ? (
+                    <p className="mt-2 max-w-2xl text-sm text-white/55 lg:text-base">
+                      {content.subtitle}
+                    </p>
+                  ) : null}
                 </div>
               ) : (
-                <div />
+                <>
+                  {content.eyebrow ? (
+                    <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+                      <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
+                        {content.eyebrow}
+                      </span>
+                    </div>
+                  ) : (
+                    <div />
+                  )}
+                  <div className="flex flex-wrap items-center gap-3">
+                    {content.title && hasPoints && !displayTitleWithPoints ? (
+                      <p className="font-display text-lg font-semibold text-white/80 lg:text-xl">
+                        {content.title}
+                      </p>
+                    ) : null}
+                  </div>
+                </>
               )}
-              <div className="flex flex-wrap items-center gap-3">
-                {content.title && hasPoints && !displayTitleWithPoints ? (
-                  <p className="font-display text-lg font-semibold text-white/80 lg:text-xl">
-                    {content.title}
-                  </p>
-                ) : null}
-              </div>
             </motion.div>
           ) : (
             <div />

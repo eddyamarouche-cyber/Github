@@ -96,6 +96,8 @@ export interface VisualHeroContent {
   chipsLabel?: string
   /** Oversized display title for short hero words like "How?" */
   titleSize?: 'default' | 'display'
+  /** Top-left title stack like subdivisions slides */
+  titleLayout?: 'default' | 'header'
   /** Reveal point blocks one-by-one on click / Next */
   revealPointsOnClick?: boolean
   /** Stack and center points as large hero statements */
