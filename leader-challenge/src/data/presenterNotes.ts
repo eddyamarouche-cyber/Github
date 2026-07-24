@@ -246,7 +246,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Retention is designed, not hoped for. Each lever has an owner and a rhythm.',
     likelyQuestion: 'Which lever is weakest in Southern Europe today?',
-    transition: 'That still needs a scorecard before we hire the next one.',
+    transition: 'Now the call to action — how we practice it.',
+  },
+  'retention-cta': {
+    opening: 'Framework is not enough. Now make it real.',
+    coreMessage:
+      'Call to action: Role play, Shadowing, and Level of activities — three ways leaders turn retention from slides into daily practice.',
+    supportingExample:
+      'Click to reveal each lever. Role play the hard conversations. Shadow top performers. Calibrate activity levels so coaching is intentional, not accidental.',
+    executiveImplication:
+      'Retention improves when managers rehearse, observe, and measure — not when they only agree on principles.',
+    likelyQuestion: 'What does good shadowing look like in week one?',
+    transition: 'That discipline still needs a scorecard before we hire the next one.',
   },
   'candidate-scorecard': {
     opening: 'This is the scoring model I would use before advancing any candidate.',
