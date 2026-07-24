@@ -1895,6 +1895,8 @@ function VisualHeroScreen({
   const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints))
   const hasTitleBlock = Boolean(content.title && !hasPoints)
   const hasSubtitle = Boolean(content.subtitle)
+  const hasBottomCopy =
+    (hasSubtitle && !displayTitleWithPoints) || hasChips || hasLogos
   const hasCopy =
     hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips || hasLogos
 
@@ -1989,11 +1991,13 @@ function VisualHeroScreen({
           )}
 
           {displayTitleWithPoints ? (
-            <div className="shrink-0">
+            <div
+              className={`shrink-0 ${centeredPoints ? 'mx-auto w-full max-w-5xl text-center' : ''}`}
+            >
               <motion.h2
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="font-display max-w-5xl text-5xl leading-[0.95] font-bold tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl"
+                className="font-display text-5xl leading-[0.95] font-bold tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl"
               >
                 {content.title}
               </motion.h2>
@@ -2002,7 +2006,9 @@ function VisualHeroScreen({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="mt-3 max-w-3xl text-base text-white/65 lg:text-lg"
+                  className={`mt-3 text-base text-white/65 lg:text-lg ${
+                    centeredPoints ? 'mx-auto max-w-3xl' : 'max-w-3xl'
+                  }`}
                 >
                   {content.subtitle}
                 </motion.p>
@@ -2019,7 +2025,11 @@ function VisualHeroScreen({
               <div
                 className={
                   centeredPoints
-                    ? 'flex w-full max-w-5xl flex-col items-center justify-center gap-5 lg:gap-8'
+                    ? `flex w-full flex-col items-center justify-center ${
+                        points.length >= 4
+                          ? 'max-w-4xl gap-3 lg:max-w-5xl lg:gap-5'
+                          : 'max-w-5xl gap-5 lg:gap-8'
+                      }`
                     : `grid w-full gap-3 md:gap-4 ${
                         points.length >= 5
                           ? 'md:grid-cols-6'
@@ -2067,9 +2077,15 @@ function VisualHeroScreen({
                               ? 'text-3xl leading-tight sm:text-4xl lg:text-6xl xl:text-7xl'
                               : points.length === 2
                                 ? 'text-xl leading-snug sm:text-2xl lg:text-4xl xl:text-5xl'
-                                : long
-                                  ? 'text-lg leading-snug sm:text-xl lg:text-3xl xl:text-4xl'
-                                  : 'text-xl leading-tight sm:text-2xl lg:text-4xl xl:text-5xl'
+                                : points.length >= 4
+                                  ? long
+                                    ? 'text-base leading-snug sm:text-lg lg:text-2xl xl:text-3xl'
+                                    : medium
+                                      ? 'text-lg leading-snug sm:text-xl lg:text-2xl xl:text-3xl'
+                                      : 'text-lg leading-tight sm:text-xl lg:text-3xl xl:text-4xl'
+                                  : long
+                                    ? 'text-lg leading-snug sm:text-xl lg:text-3xl xl:text-4xl'
+                                    : 'text-xl leading-tight sm:text-2xl lg:text-4xl xl:text-5xl'
                             : long
                               ? 'text-lg leading-snug sm:text-xl lg:text-2xl'
                               : medium
@@ -2104,7 +2120,7 @@ function VisualHeroScreen({
             <div className="flex-1" />
           )}
 
-          {hasSubtitle || hasChips || hasLogos ? (
+          {hasBottomCopy ? (
             <div className="max-w-6xl space-y-4">
               {hasSubtitle && !displayTitleWithPoints ? (
                 <motion.p
