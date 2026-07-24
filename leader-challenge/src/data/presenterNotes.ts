@@ -196,9 +196,9 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'roleplay-proof': {
     opening: 'Market size is not enough — they need proof Cursor can win.',
     coreMessage:
-      'Unique acceleration: software engineers plus power of compute. Fastest SaaS climb from $1M to $1B ARR in history. $6Bn ARR mostly with PLG.',
+      'Unique acceleration first — engineers plus compute, fastest SaaS climb, $6Bn ARR mostly PLG. Then model agnosticity, frontier SpaceX / xAI compute, harness better models as compounding advantage, and 64% of Fortune 500 companies.',
     supportingExample:
-      'These are the three proof points that turn a huge TAM into a credible place to bet a career.',
+      'These proof points turn a huge TAM into a credible place to bet a career — momentum plus structural advantage.',
     executiveImplication:
       'A-players join momentum they can verify — not slides alone.',
     likelyQuestion: 'Which proof point lands hardest with senior sellers?',

@@ -493,8 +493,8 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'Why Cursor?',
     takeaway:
-      'Engineers plus compute, the fastest SaaS climb in history, and $6Bn ARR mostly PLG — proof the opportunity is real.',
-    recommendedMinutes: 0.5,
+      'Unique acceleration plus model agnosticity, frontier compute, compounding model advantage, and Fortune 500 adoption — proof the opportunity is real.',
+    recommendedMinutes: 1,
     content: {
       image: '/images/unique-acceleration.jpg',
       eyebrow: 'Role play',
@@ -505,6 +505,10 @@ export const slides: Slide[] = [
         'Software Engineers + Power of compute',
         'Fastest SaaS climb from $1M to $1B ARR in history',
         '6Bn$ ARR mostly with PLG',
+        'Model agnosticity',
+        "Frontier SpaceX / xAI's massive compute",
+        'Harness better models — the compounding advantage',
+        '64% of Fortune 500 companies',
       ],
       revealPointsOnClick: true,
     },
