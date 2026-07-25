@@ -666,7 +666,7 @@ export const slides: Slide[] = [
         'PG quarter attainment % incr.',
         'Time in stage',
         'Coaching-to-behavior-change',
-        'Self-sourced pipeline vs SDR sources',
+        'Self-sourced pipeline vs SDR sourced',
       ],
       revealPointsOnClick: true,
       table: {
