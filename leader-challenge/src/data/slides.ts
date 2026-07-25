@@ -798,13 +798,16 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'Inspection',
     takeaway:
-      'Inspect what you expect — a healthy business is visible in the numbers, the pipeline, and the behaviors.',
-    recommendedMinutes: 0.5,
+      'Inspect what you expect — control tower app and MEDDPICC discipline make pipeline health visible every week.',
+    recommendedMinutes: 1,
     content: {
       image: '/images/inspection-healthy-business.jpg',
       eyebrow: 'Revenue',
       title: 'Inspection',
       titleLayout: 'header',
+      points: ['Control tower app', 'MEDDPICC'],
+      pointImages: [undefined, '/images/inspection-meddpicc.jpg'],
+      revealPointsOnClick: true,
     },
   },
   {

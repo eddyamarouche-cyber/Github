@@ -316,9 +316,9 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'inspection': {
     opening: 'A healthy business is not a feeling — it is inspectable.',
     coreMessage:
-      'Inspection — pipeline health, forecast quality, and operating behaviors you can see every week.',
+      'Inspection — Control tower app and MEDDPICC as live evidence on every deal.',
     supportingExample:
-      'Hold the image. This is what discipline looks like when the business is running clean — growth, stability, and evidence.',
+      'Click Control tower app, then MEDDPICC — 7 of 8 criteria filled is a qualification gap, not a forecast debate.',
     executiveImplication:
       'Leaders inspect early. Weak signals surfaced weekly beat surprises at quarter-end.',
     likelyQuestion: 'What would make you intervene in week two, not week ten?',
