@@ -700,9 +700,25 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'gap-reduction',
+    id: 'revenue-opener',
     number: 25,
-    section: 'retention',
+    section: 'revenue',
+    type: 'visual-hero',
+    title: 'Revenue',
+    takeaway:
+      'A world of opportunities — run the business with discipline, ambition, and predictability.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/revenue-opportunities.jpg',
+      title: 'Revenue',
+      titleSize: 'display',
+      subtitle: 'A world of opportunities',
+    },
+  },
+  {
+    id: 'gap-reduction',
+    number: 26,
+    section: 'revenue',
     type: 'subdivisions',
     title: 'Gap reduction',
     headline: 'Compress variance and sharpen forecast accuracy.',
@@ -728,7 +744,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'candidate-scorecard',
-    number: 26,
+    number: 27,
     section: 'recruitment',
     type: 'scorecard',
     title: 'Candidate Scorecard',
