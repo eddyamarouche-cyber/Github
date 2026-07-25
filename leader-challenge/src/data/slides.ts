@@ -755,7 +755,8 @@ export const slides: Slide[] = [
       image: '/images/consistent-pipeline-generation.jpg',
       eyebrow: 'Revenue',
       title: 'Consistent Pipeline Generation',
-      titleSize: 'display',
+      titleLayout: 'header',
+      points: ['Pipeline Generation an Identity, Not a Task'],
     },
   },
   {

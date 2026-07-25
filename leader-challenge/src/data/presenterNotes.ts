@@ -293,7 +293,8 @@ export const presenterNotes: Record<string, PresenterNote> = {
   },
   'consistent-pipeline-generation': {
     opening: 'Opportunity without pipeline discipline is a story, not a business.',
-    coreMessage: 'Consistent Pipeline Generation — built through daily grind, not end-of-quarter heroics.',
+    coreMessage:
+      'Consistent Pipeline Generation — Pipeline Generation an Identity, Not a Task. Built through daily grind, not end-of-quarter heroics.',
     supportingExample:
       'Hold the image. This is what weekly prospecting, outreach, and follow-through actually look like — relentless, unglamorous, effective.',
     executiveImplication:
