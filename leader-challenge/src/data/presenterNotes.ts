@@ -311,6 +311,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Leaders who protect the calendar protect the forecast. Rhythm beats heroics.',
     likelyQuestion: 'How do you keep this discipline when quarter-end pressure hits?',
+    transition: 'Rhythm without inspection is hope. Inspect what you expect.',
+  },
+  'inspection': {
+    opening: 'A healthy business is not a feeling — it is inspectable.',
+    coreMessage:
+      'Inspection — pipeline health, forecast quality, and operating behaviors you can see every week.',
+    supportingExample:
+      'Hold the image. This is what discipline looks like when the business is running clean — growth, stability, and evidence.',
+    executiveImplication:
+      'Leaders inspect early. Weak signals surfaced weekly beat surprises at quarter-end.',
+    likelyQuestion: 'What would make you intervene in week two, not week ten?',
     transition: 'That discipline still needs a scorecard before we hire the next one.',
   },
   'candidate-scorecard': {
