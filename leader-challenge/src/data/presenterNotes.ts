@@ -289,6 +289,16 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Ambition without operating discipline is noise. Opportunity without execution is wasted.',
     likelyQuestion: 'What makes Southern Europe winnable at Cursor scale?',
+    transition: 'Pipeline is not a quarterly rescue — it is daily hard work.',
+  },
+  'consistent-pipeline-generation': {
+    opening: 'Opportunity without pipeline discipline is a story, not a business.',
+    coreMessage: 'Consistent Pipeline Generation — built through daily grind, not end-of-quarter heroics.',
+    supportingExample:
+      'Hold the image. This is what weekly prospecting, outreach, and follow-through actually look like — relentless, unglamorous, effective.',
+    executiveImplication:
+      'Regions that win treat pipeline creation like training: non-negotiable, measured, and repeated.',
+    likelyQuestion: 'How do you keep pipeline discipline when sellers are buried in late-stage deals?',
     transition: 'That discipline still needs a scorecard before we hire the next one.',
   },
   'candidate-scorecard': {
