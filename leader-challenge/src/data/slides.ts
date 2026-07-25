@@ -654,7 +654,7 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'Monitoring',
     takeaway:
-      'Monitor qualified opportunities (3 per week), PG quarter attainment % incr., time in stage, coaching-to-behavior-change, and self-sourced pipeline vs SDR sources — the control tower signals.',
+      'Monitor qualified opportunities (3 per week), PG quarter attainment % incr., time in stage, coaching-to-behavior-change, and self-sourced pipeline vs SDR sourced — the control tower signals.',
     recommendedMinutes: 1,
     content: {
       image: '/images/monitoring-control-tower.jpg',
@@ -1125,8 +1125,34 @@ I would value 20 minutes to understand what you are optimizing for in your next 
     },
   },
   {
-    id: 'revenue-operating-system',
+    id: 'gap-reduction',
     number: 40,
+    section: 'revenue',
+    type: 'subdivisions',
+    title: 'Gap reduction',
+    headline: 'Compress variance and sharpen forecast accuracy.',
+    takeaway:
+      'Variance compression from FY24 to FY25 plus forecast accuracy — two levers that close the gap.',
+    recommendedMinutes: 1,
+    content: {
+      eyebrow: 'Revenue',
+      items: [
+        {
+          title: 'Variance compression',
+          detail: 'FY24 75 to 180% — FY25 95 to 135%',
+          image: '/images/gap-reduction-variance.jpg',
+        },
+        {
+          title: 'Forecast accuracy',
+          detail: 'Predictability the team can inspect, trust, and act on every week.',
+          image: '/images/gap-reduction-forecast.jpg',
+        },
+      ],
+    },
+  },
+  {
+    id: 'revenue-operating-system',
+    number: 41,
     section: 'revenue',
     type: 'pillars',
     title: 'Revenue Operating System',
@@ -1156,7 +1182,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'growth-thesis',
-    number: 41,
+    number: 42,
     section: 'revenue',
     type: 'markets',
     title: 'Southern Europe Growth Thesis',
@@ -1166,7 +1192,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'pierre-fabre',
-    number: 42,
+    number: 43,
     section: 'revenue',
     type: 'brand-portfolio',
     title: 'Pierre Fabre',
@@ -1177,7 +1203,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'pipeline-culture',
-    number: 43,
+    number: 44,
     section: 'revenue',
     type: 'culture',
     title: 'Pipeline Culture',
@@ -1196,7 +1222,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'weekly-pipeline-cadence',
-    number: 44,
+    number: 45,
     section: 'revenue',
     type: 'weekday',
     title: 'Weekly Pipeline Generation Cadence',
@@ -1214,7 +1240,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'pipeline-dashboard',
-    number: 45,
+    number: 46,
     section: 'revenue',
     type: 'dashboard',
     title: 'Pipeline Health Dashboard',
@@ -1238,7 +1264,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'opportunity-qualification',
-    number: 46,
+    number: 47,
     section: 'revenue',
     type: 'meddpicc',
     title: 'Opportunity Qualification',
@@ -1307,7 +1333,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'deal-inspection',
-    number: 47,
+    number: 48,
     section: 'revenue',
     type: 'questions',
     title: 'Deal Inspection',
@@ -1330,7 +1356,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'forecast-categories',
-    number: 48,
+    number: 49,
     section: 'revenue',
     type: 'definitions',
     title: 'Forecast Categories',
@@ -1359,7 +1385,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'forecast-philosophy',
-    number: 49,
+    number: 50,
     section: 'revenue',
     type: 'philosophy',
     title: 'Forecast Philosophy',
@@ -1379,7 +1405,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'effective-one-on-ones',
-    number: 50,
+    number: 51,
     section: 'revenue',
     type: 'one-on-one',
     title: 'Effective 1:1s',
@@ -1398,7 +1424,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'regional-dashboard',
-    number: 51,
+    number: 52,
     section: 'revenue',
     type: 'dashboard',
     title: 'Regional Director Dashboard',
@@ -1420,7 +1446,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'leadership-asks',
-    number: 52,
+    number: 53,
     section: 'partnership',
     type: 'asks',
     title: 'Three Things I Need from Cursor Leadership',
@@ -1453,7 +1479,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'mutual-commitment',
-    number: 53,
+    number: 54,
     section: 'partnership',
     type: 'two-column',
     title: 'Mutual Commitment',
@@ -1482,7 +1508,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'first-30-days',
-    number: 54,
+    number: 55,
     section: 'partnership',
     type: 'plan',
     title: 'First 30 Days',
@@ -1503,7 +1529,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'days-31-60',
-    number: 55,
+    number: 56,
     section: 'partnership',
     type: 'plan',
     title: 'Days 31–60',
@@ -1524,7 +1550,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'days-61-90',
-    number: 56,
+    number: 57,
     section: 'partnership',
     type: 'plan',
     title: 'Days 61–90',
@@ -1544,7 +1570,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'key-risks',
-    number: 57,
+    number: 58,
     section: 'partnership',
     type: 'risks',
     title: 'Key Risks and Mitigations',
@@ -1573,7 +1599,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'closing',
-    number: 58,
+    number: 59,
     section: 'close',
     type: 'closing',
     title: 'Closing',
@@ -1591,7 +1617,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'discussion-feedback',
-    number: 59,
+    number: 60,
     section: 'close',
     type: 'feedback',
     title: 'Discussion and Feedback',

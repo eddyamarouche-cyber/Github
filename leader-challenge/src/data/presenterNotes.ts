@@ -432,7 +432,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Career conversations quarterly prevent surprise attrition.',
     likelyQuestion: 'How do you keep 1:1s from becoming status updates?',
-    transition: 'Now to revenue leadership and predictability.',
+    transition: 'Now to revenue — start with gap reduction.',
+  },
+  'gap-reduction': {
+    opening: 'Predictability starts by closing the gap — not hoping it closes itself.',
+    coreMessage:
+      'Gap reduction in two parts: Variance compression (FY24 75 to 180% — FY25 95 to 135%) and Forecast accuracy.',
+    supportingExample:
+      'Click each component open — show how the range tightened year over year, then how forecast discipline compounds trust.',
+    executiveImplication:
+      'Leaders who compress variance and improve forecast accuracy run the business; everyone else runs quarter-end fire drills.',
+    likelyQuestion: 'What changed between FY24 and FY25 to compress the range?',
+    transition: 'That discipline sits inside the broader revenue operating system.',
   },
   'revenue-operating-system': {
     opening: 'Predictable revenue is an operating system outcome.',
