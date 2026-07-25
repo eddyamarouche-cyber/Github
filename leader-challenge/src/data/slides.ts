@@ -749,14 +749,19 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'Consistent Pipeline Generation',
     takeaway:
-      'Pipeline is built through daily discipline — prospecting, outreach, and follow-through every week.',
+      'Pipeline is an identity — measured by activity volume KPIs and source mix across self-sourced, inbound, and SDR.',
     recommendedMinutes: 0.5,
     content: {
       image: '/images/consistent-pipeline-generation.jpg',
       eyebrow: 'Revenue',
       title: 'Consistent Pipeline Generation',
       titleLayout: 'header',
-      points: ['Pipeline Generation an Identity, Not a Task'],
+      points: [
+        'Pipeline Generation an Identity, Not a Task',
+        "KPI's : Activity volume (NBM, Activity to grow developers base..)",
+        'Source : Self source vs Inbound vs SDR sourced',
+      ],
+      revealPointsOnClick: true,
     },
   },
   {
