@@ -31,7 +31,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'session-summary': {
     opening: 'I will run the rest of the session through three engines.',
     coreMessage:
-      'Recruitment raises the bar — A Player, First 5, How?, Role play. Retention grows the team. Revenue runs the business.',
+      'Recruitment raises the bar — A Player, First 5, How?, Role play. Retention grows the team — The approach, Call to action, Monitoring. Revenue runs the business.',
     supportingExample:
       'If any one of these is weak, the region becomes noisy. If all three are strong, growth compounds.',
     executiveImplication:

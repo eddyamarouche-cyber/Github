@@ -110,7 +110,7 @@ export const slides: Slide[] = [
           title: 'Retention',
           subtitle: 'Grow the team',
           description: '',
-          focuses: ['Coaching rhythm', 'Performance diagnosis', 'Ownership culture'],
+          focuses: ['The approach', 'Call to action', 'Monitoring'],
           minutes: 15,
         },
         {
