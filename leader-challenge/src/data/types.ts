@@ -104,6 +104,8 @@ export interface VisualHeroContent {
   revealPointsOnClick?: boolean
   /** Optional image revealed alongside the point at the same index */
   pointImages?: (string | undefined)[]
+  /** Optional detail line revealed alongside the point at the same index */
+  pointDetails?: (string | undefined)[]
   /** Stack and center points as large hero statements */
   pointsLayout?: 'default' | 'center'
   /** Optional external link shown at the bottom of the hero */

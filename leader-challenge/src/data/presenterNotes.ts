@@ -305,7 +305,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'operating-rhythm': {
     opening: 'Pipeline without a rhythm becomes random effort.',
     coreMessage:
-      'Operating rhythm — Daily Discipline, Weekly planning, Monthly Reviews, Quarterly Strategy.',
+      'Operating rhythm — Daily Discipline, Weekly planning (8 customer meetings & preparation), Monthly Reviews, Quarterly Strategy.',
     supportingExample:
       'Click Daily Discipline to reveal the 4/2/2, 2/4/2, 2/2/4 month rotation — how time shifts across prospecting, qualifying, and territory building.',
     executiveImplication:

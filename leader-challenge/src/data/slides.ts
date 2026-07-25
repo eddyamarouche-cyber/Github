@@ -785,6 +785,7 @@ export const slides: Slide[] = [
         'Quarterly Strategy',
       ],
       pointImages: ['/images/operating-rhythm-daily-discipline.jpg'],
+      pointDetails: [undefined, '8 Customer meetings & preparation'],
       revealPointsOnClick: true,
     },
   },

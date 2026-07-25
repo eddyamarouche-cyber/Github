@@ -1900,6 +1900,7 @@ function VisualHeroScreen({
   const revealOnClick = Boolean(content.revealPointsOnClick && hasPoints)
   const points = content.points ?? []
   const pointImages = content.pointImages ?? []
+  const pointDetails = content.pointDetails ?? []
   const chips = content.chips ?? []
   const logos = content.logos ?? []
   const hasChips = chips.length > 0
@@ -1925,11 +1926,17 @@ function VisualHeroScreen({
     hasTable &&
     Boolean(content.table) &&
     (!hasPoints || !revealOnClick || visibleCount >= points.length)
-  const revealedPointImage = pointImages[visibleCount - 1]
-  const hasRevealedPointImage = Boolean(
-    revealOnClick && visibleCount > 0 && revealedPointImage,
+  const activeRevealIndex = visibleCount - 1
+  const activePointImage =
+    activeRevealIndex >= 0 ? pointImages[activeRevealIndex] : undefined
+  const activePointDetail =
+    activeRevealIndex >= 0 ? pointDetails[activeRevealIndex] : undefined
+  const focusRevealPanel = Boolean(
+    revealOnClick && visibleCount > 0 && (activePointImage || activePointDetail),
   )
-  const focusPointImage = hasRevealedPointImage && visibleCount === 1
+  const hasRevealedPointImage = Boolean(
+    revealOnClick && visibleCount > 0 && activePointImage,
+  )
 
   useEffect(() => {
     setVisibleCount(revealOnClick ? 0 : points.length)
@@ -1993,7 +2000,7 @@ function VisualHeroScreen({
       {hasCopy ? (
         <div
           className={`relative flex h-full flex-col px-8 lg:px-12 ${
-            focusPointImage ? 'justify-start gap-1 py-2 lg:py-3' : 'justify-between py-7 lg:py-9'
+            focusRevealPanel ? 'justify-start gap-1 py-2 lg:py-3' : 'justify-between py-7 lg:py-9'
           } ${hasTable ? 'justify-start gap-2 lg:gap-3' : ''}`}
         >
           {hasHeader ? (
@@ -2019,7 +2026,7 @@ function VisualHeroScreen({
                   ) : null}
                   <h1
                     className={`font-display font-semibold tracking-tight text-white ${
-                      focusPointImage
+                      focusRevealPanel
                         ? 'mt-1 text-xl lg:text-2xl'
                         : 'mt-3 text-3xl lg:text-4xl'
                     }`}
@@ -2087,26 +2094,36 @@ function VisualHeroScreen({
           {hasPoints ? (
             <div
               className={`flex flex-col ${
-                hasTable ? 'shrink-0 py-1' : focusPointImage ? 'min-h-0 flex-1 py-0' : 'min-h-0 flex-1 py-3'
-              } ${centeredPoints ? 'items-center justify-center' : focusPointImage ? 'justify-start' : 'justify-center'}`}
+                hasTable ? 'shrink-0 py-1' : focusRevealPanel ? 'min-h-0 flex-1 py-0' : 'min-h-0 flex-1 py-3'
+              } ${centeredPoints ? 'items-center justify-center' : focusRevealPanel ? 'justify-start' : 'justify-center'}`}
             >
-              {focusPointImage ? (
+              {focusRevealPanel ? (
                 <motion.div
                   initial={{ opacity: 0, y: 12, scale: 0.99 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative min-h-[66vh] w-full flex-1 overflow-hidden rounded-[24px] border border-white/10 bg-black/35 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm lg:min-h-[76vh]"
+                  className={`relative w-full flex-1 overflow-hidden rounded-[24px] border border-white/10 bg-black/35 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm ${
+                    activePointImage ? 'min-h-[66vh] lg:min-h-[76vh]' : 'min-h-[42vh] lg:min-h-[48vh]'
+                  }`}
                 >
                   <div className="absolute top-3 left-3 z-10 rounded-full border border-white/15 bg-black/55 px-4 py-2 backdrop-blur-md lg:top-4 lg:left-4">
                     <p className="font-display text-base font-bold tracking-tight text-white lg:text-lg">
-                      {points[visibleCount - 1]}
+                      {points[activeRevealIndex]}
                     </p>
                   </div>
-                  <img
-                    src={revealedPointImage}
-                    alt={points[visibleCount - 1] ?? 'Revealed detail'}
-                    className="h-full min-h-[66vh] w-full object-contain object-top lg:min-h-[76vh]"
-                  />
+                  {activePointImage ? (
+                    <img
+                      src={activePointImage}
+                      alt={points[activeRevealIndex] ?? 'Revealed detail'}
+                      className="h-full min-h-[66vh] w-full object-contain object-top lg:min-h-[76vh]"
+                    />
+                  ) : (
+                    <div className="flex h-full min-h-[42vh] items-center justify-center px-8 py-16 lg:min-h-[48vh] lg:px-12">
+                      <p className="font-display max-w-5xl text-center text-3xl leading-tight font-bold tracking-tight text-balance text-white sm:text-4xl lg:text-5xl xl:text-6xl">
+                        {activePointDetail}
+                      </p>
+                    </div>
+                  )}
                 </motion.div>
               ) : (
               <div
@@ -2199,7 +2216,7 @@ function VisualHeroScreen({
                 })}
               </div>
               )}
-              {hasRevealedPointImage && !focusPointImage ? (
+              {hasRevealedPointImage && !focusRevealPanel ? (
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -2207,8 +2224,8 @@ function VisualHeroScreen({
                   className="glass max-h-[34vh] w-full overflow-hidden rounded-[24px] border border-white/10 backdrop-blur-xl lg:max-h-[38vh]"
                 >
                   <img
-                    src={revealedPointImage}
-                    alt={points[visibleCount - 1] ?? 'Revealed detail'}
+                    src={activePointImage}
+                    alt={points[activeRevealIndex] ?? 'Revealed detail'}
                     className="h-full w-full object-contain"
                   />
                 </motion.div>
