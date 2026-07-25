@@ -300,6 +300,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Regions that win treat pipeline creation like training: non-negotiable, measured, and repeated.',
     likelyQuestion: 'How do you keep pipeline discipline when sellers are buried in late-stage deals?',
+    transition: 'Operating rhythm turns pipeline discipline into a calendar.',
+  },
+  'operating-rhythm': {
+    opening: 'Pipeline without a rhythm becomes random effort.',
+    coreMessage:
+      'Operating rhythm — Daily Discipline, Weekly planning, Monthly Reviews, Quarterly Strategy.',
+    supportingExample:
+      'Click Daily Discipline to reveal the 4/2/2, 2/4/2, 2/2/4 month rotation — how time shifts across prospecting, qualifying, and territory building.',
+    executiveImplication:
+      'Leaders who protect the calendar protect the forecast. Rhythm beats heroics.',
+    likelyQuestion: 'How do you keep this discipline when quarter-end pressure hits?',
     transition: 'That discipline still needs a scorecard before we hire the next one.',
   },
   'candidate-scorecard': {

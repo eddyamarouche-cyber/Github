@@ -1899,6 +1899,7 @@ function VisualHeroScreen({
   const hasPoints = Boolean(content.points?.length)
   const revealOnClick = Boolean(content.revealPointsOnClick && hasPoints)
   const points = content.points ?? []
+  const pointImages = content.pointImages ?? []
   const chips = content.chips ?? []
   const logos = content.logos ?? []
   const hasChips = chips.length > 0
@@ -1924,6 +1925,11 @@ function VisualHeroScreen({
     hasTable &&
     Boolean(content.table) &&
     (!hasPoints || !revealOnClick || visibleCount >= points.length)
+  const revealedPointImage = pointImages[visibleCount - 1]
+  const hasRevealedPointImage = Boolean(
+    revealOnClick && visibleCount > 0 && revealedPointImage,
+  )
+  const focusPointImage = hasRevealedPointImage && visibleCount === 1
 
   useEffect(() => {
     setVisibleCount(revealOnClick ? 0 : points.length)
@@ -2076,7 +2082,7 @@ function VisualHeroScreen({
             <div
               className={`flex flex-col ${
                 hasTable ? 'shrink-0 py-1' : 'min-h-0 flex-1 py-3'
-              } ${centeredPoints ? 'items-center justify-center' : 'justify-center'}`}
+              } ${centeredPoints ? 'items-center justify-center' : focusPointImage ? 'justify-start gap-3' : 'justify-center'}`}
             >
               <div
                 className={
@@ -2087,7 +2093,9 @@ function VisualHeroScreen({
                           : 'max-w-5xl gap-5 lg:gap-8'
                       }`
                     : `grid w-full gap-2 md:gap-3 ${
-                        hasTable && points.length >= 5
+                        focusPointImage
+                          ? 'shrink-0 md:grid-cols-1'
+                          : hasTable && points.length >= 5
                           ? 'md:grid-cols-5'
                           : points.length >= 5
                             ? 'md:grid-cols-6'
@@ -2121,7 +2129,9 @@ function VisualHeroScreen({
                               points.length > 2 ? 'py-5 lg:py-7' : 'py-8 lg:py-12'
                             }`
                           : `px-4 py-6 lg:px-5 ${
-                              fiveUp
+                              focusPointImage
+                                ? 'min-h-[72px] py-3 lg:min-h-[88px]'
+                                : fiveUp
                                 ? hasTable
                                   ? 'min-h-[72px] py-3 lg:min-h-[88px]'
                                   : 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
@@ -2167,6 +2177,34 @@ function VisualHeroScreen({
                   )
                 })}
               </div>
+              {focusPointImage ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 16, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="glass min-h-0 w-full flex-1 overflow-hidden rounded-[28px] border border-white/10 backdrop-blur-xl"
+                >
+                  <img
+                    src={revealedPointImage}
+                    alt={points[visibleCount - 1] ?? 'Revealed detail'}
+                    className="h-full w-full object-contain"
+                  />
+                </motion.div>
+              ) : null}
+              {hasRevealedPointImage && !focusPointImage ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  className="glass max-h-[34vh] w-full overflow-hidden rounded-[24px] border border-white/10 backdrop-blur-xl lg:max-h-[38vh]"
+                >
+                  <img
+                    src={revealedPointImage}
+                    alt={points[visibleCount - 1] ?? 'Revealed detail'}
+                    className="h-full w-full object-contain"
+                  />
+                </motion.div>
+              ) : null}
             </div>
           ) : hasTitleBlock ? (
             <div className="flex flex-1 flex-col items-center justify-center text-center">
