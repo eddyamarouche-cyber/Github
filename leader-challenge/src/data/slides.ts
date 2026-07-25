@@ -759,7 +759,7 @@ export const slides: Slide[] = [
       points: [
         'Pipeline Generation an Identity, Not a Task',
         "KPI's : Activity volume (NBM, Activity to grow developers base..)",
-        'Source : Self source vs Inbound vs SDR sourced',
+        'Source mix : Self sourced vs Inbound vs SDR sourced',
       ],
       revealPointsOnClick: true,
     },
