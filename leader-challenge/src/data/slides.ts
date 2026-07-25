@@ -561,8 +561,10 @@ export const slides: Slide[] = [
     recommendedMinutes: 0.5,
     content: {
       image: '/images/retention-growth.jpg',
+      eyebrow: 'Retention',
       title: 'Retention in summary',
-      subtitles: ['The approach', 'Call to action', 'Monitoring'],
+      titleLayout: 'header',
+      points: ['The approach', 'Call to action', 'Monitoring'],
     },
   },
   {
