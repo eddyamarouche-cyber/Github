@@ -1993,7 +1993,7 @@ function VisualHeroScreen({
       {hasCopy ? (
         <div
           className={`relative flex h-full flex-col px-8 lg:px-12 ${
-            focusPointImage ? 'justify-start gap-2 py-4 lg:gap-3 lg:py-5' : 'justify-between py-7 lg:py-9'
+            focusPointImage ? 'justify-start gap-1 py-2 lg:py-3' : 'justify-between py-7 lg:py-9'
           } ${hasTable ? 'justify-start gap-2 lg:gap-3' : ''}`}
         >
           {hasHeader ? (
@@ -2020,7 +2020,7 @@ function VisualHeroScreen({
                   <h1
                     className={`font-display font-semibold tracking-tight text-white ${
                       focusPointImage
-                        ? 'mt-2 text-2xl lg:text-3xl'
+                        ? 'mt-1 text-xl lg:text-2xl'
                         : 'mt-3 text-3xl lg:text-4xl'
                     }`}
                   >
@@ -2088,8 +2088,27 @@ function VisualHeroScreen({
             <div
               className={`flex flex-col ${
                 hasTable ? 'shrink-0 py-1' : focusPointImage ? 'min-h-0 flex-1 py-0' : 'min-h-0 flex-1 py-3'
-              } ${centeredPoints ? 'items-center justify-center' : focusPointImage ? 'justify-start gap-2' : 'justify-center'}`}
+              } ${centeredPoints ? 'items-center justify-center' : focusPointImage ? 'justify-start' : 'justify-center'}`}
             >
+              {focusPointImage ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 12, scale: 0.99 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative min-h-[66vh] w-full flex-1 overflow-hidden rounded-[24px] border border-white/10 bg-black/35 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm lg:min-h-[76vh]"
+                >
+                  <div className="absolute top-3 left-3 z-10 rounded-full border border-white/15 bg-black/55 px-4 py-2 backdrop-blur-md lg:top-4 lg:left-4">
+                    <p className="font-display text-base font-bold tracking-tight text-white lg:text-lg">
+                      {points[visibleCount - 1]}
+                    </p>
+                  </div>
+                  <img
+                    src={revealedPointImage}
+                    alt={points[visibleCount - 1] ?? 'Revealed detail'}
+                    className="h-full min-h-[66vh] w-full object-contain object-top lg:min-h-[76vh]"
+                  />
+                </motion.div>
+              ) : (
               <div
                 className={
                   centeredPoints
@@ -2099,9 +2118,7 @@ function VisualHeroScreen({
                           : 'max-w-5xl gap-5 lg:gap-8'
                       }`
                     : `grid w-full gap-2 md:gap-3 ${
-                        focusPointImage
-                          ? 'shrink-0 md:grid-cols-1'
-                          : hasTable && points.length >= 5
+                        hasTable && points.length >= 5
                           ? 'md:grid-cols-5'
                           : points.length >= 5
                             ? 'md:grid-cols-6'
@@ -2134,10 +2151,8 @@ function VisualHeroScreen({
                           ? `w-full max-w-4xl px-6 lg:px-10 ${
                               points.length > 2 ? 'py-5 lg:py-7' : 'py-8 lg:py-12'
                             }`
-                          : `px-4 lg:px-5 ${
-                              focusPointImage
-                                ? 'min-h-[52px] py-2 lg:min-h-[60px]'
-                                : fiveUp
+                          : `px-4 py-6 lg:px-5 ${
+                              fiveUp
                                 ? hasTable
                                   ? 'min-h-[72px] py-3 lg:min-h-[88px]'
                                   : 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
@@ -2168,9 +2183,7 @@ function VisualHeroScreen({
                                     : 'text-xl leading-tight sm:text-2xl lg:text-4xl xl:text-5xl'
                             : fiveUp && hasTable
                               ? 'text-sm leading-snug sm:text-base lg:text-lg'
-                              : focusPointImage
-                                ? 'text-lg leading-tight sm:text-xl lg:text-2xl'
-                                : long
+                              : long
                                 ? 'text-lg leading-snug sm:text-xl lg:text-2xl'
                                 : medium
                                   ? 'text-xl leading-tight sm:text-2xl lg:text-3xl'
@@ -2185,20 +2198,7 @@ function VisualHeroScreen({
                   )
                 })}
               </div>
-              {focusPointImage ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 16, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="min-h-[62vh] w-full flex-1 overflow-hidden rounded-[24px] border border-white/10 bg-black/35 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm lg:min-h-[72vh]"
-                >
-                  <img
-                    src={revealedPointImage}
-                    alt={points[visibleCount - 1] ?? 'Revealed detail'}
-                    className="h-full min-h-[62vh] w-full object-contain lg:min-h-[72vh]"
-                  />
-                </motion.div>
-              ) : null}
+              )}
               {hasRevealedPointImage && !focusPointImage ? (
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
