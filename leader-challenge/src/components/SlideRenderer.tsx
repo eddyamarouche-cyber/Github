@@ -1992,9 +1992,9 @@ function VisualHeroScreen({
 
       {hasCopy ? (
         <div
-          className={`relative flex h-full flex-col px-8 py-7 lg:px-12 lg:py-9 ${
-            hasTable ? 'justify-start gap-2 lg:gap-3' : 'justify-between'
-          }`}
+          className={`relative flex h-full flex-col px-8 lg:px-12 ${
+            focusPointImage ? 'justify-start gap-2 py-4 lg:gap-3 lg:py-5' : 'justify-between py-7 lg:py-9'
+          } ${hasTable ? 'justify-start gap-2 lg:gap-3' : ''}`}
         >
           {hasHeader ? (
             <motion.div
@@ -2017,7 +2017,13 @@ function VisualHeroScreen({
                       </span>
                     </div>
                   ) : null}
-                  <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+                  <h1
+                    className={`font-display font-semibold tracking-tight text-white ${
+                      focusPointImage
+                        ? 'mt-2 text-2xl lg:text-3xl'
+                        : 'mt-3 text-3xl lg:text-4xl'
+                    }`}
+                  >
                     {content.title}
                   </h1>
                   {hasSubtitle ? (
@@ -2081,8 +2087,8 @@ function VisualHeroScreen({
           {hasPoints ? (
             <div
               className={`flex flex-col ${
-                hasTable ? 'shrink-0 py-1' : 'min-h-0 flex-1 py-3'
-              } ${centeredPoints ? 'items-center justify-center' : focusPointImage ? 'justify-start gap-3' : 'justify-center'}`}
+                hasTable ? 'shrink-0 py-1' : focusPointImage ? 'min-h-0 flex-1 py-0' : 'min-h-0 flex-1 py-3'
+              } ${centeredPoints ? 'items-center justify-center' : focusPointImage ? 'justify-start gap-2' : 'justify-center'}`}
             >
               <div
                 className={
@@ -2128,9 +2134,9 @@ function VisualHeroScreen({
                           ? `w-full max-w-4xl px-6 lg:px-10 ${
                               points.length > 2 ? 'py-5 lg:py-7' : 'py-8 lg:py-12'
                             }`
-                          : `px-4 py-6 lg:px-5 ${
+                          : `px-4 lg:px-5 ${
                               focusPointImage
-                                ? 'min-h-[72px] py-3 lg:min-h-[88px]'
+                                ? 'min-h-[52px] py-2 lg:min-h-[60px]'
                                 : fiveUp
                                 ? hasTable
                                   ? 'min-h-[72px] py-3 lg:min-h-[88px]'
@@ -2162,7 +2168,9 @@ function VisualHeroScreen({
                                     : 'text-xl leading-tight sm:text-2xl lg:text-4xl xl:text-5xl'
                             : fiveUp && hasTable
                               ? 'text-sm leading-snug sm:text-base lg:text-lg'
-                              : long
+                              : focusPointImage
+                                ? 'text-lg leading-tight sm:text-xl lg:text-2xl'
+                                : long
                                 ? 'text-lg leading-snug sm:text-xl lg:text-2xl'
                                 : medium
                                   ? 'text-xl leading-tight sm:text-2xl lg:text-3xl'
@@ -2182,12 +2190,12 @@ function VisualHeroScreen({
                   initial={{ opacity: 0, y: 16, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="glass min-h-0 w-full flex-1 overflow-hidden rounded-[28px] border border-white/10 backdrop-blur-xl"
+                  className="min-h-[62vh] w-full flex-1 overflow-hidden rounded-[24px] border border-white/10 bg-black/35 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm lg:min-h-[72vh]"
                 >
                   <img
                     src={revealedPointImage}
                     alt={points[visibleCount - 1] ?? 'Revealed detail'}
-                    className="h-full w-full object-contain"
+                    className="h-full min-h-[62vh] w-full object-contain lg:min-h-[72vh]"
                   />
                 </motion.div>
               ) : null}
