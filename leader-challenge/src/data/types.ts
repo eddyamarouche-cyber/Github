@@ -221,6 +221,8 @@ export interface SubdivisionItem {
   theme?: string
   linkUrl?: string
   linkLabel?: string
+  /** Larger detail typography in list and expanded views */
+  detailSize?: 'default' | 'large'
 }
 
 export interface SubdivisionsContent {

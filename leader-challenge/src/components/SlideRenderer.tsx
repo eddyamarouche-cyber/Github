@@ -1533,6 +1533,11 @@ function SubdivisionsScreen({
                   </span>
                 ) : null}
               </div>
+              {item.detail && item.detailSize === 'large' ? (
+                <p className="font-display mt-2 text-lg leading-snug font-semibold text-balance text-white/90 sm:text-xl lg:text-3xl">
+                  {item.detail}
+                </p>
+              ) : null}
             </div>
             <span className="shrink-0 text-[10px] font-semibold tracking-[0.14em] text-white/30 uppercase opacity-0 transition group-hover:opacity-100">
               Open
@@ -1595,7 +1600,13 @@ function SubdivisionsScreen({
                   {current.title}
                 </h2>
                 {current.detail ? (
-                  <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75 lg:text-lg">
+                  <p
+                    className={
+                      current.detailSize === 'large'
+                        ? 'mt-4 max-w-5xl text-2xl leading-snug font-semibold text-balance text-white sm:text-3xl lg:text-5xl xl:text-6xl'
+                        : 'mt-4 max-w-2xl text-base leading-relaxed text-white/75 lg:text-lg'
+                    }
+                  >
                     {current.detail}
                   </p>
                 ) : null}

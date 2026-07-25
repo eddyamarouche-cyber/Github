@@ -273,7 +273,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'gap-reduction': {
     opening: 'Predictability starts by closing the gap — not hoping it closes itself.',
     coreMessage:
-      'Gap reduction in two parts: Variance compression (FY24 75 to 180% — FY25 95 to 135%) and Forecast accuracy.',
+      'Gap reduction in two parts: Variance compression — Team quota attainment FY24 75 to 180%, FY25 95 to 135% — and Forecast accuracy.',
     supportingExample:
       'Click each component open — show how the range tightened year over year, then how forecast discipline compounds trust.',
     executiveImplication:
