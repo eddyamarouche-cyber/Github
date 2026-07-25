@@ -268,16 +268,6 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Leaders who monitor retain. Leaders who only react lose A-players quietly.',
     likelyQuestion: 'Which of these four signals is weakest in your team today?',
-    transition: 'Now Revenue — a world of opportunities.',
-  },
-  'revenue-opener': {
-    opening: 'Shift from growing people to running the business.',
-    coreMessage: 'Revenue — a world of opportunities.',
-    supportingExample:
-      'Hold the image for a beat. This is the scale of the prize before we talk discipline.',
-    executiveImplication:
-      'Ambition without operating discipline is noise. Opportunity without execution is wasted.',
-    likelyQuestion: 'What makes Southern Europe winnable at Cursor scale?',
     transition: 'First close the gap — variance compression and forecast accuracy.',
   },
   'gap-reduction': {
@@ -289,6 +279,16 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Leaders who compress variance and improve forecast accuracy run the business; everyone else runs quarter-end fire drills.',
     likelyQuestion: 'What changed between FY24 and FY25 to compress the range?',
+    transition: 'Now Revenue — a world of opportunities.',
+  },
+  'revenue-opener': {
+    opening: 'Shift from growing people to running the business.',
+    coreMessage: 'Revenue — a world of opportunities.',
+    supportingExample:
+      'Hold the image for a beat. This is the scale of the prize before we talk discipline.',
+    executiveImplication:
+      'Ambition without operating discipline is noise. Opportunity without execution is wasted.',
+    likelyQuestion: 'What makes Southern Europe winnable at Cursor scale?',
     transition: 'That discipline still needs a scorecard before we hire the next one.',
   },
   'candidate-scorecard': {

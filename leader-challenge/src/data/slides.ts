@@ -700,24 +700,8 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'revenue-opener',
-    number: 25,
-    section: 'revenue',
-    type: 'visual-hero',
-    title: 'Revenue',
-    takeaway:
-      'A world of opportunities — run the business with discipline, ambition, and predictability.',
-    recommendedMinutes: 0.5,
-    content: {
-      image: '/images/revenue-opportunities.jpg',
-      title: 'Revenue',
-      titleSize: 'display',
-      subtitle: 'A world of opportunities',
-    },
-  },
-  {
     id: 'gap-reduction',
-    number: 26,
+    number: 25,
     section: 'revenue',
     type: 'subdivisions',
     title: 'Gap reduction',
@@ -740,6 +724,22 @@ export const slides: Slide[] = [
           image: '/images/gap-reduction-forecast.jpg',
         },
       ],
+    },
+  },
+  {
+    id: 'revenue-opener',
+    number: 26,
+    section: 'revenue',
+    type: 'visual-hero',
+    title: 'Revenue',
+    takeaway:
+      'A world of opportunities — run the business with discipline, ambition, and predictability.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/revenue-opportunities.jpg',
+      title: 'Revenue',
+      titleSize: 'display',
+      subtitle: 'A world of opportunities',
     },
   },
   {
