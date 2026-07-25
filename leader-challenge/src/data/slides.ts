@@ -700,8 +700,34 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'candidate-scorecard',
+    id: 'gap-reduction',
     number: 25,
+    section: 'retention',
+    type: 'subdivisions',
+    title: 'Gap reduction',
+    headline: 'Compress variance and sharpen forecast accuracy.',
+    takeaway:
+      'Variance compression from FY24 to FY25 plus forecast accuracy — two levers that close the gap.',
+    recommendedMinutes: 1,
+    content: {
+      eyebrow: 'Revenue',
+      items: [
+        {
+          title: 'Variance compression',
+          detail: 'FY24 75 to 180% — FY25 95 to 135%',
+          image: '/images/gap-reduction-variance.jpg',
+        },
+        {
+          title: 'Forecast accuracy',
+          detail: 'Predictability the team can inspect, trust, and act on every week.',
+          image: '/images/gap-reduction-forecast.jpg',
+        },
+      ],
+    },
+  },
+  {
+    id: 'candidate-scorecard',
+    number: 26,
     section: 'recruitment',
     type: 'scorecard',
     title: 'Candidate Scorecard',
@@ -771,7 +797,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'first-five-candidates',
-    number: 26,
+    number: 27,
     section: 'recruitment',
     type: 'candidates',
     title: 'First Five Target Candidates',
@@ -781,7 +807,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'talent-mapping',
-    number: 27,
+    number: 28,
     section: 'recruitment',
     type: 'process',
     title: 'Talent Mapping Strategy',
@@ -801,7 +827,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'sourcing-funnel',
-    number: 28,
+    number: 29,
     section: 'recruitment',
     type: 'funnel',
     title: 'Candidate Sourcing Funnel',
@@ -821,7 +847,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'candidate-outreach',
-    number: 29,
+    number: 30,
     section: 'recruitment',
     type: 'outreach',
     title: 'Candidate Outreach',
@@ -839,7 +865,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'roleplay-profile',
-    number: 30,
+    number: 31,
     section: 'roleplay',
     type: 'roleplay-prep',
     title: 'Role-Play Candidate Profile',
@@ -863,7 +889,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'initial-call',
-    number: 31,
+    number: 32,
     section: 'roleplay',
     type: 'stages',
     title: 'Initial Candidate Call Structure',
@@ -902,7 +928,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'selling-opportunity',
-    number: 32,
+    number: 33,
     section: 'roleplay',
     type: 'pitch',
     title: 'Selling the Opportunity',
@@ -943,7 +969,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'candidate-objections',
-    number: 33,
+    number: 34,
     section: 'roleplay',
     type: 'objections',
     title: 'Candidate Objections',
@@ -976,7 +1002,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'retention-philosophy',
-    number: 34,
+    number: 35,
     section: 'retention',
     type: 'drivers',
     title: 'Retention Philosophy',
@@ -1006,7 +1032,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'coaching-framework',
-    number: 35,
+    number: 36,
     section: 'retention',
     type: 'framework',
     title: 'Coaching Framework',
@@ -1025,7 +1051,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'performance-diagnosis',
-    number: 36,
+    number: 37,
     section: 'retention',
     type: 'diagnosis',
     title: 'Performance Diagnosis',
@@ -1074,7 +1100,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'coaching-case-study',
-    number: 37,
+    number: 38,
     section: 'retention',
     type: 'case-study',
     title: 'Coaching Case Study',
@@ -1084,7 +1110,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'measuring-improvement',
-    number: 38,
+    number: 39,
     section: 'retention',
     type: 'metrics',
     title: 'Measuring Improvement',
@@ -1108,7 +1134,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'development-rhythm',
-    number: 39,
+    number: 40,
     section: 'retention',
     type: 'rhythm',
     title: 'Development Rhythm',
@@ -1121,32 +1147,6 @@ I would value 20 minutes to understand what you are optimizing for in your next 
         { title: 'Call review', detail: 'Practice discovery, narrative and executive conversations.' },
         { title: 'Monthly development review', detail: 'Skill progress against agreed priorities.' },
         { title: 'Quarterly career conversation', detail: 'Ambition, readiness and growth path.' },
-      ],
-    },
-  },
-  {
-    id: 'gap-reduction',
-    number: 40,
-    section: 'revenue',
-    type: 'subdivisions',
-    title: 'Gap reduction',
-    headline: 'Compress variance and sharpen forecast accuracy.',
-    takeaway:
-      'Variance compression from FY24 to FY25 plus forecast accuracy — two levers that close the gap.',
-    recommendedMinutes: 1,
-    content: {
-      eyebrow: 'Revenue',
-      items: [
-        {
-          title: 'Variance compression',
-          detail: 'FY24 75 to 180% — FY25 95 to 135%',
-          image: '/images/gap-reduction-variance.jpg',
-        },
-        {
-          title: 'Forecast accuracy',
-          detail: 'Predictability the team can inspect, trust, and act on every week.',
-          image: '/images/gap-reduction-forecast.jpg',
-        },
       ],
     },
   },
