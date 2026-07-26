@@ -1,8 +1,4 @@
-import { candidates } from './candidates'
 import { linkedinTargets, linkedinTargetsSpain } from './linkedinTargets'
-import { coachingCases } from './coachingCases'
-import { markets } from './markets'
-import { pierreFabrePortfolio } from './pierreFabre'
 import type { SectionMeta, Slide } from './types'
 
 export const TOTAL_SESSION_MINUTES = 90
@@ -882,671 +878,24 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'candidate-scorecard',
+    id: 'asks-opener',
     number: 32,
-    section: 'recruitment',
-    type: 'scorecard',
-    title: 'Candidate Scorecard',
-    takeaway: 'Score out of 100 with weighted evidence — never hire on intuition alone.',
-    recommendedMinutes: 3,
-    content: {
-      totalLabel: 'Weighted score / 100',
-      criteria: [
-        {
-          criterion: 'Track record',
-          weight: 15,
-          score: null,
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD MARKET ASSUMPTION]',
-        },
-        {
-          criterion: 'Learning velocity',
-          weight: 15,
-          score: null,
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[VALIDATE WITH CURSOR]',
-        },
-        {
-          criterion: 'Enterprise selling capability',
-          weight: 15,
-          score: null,
-          evidence: '[ADD MY RESULT]',
-          risk: '[ADD MARKET ASSUMPTION]',
-        },
-        {
-          criterion: 'Technical credibility',
-          weight: 10,
-          score: null,
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[VALIDATE WITH CURSOR]',
-        },
-        {
-          criterion: 'Executive presence',
-          weight: 10,
-          score: null,
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD MARKET ASSUMPTION]',
-        },
-        {
-          criterion: 'Territory-building ability',
-          weight: 15,
-          score: null,
-          evidence: '[ADD MY RESULT]',
-          risk: '[ADD MARKET ASSUMPTION]',
-        },
-        {
-          criterion: 'Coachability',
-          weight: 10,
-          score: null,
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[VALIDATE WITH CURSOR]',
-        },
-        {
-          criterion: 'Cultural contribution',
-          weight: 10,
-          score: null,
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD MARKET ASSUMPTION]',
-        },
-      ],
-    },
-  },
-  {
-    id: 'first-five-candidates',
-    number: 33,
-    section: 'recruitment',
-    type: 'candidates',
-    title: 'First Five Target Candidates',
-    takeaway: 'Walk in with a named talent map, not a generic hiring request.',
-    recommendedMinutes: 3,
-    content: { candidates },
-  },
-  {
-    id: 'talent-mapping',
-    number: 34,
-    section: 'recruitment',
-    type: 'process',
-    title: 'Talent Mapping Strategy',
-    headline: 'Hiring starts before a role is open.',
-    takeaway: 'Maintain an always-on top-50 talent map for Southern Europe.',
-    recommendedMinutes: 2,
-    content: {
-      steps: [
-        'Define the scorecard',
-        'Map target companies',
-        'Build a top-50 talent map',
-        'Activate trusted networks',
-        'Run structured outreach',
-        'Maintain an always-on talent pipeline',
-      ],
-    },
-  },
-  {
-    id: 'sourcing-funnel',
-    number: 35,
-    section: 'recruitment',
-    type: 'funnel',
-    title: 'Candidate Sourcing Funnel',
-    takeaway: 'Treat hiring conversion as a managed funnel with clear stage quality.',
-    recommendedMinutes: 2,
-    content: {
-      disclaimer: 'Illustrative model — replace with actual assumptions.',
-      stages: [
-        { label: 'Mapped profiles', count: 50 },
-        { label: 'Warm introductions', count: 20 },
-        { label: 'Initial conversations', count: 12 },
-        { label: 'Structured interviews', count: 6 },
-        { label: 'Finalists', count: 3 },
-        { label: 'Hire', count: 1 },
-      ],
-    },
-  },
-  {
-    id: 'candidate-outreach',
-    number: 36,
-    section: 'recruitment',
-    type: 'outreach',
-    title: 'Candidate Outreach',
-    takeaway: 'Personal, credible outreach sells ownership and category impact — not a job description.',
-    recommendedMinutes: 2,
-    content: {
-      message: `Hi [Candidate Name],
-
-I am building the early Southern Europe team at Cursor and your experience in [relevant area] stood out.
-
-I am not reaching out because you match a job description. I am reaching out because this role could offer the opportunity to help define a category, shape a region and build something with significant long-term impact.
-
-I would value 20 minutes to understand what you are optimizing for in your next chapter.`,
-    },
-  },
-  {
-    id: 'roleplay-profile',
-    number: 37,
-    section: 'roleplay',
-    type: 'roleplay-prep',
-    title: 'Role-Play Candidate Profile',
-    takeaway: 'Enter every candidate conversation with a clear objective and next-step ask.',
-    recommendedMinutes: 4,
-    content: {
-      background: '[ADD CANDIDATE NAME] — [ADD COMPANY], [ADD COUNTRY], relevant background.',
-      currentSituation: '[ADD MY EXAMPLE] — current role, tenure and performance context.',
-      likelyMotivations: '[ADD MY EXAMPLE] — ownership, category impact, career upside.',
-      likelyConcerns: '[ADD MARKET ASSUMPTION] — stage risk, territory maturity, compensation.',
-      careerAmbitions: '[ADD MY EXAMPLE] — what they may optimize for next.',
-      callObjective: 'Qualify fit, create curiosity and secure a structured next conversation.',
-      questionsToExplore: [
-        'What are you optimizing for in your next chapter?',
-        'Where do you create the most commercial leverage?',
-        'What would make an early-stage category role compelling?',
-        'Which risks matter most to you right now?',
-      ],
-      desiredNextStep: 'Agree a follow-up deep-dive with scorecard-based evaluation.',
-    },
-  },
-  {
-    id: 'initial-call',
-    number: 38,
-    section: 'roleplay',
-    type: 'stages',
-    title: 'Initial Candidate Call Structure',
-    takeaway: 'Listen first, frame the opportunity second, and always close on a next step.',
-    recommendedMinutes: 4,
-    content: {
-      stages: [
-        { step: 1, title: 'Establish trust', detail: 'Open with intent and respect for their time.' },
-        {
-          step: 2,
-          title: 'Understand motivations',
-          detail: 'Explore what they are optimizing for now.',
-        },
-        {
-          step: 3,
-          title: 'Explore career priorities',
-          detail: 'Surface ownership, impact and growth criteria.',
-        },
-        {
-          step: 4,
-          title: 'Frame the market opportunity',
-          detail: 'Position AI coding as a category-defining moment.',
-        },
-        {
-          step: 5,
-          title: 'Position Cursor and the role',
-          detail: 'Connect the regional mandate to their strengths.',
-        },
-        {
-          step: 6,
-          title: 'Agree on a next step',
-          detail: 'Leave with a concrete follow-up and decision path.',
-        },
-      ],
-    },
-  },
-  {
-    id: 'selling-opportunity',
-    number: 39,
-    section: 'roleplay',
-    type: 'pitch',
-    title: 'Selling the Opportunity',
-    takeaway: 'Sell the market, the company, the timing and the personal ownership — in that order.',
-    recommendedMinutes: 4,
-    content: {
-      points: [
-        {
-          label: 'The market opportunity',
-          detail: '[VALIDATE WITH CURSOR] — category timing and buyer urgency.',
-        },
-        {
-          label: 'Why Cursor',
-          detail: '[VALIDATE WITH CURSOR] — product strength and market momentum.',
-        },
-        {
-          label: 'Why AI coding',
-          detail: 'Developers and enterprises are rewriting how software is built.',
-        },
-        {
-          label: 'Why Southern Europe',
-          detail: 'One regional strategy with strong local execution creates durable advantage.',
-        },
-        {
-          label: 'Why now',
-          detail: 'Early movers define references, talent density and market narrative.',
-        },
-        {
-          label: 'Why this role',
-          detail: 'Ownership to build the team, system and regional growth engine.',
-        },
-        {
-          label: 'Why this candidate',
-          detail: '[ADD MY EXAMPLE] — personal fit narrative based on evidence.',
-        },
-      ],
-    },
-  },
-  {
-    id: 'candidate-objections',
-    number: 40,
-    section: 'roleplay',
-    type: 'objections',
-    title: 'Candidate Objections',
-    takeaway: 'Treat objections as diagnostic signals — clarify the real risk before responding.',
-    recommendedMinutes: 3,
-    content: {
-      items: [
-        {
-          objection: 'Cursor is still early.',
-          response:
-            'That is precisely where the leverage is. The role offers the opportunity to shape the market, the regional model and the team rather than inherit a mature structure.',
-        },
-        {
-          objection: 'I already have a strong position.',
-          response:
-            'The question is not whether your current role is good. The question is whether it offers the same level of ownership, category impact and long-term career upside.',
-        },
-        {
-          objection: 'The territory is not mature.',
-          response:
-            'That creates both risk and opportunity. The objective is not to wait for maturity, but to help create it through strong talent, customer relevance and disciplined execution.',
-        },
-        {
-          objection: 'The risk is too high.',
-          response:
-            'I would want to understand which risk matters most to you: company, product, role scope, compensation or career trajectory. Each requires a different discussion.',
-        },
-      ],
-    },
-  },
-  {
-    id: 'retention-philosophy',
-    number: 41,
-    section: 'retention',
-    type: 'drivers',
-    title: 'Retention Philosophy',
-    headline: 'Retention is the outcome of clarity, growth, trust and accountability.',
-    takeaway: 'People stay where expectations, coaching, growth and fairness are visible.',
-    recommendedMinutes: 2,
-    content: {
-      drivers: [
-        {
-          title: 'Clear expectations',
-          detail: 'Every seller knows the standard for pipeline, quality and behaviour.',
-        },
-        {
-          title: 'High-quality coaching',
-          detail: 'Managers invest in skill development, not only inspection.',
-        },
-        {
-          title: 'Visible career development',
-          detail: 'Growth paths are discussed early and revisited consistently.',
-        },
-        {
-          title: 'Fair accountability',
-          detail: 'Performance standards are applied transparently and consistently.',
-        },
-      ],
-    },
-  },
-  {
-    id: 'coaching-framework',
-    number: 42,
-    section: 'retention',
-    type: 'framework',
-    title: 'Coaching Framework',
-    takeaway: 'Coaching is a repeatable loop — diagnose once, reinforce until behaviour sticks.',
-    recommendedMinutes: 2,
-    content: {
-      steps: [
-        { title: 'Diagnose', detail: 'Identify the real constraint behind the gap.' },
-        { title: 'Prioritize', detail: 'Choose one high-leverage behaviour to change.' },
-        { title: 'Practice', detail: 'Rehearse the skill with concrete scenarios.' },
-        { title: 'Apply', detail: 'Transfer the skill into live deals and calls.' },
-        { title: 'Measure', detail: 'Track leading indicators of improvement.' },
-        { title: 'Reinforce', detail: 'Recognize progress and lock the new standard.' },
-      ],
-    },
-  },
-  {
-    id: 'performance-diagnosis',
-    number: 43,
-    section: 'retention',
-    type: 'diagnosis',
-    title: 'Performance Diagnosis',
-    takeaway: 'Separate skill, will, strategy, execution, territory and management support before acting.',
-    recommendedMinutes: 3,
-    content: {
-      dimensions: [
-        {
-          dimension: 'Skill',
-          question: 'Can they execute the required motion if coached?',
-          evidence: '[ADD MY EXAMPLE]',
-          action: 'Targeted skill practice and call review.',
-        },
-        {
-          dimension: 'Will',
-          question: 'Are they motivated and accountable under clear standards?',
-          evidence: '[ADD MY EXAMPLE]',
-          action: 'Reset expectations and ownership agreements.',
-        },
-        {
-          dimension: 'Strategy',
-          question: 'Is the account and territory plan coherent?',
-          evidence: '[ADD MARKET ASSUMPTION]',
-          action: 'Rebuild account strategy and ICP focus.',
-        },
-        {
-          dimension: 'Execution',
-          question: 'Are weekly behaviours converting into pipeline and progress?',
-          evidence: '[ADD MY RESULT]',
-          action: 'Install a tighter operating cadence.',
-        },
-        {
-          dimension: 'Territory conditions',
-          question: 'Is the territory structurally viable?',
-          evidence: '[VALIDATE WITH CURSOR]',
-          action: 'Adjust coverage, segments or support.',
-        },
-        {
-          dimension: 'Management support',
-          question: 'Have we given enough coaching, access and clarity?',
-          evidence: '[ADD MY EXAMPLE]',
-          action: 'Increase deal support and executive access.',
-        },
-      ],
-    },
-  },
-  {
-    id: 'coaching-case-study',
-    number: 44,
-    section: 'retention',
-    type: 'case-study',
-    title: 'Coaching Case Study',
-    takeaway: 'Show one concrete coaching arc from diagnosis to measured business result.',
-    recommendedMinutes: 3,
-    content: { caseStudy: coachingCases[0] },
-  },
-  {
-    id: 'measuring-improvement',
-    number: 45,
-    section: 'retention',
-    type: 'metrics',
-    title: 'Measuring Improvement',
-    takeaway: 'Coach to leading indicators; judge success on lagging commercial outcomes.',
-    recommendedMinutes: 2,
-    content: {
-      leading: [
-        'Pipeline creation',
-        'Next-step quality',
-        'Customer engagement quality',
-        'Behavioural consistency',
-      ],
-      lagging: [
-        'Opportunity conversion',
-        'Sales-cycle duration',
-        'Forecast accuracy',
-        'Win rate',
-        'Average deal size',
-      ],
-    },
-  },
-  {
-    id: 'development-rhythm',
-    number: 46,
-    section: 'retention',
-    type: 'rhythm',
-    title: 'Development Rhythm',
-    takeaway: 'Development is a system of recurring conversations, not an annual event.',
-    recommendedMinutes: 3,
-    content: {
-      cadence: [
-        { title: 'Weekly 1:1', detail: 'Person, priorities, coaching and decisions.' },
-        { title: 'Deal coaching', detail: 'Inspect quality, multi-threading and next steps.' },
-        { title: 'Call review', detail: 'Practice discovery, narrative and executive conversations.' },
-        { title: 'Monthly development review', detail: 'Skill progress against agreed priorities.' },
-        { title: 'Quarterly career conversation', detail: 'Ambition, readiness and growth path.' },
-      ],
-    },
-  },
-  {
-    id: 'revenue-operating-system',
-    number: 47,
-    section: 'revenue',
-    type: 'pillars',
-    title: 'Revenue Operating System',
-    headline: 'Predictability comes from operating discipline, not end-of-quarter pressure.',
-    takeaway: 'Territory, pipeline, opportunity quality and forecast must operate as one system.',
-    recommendedMinutes: 2,
-    content: {
-      pillars: [
-        {
-          title: 'Territory Strategy',
-          description: 'Clear ICP, account focus and local execution priorities.',
-        },
-        {
-          title: 'Pipeline Generation',
-          description: 'Weekly creation habits across sellers, partners and marketing.',
-        },
-        {
-          title: 'Opportunity Quality',
-          description: 'MEDDPICC discipline and evidence-based deal inspection.',
-        },
-        {
-          title: 'Forecast Discipline',
-          description: 'Shared rules, early risk surfacing and no optimism without proof.',
-        },
-      ],
-    },
-  },
-  {
-    id: 'growth-thesis',
-    number: 48,
-    section: 'revenue',
-    type: 'markets',
-    title: 'Southern Europe Growth Thesis',
-    takeaway: 'One regional strategy — market-by-market execution with validated assumptions.',
-    recommendedMinutes: 3,
-    content: { markets },
-  },
-  {
-    id: 'pierre-fabre',
-    number: 49,
-    section: 'revenue',
-    type: 'brand-portfolio',
-    title: 'Pierre Fabre',
+    section: 'partnership',
+    type: 'visual-hero',
+    title: 'Asks',
     takeaway:
-      'A Southern Europe reference account — dermo-cosmetics brands and medical care under one French group.',
-    recommendedMinutes: 1.5,
-    content: pierreFabrePortfolio,
-  },
-  {
-    id: 'pipeline-culture',
-    number: 50,
-    section: 'revenue',
-    type: 'culture',
-    title: 'Pipeline Culture',
-    takeaway: 'Pipeline is a weekly habit owned by the whole go-to-market system.',
-    recommendedMinutes: 2,
+      'Clear asks unlock speed — strategic clarity, executive access, and fast decisions from leadership.',
+    recommendedMinutes: 0.5,
     content: {
-      principles: [
-        'Pipeline creation is a weekly habit, not a quarterly rescue exercise',
-        'Every seller owns a clear account strategy',
-        'Managers coach pipeline quality, not only volume',
-        'Executive engagement is planned early',
-        'Sales, SDR, marketing and partners operate as one system',
-        'Pipeline generation is inspected consistently',
-      ],
-    },
-  },
-  {
-    id: 'weekly-pipeline-cadence',
-    number: 51,
-    section: 'revenue',
-    type: 'weekday',
-    title: 'Weekly Pipeline Generation Cadence',
-    takeaway: 'A simple weekly rhythm makes pipeline creation inspectable and repeatable.',
-    recommendedMinutes: 2,
-    content: {
-      days: [
-        { day: 'Monday', focus: 'Territory priorities and account focus' },
-        { day: 'Tuesday', focus: 'Structured prospecting block' },
-        { day: 'Wednesday', focus: 'Partner and marketing activation' },
-        { day: 'Thursday', focus: 'Executive outreach and strategic account engagement' },
-        { day: 'Friday', focus: 'Pipeline review, lessons learned and next commitments' },
-      ],
-    },
-  },
-  {
-    id: 'pipeline-dashboard',
-    number: 52,
-    section: 'revenue',
-    type: 'dashboard',
-    title: 'Pipeline Health Dashboard',
-    takeaway: 'Inspect coverage, quality, age, concentration and forecast accuracy every week.',
-    recommendedMinutes: 2,
-    content: {
-      disclaimer: 'Example data — replace with actual assumptions.',
-      metrics: [
-        { label: 'Pipeline coverage', value: '3.2x', status: 'watch', note: 'Illustrative' },
-        { label: 'New pipeline created', value: '[ADD]', status: 'neutral', note: 'Weekly' },
-        { label: 'Stage distribution', value: 'Mixed', status: 'watch', note: 'Illustrative' },
-        { label: 'Average opportunity age', value: '41 days', status: 'risk', note: 'Illustrative' },
-        { label: 'Next-step quality', value: '62%', status: 'watch', note: 'Illustrative' },
-        { label: 'Multi-threading', value: '1.8 contacts', status: 'risk', note: 'Illustrative' },
-        { label: 'Conversion rates', value: '[ADD]', status: 'neutral' },
-        { label: 'Slippage', value: '18%', status: 'risk', note: 'Illustrative' },
-        { label: 'Forecast accuracy', value: '[ADD]', status: 'neutral' },
-        { label: 'Pipeline concentration', value: 'Top 3 = 54%', status: 'risk', note: 'Illustrative' },
-      ],
-    },
-  },
-  {
-    id: 'opportunity-qualification',
-    number: 53,
-    section: 'revenue',
-    type: 'meddpicc',
-    title: 'Opportunity Qualification',
-    takeaway:
-      'No feelings, just facts — eight MEDDPICC questions that expose gaps before they become forecast surprises.',
-    recommendedMinutes: 2,
-    content: {
-      items: [
-        {
-          category: 'Metrics',
-          prompt:
-            'Quantified business outcome (e.g. 30% productivity uplift) — or vague enthusiasm?',
-        },
-        {
-          category: 'Economic Buyer',
-          prompt:
-            'Talked to who signs — or only a champion hoping for budget?',
-        },
-        {
-          category: 'Decision Criteria',
-          prompt:
-            'How they evaluate vendors — and is Cursor winning or losing on each?',
-        },
-        {
-          category: 'Decision Process',
-          prompt:
-            'Real dated process mapped — or is "Q3 close" a guess?',
-        },
-        {
-          category: 'Paper Process',
-          prompt:
-            'Legal/procurement timeline understood? (Kills most "this quarter" deals)',
-        },
-        {
-          category: 'Identify Pain',
-          prompt:
-            'Pain real and urgent — or is "no decision" a live competitor?',
-        },
-        {
-          category: 'Champion',
-          prompt:
-            'Real influence — or enthusiastic but powerless?',
-        },
-        {
-          category: 'Competition',
-          prompt:
-            'Named competitor and real reason you\'re winning — not "no competition mentioned"?',
-        },
-      ],
-    },
-  },
-  {
-    id: 'deal-inspection',
-    number: 54,
-    section: 'revenue',
-    type: 'questions',
-    title: 'Deal Inspection',
-    takeaway: 'Great deal reviews expose missing evidence and force a customer commitment.',
-    recommendedMinutes: 2,
-    content: {
-      questions: [
-        'Why does the customer need to act?',
-        'Why now?',
-        'What business outcome matters?',
-        'Who owns that outcome?',
-        'Who can stop the deal?',
-        'What customer evidence do we have?',
-        'What is the next customer commitment?',
-        'What would cause the deal to slip?',
-        'Are we multi-threaded?',
-        'What have we not yet validated?',
-      ],
-    },
-  },
-  {
-    id: 'forecast-categories',
-    number: 55,
-    section: 'revenue',
-    type: 'definitions',
-    title: 'Forecast Categories',
-    takeaway: 'Forecast categories are evidence grades — not hope labels.',
-    recommendedMinutes: 1,
-    content: {
-      items: [
-        {
-          term: 'Commit',
-          definition: 'Clear customer evidence, validated process and a credible close plan.',
-        },
-        {
-          term: 'Best Case',
-          definition: 'Strong opportunity with unresolved risks.',
-        },
-        {
-          term: 'Upside',
-          definition: 'Potential deal without sufficient evidence for the current forecast.',
-        },
-        {
-          term: 'Pipeline',
-          definition: 'Early-stage opportunity requiring further qualification.',
-        },
-      ],
-    },
-  },
-  {
-    id: 'forecast-philosophy',
-    number: 56,
-    section: 'revenue',
-    type: 'philosophy',
-    title: 'Forecast Philosophy',
-    headline: 'No surprises, no hidden risk and no optimism without evidence.',
-    takeaway: 'Forecast integrity is a leadership behaviour, not a CRM hygiene task.',
-    recommendedMinutes: 1,
-    content: {
-      principles: [
-        'Evidence over optimism',
-        'Customer commitments over internal activity',
-        'Risks surfaced early',
-        'Clear forecast rules',
-        'Consistent inspection',
-        'Shared accountability',
-      ],
+      image: '/images/executive-partner.jpg',
+      eyebrow: 'Partnership',
+      title: 'Asks',
+      titleSize: 'display',
     },
   },
   {
     id: 'one-on-one-opener',
-    number: 57,
+    number: 33,
     section: 'revenue',
     type: 'visual-hero',
     title: '1:1',
@@ -1565,7 +914,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'effective-one-on-ones',
-    number: 58,
+    number: 34,
     section: 'revenue',
     type: 'one-on-one',
     title: 'Effective 1:1s',
@@ -1584,7 +933,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'regional-dashboard',
-    number: 59,
+    number: 35,
     section: 'revenue',
     type: 'dashboard',
     title: 'Regional Director Dashboard',
@@ -1606,7 +955,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'leadership-asks',
-    number: 60,
+    number: 36,
     section: 'partnership',
     type: 'asks',
     title: 'Three Things I Need from Cursor Leadership',
@@ -1639,7 +988,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'mutual-commitment',
-    number: 61,
+    number: 37,
     section: 'partnership',
     type: 'two-column',
     title: 'Mutual Commitment',
@@ -1668,7 +1017,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'first-30-days',
-    number: 62,
+    number: 38,
     section: 'partnership',
     type: 'plan',
     title: 'First 30 Days',
@@ -1689,7 +1038,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'days-31-60',
-    number: 63,
+    number: 39,
     section: 'partnership',
     type: 'plan',
     title: 'Days 31–60',
@@ -1710,7 +1059,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'days-61-90',
-    number: 64,
+    number: 40,
     section: 'partnership',
     type: 'plan',
     title: 'Days 61–90',
@@ -1730,7 +1079,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'key-risks',
-    number: 65,
+    number: 41,
     section: 'partnership',
     type: 'risks',
     title: 'Key Risks and Mitigations',
@@ -1759,7 +1108,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'closing',
-    number: 66,
+    number: 42,
     section: 'close',
     type: 'closing',
     title: 'Closing',
@@ -1777,7 +1126,7 @@ I would value 20 minutes to understand what you are optimizing for in your next 
   },
   {
     id: 'discussion-feedback',
-    number: 67,
+    number: 43,
     section: 'close',
     type: 'feedback',
     title: 'Discussion and Feedback',
