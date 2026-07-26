@@ -878,24 +878,8 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'asks-opener',
-    number: 32,
-    section: 'partnership',
-    type: 'visual-hero',
-    title: 'Asks',
-    takeaway:
-      'Clear asks unlock speed — strategic clarity, executive access, and fast decisions from leadership.',
-    recommendedMinutes: 0.5,
-    content: {
-      image: '/images/executive-partner.jpg',
-      eyebrow: 'Partnership',
-      title: 'Asks',
-      titleSize: 'display',
-    },
-  },
-  {
     id: 'one-on-one-opener',
-    number: 33,
+    number: 32,
     section: 'revenue',
     type: 'visual-hero',
     title: '1:1',
@@ -914,7 +898,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'effective-one-on-ones',
-    number: 34,
+    number: 33,
     section: 'revenue',
     type: 'one-on-one',
     title: 'Effective 1:1s',
@@ -929,6 +913,22 @@ export const slides: Slide[] = [
         { minutes: 5, topic: 'Decisions and next actions' },
       ],
       note: 'A 1:1 is not a status meeting. It is a coaching, decision-making and accountability session.',
+    },
+  },
+  {
+    id: 'asks-opener',
+    number: 34,
+    section: 'partnership',
+    type: 'visual-hero',
+    title: 'Asks',
+    takeaway:
+      'Clear asks unlock speed — strategic clarity, executive access, and fast decisions from leadership.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/executive-partner.jpg',
+      eyebrow: 'Partnership',
+      title: 'Asks',
+      titleSize: 'display',
     },
   },
   {

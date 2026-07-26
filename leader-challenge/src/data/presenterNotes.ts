@@ -342,17 +342,6 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Leaders inspect early. Weak signals surfaced weekly beat surprises at quarter-end.',
     likelyQuestion: 'What would make you intervene in week two, not week ten?',
-    transition: 'That discipline sets the bar. Here is what I need from leadership.',
-  },
-  'asks-opener': {
-    opening: 'I am clear on what I need from Cursor leadership to execute in Southern Europe.',
-    coreMessage:
-      'Strategic clarity, executive access, and speed of decision-making — the multipliers of regional execution.',
-    supportingExample:
-      'Without those three, even strong local leadership becomes slow and fragmented.',
-    executiveImplication:
-      'I am not asking for comfort. I am asking for the conditions to win.',
-    likelyQuestion: 'What decision latency is acceptable for hiring and pricing?',
     transition: 'The weekly mechanism for forecast discipline is the 1:1.',
   },
   'one-on-one-opener': {
@@ -375,6 +364,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'This is where accountability and care coexist.',
     likelyQuestion: 'How do you handle a seller who comes unprepared?',
+    transition: 'That discipline sets the bar. Here is what I need from leadership.',
+  },
+  'asks-opener': {
+    opening: 'I am clear on what I need from Cursor leadership to execute in Southern Europe.',
+    coreMessage:
+      'Strategic clarity, executive access, and speed of decision-making — the multipliers of regional execution.',
+    supportingExample:
+      'Without those three, even strong local leadership becomes slow and fragmented.',
+    executiveImplication:
+      'I am not asking for comfort. I am asking for the conditions to win.',
+    likelyQuestion: 'What decision latency is acceptable for hiring and pricing?',
     transition: 'Zooming out, this is the Regional Director dashboard I would run.',
   },
   'regional-dashboard': {
