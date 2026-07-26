@@ -477,6 +477,9 @@ export const slides: Slide[] = [
           theme: 'Swiss watch precision',
           detail: 'Repeatable evaluation with the same precision every time.',
           image: '/images/how-structured-precision.jpg',
+          linkUrl:
+            'https://docs.google.com/document/d/1qfnV1MUoKObdJChe7Bzqwt-uOxZUkMKeSAD7kJotVzk/edit?tab=t.0#heading=h.au51mny0sx6',
+          linkLabel: 'Structured process guide',
         },
       ],
     },
