@@ -1901,6 +1901,8 @@ function VisualHeroScreen({
   const points = content.points ?? []
   const pointImages = content.pointImages ?? []
   const pointDetails = content.pointDetails ?? []
+  const pointLinkUrls = content.pointLinkUrls ?? []
+  const pointLinkLabels = content.pointLinkLabels ?? []
   const chips = content.chips ?? []
   const logos = content.logos ?? []
   const hasChips = chips.length > 0
@@ -1934,6 +1936,15 @@ function VisualHeroScreen({
   const focusRevealPanel = Boolean(
     revealOnClick && visibleCount > 0 && (activePointImage || activePointDetail),
   )
+  const visiblePointLinks = points
+    .map((point, index) => ({
+      point,
+      url: pointLinkUrls[index],
+      label: pointLinkLabels[index],
+      visible: index < visibleCount,
+    }))
+    .filter((item) => item.visible && item.url)
+  const hasPointLinks = visiblePointLinks.length > 0
   const hasRevealedPointImage = Boolean(
     revealOnClick && visibleCount > 0 && activePointImage,
   )
@@ -2357,6 +2368,29 @@ function VisualHeroScreen({
             <div className="relative z-10 min-h-0 shrink-0">
               <HeroDataTable table={content.table} />
             </div>
+          ) : null}
+
+          {hasPointLinks ? (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className={`flex shrink-0 flex-wrap gap-3 ${centeredPoints ? 'mx-auto justify-center' : ''}`}
+              onClick={(event) => event.stopPropagation()}
+            >
+              {visiblePointLinks.map((item) => (
+                <a
+                  key={item.point}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-accent/35 bg-accent/15 px-4 py-2.5 font-display text-sm font-semibold text-white shadow-[0_0_18px_rgba(255,107,44,0.18)] backdrop-blur-md transition hover:bg-accent/25 lg:px-5 lg:text-base"
+                >
+                  {item.label ?? 'Open link'}
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              ))}
+            </motion.div>
           ) : null}
 
           {hasLink ? (

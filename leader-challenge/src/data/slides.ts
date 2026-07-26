@@ -541,6 +541,8 @@ export const slides: Slide[] = [
       ],
       pointsLayout: 'center',
       revealPointsOnClick: true,
+      pointLinkUrls: ['https://cursor.com/fr/evals'],
+      pointLinkLabels: ['cursor.com/fr/evals'],
     },
   },
   {
