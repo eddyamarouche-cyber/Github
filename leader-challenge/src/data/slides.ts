@@ -751,7 +751,7 @@ export const slides: Slide[] = [
       items: [
         {
           title: 'Variance compression',
-          detail: 'Team quota attainment FY24 75 to 180% — FY25 95 to 135%',
+          detail: 'Team quota attainment FY24 75 to 180%\nTeam quota attainment FY25 95 to 135%',
           detailSize: 'large',
           image: '/images/gap-reduction-variance.jpg',
         },

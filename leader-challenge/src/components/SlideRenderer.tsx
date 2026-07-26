@@ -1534,7 +1534,7 @@ function SubdivisionsScreen({
                 ) : null}
               </div>
               {item.detail && item.detailSize === 'large' ? (
-                <p className="font-display mt-2 text-lg leading-snug font-semibold text-balance text-white/90 sm:text-xl lg:text-3xl">
+                <p className="font-display mt-2 text-lg leading-snug font-semibold text-balance whitespace-pre-line text-white/90 sm:text-xl lg:text-3xl">
                   {item.detail}
                 </p>
               ) : null}
@@ -1603,8 +1603,8 @@ function SubdivisionsScreen({
                   <p
                     className={
                       current.detailSize === 'large'
-                        ? 'mt-4 max-w-5xl text-2xl leading-snug font-semibold text-balance text-white sm:text-3xl lg:text-5xl xl:text-6xl'
-                        : 'mt-4 max-w-2xl text-base leading-relaxed text-white/75 lg:text-lg'
+                        ? 'mt-4 max-w-5xl text-2xl leading-snug font-semibold text-balance whitespace-pre-line text-white sm:text-3xl lg:text-5xl xl:text-6xl'
+                        : 'mt-4 max-w-2xl text-base leading-relaxed whitespace-pre-line text-white/75 lg:text-lg'
                     }
                   >
                     {current.detail}
