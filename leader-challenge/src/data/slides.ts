@@ -315,7 +315,7 @@ export const slides: Slide[] = [
     takeaway: 'One direction, just doers — shared purpose and collective lift, not individual heroics.',
     recommendedMinutes: 0.5,
     content: {
-      image: '/images/fellow-miners.jpg',
+      image: '/images/one-direction-300.jpg',
       title: 'One direction',
       subtitle: 'Just doers',
     },
