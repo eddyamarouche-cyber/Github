@@ -20,10 +20,12 @@ import type {
   FeedbackContent,
   FrameworkContent,
   FunnelContent,
+  InvestFigureContent,
   MeddpiccContent,
   MetricsContent,
   ObjectionsContent,
   OneOnOneContent,
+  OrgChartContent,
   OutreachContent,
   PhilosophyContent,
   PitchContent,
@@ -391,6 +393,18 @@ function renderSlide(slide: Slide) {
       return (
         <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
           <AsksScreen content={slide.content as AsksContent} />
+        </ScreenShell>
+      )
+    case 'org-chart':
+      return (
+        <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
+          <OrgChartScreen content={slide.content as OrgChartContent} />
+        </ScreenShell>
+      )
+    case 'invest-figure':
+      return (
+        <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
+          <InvestFigureScreen content={slide.content as InvestFigureContent} />
         </ScreenShell>
       )
     case 'two-column':
@@ -3154,6 +3168,98 @@ function OneOnOneScreen({ content }: { content: OneOnOneContent }) {
         }))}
       />
       <GlassCard className="px-4 py-3 text-sm text-white/60">{content.note}</GlassCard>
+    </div>
+  )
+}
+
+function OrgChartScreen({ content }: { content: OrgChartContent }) {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-6 py-2">
+      <Stagger className="flex w-full max-w-3xl flex-col items-center">
+        <StaggerItem>
+          <GlassCard className="w-full max-w-sm px-6 py-5 text-center">
+            <p className="font-display text-2xl font-semibold text-white lg:text-3xl">
+              {content.director.name}
+            </p>
+            <p className="mt-1 text-sm font-medium tracking-[0.12em] text-accent uppercase">
+              {content.director.title}
+            </p>
+          </GlassCard>
+        </StaggerItem>
+        <StaggerItem>
+          <div className="flex h-10 w-px bg-gradient-to-b from-accent/60 to-white/20" />
+        </StaggerItem>
+        <StaggerItem className="w-full">
+          <div className="relative mx-auto h-px w-full max-w-2xl bg-white/15">
+            <div className="absolute top-0 left-1/2 h-10 w-px -translate-x-1/2 bg-white/15" />
+          </div>
+        </StaggerItem>
+      </Stagger>
+
+      <Stagger className="grid w-full max-w-5xl gap-5 md:grid-cols-2">
+        {content.regions.map((region) => (
+          <StaggerItem key={region.label} className="flex flex-col items-center">
+            <div className="mb-4 flex items-center gap-3">
+              <MarketFlag code={region.flag} />
+              <p className="font-display text-xl font-semibold text-white lg:text-2xl">
+                {region.label}
+              </p>
+            </div>
+            <div className="grid w-full gap-2.5">
+              {Array.from({ length: region.headcount }, (_, index) => (
+                <GlassCard
+                  key={`${region.label}-${index}`}
+                  className="px-4 py-3 text-center"
+                >
+                  <p className="text-sm font-semibold text-white lg:text-base">
+                    {region.roleTitle}
+                  </p>
+                </GlassCard>
+              ))}
+            </div>
+          </StaggerItem>
+        ))}
+      </Stagger>
+    </div>
+  )
+}
+
+function InvestFigureScreen({ content }: { content: InvestFigureContent }) {
+  const isLarge = content.amount.length >= 5
+
+  return (
+    <div className="flex h-full flex-col items-center justify-center px-4 text-center">
+      {content.subtitle ? (
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6 max-w-3xl text-lg leading-relaxed font-medium text-white/80 lg:text-2xl"
+        >
+          {content.subtitle}
+        </motion.p>
+      ) : null}
+      <motion.p
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        className={`font-display font-bold tracking-tight text-accent drop-shadow-[0_0_40px_rgba(255,107,44,0.35)] ${
+          isLarge
+            ? 'text-7xl sm:text-8xl lg:text-[11rem] lg:leading-none'
+            : 'text-6xl sm:text-7xl lg:text-[8rem] lg:leading-none'
+        }`}
+      >
+        {content.amount}
+      </motion.p>
+      {content.detail ? (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="mt-6 max-w-2xl text-base text-white/65 lg:text-lg"
+        >
+          {content.detail}
+        </motion.p>
+      ) : null}
     </div>
   )
 }

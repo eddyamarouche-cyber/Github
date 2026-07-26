@@ -364,6 +364,48 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'I am not asking for comfort. I am asking for the conditions to win.',
     likelyQuestion: 'What decision latency is acceptable for hiring and pricing?',
+    transition: 'To execute at scale, we need to invest — in people, market, and leadership.',
+  },
+  'invest-opener': {
+    opening: 'Ambition without investment is just a slide deck.',
+    coreMessage:
+      'Southern Europe needs capital behind people, market presence, and leadership development.',
+    supportingExample:
+      'The best regional plans fail when they are under-resourced on talent density and executive visibility.',
+    executiveImplication:
+      'I am asking for investment that compounds — not one-off spend.',
+    likelyQuestion: 'How do you prioritize where capital goes first?',
+    transition: 'It starts with the team structure.',
+  },
+  'invest-people': {
+    opening: 'Here is the team I would build.',
+    coreMessage:
+      'Eddy Amarouche as Regional Director with three account executives in Italy and three in Spain.',
+    supportingExample:
+      'Balanced coverage across the two largest Southern Europe markets — not a hub-and-spoke from one country.',
+    executiveImplication:
+      'Six AEs plus a director is the minimum viable regional engine for enterprise motion.',
+    likelyQuestion: 'Why three per country and not two?',
+    transition: 'People is one line. Market presence is another.',
+  },
+  'marketing-c-level': {
+    opening: 'Executive visibility opens doors that outbound alone cannot.',
+    coreMessage: 'Five hundred thousand dollars in marketing and C-level events across Southern Europe.',
+    supportingExample:
+      'C-level dinners, executive roundtables, and flagship events that position Cursor with decision-makers.',
+    executiveImplication:
+      'This is brand and pipeline creation at the top of the market — not field marketing theatre.',
+    likelyQuestion: 'How would you measure ROI on event spend?',
+    transition: 'And the final investment is in leadership performance under pressure.',
+  },
+  'invest-in-me': {
+    opening: 'Invest in me.',
+    coreMessage: 'Training for Pressure with Greg Poss — twenty thousand dollars.',
+    supportingExample:
+      'The highest-stakes moments — board conversations, executive negotiations, crisis quarters — require deliberate preparation.',
+    executiveImplication:
+      'A Regional Director who performs under pressure protects the forecast and the team.',
+    likelyQuestion: 'Why Greg Poss specifically?',
     transition: 'Thank you — I am ready for your questions and feedback.',
   },
 }

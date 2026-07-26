@@ -5,6 +5,7 @@ export type SectionId =
   | 'retention'
   | 'revenue'
   | 'partnership'
+  | 'invest'
   | 'close'
 
 export interface SectionMeta {
@@ -51,6 +52,8 @@ export type SlideType =
   | 'philosophy'
   | 'one-on-one'
   | 'asks'
+  | 'org-chart'
+  | 'invest-figure'
   | 'two-column'
   | 'plan'
   | 'risks'
@@ -395,6 +398,22 @@ export interface AsksContent {
   asks: { title: string; detail: string; bullets: string[] }[]
 }
 
+export interface OrgChartContent {
+  director: { name: string; title: string }
+  regions: {
+    label: string
+    flag: 'IT' | 'ES'
+    roleTitle: string
+    headcount: number
+  }[]
+}
+
+export interface InvestFigureContent {
+  amount: string
+  subtitle?: string
+  detail?: string
+}
+
 export interface TwoColumnContent {
   leftTitle: string
   leftItems: string[]
@@ -490,6 +509,8 @@ export type SlideContent =
   | PhilosophyContent
   | OneOnOneContent
   | AsksContent
+  | OrgChartContent
+  | InvestFigureContent
   | TwoColumnContent
   | PlanContent
   | RisksContent

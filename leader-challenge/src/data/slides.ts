@@ -10,6 +10,7 @@ export const sections: SectionMeta[] = [
   { id: 'retention', label: 'Retention & Coaching', allocatedMinutes: 15 },
   { id: 'revenue', label: 'Revenue Leadership', allocatedMinutes: 20 },
   { id: 'partnership', label: 'Leadership Asks & 90-Day Plan', allocatedMinutes: 5 },
+  { id: 'invest', label: 'Invest', allocatedMinutes: 3 },
   { id: 'close', label: 'Feedback & Close', allocatedMinutes: 2 },
 ]
 
@@ -910,6 +911,79 @@ export const slides: Slide[] = [
       eyebrow: 'Partnership',
       title: 'Asks',
       titleSize: 'display',
+    },
+  },
+  {
+    id: 'invest-opener',
+    number: 34,
+    section: 'invest',
+    type: 'visual-hero',
+    title: 'Invest',
+    takeaway:
+      'Ambition requires capital — people, market presence, and leadership development that compound regional growth.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/invest-ambition.jpg',
+      eyebrow: 'Invest',
+      title: 'Invest',
+      titleSize: 'display',
+    },
+  },
+  {
+    id: 'invest-people',
+    number: 35,
+    section: 'invest',
+    type: 'org-chart',
+    title: 'People',
+    takeaway:
+      'Six account executives across Italy and Spain — one regional director building a balanced Southern Europe team.',
+    recommendedMinutes: 1,
+    content: {
+      director: {
+        name: 'Eddy Amarouche',
+        title: 'Regional Director',
+      },
+      regions: [
+        {
+          label: 'Italy',
+          flag: 'IT',
+          roleTitle: 'Account Executive',
+          headcount: 3,
+        },
+        {
+          label: 'Spain',
+          flag: 'ES',
+          roleTitle: 'Account Executive',
+          headcount: 3,
+        },
+      ],
+    },
+  },
+  {
+    id: 'marketing-c-level',
+    number: 36,
+    section: 'invest',
+    type: 'invest-figure',
+    title: 'Marketing / C-Level event',
+    takeaway:
+      'Executive visibility and market credibility — a $500K investment in C-level events that open doors across Southern Europe.',
+    recommendedMinutes: 0.5,
+    content: {
+      amount: '$500K',
+    },
+  },
+  {
+    id: 'invest-in-me',
+    number: 37,
+    section: 'invest',
+    type: 'invest-figure',
+    title: 'Invest in me!',
+    takeaway:
+      'Training for Pressure with Greg Poss — $20K to sharpen executive performance under the highest-stakes moments.',
+    recommendedMinutes: 0.5,
+    content: {
+      amount: '$20K',
+      subtitle: 'Training for Pressure with Greg Poss',
     },
   },
 
