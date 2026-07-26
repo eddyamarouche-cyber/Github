@@ -1558,6 +1558,9 @@ I would value 20 minutes to understand what you are optimizing for in your next 
       eyebrow: 'Revenue',
       title: '1:1',
       titleSize: 'display',
+      linkUrl:
+        'https://docs.google.com/document/d/1Wk2VoPhcHx9zg99ItjI_RxKGWGRYsazK/edit',
+      linkLabel: '1:1 guide',
     },
   },
   {
