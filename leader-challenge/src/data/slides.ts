@@ -957,6 +957,7 @@ export const slides: Slide[] = [
           headcount: 3,
         },
       ],
+      amount: '$10M',
     },
   },
   {

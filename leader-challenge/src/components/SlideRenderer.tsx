@@ -3224,6 +3224,17 @@ function OrgChartScreen({ content }: { content: OrgChartContent }) {
           </StaggerItem>
         ))}
       </Stagger>
+
+      {content.amount ? (
+        <motion.p
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="font-display text-6xl font-bold tracking-tight text-accent drop-shadow-[0_0_40px_rgba(255,107,44,0.35)] sm:text-7xl lg:text-[8rem] lg:leading-none"
+        >
+          {content.amount}
+        </motion.p>
+      ) : null}
     </div>
   )
 }

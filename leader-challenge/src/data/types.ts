@@ -406,6 +406,7 @@ export interface OrgChartContent {
     roleTitle: string
     headcount: number
   }[]
+  amount?: string
 }
 
 export interface InvestFigureContent {
