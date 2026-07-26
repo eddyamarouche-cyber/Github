@@ -147,8 +147,24 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'who-i-am-as-a-leader',
+    id: 'why-am-i-here-1',
     number: 5,
+    section: 'intro',
+    type: 'visual-hero',
+    title: 'Why am I here? 1/2',
+    takeaway:
+      'Embrace the suck — learning is in the struggle. The forecast dashboard is where discipline meets reality.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/why-am-i-here-consumption-plan.jpg',
+      points: ['Embrace the suck', 'Learning is in the struggle'],
+      pointsLayout: 'center',
+      revealPointsOnClick: true,
+    },
+  },
+  {
+    id: 'who-i-am-as-a-leader',
+    number: 6,
     section: 'intro',
     type: 'drivers',
     title: 'Why am I here?',

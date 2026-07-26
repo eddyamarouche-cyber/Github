@@ -48,7 +48,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'You are hiring a whole person — not a slide of metrics.',
     likelyQuestion: 'What does multicultural mean in your day-to-day leadership?',
-    transition: 'Now — why I am here.',
+    transition: 'Part one — embrace the suck. Learning is in the struggle.',
+  },
+  'why-am-i-here-1': {
+    opening: 'Before the résumé — the mindset.',
+    coreMessage: 'Embrace the suck. Learning is in the struggle.',
+    supportingExample:
+      'Click to reveal each line over the Consumption Plan — this is the operating reality I run every week.',
+    executiveImplication:
+      'Leaders who avoid hard dashboards avoid hard truths. I run toward them.',
+    likelyQuestion: 'What does embrace the suck mean in practice for your team?',
+    transition: 'Part two — Build. Lead. Sell. Scale.',
   },
   'who-i-am-as-a-leader': {
     opening: 'Why am I here? Four words: Build. Lead. Sell. Scale.',
