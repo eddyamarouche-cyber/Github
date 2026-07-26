@@ -402,7 +402,7 @@ export interface OrgChartContent {
   director: { name: string; title: string }
   regions: {
     label: string
-    flag: 'IT' | 'ES'
+    flags: ('IT' | 'ES' | 'PT')[]
     roleTitle: string
     headcount: number
   }[]

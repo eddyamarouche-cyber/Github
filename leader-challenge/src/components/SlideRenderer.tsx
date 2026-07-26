@@ -3200,7 +3200,11 @@ function OrgChartScreen({ content }: { content: OrgChartContent }) {
         {content.regions.map((region) => (
           <StaggerItem key={region.label} className="flex flex-col items-center">
             <div className="mb-4 flex items-center gap-3">
-              <MarketFlag code={region.flag} />
+              <div className="flex items-center gap-2">
+                {region.flags.map((flag) => (
+                  <MarketFlag key={flag} code={flag} />
+                ))}
+              </div>
               <p className="font-display text-xl font-semibold text-white lg:text-2xl">
                 {region.label}
               </p>

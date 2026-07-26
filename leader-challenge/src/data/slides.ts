@@ -936,7 +936,7 @@ export const slides: Slide[] = [
     type: 'org-chart',
     title: 'People',
     takeaway:
-      'Six account executives across Italy and Spain — one regional director building a balanced Southern Europe team.',
+      'Six account executives across Italy and Spain & Portugal — one regional director building a balanced Southern Europe team.',
     recommendedMinutes: 1,
     content: {
       director: {
@@ -946,13 +946,13 @@ export const slides: Slide[] = [
       regions: [
         {
           label: 'Italy',
-          flag: 'IT',
+          flags: ['IT'],
           roleTitle: 'Account Executive',
           headcount: 3,
         },
         {
-          label: 'Spain',
-          flag: 'ES',
+          label: 'Spain and Portugal',
+          flags: ['ES', 'PT'],
           roleTitle: 'Account Executive',
           headcount: 3,
         },

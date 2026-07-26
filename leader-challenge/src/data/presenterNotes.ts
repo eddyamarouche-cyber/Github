@@ -380,7 +380,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'invest-people': {
     opening: 'Here is the team I would build.',
     coreMessage:
-      'Eddy Amarouche as Regional Director with three account executives in Italy and three in Spain.',
+      'Eddy Amarouche as Regional Director with three account executives in Italy and three across Spain and Portugal.',
     supportingExample:
       'Balanced coverage across the two largest Southern Europe markets — not a hub-and-spoke from one country.',
     executiveImplication:
