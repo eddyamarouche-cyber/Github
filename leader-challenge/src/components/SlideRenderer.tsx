@@ -349,7 +349,12 @@ function renderSlide(slide: Slide) {
       )
     case 'meddpicc':
       return (
-        <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
+        <ScreenShell
+          eyebrow={eyebrow}
+          title={slide.title}
+          headline={slide.headline}
+          takeaway={slide.takeaway}
+        >
           <MeddpiccScreen content={slide.content as MeddpiccContent} />
         </ScreenShell>
       )
@@ -3054,15 +3059,15 @@ function DashboardScreen({ content }: { content: DashboardContent }) {
 
 function MeddpiccScreen({ content }: { content: MeddpiccContent }) {
   return (
-    <Stagger className="grid gap-2.5 md:grid-cols-2">
+    <Stagger className="grid gap-4 md:grid-cols-2 lg:gap-5">
       {content.items.map((item) => (
         <StaggerItem key={item.category}>
           {item.prompt ? (
-            <GlassCard className="h-full p-4 lg:p-5">
-              <p className="text-[11px] font-semibold tracking-[0.16em] text-accent uppercase">
+            <GlassCard className="h-full p-5 lg:p-6 xl:p-7">
+              <p className="text-sm font-bold tracking-[0.14em] text-accent uppercase lg:text-base">
                 {item.category}
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-white/85 lg:text-[15px] lg:leading-relaxed">
+              <p className="mt-2.5 text-lg leading-snug font-medium text-white/90 lg:mt-3 lg:text-xl lg:leading-snug xl:text-2xl">
                 {item.prompt}
               </p>
             </GlassCard>
