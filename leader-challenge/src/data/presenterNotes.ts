@@ -386,7 +386,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Six AEs plus a director is the minimum viable regional engine for enterprise motion.',
     likelyQuestion: 'Why three per country and not two?',
-    transition: 'People is one line. Market presence is another.',
+    transition: 'People is one line. Personal leadership development is another.',
+  },
+  'invest-in-me': {
+    opening: 'Invest in me.',
+    coreMessage: 'Training for Pressure with Greg Poss — twenty thousand dollars over twenty-one days.',
+    supportingExample:
+      'Pressure does not create a response. It exposes the response that has already been trained.',
+    executiveImplication:
+      'A Regional Director who performs under pressure protects the forecast and the team.',
+    likelyQuestion: 'Why Greg Poss specifically?',
+    transition: 'Executive visibility opens doors that outbound alone cannot.',
   },
   'marketing-c-level': {
     opening: 'Executive visibility opens doors that outbound alone cannot.',
@@ -396,16 +406,6 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'This is brand and pipeline creation at the top of the market — not field marketing theatre.',
     likelyQuestion: 'How would you measure ROI on event spend?',
-    transition: 'And the final investment is in leadership performance under pressure.',
-  },
-  'invest-in-me': {
-    opening: 'Invest in me.',
-    coreMessage: 'Training for Pressure with Greg Poss — twenty thousand dollars.',
-    supportingExample:
-      'The highest-stakes moments — board conversations, executive negotiations, crisis quarters — require deliberate preparation.',
-    executiveImplication:
-      'A Regional Director who performs under pressure protects the forecast and the team.',
-    likelyQuestion: 'Why Greg Poss specifically?',
     transition: 'Thank you — I am ready for your questions and feedback.',
   },
 }

@@ -3264,6 +3264,26 @@ function InvestFigureScreen({ content }: { content: InvestFigureContent }) {
           {content.detail}
         </motion.p>
       ) : null}
+      {content.quote ? (
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25 }}
+          className="mt-8 max-w-4xl text-base leading-relaxed font-bold text-white lg:mt-10 lg:text-xl"
+        >
+          {content.quote}
+        </motion.p>
+      ) : null}
+      {content.footer ? (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.35 }}
+          className="mt-4 text-sm font-semibold tracking-[0.08em] text-accent uppercase lg:text-base"
+        >
+          {content.footer}
+        </motion.p>
+      ) : null}
     </div>
   )
 }

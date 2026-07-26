@@ -412,6 +412,8 @@ export interface InvestFigureContent {
   amount: string
   subtitle?: string
   detail?: string
+  quote?: string
+  footer?: string
 }
 
 export interface TwoColumnContent {

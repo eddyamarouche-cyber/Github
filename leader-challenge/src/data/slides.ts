@@ -960,21 +960,8 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'marketing-c-level',
-    number: 36,
-    section: 'invest',
-    type: 'invest-figure',
-    title: 'Marketing / C-Level event',
-    takeaway:
-      'Executive visibility and market credibility — a $500K investment in C-level events that open doors across Southern Europe.',
-    recommendedMinutes: 0.5,
-    content: {
-      amount: '$500K',
-    },
-  },
-  {
     id: 'invest-in-me',
-    number: 37,
+    number: 36,
     section: 'invest',
     type: 'invest-figure',
     title: 'Invest in me!',
@@ -984,6 +971,22 @@ export const slides: Slide[] = [
     content: {
       amount: '$20K',
       subtitle: 'Training for Pressure with Greg Poss',
+      quote:
+        'Pressure does not create a response. It exposes the response that has already been trained',
+      footer: '21 days training',
+    },
+  },
+  {
+    id: 'marketing-c-level',
+    number: 37,
+    section: 'invest',
+    type: 'invest-figure',
+    title: 'Marketing / C-Level event',
+    takeaway:
+      'Executive visibility and market credibility — a $500K investment in C-level events that open doors across Southern Europe.',
+    recommendedMinutes: 0.5,
+    content: {
+      amount: '$500K',
     },
   },
 
