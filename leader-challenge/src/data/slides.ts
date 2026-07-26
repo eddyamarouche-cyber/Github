@@ -897,27 +897,8 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'effective-one-on-ones',
-    number: 33,
-    section: 'revenue',
-    type: 'one-on-one',
-    title: 'Effective 1:1s',
-    takeaway: 'A 1:1 is a coaching, decision-making and accountability session — not status theatre.',
-    recommendedMinutes: 2,
-    content: {
-      agenda: [
-        { minutes: 5, topic: 'Person and energy' },
-        { minutes: 10, topic: 'Priorities and previous commitments' },
-        { minutes: 15, topic: 'Pipeline and deal coaching' },
-        { minutes: 10, topic: 'Skills and development' },
-        { minutes: 5, topic: 'Decisions and next actions' },
-      ],
-      note: 'A 1:1 is not a status meeting. It is a coaching, decision-making and accountability session.',
-    },
-  },
-  {
     id: 'asks-opener',
-    number: 34,
+    number: 33,
     section: 'partnership',
     type: 'visual-hero',
     title: 'Asks',
@@ -933,7 +914,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'regional-dashboard',
-    number: 35,
+    number: 34,
     section: 'revenue',
     type: 'dashboard',
     title: 'Regional Director Dashboard',
@@ -955,7 +936,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'leadership-asks',
-    number: 36,
+    number: 35,
     section: 'partnership',
     type: 'asks',
     title: 'Three Things I Need from Cursor Leadership',
@@ -988,7 +969,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'mutual-commitment',
-    number: 37,
+    number: 36,
     section: 'partnership',
     type: 'two-column',
     title: 'Mutual Commitment',
@@ -1017,7 +998,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'first-30-days',
-    number: 38,
+    number: 37,
     section: 'partnership',
     type: 'plan',
     title: 'First 30 Days',
@@ -1038,7 +1019,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'days-31-60',
-    number: 39,
+    number: 38,
     section: 'partnership',
     type: 'plan',
     title: 'Days 31–60',
@@ -1059,7 +1040,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'days-61-90',
-    number: 40,
+    number: 39,
     section: 'partnership',
     type: 'plan',
     title: 'Days 61–90',
@@ -1079,7 +1060,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'key-risks',
-    number: 41,
+    number: 40,
     section: 'partnership',
     type: 'risks',
     title: 'Key Risks and Mitigations',
@@ -1108,7 +1089,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'closing',
-    number: 42,
+    number: 41,
     section: 'close',
     type: 'closing',
     title: 'Closing',
@@ -1126,7 +1107,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'discussion-feedback',
-    number: 43,
+    number: 42,
     section: 'close',
     type: 'feedback',
     title: 'Discussion and Feedback',

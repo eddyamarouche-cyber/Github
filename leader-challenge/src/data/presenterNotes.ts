@@ -353,17 +353,6 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'This is where leadership shows up consistently, not just in quarterly reviews.',
     likelyQuestion: 'How often do you run 1:1s and how long are they?',
-    transition: 'Here is exactly how I structure them.',
-  },
-  'effective-one-on-ones': {
-    opening: 'A forty-five-minute 1:1 should change the week.',
-    coreMessage:
-      'Person, commitments, deal coaching, development, decisions — not a status readout.',
-    supportingExample:
-      'If a 1:1 produces no decision and no coaching, it failed.',
-    executiveImplication:
-      'This is where accountability and care coexist.',
-    likelyQuestion: 'How do you handle a seller who comes unprepared?',
     transition: 'That discipline sets the bar. Here is what I need from leadership.',
   },
   'asks-opener': {
