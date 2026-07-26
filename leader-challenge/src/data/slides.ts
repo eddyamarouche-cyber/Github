@@ -559,6 +559,7 @@ export const slides: Slide[] = [
       image: '/images/gtm-galaxy.jpg',
       eyebrow: 'Role play',
       points: [
+        '4Bn$ revenue mostly in PLG',
         'What can we do with best world class GTM team in the world in the next 4 years ?',
         'Experienced executives with the best track record',
       ],

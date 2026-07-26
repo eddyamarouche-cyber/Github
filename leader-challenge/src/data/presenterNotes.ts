@@ -227,7 +227,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'gtm-ambition': {
     opening: 'Hold the room with the question, then the team behind it.',
     coreMessage:
-      'What can we do with the best world-class GTM team in the world in the next four years? Experienced executives with the best track record — both lines land at equal weight.',
+      '4Bn$ revenue mostly in PLG. What can we do with the best world-class GTM team in the world in the next four years? Experienced executives with the best track record.',
     supportingExample:
       'Click to reveal each line. The executives line is not a footnote — it is the proof the rocket ship has pilots.',
     executiveImplication:
