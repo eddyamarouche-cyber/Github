@@ -190,6 +190,16 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Recruitment quality is a system design problem, not a calendar of interviews.',
     likelyQuestion: 'Which of the five do you start with in a new market?',
+    transition: 'Now — Role Play.',
+  },
+  'roleplay-title': {
+    opening: 'Hiring is not passive. Role play is where the hunt goes live.',
+    coreMessage: 'Role Play — pick up the phone, sell the opportunity, earn the next step.',
+    supportingExample:
+      'Hold the image. This is the energy required — persistent outreach until the right A-player says yes.',
+    executiveImplication:
+      'If leaders will not role-play the call, they are not ready to run the talent map.',
+    likelyQuestion: 'Who do you call first when the seat opens?',
     transition: 'Now we role-play the conversation — a huge opportunity on the table.',
   },
   'roleplay-opener': {
