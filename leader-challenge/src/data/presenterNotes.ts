@@ -334,9 +334,9 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'Rhythm without inspection is hope. Inspect what you expect.',
   },
   'inspection': {
-    opening: 'A healthy business is not a feeling — it is inspectable.',
+    opening: 'Pipeline health is not a feeling — no feelings just facts + MEDDPIC.',
     coreMessage:
-      'Inspection — Control tower app and MEDDPICC as live evidence on every deal.',
+      'Inspection — Control tower app and MEDDPICC as live evidence on every deal and forecast call.',
     supportingExample:
       'Click Control tower app, then MEDDPICC — 7 of 8 criteria filled is a qualification gap, not a forecast debate.',
     executiveImplication:

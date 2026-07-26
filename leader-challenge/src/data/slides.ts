@@ -73,7 +73,7 @@ export const slides: Slide[] = [
           label: 'TOPIC 3: Revenue',
           items: [
             'Describe your approach for building a culture of consistent pipeline generation',
-            'How do you inspect/qualify opportunities and evaluate Pipeline Health to ensure forecast accuracy?',
+            'How do you inspect/qualify opportunities and evaluate Pipeline Health to ensure forecast accuracy? No feelings just facts + MEDDPIC',
             'How do you run and use effective 1:1’s?',
           ],
         },
@@ -836,12 +836,13 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'Inspection',
     takeaway:
-      'Inspect what you expect — control tower app and MEDDPICC discipline make pipeline health visible every week.',
+      'No feelings just facts + MEDDPIC — control tower app and pipeline health make forecast accuracy inspectable every week.',
     recommendedMinutes: 1,
     content: {
       image: '/images/inspection-healthy-business.jpg',
       eyebrow: 'Revenue',
       title: 'Inspection',
+      subtitle: 'No feelings just facts + MEDDPIC',
       titleLayout: 'header',
       points: ['Control tower app', 'MEDDPICC'],
       pointImages: [undefined, '/images/inspection-meddpicc.jpg'],
