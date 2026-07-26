@@ -1392,65 +1392,50 @@ I would value 20 minutes to understand what you are optimizing for in your next 
     section: 'revenue',
     type: 'meddpicc',
     title: 'Opportunity Qualification',
-    takeaway: 'MEDDPICC is a live evidence checklist — status, risk and next action on every deal.',
+    takeaway:
+      'No feelings, just facts — eight MEDDPICC questions that expose gaps before they become forecast surprises.',
     recommendedMinutes: 2,
     content: {
       items: [
         {
           category: 'Metrics',
-          status: '[VALIDATE]',
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD]',
-          nextAction: '[ADD]',
+          prompt:
+            'Is there a quantified business outcome the buyer cares about (e.g. 30% engineering productivity uplift), or just vague enthusiasm?',
         },
         {
           category: 'Economic Buyer',
-          status: '[VALIDATE]',
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD]',
-          nextAction: '[ADD]',
+          prompt:
+            'Have you talked to the person who signs — or only to a champion who thinks they can get budget?',
         },
         {
           category: 'Decision Criteria',
-          status: '[VALIDATE]',
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD]',
-          nextAction: '[ADD]',
+          prompt:
+            "Do you know how they'll evaluate vendors — and whether Cursor is winning or losing on each criterion?",
         },
         {
           category: 'Decision Process',
-          status: '[VALIDATE]',
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD]',
-          nextAction: '[ADD]',
-        },
-        {
-          category: 'Pain',
-          status: '[VALIDATE]',
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD]',
-          nextAction: '[ADD]',
-        },
-        {
-          category: 'Champion',
-          status: '[VALIDATE]',
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD]',
-          nextAction: '[ADD]',
-        },
-        {
-          category: 'Competition',
-          status: '[VALIDATE]',
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD]',
-          nextAction: '[ADD]',
+          prompt:
+            'Is there a real, dated process (security review, procurement, legal) mapped out — or is "Q3 close" a guess?',
         },
         {
           category: 'Paper Process',
-          status: '[VALIDATE]',
-          evidence: '[ADD MY EXAMPLE]',
-          risk: '[ADD]',
-          nextAction: '[ADD]',
+          prompt:
+            'Is the legal/procurement timeline understood? This alone kills more "this quarter" deals than anything else.',
+        },
+        {
+          category: 'Identify Pain',
+          prompt:
+            'Is the pain real and urgent — or comfortable enough that "no decision" is a live competitor?',
+        },
+        {
+          category: 'Champion',
+          prompt:
+            'Does this person have actual influence — or are they enthusiastic but powerless?',
+        },
+        {
+          category: 'Competition',
+          prompt:
+            "Is there a named competitor and a real reason you're winning — not just \"no competition mentioned\"?",
         },
       ],
     },

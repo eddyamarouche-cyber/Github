@@ -3054,19 +3054,30 @@ function DashboardScreen({ content }: { content: DashboardContent }) {
 
 function MeddpiccScreen({ content }: { content: MeddpiccContent }) {
   return (
-    <Stagger className="grid gap-2 md:grid-cols-2">
+    <Stagger className="grid gap-2.5 md:grid-cols-2">
       {content.items.map((item) => (
         <StaggerItem key={item.category}>
-          <Expandable title={item.category} badge={item.status} subtitle={`Risk · ${item.risk}`}>
-            <p>
-              <span className="text-white/40">Evidence · </span>
-              {item.evidence}
-            </p>
-            <p className="mt-2">
-              <span className="text-white/40">Next action · </span>
-              {item.nextAction}
-            </p>
-          </Expandable>
+          {item.prompt ? (
+            <GlassCard className="h-full p-4 lg:p-5">
+              <p className="text-[11px] font-semibold tracking-[0.16em] text-accent uppercase">
+                {item.category}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-white/85 lg:text-[15px] lg:leading-relaxed">
+                {item.prompt}
+              </p>
+            </GlassCard>
+          ) : (
+            <Expandable title={item.category} badge={item.status} subtitle={`Risk · ${item.risk}`}>
+              <p>
+                <span className="text-white/40">Evidence · </span>
+                {item.evidence}
+              </p>
+              <p className="mt-2">
+                <span className="text-white/40">Next action · </span>
+                {item.nextAction}
+              </p>
+            </Expandable>
+          )}
         </StaggerItem>
       ))}
     </Stagger>

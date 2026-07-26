@@ -362,10 +362,12 @@ export interface DashboardContent {
 
 export interface MeddpiccItem {
   category: string
-  status: string
-  evidence: string
-  risk: string
-  nextAction: string
+  /** Plain-language inspection question for this element */
+  prompt?: string
+  status?: string
+  evidence?: string
+  risk?: string
+  nextAction?: string
 }
 
 export interface MeddpiccContent {

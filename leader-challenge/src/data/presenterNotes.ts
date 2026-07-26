@@ -575,13 +575,13 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'Opportunity quality sits underneath those metrics.',
   },
   'opportunity-qualification': {
-    opening: 'I use a simplified MEDDPICC as a live evidence checklist.',
+    opening: 'No feelings just facts — MEDDPICC as eight inspection questions.',
     coreMessage:
-      'For each element: status, evidence, risk and next action.',
+      'Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition — each one forces evidence, not optimism.',
     supportingExample:
-      'If champion and economic buyer are unclear, the deal is not a forecast debate — it is a qualification gap.',
+      'Paper process alone kills more this-quarter deals than anything else. Champion enthusiasm without power is not multi-threading.',
     executiveImplication:
-      'This language should be shared across the region so reviews stay crisp.',
+      'If champion and economic buyer are unclear, the deal is not a forecast debate — it is a qualification gap.',
     likelyQuestion: 'How complete must MEDDPICC be before Best Case?',
     transition: 'Deal inspection questions keep managers honest.',
   },
