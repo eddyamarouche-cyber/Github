@@ -617,6 +617,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     likelyQuestion: 'How do you handle sandbagging versus over-forecasting?',
     transition: 'The weekly mechanism for this is the 1:1.',
   },
+  'one-on-one-opener': {
+    opening: 'The weekly mechanism for forecast discipline is the 1:1.',
+    coreMessage:
+      'Efficient, purposeful conversations — coaching, decisions, and accountability in forty-five minutes.',
+    supportingExample:
+      'Not a status readout. Every minute should move the person or the pipeline forward.',
+    executiveImplication:
+      'This is where leadership shows up consistently, not just in quarterly reviews.',
+    likelyQuestion: 'How often do you run 1:1s and how long are they?',
+    transition: 'Here is exactly how I structure them.',
+  },
   'effective-one-on-ones': {
     opening: 'A forty-five-minute 1:1 should change the week.',
     coreMessage:
