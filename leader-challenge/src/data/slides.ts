@@ -508,6 +508,7 @@ export const slides: Slide[] = [
     content: {
       image: '/images/roleplay-opportunity.jpg',
       points: [
+        'Software demand is growing much faster than our ability to produce, understand and maintain software',
         'Every company is trying to turn AI into engineering output faster than their competitors',
         'Market opportunity 2 trillion $',
       ],
