@@ -207,7 +207,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
     coreMessage:
       'Software demand is growing much faster than our ability to produce, understand and maintain software. Every company is racing to turn AI into engineering output faster than their competitors. Then land market opportunity 2 trillion $.',
     supportingExample:
-      'Open Role play prep on the slide for the Google Doc guide before you run the conversation.',
+      'Click to reveal each line — software demand, the AI race, then the 2 trillion $ market opportunity.',
     executiveImplication:
       'If we cannot make the opportunity feel huge in the room, we will not win the talent in market.',
     likelyQuestion: 'What is the one sentence that makes this opportunity feel huge?',
