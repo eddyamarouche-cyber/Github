@@ -336,9 +336,9 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'inspection': {
     opening: 'Pipeline health is not a feeling — no feelings just facts + MEDDPIC.',
     coreMessage:
-      'Inspection — Control tower app and MEDDPICC as live evidence on every deal and forecast call.',
+      'Eight inspection questions: Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition.',
     supportingExample:
-      'Click Control tower app, then MEDDPICC — 7 of 8 criteria filled is a qualification gap, not a forecast debate.',
+      'Paper process kills most this-quarter deals. Champion enthusiasm without power is not multi-threading.',
     executiveImplication:
       'Leaders inspect early. Weak signals surfaced weekly beat surprises at quarter-end.',
     likelyQuestion: 'What would make you intervene in week two, not week ten?',

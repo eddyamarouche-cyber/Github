@@ -830,20 +830,55 @@ export const slides: Slide[] = [
     id: 'inspection',
     number: 31,
     section: 'revenue',
-    type: 'visual-hero',
+    type: 'meddpicc',
     title: 'Inspection',
+    headline: 'No feelings just facts + MEDDPIC',
     takeaway:
-      'No feelings just facts + MEDDPIC — control tower app and pipeline health make forecast accuracy inspectable every week.',
-    recommendedMinutes: 1,
+      'Eight MEDDPICC questions — control tower discipline with evidence, not optimism, on every deal.',
+    recommendedMinutes: 2,
     content: {
-      image: '/images/inspection-healthy-business.jpg',
-      eyebrow: 'Revenue',
-      title: 'Inspection',
-      subtitle: 'No feelings just facts + MEDDPIC',
-      titleLayout: 'header',
-      points: ['Control tower app', 'MEDDPICC'],
-      pointImages: [undefined, '/images/inspection-meddpicc.jpg'],
-      revealPointsOnClick: true,
+      items: [
+        {
+          category: 'Metrics',
+          prompt:
+            'Quantified business outcome (e.g. 30% productivity uplift) — or vague enthusiasm?',
+        },
+        {
+          category: 'Economic Buyer',
+          prompt:
+            'Talked to who signs — or only a champion hoping for budget?',
+        },
+        {
+          category: 'Decision Criteria',
+          prompt:
+            'How they evaluate vendors — and is Cursor winning or losing on each?',
+        },
+        {
+          category: 'Decision Process',
+          prompt:
+            'Real dated process mapped — or is "Q3 close" a guess?',
+        },
+        {
+          category: 'Paper Process',
+          prompt:
+            'Legal/procurement timeline understood? (Kills most "this quarter" deals)',
+        },
+        {
+          category: 'Identify Pain',
+          prompt:
+            'Pain real and urgent — or is "no decision" a live competitor?',
+        },
+        {
+          category: 'Champion',
+          prompt:
+            'Real influence — or enthusiastic but powerless?',
+        },
+        {
+          category: 'Competition',
+          prompt:
+            'Named competitor and real reason you\'re winning — not "no competition mentioned"?',
+        },
+      ],
     },
   },
   {
