@@ -1397,42 +1397,42 @@ I would value 20 minutes to understand what you are optimizing for in your next 
         {
           category: 'Metrics',
           prompt:
-            'Is there a quantified business outcome the buyer cares about (e.g. 30% engineering productivity uplift), or just vague enthusiasm?',
+            'Quantified business outcome (e.g. 30% productivity uplift) — or vague enthusiasm?',
         },
         {
           category: 'Economic Buyer',
           prompt:
-            'Have you talked to the person who signs — or only to a champion who thinks they can get budget?',
+            'Talked to who signs — or only a champion hoping for budget?',
         },
         {
           category: 'Decision Criteria',
           prompt:
-            "Do you know how they'll evaluate vendors — and whether Cursor is winning or losing on each criterion?",
+            'How they evaluate vendors — and is Cursor winning or losing on each?',
         },
         {
           category: 'Decision Process',
           prompt:
-            'Is there a real, dated process (security review, procurement, legal) mapped out — or is "Q3 close" a guess?',
+            'Real dated process mapped — or is "Q3 close" a guess?',
         },
         {
           category: 'Paper Process',
           prompt:
-            'Is the legal/procurement timeline understood? This alone kills more "this quarter" deals than anything else.',
+            'Legal/procurement timeline understood? (Kills most "this quarter" deals)',
         },
         {
           category: 'Identify Pain',
           prompt:
-            'Is the pain real and urgent — or comfortable enough that "no decision" is a live competitor?',
+            'Pain real and urgent — or is "no decision" a live competitor?',
         },
         {
           category: 'Champion',
           prompt:
-            'Does this person have actual influence — or are they enthusiastic but powerless?',
+            'Real influence — or enthusiastic but powerless?',
         },
         {
           category: 'Competition',
           prompt:
-            "Is there a named competitor and a real reason you're winning — not just \"no competition mentioned\"?",
+            'Named competitor and real reason you\'re winning — not "no competition mentioned"?',
         },
       ],
     },
