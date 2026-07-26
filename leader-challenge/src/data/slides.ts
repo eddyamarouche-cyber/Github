@@ -302,8 +302,8 @@ export const slides: Slide[] = [
       eyebrow: 'Leadership mindset',
       title: 'Operate to an elite standard',
       subtitle:
-        'Persistency. Heart. Desire. The same principles that win under pressure apply to building a region.',
-      points: ['Persistency', 'Heart', 'Desire'],
+        'Persistence. Heart. Desire. The same principles that win under pressure apply to building a region.',
+      points: ['Persistence', 'Heart', 'Desire'],
     },
   },
   {
