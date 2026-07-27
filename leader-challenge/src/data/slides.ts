@@ -114,7 +114,7 @@ export const slides: Slide[] = [
           title: 'Revenue',
           subtitle: 'Consistent PG / Operating Rythm / Oversight',
           description: '',
-          focuses: ['Pipeline discipline', 'Deal inspection', 'Forecast accuracy'],
+          focuses: ['Consistent PG', 'Operating Rythm', 'Oversight'],
           minutes: 20,
         },
       ],
