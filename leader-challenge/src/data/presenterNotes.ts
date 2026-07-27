@@ -124,6 +124,16 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Talent density matters — but so does shared direction and mutual enablement.',
     likelyQuestion: 'How do you keep a regional team aligned across markets?',
+    transition: 'Before we hire — a principle that shapes how I lead.',
+  },
+  'learning-in-the-struggle': {
+    opening: 'This is not a motivational poster. It is an operating belief.',
+    coreMessage: 'Learning is in the struggle — growth happens under pressure, not in comfort.',
+    supportingExample:
+      'The hardest quarters taught me more than any easy win. Embrace the suck, extract the lesson, move forward.',
+    executiveImplication:
+      'I coach through difficulty because that is where behaviour changes and leaders are forged.',
+    likelyQuestion: 'How do you balance high standards with burnout risk?',
     transition: 'Recruitment starts with a simple image.',
   },
   'recruitment-opener': {

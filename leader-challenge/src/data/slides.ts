@@ -319,8 +319,24 @@ export const slides: Slide[] = [
   },
 
   {
-    id: 'recruitment-opener',
+    id: 'learning-in-the-struggle',
     number: 12,
+    section: 'intro',
+    type: 'visual-hero',
+    title: 'Learning is in the struggle',
+    takeaway:
+      'Growth happens under pressure — embrace the hard reps, not just the wins.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/learning-struggle.jpg',
+      eyebrow: 'Leadership mindset',
+      points: ['Learning is in the struggle'],
+      pointsLayout: 'center',
+    },
+  },
+  {
+    id: 'recruitment-opener',
+    number: 13,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Recruitment',
@@ -335,7 +351,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'a-player-profile',
-    number: 13,
+    number: 14,
     section: 'recruitment',
     type: 'profile',
     title: 'A Player Profile',
@@ -386,7 +402,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'linkedin-talent-map',
-    number: 14,
+    number: 15,
     section: 'recruitment',
     type: 'linkedin-targets',
     title: 'LinkedIn Talent Map · Italy',
@@ -402,7 +418,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'linkedin-talent-map-spain',
-    number: 15,
+    number: 16,
     section: 'recruitment',
     type: 'linkedin-targets',
     title: 'LinkedIn Talent Map · Spain',
@@ -418,7 +434,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'how-proactivity',
-    number: 16,
+    number: 17,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'How?',
@@ -435,7 +451,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'how-subdivisions',
-    number: 17,
+    number: 18,
     section: 'recruitment',
     type: 'subdivisions',
     title: 'How we hire?',
@@ -483,7 +499,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'roleplay-title',
-    number: 18,
+    number: 19,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Role Play',
@@ -498,7 +514,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'roleplay-opener',
-    number: 19,
+    number: 20,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Role play',
@@ -518,7 +534,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'roleplay-proof',
-    number: 20,
+    number: 21,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Why Cursor?',
@@ -545,7 +561,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'gtm-ambition',
-    number: 21,
+    number: 22,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'GTM ambition',
@@ -566,7 +582,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'gtm-100bn',
-    number: 22,
+    number: 23,
     section: 'recruitment',
     type: 'reveal',
     title: '100Bn$',
@@ -586,7 +602,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-opener',
-    number: 23,
+    number: 24,
     section: 'retention',
     type: 'visual-hero',
     title: 'Retention in summary',
@@ -603,7 +619,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-system',
-    number: 24,
+    number: 25,
     section: 'retention',
     type: 'subdivisions',
     title: 'The approach',
@@ -647,7 +663,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-cta',
-    number: 25,
+    number: 26,
     section: 'retention',
     type: 'subdivisions',
     title: 'Call to action',
@@ -685,7 +701,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-monitoring',
-    number: 26,
+    number: 27,
     section: 'retention',
     type: 'visual-hero',
     title: 'Monitoring',
@@ -737,7 +753,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'gap-reduction',
-    number: 27,
+    number: 28,
     section: 'revenue',
     type: 'subdivisions',
     title: 'Gap reduction',
@@ -764,7 +780,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'revenue-opener',
-    number: 28,
+    number: 29,
     section: 'revenue',
     type: 'visual-hero',
     title: 'Revenue',
@@ -780,7 +796,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'consistent-pipeline-generation',
-    number: 29,
+    number: 30,
     section: 'revenue',
     type: 'visual-hero',
     title: 'Consistent Pipeline Generation',
@@ -802,7 +818,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'operating-rhythm',
-    number: 30,
+    number: 31,
     section: 'revenue',
     type: 'visual-hero',
     title: 'Operating rhythm',
@@ -827,7 +843,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'inspection',
-    number: 31,
+    number: 32,
     section: 'revenue',
     type: 'meddpicc',
     title: 'Inspection',
@@ -882,7 +898,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'one-on-one-opener',
-    number: 32,
+    number: 33,
     section: 'revenue',
     type: 'visual-hero',
     title: '1:1',
@@ -901,7 +917,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'asks-opener',
-    number: 33,
+    number: 34,
     section: 'partnership',
     type: 'visual-hero',
     title: 'Asks',
@@ -917,7 +933,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'invest-opener',
-    number: 34,
+    number: 35,
     section: 'invest',
     type: 'visual-hero',
     title: 'Invest',
@@ -933,7 +949,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'invest-people',
-    number: 35,
+    number: 36,
     section: 'invest',
     type: 'org-chart',
     title: 'People',
@@ -964,7 +980,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'marketing-c-level',
-    number: 36,
+    number: 37,
     section: 'invest',
     type: 'invest-figure',
     title: 'Marketing / C-Level event',
@@ -977,7 +993,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'invest-in-me',
-    number: 37,
+    number: 38,
     section: 'invest',
     type: 'invest-figure',
     title: 'Invest in me!',
