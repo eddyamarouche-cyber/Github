@@ -3258,6 +3258,16 @@ function InvestFigureScreen({ content }: { content: InvestFigureContent }) {
           {content.subtitle}
         </motion.p>
       ) : null}
+      {content.tagline ? (
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.08 }}
+          className="mb-6 max-w-3xl text-base leading-relaxed font-semibold text-white/90 lg:mb-8 lg:text-xl"
+        >
+          {content.tagline}
+        </motion.p>
+      ) : null}
       <motion.p
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}

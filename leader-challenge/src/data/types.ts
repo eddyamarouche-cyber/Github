@@ -414,6 +414,7 @@ export interface OrgChartContent {
 export interface InvestFigureContent {
   amount: string
   subtitle?: string
+  tagline?: string
   detail?: string
   quote?: string
   footer?: string
