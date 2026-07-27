@@ -150,11 +150,11 @@ export const slides: Slide[] = [
     type: 'visual-hero',
     title: 'Why am I here? 1/2',
     takeaway:
-      'Embrace the suck — learning is in the struggle. The forecast dashboard is where discipline meets reality.',
+      'Embrace the suck — the forecast dashboard is where discipline meets reality.',
     recommendedMinutes: 0.5,
     content: {
       image: '/images/why-am-i-here-consumption-plan.jpg',
-      points: ['Embrace the suck', 'Learning is in the struggle'],
+      points: ['Embrace the suck'],
       pointsLayout: 'center',
       revealPointsOnClick: true,
     },

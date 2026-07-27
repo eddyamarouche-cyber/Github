@@ -48,11 +48,11 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'You are hiring a whole person — not a slide of metrics.',
     likelyQuestion: 'What does multicultural mean in your day-to-day leadership?',
-    transition: 'Part one — embrace the suck. Learning is in the struggle.',
+    transition: 'Part one — embrace the suck.',
   },
   'why-am-i-here-1': {
     opening: 'Before the résumé — the mindset.',
-    coreMessage: 'Embrace the suck. Learning is in the struggle.',
+    coreMessage: 'Embrace the suck.',
     supportingExample:
       'Click to reveal each line over the Consumption Plan — this is the operating reality I run every week.',
     executiveImplication:
