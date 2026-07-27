@@ -238,7 +238,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'gtm-100bn': {
     opening: 'Pause. Then reveal the outcome.',
     coreMessage:
-      '100Bn$. Becoming the operating system for AI-native software engineering.',
+      '100Bn$. Becoming the operating system for AI-native software engineering — Models × Harness × Context × Agents × Evals × Distribution.',
     supportingExample:
       'The opportunity story must end in a number big enough to make an A-player lean forward — with a category definition underneath.',
     executiveImplication:

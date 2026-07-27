@@ -1780,7 +1780,7 @@ function RevealScreen({ content }: { content: RevealContent }) {
     setShowAnswer(false)
     const timer = window.setTimeout(() => setShowAnswer(true), delay)
     return () => window.clearTimeout(timer)
-  }, [delay, content.question, content.questionSubtitle, content.answer, content.answerSubtitle, answerOnly])
+  }, [delay, content.question, content.questionSubtitle, content.answer, content.answerSubtitle, content.answerFooter, answerOnly])
 
   const showQuestion = !answerOnly && Boolean(content.question)
 
@@ -1841,6 +1841,11 @@ function RevealScreen({ content }: { content: RevealContent }) {
               {content.answerSubtitle ? (
                 <p className="mt-5 max-w-5xl text-2xl leading-snug font-semibold tracking-tight text-balance text-white/90 sm:text-3xl lg:mt-6 lg:text-4xl xl:text-5xl">
                   {content.answerSubtitle}
+                </p>
+              ) : null}
+              {content.answerFooter ? (
+                <p className="mt-6 max-w-5xl text-base leading-relaxed font-semibold tracking-wide text-accent sm:text-lg lg:mt-8 lg:text-xl">
+                  {content.answerFooter}
                 </p>
               ) : null}
             </motion.div>

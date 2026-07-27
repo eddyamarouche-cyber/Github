@@ -579,6 +579,8 @@ export const slides: Slide[] = [
       answer: '100Bn$',
       answerSubtitle:
         'Becoming the operating system for AI-native software engineering.',
+      answerFooter:
+        'Models × Harness × Context × Agents × Evals × Distribution',
       answerDelayMs: 1200,
     },
   },

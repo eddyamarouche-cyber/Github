@@ -140,6 +140,8 @@ export interface RevealContent {
   answer: string
   /** Line shown just below the answer once it reveals */
   answerSubtitle?: string
+  /** Supporting formula or pillars line below the answer subtitle */
+  answerFooter?: string
   /** Delay before the answer appears, in ms */
   answerDelayMs?: number
   /** Show only the answer block — for split reveal slides */
