@@ -15,28 +15,104 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'The first five minutes establish how I manage before we enter the four working topics.',
     likelyQuestion: 'How would you prioritize if you joined with limited headcount?',
-    transition: 'Before the operating system — the objective I will own with clients.',
+    transition: 'Here is the official Leader Challenge brief.',
+  },
+  'challenge-brief': {
+    opening: 'This is the brief I am answering in this room.',
+    coreMessage:
+      'Ninety minutes. Recruitment, Retention, Revenue, three leadership asks — then feedback and close.',
+    supportingExample:
+      'Cursor Prep for Challenge is linked for the role-play knowledge. Everything that follows maps to these topics.',
+    executiveImplication:
+      'I will not wander. Every slide should land one of these asks.',
+    likelyQuestion: 'Where do you want the deepest inspection first?',
+    transition: 'Here is how I structure that into three engines.',
+  },
+  'session-summary': {
+    opening: 'I will run the rest of the session through three engines.',
+    coreMessage:
+      'Recruitment raises the bar — A Player, First 5, How?, Role play. Retention grows the team — The approach, Call to action, Monitoring. Revenue — Consistent PG, Operating Rythm, Oversight.',
+    supportingExample:
+      'If any one of these is weak, the region becomes noisy. If all three are strong, growth compounds.',
+    executiveImplication:
+      'Every method that follows should map back to one of these three outcomes.',
+    likelyQuestion: 'Where do you want the deepest inspection first?',
+    transition: 'First — a personal frame before the professional one.',
+  },
+  'personal-side': {
+    opening: 'Before the operating story — who I am outside the job.',
+    coreMessage:
+      'Married, two kids, multicultural. Kickboxing, football and cooking keep me grounded and competitive.',
+    supportingExample:
+      'That mix of family, discipline and curiosity is the same energy I bring into a team.',
+    executiveImplication:
+      'You are hiring a whole person — not a slide of metrics.',
+    likelyQuestion: 'What does multicultural mean in your day-to-day leadership?',
+    transition: 'Part one — embrace the suck.',
+  },
+  'why-am-i-here-1': {
+    opening: 'Before the résumé — the mindset.',
+    coreMessage: 'Embrace the suck.',
+    supportingExample:
+      'Click to reveal each line over the Consumption Plan — this is the operating reality I run every week.',
+    executiveImplication:
+      'Leaders who avoid hard dashboards avoid hard truths. I run toward them.',
+    likelyQuestion: 'What does embrace the suck mean in practice for your team?',
+    transition: 'Part two — Build. Lead. Sell. Scale.',
+  },
+  'who-i-am-as-a-leader': {
+    opening: 'Why am I here? Four words: Build. Lead. Sell. Scale.',
+    coreMessage:
+      'BUILD — early European Databricks path to Sales Director Italy. LEAD — demand and pipeline from zero, five-time President Club. SELL — strategic logos from 50K$ to 11M$ ARR. SCALE — repeat, leverage, expand, 20+ hires in Italy.',
+    supportingExample:
+      'Stellantis, Michelin, Danone, Sanofi, CNH, Iveco, Prada, Fastweb, Barilla, Kiko — complex enterprise wins that compound into a repeatable GTM engine.',
+    executiveImplication:
+      'Southern Europe at Cursor needs a builder who has already done the zero-to-scale journey — not a caretaker.',
+    likelyQuestion: 'Which of Build / Lead / Sell / Scale transfers fastest to Cursor?',
+    transition: 'Then my leadership principles — starting with leading by example.',
+  },
+  'leadership-principles': {
+    opening: 'My leadership principles start here.',
+    coreMessage:
+      'Lead by example. Go first. Set the standard in public before asking the team to follow.',
+    supportingExample:
+      'People do not copy slides. They copy what the leader does under pressure.',
+    executiveImplication:
+      'If the Regional Director does not model the standard, the operating system becomes optional.',
+    likelyQuestion: 'What does leading by example look like week to week?',
+    transition: 'Next — the objective I will own with clients.',
   },
   'win-the-stage': {
-    opening: 'This is the objective I want to anchor with you.',
+    opening: 'This is the objective I want to own with you.',
     coreMessage:
-      'Win the stage with every client — earn the room, own the narrative and make Cursor the obvious choice.',
+      'Make Cursor THE Number 1 SDLC Platform in Italy and Iberia — and land the must-win accounts in the next 12 months.',
     supportingExample:
-      'That means presence in the account, credibility with technical and executive buyers, and a team that shows up ready to lead the conversation.',
+      'BBVA, Santander, Telefonica, Inditex, Amadeus, Adevinta across Iberia. Unicredit, Fastweb, Telecom Italia, Nexi, Reply, Bending Spoons, Engineering in Italy — plus Vodafone, Indra, Odigeo.',
     executiveImplication:
-      'Everything that follows — hiring, coaching, pipeline and partnership — exists to put us on that stage and keep us there.',
-    likelyQuestion: 'What does winning the stage look like in the first 90 days?',
+      'Everything that follows — hiring, coaching, pipeline and partnership — exists to win these stages and keep them.',
+    likelyQuestion: 'Which must-win accounts do you prioritize in the first two quarters?',
     transition: 'Next — the one-team culture that makes that objective sustainable.',
   },
   'spanish-team-trophies': {
     opening: 'This is the feeling I want in Iberia.',
     coreMessage:
-      'One team — not individual heroics. Shared pressure, shared joy, one standard.',
+      'One team — no top guns, no rock stars or diva. Shared pressure, shared joy, one standard.',
     supportingExample:
       'Spain’s best runs have always looked like this — together under pressure, celebrating as one.',
     executiveImplication:
       'If we hire and coach for one team across Italy and Iberia, the operating system has something worth protecting.',
     likelyQuestion: 'How do you build one team across Spain, Portugal and Italy?',
+    transition: 'That is the trophy room. On the pitch, it looks like this.',
+  },
+  'football-team-passes': {
+    opening: 'Watch the movement — not the individual.',
+    coreMessage:
+      'Dynamic players, one ball, constant passes — the team advances because everyone plays for the next pass.',
+    supportingExample:
+      'No one runs alone. The ball moves faster than any single player.',
+    executiveImplication:
+      'One team on a slide is aspiration. One team on the pitch is behaviour — pass, move, support.',
+    likelyQuestion: 'How do you translate this sports metaphor into sales management?',
     transition: 'Now the personal standard behind that culture.',
   },
   'leadership-standard': {
@@ -53,34 +129,22 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'wild-geese': {
     opening: 'This image is intentional.',
     coreMessage:
-      'A strong team moves in one direction, creates lift for each other and stays aligned under pressure.',
+      'One direction, just doers — fellow miners who move together, share the load and get the work done.',
     supportingExample:
-      'Wild geese fly farther together because every bird helps the flock and the V keeps reforming.',
+      'No top guns. No divas. A team that points the same way and executes.',
     executiveImplication:
       'Talent density matters — but so does shared direction and mutual enablement.',
-    likelyQuestion: 'How do you keep a regional team flying in formation across markets?',
-    transition: 'Here is how that standard and that team mindset show up in four leadership roles.',
+    likelyQuestion: 'How do you keep a regional team aligned across markets?',
+    transition: 'Before we hire — a principle that shapes how I lead.',
   },
-  'who-i-am-as-a-leader': {
-    opening: 'Before the workstreams, I want you to know how I show up as a manager.',
-    coreMessage:
-      'I lead as a talent builder, performance coach, operating leader and executive partner.',
+  'learning-in-the-struggle': {
+    opening: 'This is not a motivational poster. It is an operating belief.',
+    coreMessage: 'Learning is in the struggle — growth happens under pressure, not in comfort.',
     supportingExample:
-      '[ADD MY EXAMPLE] — a concrete moment that shows how those four roles show up in practice.',
+      'The hardest quarters taught me more than any easy win. Embrace the suck, extract the lesson, move forward.',
     executiveImplication:
-      'If this frame feels right, the rest of the session is simply how I apply it at Cursor.',
-    likelyQuestion: 'Which of these four roles do you lean on first in a new region?',
-    transition: 'Here is how the working session is structured.',
-  },
-  'session-summary': {
-    opening: 'I will run the rest of the session through three engines.',
-    coreMessage:
-      'Recruitment raises the bar — A Player, First 5, How?, Role play. Retention grows the team. Revenue runs the business.',
-    supportingExample:
-      'If any one of these is weak, the region becomes noisy. If all three are strong, growth compounds.',
-    executiveImplication:
-      'Every method that follows should map back to one of these three outcomes.',
-    likelyQuestion: 'Where do you want the deepest inspection first?',
+      'I coach through difficulty because that is where behaviour changes and leaders are forged.',
+    likelyQuestion: 'How do you balance high standards with burnout risk?',
     transition: 'Recruitment starts with a simple image.',
   },
   'recruitment-opener': {
@@ -97,18 +161,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
   'a-player-profile': {
     opening: 'Before process or scorecards, this is the filter.',
     coreMessage:
-      'Character first — patriots, no senators, ownership, adaptable, resilient. Then cognition — smart across engineer and C-level conversations, high tech IQ, high slope, high clock speed.',
+      'Character and cognition that compound — builders, patriots, ownership, resilient, learning in the struggle, high clock speed.',
     supportingExample:
-      'A polished big-brand résumé without ownership scars or learning slope is a warning, not a win.',
+      'A polished big-brand résumé without ownership scars or struggle-tested learning is a warning, not a win.',
     executiveImplication:
       'This profile protects culture and raises talent density before any interview loop starts.',
-    likelyQuestion: 'How do you test clock speed and slope in an interview?',
+    likelyQuestion: 'How do you test clock speed and learning in the struggle in an interview?',
     transition: 'Here is the first live LinkedIn talent map for Italy.',
   },
   'linkedin-talent-map': {
     opening: 'These are named Italy profiles, not placeholders.',
     coreMessage:
-      'Italy LinkedIn targets mapped against the A-player filter — open each profile and inspect for patriots, slope and technical altitude.',
+      'Italy LinkedIn targets mapped against the A-player filter — open each profile and inspect for patriots, slope and ownership.',
     supportingExample:
       'Databricks, MongoDB, Adobe, Zscaler and analytics backgrounds give us a dense Italy shortlist to pressure-test.',
     executiveImplication:
@@ -147,409 +211,223 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'Recruitment quality is a system design problem, not a calendar of interviews.',
     likelyQuestion: 'Which of the five do you start with in a new market?',
+    transition: 'Now — Role Play.',
+  },
+  'roleplay-title': {
+    opening: 'Hiring is not passive. Role play is where the hunt goes live.',
+    coreMessage: 'Role Play — pick up the phone, sell the opportunity, earn the next step.',
+    supportingExample:
+      'Hold the image. This is the energy required — persistent outreach until the right A-player says yes.',
+    executiveImplication:
+      'If leaders will not role-play the call, they are not ready to run the talent map.',
+    likelyQuestion: 'Who do you call first when the seat opens?',
     transition: 'Now we role-play the conversation — a huge opportunity on the table.',
   },
   'roleplay-opener': {
     opening: 'This is where hiring becomes live — sell a huge opportunity.',
     coreMessage:
-      'Every company is racing to turn AI into engineering output. Huge TAM. Engineers plus compute. Cursor is the fastest SaaS climb from $1M to $1B ARR — now ~$6Bn ARR, mostly PLG.',
+      'Software demand is growing much faster than our ability to produce, understand and maintain software. Every company is racing to turn AI into engineering output faster than their competitors. Then land market opportunity 2 trillion $.',
     supportingExample:
-      'The best A-players do not respond to job descriptions. They respond to ownership of that race and a credible next chapter.',
+      'Click to reveal each line — software demand, the AI race, then the 2 trillion $ market opportunity.',
     executiveImplication:
       'If we cannot make the opportunity feel huge in the room, we will not win the talent in market.',
     likelyQuestion: 'What is the one sentence that makes this opportunity feel huge?',
+    transition: 'Then the proof — why Cursor is winning that race.',
+  },
+  'roleplay-proof': {
+    opening: 'Market size is not enough — they need proof Cursor can win.',
+    coreMessage:
+      'Model agnosticity, frontier SpaceX / xAI compute, harness better models as compounding advantage, and 64% of Fortune 500 companies.',
+    supportingExample:
+      'These proof points turn a huge TAM into a credible place to bet a career — momentum plus structural advantage.',
+    executiveImplication:
+      'A-players join momentum they can verify — not slides alone.',
+    likelyQuestion: 'Which proof point lands hardest with senior sellers?',
     transition: 'Then the ambition — what the best GTM team can build in four years.',
   },
-  'gtm-100bn': {
-    opening: 'Hold the question. Then land the answer.',
+  'gtm-ambition': {
+    opening: 'Hold the room with the question, then the team behind it.',
     coreMessage:
-      'What can we do with the best GTM team in the world in the next four years? 100Bn$.',
+      '4Bn$ revenue mostly in PLG. What can we do with the best world-class GTM team in the world in the next four years? Experienced executives with the best track record.',
     supportingExample:
-      'The opportunity story must end in a number big enough to make an A-player lean forward.',
+      'Click to reveal each line. The executives line is not a footnote — it is the proof the rocket ship has pilots.',
+    executiveImplication:
+      'Ambition without operators is fantasy. Name the team that can execute.',
+    likelyQuestion: 'Who specifically is on that GTM bench?',
+    transition: 'Now land the number.',
+  },
+  'gtm-100bn': {
+    opening: 'Pause. Then reveal the outcome.',
+    coreMessage:
+      '100Bn$. Becoming the operating system for AI-native software engineering — Models × Harness × Context × Agents × Evals × Distribution.',
+    supportingExample:
+      'The opportunity story must end in a number big enough to make an A-player lean forward — with a category definition underneath.',
     executiveImplication:
       'Ambition attracts ambition. Small targets do not recruit category winners.',
     likelyQuestion: 'How do you keep 100Bn$ credible without sounding like hype?',
-    transition: 'That ambition still needs a scorecard before outreach.',
+    transition: 'Ambition is useless if people do not grow and stay — Retention.',
   },
-  'candidate-scorecard': {
-    opening: 'This is the scoring model I would use before advancing any candidate.',
+  'retention-opener': {
+    opening: 'Hiring is the seed. Retention is the harvest — in three moves.',
     coreMessage:
-      'Weight the criteria, score with evidence, and surface risk explicitly out of one hundred.',
+      'Retention in summary: The approach, Call to action, and Monitoring.',
     supportingExample:
-      '[ADD MY EXAMPLE] — a close call where the scorecard prevented a false-positive hire.',
+      'Frame the section before you open each slide — operating system, daily practice, then control tower.',
     executiveImplication:
-      'This protects the culture and the forecast. Weak evidence never gets disguised as conviction.',
-    likelyQuestion: 'What is your minimum bar to advance a candidate?',
-    transition: 'Here are the first five profiles I would activate.',
+      'If talent leaves, the recruitment engine was wasted spend.',
+    likelyQuestion: 'What actually keeps top sellers at Cursor-scale ambition?',
+    transition: 'Start with the approach — four levers that keep A-players compounding.',
   },
-  'first-five-candidates': {
-    opening: 'I would walk into the role with a live talent map, not a blank hiring plan.',
+  'retention-system': {
+    opening: 'Keep your best performers engaged and committed for long-term success.',
     coreMessage:
-      'These five placeholders are where I would put named targets once validated with Cursor.',
+      'Growth Opportunities through advancement paths and stretch assignments. Coaching Excellence as an operating rhythm with Enablement. Culture of Belonging through team identity rituals. Work-Life Integration that respects boundaries.',
     supportingExample:
-      '[ADD CANDIDATE NAME] placeholders remain intentional — I will not invent people in this room.',
+      'Click each topic open — advancement paths, 1:1 cadence, dinners and events, flexible arrangements.',
     executiveImplication:
-      'A Regional Director should always know who the next three hires could be.',
-    likelyQuestion: 'Which markets would you staff first?',
-    transition: 'That only works if hiring starts before the role is open.',
+      'Retention is designed, not hoped for. Each lever has an owner and a rhythm.',
+    likelyQuestion: 'Which lever is weakest in Southern Europe today?',
+    transition: 'Now the call to action — how we practice it.',
   },
-  'talent-mapping': {
-    opening: 'Hiring is a continuous system, not a reactive search.',
+  'retention-cta': {
+    opening: 'Framework is not enough. Now make it real.',
     coreMessage:
-      'Scorecard, company map, top-fifty list, network activation, structured outreach, always-on pipeline.',
+      'Call to action: Role play, Shadowing, and Direct feedback — three ways leaders turn retention from slides into daily practice.',
     supportingExample:
-      '[ADD MY EXAMPLE] — a time an always-on map compressed time-to-hire for a critical role.',
+      'Click each topic open — role play prep doc, shadowing in the field, direct feedback in 1:1s.',
     executiveImplication:
-      'When a seat opens, the region should already be in conversation with qualified talent.',
-    likelyQuestion: 'How large should the active pipeline be?',
-    transition: 'Here is an illustrative conversion model.',
+      'Retention improves when managers rehearse, observe, and measure — not when they only agree on principles.',
+    likelyQuestion: 'What does good shadowing look like in week one?',
+    transition: 'Then monitoring — the control tower view.',
   },
-  'sourcing-funnel': {
-    opening: 'I manage hiring like a funnel with stage quality.',
+  'retention-monitoring': {
+    opening: 'Practice without visibility is hope. Monitoring is the control tower.',
     coreMessage:
-      'Fifty mapped profiles to one hire is an illustrative model — the point is conversion discipline.',
+      'Increase in qualified opportunities - 3 per week. PG quarter attainment % incr. Time in stage. Coaching-to-behavior-change. Self-sourced pipeline vs SDR sourced — five control tower signals.',
     supportingExample:
-      'If warm introductions collapse too early, the issue is usually messaging or targeting, not volume.',
+      'Click to reveal each control tower signal, then Pipe Gen QTD — Francesco Vitti at 267% pro-rata attainment.',
     executiveImplication:
-      'We should inspect hiring funnel health with the same seriousness as revenue pipeline.',
-    likelyQuestion: 'Where do most hiring funnels break in Southern Europe?',
-    transition: 'Outreach quality determines whether the funnel even starts.',
+      'Leaders who monitor retain. Leaders who only react lose A-players quietly.',
+    likelyQuestion: 'Which of these four signals is weakest in your team today?',
+    transition: 'First close the gap — variance compression and forecast accuracy.',
   },
-  'candidate-outreach': {
-    opening: 'Strong candidates ignore generic recruiter language.',
+  'gap-reduction': {
+    opening: 'Predictability starts by closing the gap — not hoping it closes itself.',
     coreMessage:
-      'The message must be personal, credible and about ownership — not a job description dump.',
+      'Gap reduction in two parts: Variance compression — Team quota attainment FY24 75 to 180%, Team quota attainment FY25 95 to 135% — and Forecast accuracy.',
     supportingExample:
-      'This note asks for twenty minutes to understand what they optimize for. That changes the dynamic.',
+      'Click each component open — show how the range tightened year over year, then how forecast discipline compounds trust.',
     executiveImplication:
-      'We are selling a chance to define a category and a region, not filling a vacancy.',
-    likelyQuestion: 'How do you adapt this for a passive senior candidate?',
-    transition: 'Let us move into the role-play preparation.',
+      'Leaders who compress variance and improve forecast accuracy run the business; everyone else runs quarter-end fire drills.',
+    likelyQuestion: 'What changed between FY24 and FY25 to compress the range?',
+    transition: 'Now Revenue — a world of opportunities.',
   },
-  'roleplay-profile': {
-    opening: 'Before any live conversation, I prepare the person, not just the pitch.',
+  'revenue-opener': {
+    opening: 'Shift from growing people to running the business.',
+    coreMessage: 'Revenue — a world of opportunities.',
+    supportingExample:
+      'Hold the image for a beat. This is the scale of the prize before we talk discipline.',
+    executiveImplication:
+      'Ambition without operating discipline is noise. Opportunity without execution is wasted.',
+    likelyQuestion: 'What makes Southern Europe winnable at Cursor scale?',
+    transition: 'Pipeline is not a quarterly rescue — it is daily hard work.',
+  },
+  'consistent-pipeline-generation': {
+    opening: 'Opportunity without pipeline discipline is a story, not a business.',
     coreMessage:
-      'Background, motivations, concerns, ambitions, objective, questions and desired next step.',
+      'Pipeline Generation an Identity, Not a Task. KPIs: activity volume — NBM, activity to grow developers base. Source mix: self sourced vs inbound vs SDR sourced.',
     supportingExample:
-      '[ADD MY EXAMPLE] — fill this card with the actual role-play profile for today.',
+      'Hold the image. This is what weekly prospecting, outreach, and follow-through actually look like — relentless, unglamorous, effective.',
     executiveImplication:
-      'Preparation is respect. It also keeps the conversation candidate-centric.',
-    likelyQuestion: 'What would make you walk away from a candidate quickly?',
-    transition: 'Here is the call structure I would run.',
+      'Regions that win treat pipeline creation like training: non-negotiable, measured, and repeated.',
+    likelyQuestion: 'How do you keep pipeline discipline when sellers are buried in late-stage deals?',
+    transition: 'Operating rhythm turns pipeline discipline into a calendar.',
   },
-  'initial-call': {
-    opening: 'The first call has one job: earn trust and create a clear next step.',
+  'operating-rhythm': {
+    opening: 'Pipeline without a rhythm becomes random effort.',
     coreMessage:
-      'Trust, motivations, priorities, market frame, Cursor and role, then agreement on next step.',
+      'Operating rhythm — Daily Discipline, Weekly planning (8 customer meetings & preparation), Monthly Reviews, Quarterly Strategy.',
     supportingExample:
-      'I deliberately avoid overselling early. Curiosity beats pressure with A-players.',
+      'Click Daily Discipline to reveal the 4/2/2, 2/4/2, 2/2/4 month rotation — how time shifts across prospecting, qualifying, and territory building.',
     executiveImplication:
-      'If we leave without a next step, we ran a conversation — not a process.',
-    likelyQuestion: 'How long should the first call be?',
-    transition: 'When it is time to sell, this is the narrative order.',
+      'Leaders who protect the calendar protect the forecast. Rhythm beats heroics.',
+    likelyQuestion: 'How do you keep this discipline when quarter-end pressure hits?',
+    transition: 'Rhythm without inspection is hope. Inspect what you expect.',
   },
-  'selling-opportunity': {
-    opening: 'I sell the opportunity in a specific sequence.',
+  'inspection': {
+    opening: 'Pipeline health is not a feeling — no feelings just facts + MEDDPIC.',
     coreMessage:
-      'Market, Cursor, AI coding, Southern Europe, timing, role, then why this candidate.',
+      'Eight inspection questions: Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition.',
     supportingExample:
-      '[VALIDATE WITH CURSOR] — I will align the market and product points with your latest narrative.',
+      'Paper process kills most this-quarter deals. Champion enthusiasm without power is not multi-threading.',
     executiveImplication:
-      'Candidates should feel chosen for leverage, not processed through a requisition.',
-    likelyQuestion: 'How do you talk about early-stage risk without overselling certainty?',
-    transition: 'And when objections land, I treat them as diagnostics.',
+      'Leaders inspect early. Weak signals surfaced weekly beat surprises at quarter-end.',
+    likelyQuestion: 'What would make you intervene in week two, not week ten?',
+    transition: 'The weekly mechanism for forecast discipline is the 1:1.',
   },
-  'candidate-objections': {
-    opening: 'These four objections are the ones I expect most often.',
+  'one-on-one-opener': {
+    opening: 'The weekly mechanism for forecast discipline is the 1:1.',
     coreMessage:
-      'Early stage, strong current role, immature territory, and perceived risk — each needs a precise response.',
+      'Efficient, purposeful conversations — coaching, decisions, and accountability in forty-five minutes.',
     supportingExample:
-      'On risk, I do not argue. I isolate whether the concern is company, product, scope, pay or career path.',
+      'Not a status readout. Every minute should move the person or the pipeline forward.',
     executiveImplication:
-      'Objection handling is qualification. Some noes are healthy.',
-    likelyQuestion: 'Which objection do you find hardest to overcome?',
-    transition: 'Once people join, retention becomes the next leadership test.',
+      'This is where leadership shows up consistently, not just in quarterly reviews.',
+    likelyQuestion: 'How often do you run 1:1s and how long are they?',
+    transition: 'That discipline sets the bar. Here is what I need from leadership.',
   },
-  'retention-philosophy': {
-    opening: 'Retention is not a perk strategy. It is an operating outcome.',
+  'asks-opener': {
+    opening: 'I am clear on what I need from Cursor leadership to execute in Southern Europe.',
     coreMessage:
-      'People stay when expectations are clear, coaching is real, growth is visible and accountability is fair.',
+      'Strategic clarity, executive access, and speed of decision-making — the multipliers of regional execution.',
     supportingExample:
-      '[ADD MY EXAMPLE] — a retention save driven by clarity and coaching rather than compensation alone.',
+      'Without those three, even strong local leadership becomes slow and fragmented.',
     executiveImplication:
-      'If top performers leave, I look first at leadership systems, not the market.',
-    likelyQuestion: 'How do you balance high standards with psychological safety?',
-    transition: 'That philosophy becomes a coaching framework.',
-  },
-  'coaching-framework': {
-    opening: 'I coach through a six-step loop.',
-    coreMessage: 'Diagnose, prioritize, practice, apply, measure, reinforce.',
-    supportingExample:
-      'The key is one priority at a time. Multi-topic coaching creates activity without change.',
-    executiveImplication:
-      'This gives managers a shared language and makes improvement inspectable.',
-    likelyQuestion: 'How do you know when coaching is not working?',
-    transition: 'Diagnosis has to be sharper than “they need to prospect more.”',
-  },
-  'performance-diagnosis': {
-    opening: 'Before I coach, I diagnose the constraint.',
-    coreMessage:
-      'Skill, will, strategy, execution, territory conditions and management support.',
-    supportingExample:
-      '[ADD MY EXAMPLE] — a case where the issue looked like will but was territory design.',
-    executiveImplication:
-      'Wrong diagnosis wastes quarters. Right diagnosis creates fair accountability.',
-    likelyQuestion: 'How do you handle a will issue versus a skill issue?',
-    transition: 'Let me show the coaching arc with a case study shell.',
-  },
-  'coaching-case-study': {
-    opening: 'This case study is intentionally left as placeholders for my real example.',
-    coreMessage:
-      'I will walk situation, diagnosis, plan, actions, business result and behavioural change.',
-    supportingExample:
-      '[ADD PERSONAL EXAMPLE] / [ADD MEASURED RESULT] — replace before the live session.',
-    executiveImplication:
-      'You should hear evidence of coaching that moved both behaviour and revenue.',
-    likelyQuestion: 'How long did the turnaround take?',
-    transition: 'Improvement only matters if we measure the right indicators.',
-  },
-  'measuring-improvement': {
-    opening: 'I separate leading indicators from lagging outcomes.',
-    coreMessage:
-      'Coach pipeline creation, engagement quality and consistency. Judge conversion, cycle, win rate and deal size.',
-    supportingExample:
-      'If leading indicators move and lagging do not, the strategy or territory hypothesis is wrong.',
-    executiveImplication:
-      'This prevents false comfort from activity metrics.',
-    likelyQuestion: 'Which leading indicator do you trust most?',
-    transition: 'Measurement sits inside a development rhythm.',
-  },
-  'development-rhythm': {
-    opening: 'Development needs a calendar, not good intentions.',
-    coreMessage:
-      'Weekly 1:1s, deal coaching, call review, monthly development reviews and quarterly career conversations.',
-    supportingExample:
-      '[ADD MY EXAMPLE] — how this rhythm changed consistency across a team.',
-    executiveImplication:
-      'Career conversations quarterly prevent surprise attrition.',
-    likelyQuestion: 'How do you keep 1:1s from becoming status updates?',
-    transition: 'Now to revenue leadership and predictability.',
-  },
-  'revenue-operating-system': {
-    opening: 'Predictable revenue is an operating system outcome.',
-    coreMessage:
-      'Territory strategy, pipeline generation, opportunity quality and forecast discipline.',
-    supportingExample:
-      'End-of-quarter pressure is a symptom that the weekly system was weak.',
-    executiveImplication:
-      'I would rather be early and evidence-based than late and optimistic.',
-    likelyQuestion: 'Where do most regional teams break first?',
-    transition: 'Here is the Southern Europe market thesis shell.',
-  },
-  'growth-thesis': {
-    opening: 'I will not invent market data in this room.',
-    coreMessage:
-      'France, Spain, Italy, Portugal and additional markets each get a card with assumptions to validate.',
-    supportingExample:
-      'France starts with Pierre Fabre as a named strategic account — Southern Europe footprint, digital & AI acceleration, engineering density worth winning as a reference.',
-    executiveImplication:
-      'One regional strategy, local execution plans, explicit risks and next actions.',
-    likelyQuestion: 'Which market would you prioritize in the first two quarters?',
-    transition: 'Here is who Pierre Fabre is — and what they sell.',
-  },
-  'pierre-fabre': {
-    opening: 'Pierre Fabre is the France strategic account I would open with.',
-    coreMessage:
-      'A French healthcare group — second worldwide in dermo-cosmetics, with oncology and medical dermatology alongside pharmacy brands.',
-    supportingExample:
-      'Avène, Ducray, Klorane, René Furterer, A-Derma, Même, Elgydium, Dexeryl — plus medical care in oncology and dermatology.',
-    executiveImplication:
-      'Large engineering and digital footprint across Southern Europe — a reference logo that opens doors in healthcare and consumer health.',
-    likelyQuestion: 'Why start with Pierre Fabre rather than a pure digital native?',
-    transition: 'Strategy only works if the culture creates pipeline every week.',
-  },
-  'pipeline-culture': {
-    opening: 'Pipeline culture is the difference between a region that grows and one that surges.',
-    coreMessage:
-      'Weekly habit, account ownership, quality coaching, early executive engagement, one GTM system.',
-    supportingExample:
-      '[ADD MY EXAMPLE] — a team that stopped quarterly rescue mode by installing weekly creation.',
-    executiveImplication:
-      'Managers must inspect quality, not celebrate raw volume.',
-    likelyQuestion: 'How do you involve partners and marketing without diluting ownership?',
-    transition: 'This is the weekly cadence I would run.',
-  },
-  'weekly-pipeline-cadence': {
-    opening: 'A simple week beats a complicated playbook that no one follows.',
-    coreMessage:
-      'Monday focus, Tuesday prospecting, Wednesday partners and marketing, Thursday executives, Friday review.',
-    supportingExample:
-      'Friday is for learning and commitments, not theatre. Next week starts already pointed.',
-    executiveImplication:
-      'Cadence makes pipeline generation coachable and visible.',
-    likelyQuestion: 'How rigid is this when sellers travel or run large deals?',
-    transition: 'Then we inspect health on a dashboard.',
-  },
-  'pipeline-dashboard': {
-    opening: 'These numbers are illustrative on purpose.',
-    coreMessage:
-      'Coverage, creation, stage mix, age, next steps, multi-threading, conversion, slippage, accuracy, concentration.',
-    supportingExample:
-      'I would replace every figure with Southern Europe assumptions once I have the data.',
-    executiveImplication:
-      'The dashboard exists to force decisions, not to decorate a review.',
-    likelyQuestion: 'What threshold would make you intervene immediately?',
-    transition: 'Opportunity quality sits underneath those metrics.',
-  },
-  'opportunity-qualification': {
-    opening: 'I use a simplified MEDDPICC as a live evidence checklist.',
-    coreMessage:
-      'For each element: status, evidence, risk and next action.',
-    supportingExample:
-      'If champion and economic buyer are unclear, the deal is not a forecast debate — it is a qualification gap.',
-    executiveImplication:
-      'This language should be shared across the region so reviews stay crisp.',
-    likelyQuestion: 'How complete must MEDDPICC be before Best Case?',
-    transition: 'Deal inspection questions keep managers honest.',
-  },
-  'deal-inspection': {
-    opening: 'These are the questions I want every manager able to answer.',
-    coreMessage:
-      'Why act, why now, outcome owner, blockers, evidence, next commitment, slip risks, multi-threading, unknowns.',
-    supportingExample:
-      'If the next step is internal, I push for a customer commitment.',
-    executiveImplication:
-      'Inspection quality is a leading indicator of forecast quality.',
-    likelyQuestion: 'How do you run this without turning reviews into interrogations?',
-    transition: 'Forecast categories need the same clarity.',
-  },
-  'forecast-categories': {
-    opening: 'I define forecast categories as evidence grades.',
-    coreMessage: 'Commit, Best Case, Upside, Pipeline — each with a clear standard.',
-    supportingExample:
-      'Commit requires customer evidence, validated process and a credible close plan.',
-    executiveImplication:
-      'Shared definitions stop optimistic translation between managers.',
-    likelyQuestion: 'Who owns the final call on Commit?',
-    transition: 'That sits inside a broader forecast philosophy.',
-  },
-  'forecast-philosophy': {
-    opening: 'My forecast standard is simple: no surprises.',
-    coreMessage:
-      'Evidence over optimism, customer commitments over activity, early risk, clear rules, shared accountability.',
-    supportingExample:
-      '[ADD MY RESULT] — a period where forecast accuracy improved because risk was surfaced weekly.',
-    executiveImplication:
-      'I would rather bring bad news early than protect a narrative.',
-    likelyQuestion: 'How do you handle sandbagging versus over-forecasting?',
-    transition: 'The weekly mechanism for this is the 1:1.',
-  },
-  'effective-one-on-ones': {
-    opening: 'A forty-five-minute 1:1 should change the week.',
-    coreMessage:
-      'Person, commitments, deal coaching, development, decisions — not a status readout.',
-    supportingExample:
-      'If a 1:1 produces no decision and no coaching, it failed.',
-    executiveImplication:
-      'This is where accountability and care coexist.',
-    likelyQuestion: 'How do you handle a seller who comes unprepared?',
-    transition: 'Zooming out, this is the Regional Director dashboard I would run.',
-  },
-  'regional-dashboard': {
-    opening: 'I manage the region from one decision-oriented view.',
-    coreMessage:
-      'Attainment, coverage, forecast, hiring, retention risk, strategic deals, market risks and decisions needed.',
-    supportingExample:
-      'Top strategic deals starts with Pierre Fabre — every red or amber item should map to an owner and a date.',
-    executiveImplication:
-      'This is also how I would communicate upward with Cursor leadership.',
-    likelyQuestion: 'Which metric would you put at the top in the first quarter?',
-    transition: 'Which brings us to the partnership I need with leadership.',
-  },
-  'leadership-asks': {
-    opening: 'I am clear on the three things that make a Regional Director effective.',
-    coreMessage: 'Strategic clarity, executive access and speed of decision-making.',
-    supportingExample:
-      'Without those, even strong local leadership becomes slow and fragmented.',
-    executiveImplication:
-      'I am not asking for comfort. I am asking for the conditions to execute.',
+      'I am not asking for comfort. I am asking for the conditions to win.',
     likelyQuestion: 'What decision latency is acceptable for hiring and pricing?',
-    transition: 'And here is the mutual commitment I offer in return.',
+    transition: 'To execute at scale, we need to invest — in people, market, and leadership.',
   },
-  'mutual-commitment': {
-    opening: 'Partnership has to be two-sided.',
+  'invest-opener': {
+    opening: 'Ambition without investment is just a slide deck.',
     coreMessage:
-      'I need clarity, sponsorship, speed, feedback and cross-functional support. You should expect transparency, standards and ownership.',
+      'Southern Europe needs capital behind people, market presence, and leadership development.',
     supportingExample:
-      'Early escalation is a feature. Silence is the risk.',
+      'The best regional plans fail when they are under-resourced on talent density and executive visibility.',
     executiveImplication:
-      'This is how we stay one team while I own the region.',
-    likelyQuestion: 'How do you escalate without creating noise?',
-    transition: 'Now the first ninety days.',
+      'I am asking for investment that compounds — not one-off spend.',
+    likelyQuestion: 'How do you prioritize where capital goes first?',
+    transition: 'It starts with the team structure.',
   },
-  'first-30-days': {
-    opening: 'Days one to thirty are for listening and validation.',
+  'invest-people': {
+    opening: 'Here is the team I would build.',
     coreMessage:
-      'Leaders, assumptions, talent, pipeline, customers, priorities and an initial talent map.',
+      'Eddy Amarouche as Regional Director with three account executives in Italy and three across Spain and Portugal.',
     supportingExample:
-      'I establish credibility by being precise about what I know and what I still need to prove.',
+      'Balanced coverage across the two largest Southern Europe markets — not a hub-and-spoke from one country.',
     executiveImplication:
-      'I will not scale a plan on untested assumptions.',
-    likelyQuestion: 'What would you need from us in week one?',
-    transition: 'Days thirty-one to sixty convert insight into an operating plan.',
+      'Six AEs plus a director is the minimum viable regional engine for enterprise motion.',
+    likelyQuestion: 'Why three per country and not two?',
+    transition: 'People is one line. Market presence is another.',
   },
-  'days-31-60': {
-    opening: 'The second month is about installing the system.',
+  'marketing-c-level': {
+    opening: 'Executive visibility opens doors that outbound alone cannot.',
+    coreMessage: 'Five hundred thousand dollars in marketing and C-level events across Southern Europe.',
+    supportingExample:
+      'C-level dinners, executive roundtables, and flagship events that position Cursor with decision-makers.',
+    executiveImplication:
+      'This is brand and pipeline creation at the top of the market — not field marketing theatre.',
+    likelyQuestion: 'How would you measure ROI on event spend?',
+    transition: 'And the final investment is in leadership performance under pressure.',
+  },
+  'invest-in-me': {
+    opening: 'Invest in me.',
     coreMessage:
-      'Territory strategy, hiring launch, cadence, account plans, inspection and forecast quality.',
+      'Training for Pressure with Greg Poss — mental resilience and improved performance under pressure, twenty thousand dollars over twenty-one days.',
     supportingExample:
-      'This is where cross-functional dependencies get named and owned.',
+      'Pressure does not create a response. It exposes the response that has already been trained.',
     executiveImplication:
-      'By day sixty, the region should feel operationally clearer even if results are still early.',
-    likelyQuestion: 'Which hiring roles come first?',
-    transition: 'Days sixty-one to ninety are about momentum.',
-  },
-  'days-61-90': {
-    opening: 'By day ninety I want a repeatable regional system, not a set of initiatives.',
-    coreMessage:
-      'Pipeline acceleration, talent gaps closing, executive relationships, playbook, forecast and a two-quarter plan.',
-    supportingExample:
-      '[ADD MY EXAMPLE] — what “momentum” would look like in measurable terms once assumptions are validated.',
-    executiveImplication:
-      'The output is a growth engine design, not a slide update.',
-    likelyQuestion: 'What would you present back to leadership at day ninety?',
-    transition: 'Here are the risks I would manage explicitly.',
-  },
-  'key-risks': {
-    opening: 'I prefer named risks with operating mitigations.',
-    coreMessage:
-      'Hiring, market maturity, pipeline concentration and execution inconsistency.',
-    supportingExample:
-      'Each mitigation is a system already covered earlier — talent map, ICP focus, coverage diversity, weekly cadence.',
-    executiveImplication:
-      'Risk management is part of the operating rhythm, not a separate document.',
-    likelyQuestion: 'Which risk worries you most for Southern Europe?',
-    transition: 'Let me close on the leadership message.',
-  },
-  closing: {
-    opening: 'If I leave you with one line, it is this.',
-    coreMessage: 'Build the team. Create the system. Scale the region.',
-    supportingExample:
-      'Talent density, coaching, operating discipline and local leadership are the compounding loop.',
-    executiveImplication:
-      'That is how I would show up as Regional Director for Southern Europe.',
-    likelyQuestion: 'What would you do differently from a standard regional hire?',
-    transition: 'I would like your challenge and feedback.',
-  },
-  'discussion-feedback': {
-    opening: 'I want your hardest questions.',
-    coreMessage:
-      'What would you challenge, where should impact come first, and what does year-one success look like?',
-    supportingExample:
-      'I am listening for constraints I cannot see from the outside.',
-    executiveImplication:
-      'Your answers help me refine the plan before day one.',
-    likelyQuestion: 'Open discussion.',
-    transition: 'Thank you — I am ready for the challenge.',
+      'A Regional Director who performs under pressure protects the forecast and the team.',
+    likelyQuestion: 'Why Greg Poss specifically?',
+    transition: 'Thank you — I am ready for your questions and feedback.',
   },
 }

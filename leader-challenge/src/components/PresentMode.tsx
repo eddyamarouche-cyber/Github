@@ -3,7 +3,6 @@ import { SlideRenderer } from './SlideRenderer'
 
 interface PresentModeProps {
   slide: Slide
-  hasPlaceholders: boolean
   transitionDirection: 'next' | 'prev'
   cursorHidden: boolean
   onExit: () => void
@@ -11,7 +10,6 @@ interface PresentModeProps {
 
 export function PresentMode({
   slide,
-  hasPlaceholders,
   transitionDirection,
   cursorHidden,
   onExit,
@@ -34,7 +32,7 @@ export function PresentMode({
               : 'present-slide-enter-prev h-full w-full'
           }
         >
-          <SlideRenderer slide={slide} hasPlaceholders={hasPlaceholders} />
+          <SlideRenderer slide={slide} />
         </div>
       </div>
 

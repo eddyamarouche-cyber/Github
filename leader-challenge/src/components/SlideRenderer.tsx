@@ -3,14 +3,13 @@ import { ExternalLink, HeartHandshake, TrendingUp, Users } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import {
   registerSlideInnerNav,
-  requestDeckNext,
-  requestDeckPrev,
 } from '../hooks/slideInnerNav'
 import { profile } from '../data/profile'
 import { sections } from '../data/slides'
 import type {
   AgendaContent,
   AsksContent,
+  ChallengeBriefContent,
   ClosingContent,
   CoverContent,
   CultureContent,
@@ -21,10 +20,12 @@ import type {
   FeedbackContent,
   FrameworkContent,
   FunnelContent,
+  InvestFigureContent,
   MeddpiccContent,
   MetricsContent,
   ObjectionsContent,
   OneOnOneContent,
+  OrgChartContent,
   OutreachContent,
   PhilosophyContent,
   PitchContent,
@@ -45,6 +46,7 @@ import type {
   TopicsSummaryContent,
   TwoColumnContent,
   VisualHeroContent,
+  VisualHeroTable,
   WeekdayContent,
   BrandPortfolioContent,
   Candidate,
@@ -57,7 +59,6 @@ import {
   GlassCard,
   KpiWidget,
   MotionPage,
-  PlaceholderBadge,
   ScreenShell,
   Stagger,
   StaggerItem,
@@ -76,8 +77,10 @@ type LinkedInTargetsContent = {
     linkedinUrl: string
     signal: string
     photo?: string
+    filters?: string[]
   }[]
   regionLabel?: string
+  regionFlag?: string
 }
 type CaseStudyContent = { caseStudy: CoachingCase }
 type MarketsSlideContent = { markets: MarketCard[] }
@@ -88,20 +91,13 @@ function sectionLabel(sectionId: string): string {
 
 export function SlideRenderer({
   slide,
-  hasPlaceholders,
 }: {
   slide: Slide
-  hasPlaceholders: boolean
 }) {
   return (
     <div className="app-surface relative h-full w-full overflow-hidden text-text">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[length:48px_48px] opacity-40" />
       <div className="relative h-full">
-        {hasPlaceholders ? (
-          <div className="absolute top-4 right-5 z-10 no-print">
-            <PlaceholderBadge />
-          </div>
-        ) : null}
         <MotionPage id={slide.id}>{renderSlide(slide)}</MotionPage>
       </div>
     </div>
@@ -144,6 +140,8 @@ function renderSlide(slide: Slide) {
           content={slide.content as TopicsSummaryContent}
         />
       )
+    case 'challenge-brief':
+      return <ChallengeBriefScreen content={slide.content as ChallengeBriefContent} />
     case 'pillars':
       return (
         <ScreenShell
@@ -258,6 +256,16 @@ function renderSlide(slide: Slide) {
       )
     case 'drivers': {
       const driversContent = slide.content as DriversContent
+      if (driversContent.layout === 'columns') {
+        return (
+          <DriversColumnsScreen
+            title={slide.title}
+            headline={slide.headline}
+            takeaway={slide.takeaway}
+            content={driversContent}
+          />
+        )
+      }
       const immersive = driversContent.drivers.some((driver) => Boolean(driver.image))
       if (immersive) {
         return (
@@ -343,7 +351,12 @@ function renderSlide(slide: Slide) {
       )
     case 'meddpicc':
       return (
-        <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
+        <ScreenShell
+          eyebrow={eyebrow}
+          title={slide.title}
+          headline={slide.headline}
+          takeaway={slide.takeaway}
+        >
           <MeddpiccScreen content={slide.content as MeddpiccContent} />
         </ScreenShell>
       )
@@ -380,6 +393,18 @@ function renderSlide(slide: Slide) {
       return (
         <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
           <AsksScreen content={slide.content as AsksContent} />
+        </ScreenShell>
+      )
+    case 'org-chart':
+      return (
+        <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
+          <OrgChartScreen content={slide.content as OrgChartContent} />
+        </ScreenShell>
+      )
+    case 'invest-figure':
+      return (
+        <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
+          <InvestFigureScreen content={slide.content as InvestFigureContent} />
         </ScreenShell>
       )
     case 'two-column':
@@ -530,6 +555,106 @@ function AgendaScreen({ content }: { content: AgendaContent }) {
         detail: 'Working session block',
       }))}
     />
+  )
+}
+
+function ChallengeBriefScreen({ content }: { content: ChallengeBriefContent }) {
+  return (
+    <div className="relative flex h-full w-full flex-col overflow-hidden px-6 py-5 lg:px-10 lg:py-7">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_10%_0%,rgba(255,107,44,0.14),transparent_42%),radial-gradient(ellipse_at_90%_100%,rgba(255,255,255,0.04),transparent_40%)]" />
+
+      <div className="relative z-10 mb-4 flex shrink-0 items-center gap-3">
+        <img
+          src="/images/cursor-logo.svg"
+          alt=""
+          className="h-8 w-8 brightness-0 invert lg:h-9 lg:w-9"
+        />
+        <h1 className="font-display text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+          {content.brandTitle}
+        </h1>
+      </div>
+
+      <div className="relative z-10 grid min-h-0 flex-1 gap-5 lg:grid-cols-[0.85fr_1.35fr] lg:gap-8">
+        <motion.aside
+          initial={{ opacity: 0, x: -16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col justify-between rounded-[24px] border border-white/18 bg-white/[0.03] p-5 lg:p-6"
+        >
+          <ul className="space-y-4">
+            {content.planPoints.map((point) => (
+              <li
+                key={point}
+                className="font-display text-base leading-snug text-white/85 italic lg:text-lg"
+              >
+                {point}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-6">
+            <p className="font-display text-sm leading-snug text-white/70 italic lg:text-base">
+              Cursor knowledge needed to prepare for role play can be found here
+            </p>
+            <a
+              href={content.prepUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center gap-2 font-display text-base font-semibold text-accent underline decoration-accent/60 underline-offset-4 transition hover:text-accent-soft lg:text-lg"
+            >
+              {content.prepLabel}
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
+        </motion.aside>
+
+        <div className="scrollbar-thin min-h-0 space-y-4 overflow-auto pr-1 lg:space-y-5">
+          {content.topics.map((topic, index) => (
+            <motion.section
+              key={topic.label}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.08 + index * 0.06,
+                duration: 0.4,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <h2 className="font-display text-lg font-semibold tracking-tight text-accent lg:text-xl">
+                {topic.label}
+              </h2>
+              <ul className="mt-1.5 space-y-1">
+                {topic.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-2 text-sm leading-snug text-white/75 italic lg:text-[15px]"
+                  >
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/45" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.section>
+          ))}
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.4 }}
+            className="font-display pt-1 text-lg font-semibold tracking-[0.08em] text-accent uppercase lg:text-xl"
+          >
+            {content.closeLabel}
+          </motion.p>
+        </div>
+      </div>
+
+      <div className="relative z-10 mt-3 flex shrink-0 justify-end">
+        <img
+          src="/images/cursor-logo.svg"
+          alt=""
+          className="h-5 w-5 opacity-50 brightness-0 invert"
+        />
+      </div>
+    </div>
   )
 }
 
@@ -794,7 +919,7 @@ function ProfileScreen({
     if (!autoPlay || expanded) return
     const timer = window.setInterval(() => {
       setActive((value) => {
-        // Stop on the last topic (Smart) — next navigation advances the deck.
+        // Stop on the last topic — next navigation advances the deck.
         if (value >= lastIndex) return value
         return value + 1
       })
@@ -866,7 +991,7 @@ function ProfileScreen({
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,107,44,0.12),transparent_50%)]" />
 
-      <div className="relative z-10 mb-4 flex flex-wrap items-end justify-between gap-3">
+      <div className="relative z-10 mb-4">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
@@ -883,14 +1008,18 @@ function ProfileScreen({
             <p className="mt-1 max-w-2xl text-sm text-white/60">{headline}</p>
           ) : null}
         </div>
-        <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 text-[11px] text-white/55 backdrop-blur-md">
-          Click a card to enlarge · {active + 1}/{content.criteria.length}
-        </div>
       </div>
 
-      <div className="relative z-10 grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+      <div
+        className={`relative z-10 grid min-h-0 flex-1 gap-3 ${
+          content.criteria.length === 5
+            ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-6 xl:grid-cols-5'
+            : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
+        }`}
+      >
         {content.criteria.map((criterion, index) => {
           const selected = active === index
+          const fiveUp = content.criteria.length === 5
           return (
             <button
               key={criterion.title}
@@ -901,6 +1030,10 @@ function ProfileScreen({
                 setExpanded(true)
               }}
               className={`group relative flex h-full min-h-0 flex-col overflow-hidden rounded-[22px] border text-left transition ${
+                fiveUp ? 'md:col-span-2 xl:col-span-1' : ''
+              } ${fiveUp && index === 3 ? 'md:col-start-2 xl:col-start-auto' : ''} ${
+                fiveUp && index === 4 && !expanded ? 'sm:col-span-2 sm:max-w-md sm:justify-self-center xl:col-span-1 xl:max-w-none xl:justify-self-stretch' : ''
+              } ${
                 selected
                   ? 'border-accent/60 shadow-[0_20px_50px_rgba(255,107,44,0.28)]'
                   : 'border-white/10 hover:border-white/25'
@@ -939,7 +1072,7 @@ function ProfileScreen({
                   </span>
                 </div>
 
-                <div className="min-h-[5.5rem]">
+                <div className="flex min-h-[6.5rem] flex-col justify-end">
                   <h3 className="font-display text-lg leading-tight font-semibold text-white lg:text-xl">
                     {criterion.title}
                   </h3>
@@ -993,43 +1126,6 @@ function ProfileScreen({
                   <span className="text-[11px] font-semibold tracking-[0.14em] text-white/80 uppercase">
                     {String(active + 1).padStart(2, '0')} / {String(content.criteria.length).padStart(2, '0')}
                   </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (active <= 0) {
-                        setExpanded(false)
-                        requestDeckPrev()
-                        return
-                      }
-                      setActive((value) => value - 1)
-                    }}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
-                  >
-                    Prev
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (active >= lastIndex) {
-                        setExpanded(false)
-                        requestDeckNext()
-                        return
-                      }
-                      setActive((value) => value + 1)
-                    }}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
-                  >
-                    Next
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setExpanded(false)}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md hover:bg-white/10"
-                  >
-                    Close
-                  </button>
                 </div>
               </div>
 
@@ -1144,14 +1240,31 @@ function LinkedInTargetsScreen({
       <div className="relative z-10 mb-4 flex flex-wrap items-end justify-between gap-3">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#0A66C2]" />
+            {content.regionFlag ? (
+              <img
+                src={content.regionFlag}
+                alt=""
+                aria-hidden
+                className="h-3.5 w-5 rounded-[2px] object-cover shadow-sm ring-1 ring-white/20"
+              />
+            ) : (
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#0A66C2]" />
+            )}
             <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
               {content.regionLabel ?? 'LinkedIn talent map'}
             </span>
           </div>
           {title ? (
-            <h1 className="font-display mt-2 text-2xl font-semibold text-white lg:text-3xl">
-              {title}
+            <h1 className="font-display mt-2 flex items-center gap-2.5 text-2xl font-semibold text-white lg:text-3xl">
+              {content.regionFlag ? (
+                <img
+                  src={content.regionFlag}
+                  alt=""
+                  aria-hidden
+                  className="h-5 w-7 rounded-[3px] object-cover shadow-md ring-1 ring-white/25 lg:h-6 lg:w-9"
+                />
+              ) : null}
+              <span>{title}</span>
             </h1>
           ) : null}
           {headline ? (
@@ -1225,6 +1338,18 @@ function LinkedInTargetsScreen({
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/70 lg:text-base">
                 {current.signal}
               </p>
+              {current.filters?.length ? (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {current.filters.map((filter) => (
+                    <span
+                      key={filter}
+                      className="inline-flex items-center rounded-full border border-accent/35 bg-accent/15 px-3 py-1.5 font-display text-xs font-bold tracking-wide text-white shadow-[0_0_18px_rgba(255,107,44,0.18)] lg:text-sm"
+                    >
+                      {filter}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
               <a
                 href={current.linkedinUrl}
                 target="_blank"
@@ -1370,7 +1495,7 @@ function SubdivisionsScreen({
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
             <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
-              How?
+              {content.eyebrow ?? 'How?'}
             </span>
           </div>
           <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
@@ -1379,9 +1504,6 @@ function SubdivisionsScreen({
           {headline && !content.statements?.length ? (
             <p className="mt-2 max-w-2xl text-sm text-white/55 lg:text-base">{headline}</p>
           ) : null}
-        </div>
-        <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 text-[11px] text-white/55 backdrop-blur-md">
-          Click a topic to open · {content.items.length} pages
         </div>
       </div>
 
@@ -1430,6 +1552,11 @@ function SubdivisionsScreen({
                   </span>
                 ) : null}
               </div>
+              {item.detail && item.detailSize === 'large' ? (
+                <p className="font-display mt-2 text-lg leading-snug font-semibold text-balance whitespace-pre-line text-white/90 sm:text-xl lg:text-3xl">
+                  {item.detail}
+                </p>
+              ) : null}
             </div>
             <span className="shrink-0 text-[10px] font-semibold tracking-[0.14em] text-white/30 uppercase opacity-0 transition group-hover:opacity-100">
               Open
@@ -1474,43 +1601,6 @@ function SubdivisionsScreen({
                     {String(content.items.length).padStart(2, '0')}
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (active <= 0) {
-                        setExpanded(false)
-                        requestDeckPrev()
-                        return
-                      }
-                      setActive((value) => value - 1)
-                    }}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
-                  >
-                    Prev
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (active >= lastIndex) {
-                        setExpanded(false)
-                        requestDeckNext()
-                        return
-                      }
-                      setActive((value) => value + 1)
-                    }}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur-md hover:bg-white/10"
-                  >
-                    Next
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setExpanded(false)}
-                    className="rounded-full border border-white/15 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md hover:bg-white/10"
-                  >
-                    Close
-                  </button>
-                </div>
               </div>
 
               <motion.div
@@ -1529,9 +1619,27 @@ function SubdivisionsScreen({
                   {current.title}
                 </h2>
                 {current.detail ? (
-                  <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75 lg:text-lg">
+                  <p
+                    className={
+                      current.detailSize === 'large'
+                        ? 'mt-4 max-w-5xl text-2xl leading-snug font-semibold text-balance whitespace-pre-line text-white sm:text-3xl lg:text-5xl xl:text-6xl'
+                        : 'mt-4 max-w-2xl text-base leading-relaxed whitespace-pre-line text-white/75 lg:text-lg'
+                    }
+                  >
                     {current.detail}
                   </p>
+                ) : null}
+                {current.linkUrl ? (
+                  <a
+                    href={current.linkUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(event) => event.stopPropagation()}
+                    className="mt-5 inline-flex items-center gap-2 font-display text-base font-semibold text-accent underline decoration-accent/60 underline-offset-4 transition hover:text-accent-soft lg:text-lg"
+                  >
+                    {current.linkLabel ?? 'Open link'}
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
                 ) : null}
               </motion.div>
             </div>
@@ -1664,14 +1772,17 @@ function ObjectionsScreen({ content }: { content: ObjectionsContent }) {
 }
 
 function RevealScreen({ content }: { content: RevealContent }) {
+  const answerOnly = Boolean(content.answerOnly)
   const [showAnswer, setShowAnswer] = useState(false)
-  const delay = content.answerDelayMs ?? 2200
+  const delay = content.answerDelayMs ?? (answerOnly ? 1200 : 2200)
 
   useEffect(() => {
     setShowAnswer(false)
     const timer = window.setTimeout(() => setShowAnswer(true), delay)
     return () => window.clearTimeout(timer)
-  }, [delay, content.question, content.answer])
+  }, [delay, content.question, content.questionSubtitle, content.answer, content.answerSubtitle, content.answerFooter, answerOnly])
+
+  const showQuestion = !answerOnly && Boolean(content.question)
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -1692,35 +1803,114 @@ function RevealScreen({ content }: { content: RevealContent }) {
       />
 
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-8 py-10 text-center lg:px-16">
-        <motion.p
-          initial={{ opacity: 0, y: 28 }}
-          animate={{
-            opacity: 1,
-            y: showAnswer ? -36 : 0,
-            scale: showAnswer ? 0.92 : 1,
-          }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display max-w-5xl text-2xl leading-snug font-semibold text-balance text-white/90 sm:text-3xl lg:text-4xl"
-        >
-          {content.question}
-        </motion.p>
+        {showQuestion ? (
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{
+              opacity: 1,
+              y: showAnswer ? -36 : 0,
+              scale: showAnswer ? 0.92 : 1,
+            }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-5xl space-y-4"
+          >
+            <p className="font-display text-2xl leading-snug font-semibold text-balance text-white/90 sm:text-3xl lg:text-4xl">
+              {content.question}
+            </p>
+            {content.questionSubtitle ? (
+              <p className="font-display mx-auto max-w-4xl text-2xl leading-snug font-semibold text-balance text-white/90 sm:text-3xl lg:text-4xl">
+                {content.questionSubtitle}
+              </p>
+            ) : null}
+          </motion.div>
+        ) : null}
 
         <AnimatePresence>
           {showAnswer ? (
-            <motion.h2
+            <motion.div
               key={content.answer}
               initial={{ opacity: 0, scale: 0.72, y: 40, filter: 'blur(10px)' }}
               animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display mt-2 text-7xl leading-none font-bold tracking-tight text-white sm:text-8xl lg:text-[10rem]"
+              className={answerOnly ? 'flex flex-col items-center' : 'mt-2 flex flex-col items-center'}
             >
-              {content.answer}
-            </motion.h2>
+              <h2 className="font-display text-7xl leading-none font-bold tracking-tight text-white sm:text-8xl lg:text-[10rem]">
+                {content.answer}
+              </h2>
+              {content.answerSubtitle ? (
+                <p className="mt-5 max-w-5xl text-2xl leading-snug font-semibold tracking-tight text-balance text-white/90 sm:text-3xl lg:mt-6 lg:text-4xl xl:text-5xl">
+                  {content.answerSubtitle}
+                </p>
+              ) : null}
+              {content.answerFooter ? (
+                <p className="mt-6 max-w-5xl text-base leading-relaxed font-semibold tracking-wide text-accent sm:text-lg lg:mt-8 lg:text-xl">
+                  {content.answerFooter}
+                </p>
+              ) : null}
+            </motion.div>
           ) : null}
         </AnimatePresence>
       </div>
     </div>
+  )
+}
+
+function HeroDataTable({ table }: { table: VisualHeroTable }) {
+  const statusClass = {
+    good: 'font-semibold text-emerald-400',
+    watch: 'font-semibold text-amber-300',
+    risk: 'font-semibold text-rose-400',
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full overflow-hidden rounded-2xl border border-white/15 bg-black/55 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+      onClick={(event) => event.stopPropagation()}
+    >
+      <div className="border-b border-white/10 px-4 py-2.5 lg:px-5 lg:py-3">
+        <p className="font-display text-sm font-semibold text-white lg:text-base">{table.title}</p>
+      </div>
+      <div className="scrollbar-thin overflow-x-auto">
+        <table className="w-full min-w-[920px] text-left text-[11px] lg:text-sm">
+          <thead>
+            <tr className="border-b border-white/10 bg-white/[0.04]">
+              {table.columns.map((column) => (
+                <th
+                  key={column}
+                  className="px-3 py-2.5 font-semibold tracking-wide whitespace-nowrap text-white/65 uppercase lg:px-4 lg:py-3"
+                >
+                  {column}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {table.rows.map((row, rowIndex) => (
+              <tr key={rowIndex} className="border-b border-white/8 last:border-0">
+                {row.cells.map((cell, cellIndex) => (
+                  <td
+                    key={`${rowIndex}-${cellIndex}`}
+                    className={`px-3 py-2.5 whitespace-nowrap lg:px-4 lg:py-3 ${
+                      row.highlight?.[cellIndex]
+                        ? statusClass[row.highlight[cellIndex]!]
+                        : cellIndex === 0
+                          ? 'font-medium text-white'
+                          : 'text-white/85'
+                    }`}
+                  >
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </motion.div>
   )
 }
 
@@ -1733,11 +1923,55 @@ function VisualHeroScreen({
   const hasPoints = Boolean(content.points?.length)
   const revealOnClick = Boolean(content.revealPointsOnClick && hasPoints)
   const points = content.points ?? []
+  const pointImages = content.pointImages ?? []
+  const pointDetails = content.pointDetails ?? []
+  const pointLinkUrls = content.pointLinkUrls ?? []
+  const pointLinkLabels = content.pointLinkLabels ?? []
+  const chips = content.chips ?? []
+  const logos = content.logos ?? []
+  const hasChips = chips.length > 0
+  const hasLogos = logos.length > 0
+  const hasLink = Boolean(content.linkUrl)
+  const hasTable = Boolean(content.table)
+  const centeredPoints = content.pointsLayout === 'center' && hasPoints
+  const displayTitleWithPoints =
+    content.titleSize === 'display' && hasPoints && Boolean(content.title)
+  const headerTitle = content.titleLayout === 'header' && Boolean(content.title)
   const [visibleCount, setVisibleCount] = useState(revealOnClick ? 0 : points.length)
-  const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints))
-  const hasTitleBlock = Boolean(content.title && !hasPoints)
-  const hasSubtitle = Boolean(content.subtitle)
-  const hasCopy = hasHeader || hasPoints || hasTitleBlock || hasSubtitle
+  const hasHeader = Boolean(content.eyebrow || (content.title && hasPoints) || headerTitle)
+  const hasTitleBlock = Boolean(content.title && !hasPoints && !headerTitle)
+  const hasSubtitles = Boolean(content.subtitles?.length)
+  const hasSubtitle = Boolean(content.subtitle) || hasSubtitles
+  const hasBottomCopy =
+    (hasSubtitle && !displayTitleWithPoints && !headerTitle && !hasSubtitles) ||
+    hasChips ||
+    hasLogos
+  const hasCopy =
+    hasHeader || hasPoints || hasTitleBlock || hasSubtitle || hasChips || hasLogos || hasLink || hasTable
+  const showTable =
+    hasTable &&
+    Boolean(content.table) &&
+    (!hasPoints || !revealOnClick || visibleCount >= points.length)
+  const activeRevealIndex = visibleCount - 1
+  const activePointImage =
+    activeRevealIndex >= 0 ? pointImages[activeRevealIndex] : undefined
+  const activePointDetail =
+    activeRevealIndex >= 0 ? pointDetails[activeRevealIndex] : undefined
+  const focusRevealPanel = Boolean(
+    revealOnClick && visibleCount > 0 && (activePointImage || activePointDetail),
+  )
+  const visiblePointLinks = points
+    .map((point, index) => ({
+      point,
+      url: pointLinkUrls[index],
+      label: pointLinkLabels[index],
+      visible: index < visibleCount,
+    }))
+    .filter((item) => item.visible && item.url)
+  const hasPointLinks = visiblePointLinks.length > 0
+  const hasRevealedPointImage = Boolean(
+    revealOnClick && visibleCount > 0 && activePointImage,
+  )
 
   useEffect(() => {
     setVisibleCount(revealOnClick ? 0 : points.length)
@@ -1799,53 +2033,152 @@ function VisualHeroScreen({
       ) : null}
 
       {hasCopy ? (
-        <div className="relative flex h-full flex-col justify-between px-8 py-7 lg:px-12 lg:py-9">
+        <div
+          className={`relative flex h-full flex-col px-8 lg:px-12 ${
+            focusRevealPanel ? 'justify-start gap-1 py-2 lg:py-3' : 'justify-between py-7 lg:py-9'
+          } ${hasTable ? 'justify-start gap-2 lg:gap-3' : ''}`}
+        >
           {hasHeader ? (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="flex flex-wrap items-center justify-between gap-3"
+              className={
+                headerTitle
+                  ? 'shrink-0'
+                  : 'flex flex-wrap items-center justify-between gap-3'
+              }
             >
-              {content.eyebrow ? (
-                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-                  <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
-                    {content.eyebrow}
-                  </span>
+              {headerTitle ? (
+                <div>
+                  {content.eyebrow ? (
+                    <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+                      <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
+                        {content.eyebrow}
+                      </span>
+                    </div>
+                  ) : null}
+                  <h1
+                    className={`font-display font-semibold tracking-tight text-white ${
+                      focusRevealPanel
+                        ? 'mt-1 text-xl lg:text-2xl'
+                        : 'mt-3 text-3xl lg:text-4xl'
+                    }`}
+                  >
+                    {content.title}
+                  </h1>
+                  {hasSubtitle ? (
+                    <p className="mt-2 max-w-2xl text-sm text-white/55 lg:text-base">
+                      {content.subtitle}
+                    </p>
+                  ) : null}
                 </div>
               ) : (
-                <div />
-              )}
-              <div className="flex flex-wrap items-center gap-3">
-                {content.title && hasPoints ? (
-                  <p className="font-display text-lg font-semibold text-white/80 lg:text-xl">
-                    {content.title}
-                  </p>
-                ) : null}
-                {revealOnClick ? (
-                  <div className="rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[11px] text-white/55 backdrop-blur-md">
-                    {visibleCount >= points.length
-                      ? 'All revealed · Next to continue'
-                      : `Click to reveal · ${visibleCount}/${points.length}`}
+                <>
+                  {content.eyebrow ? (
+                    <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 backdrop-blur-md">
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+                      <span className="text-[11px] font-semibold tracking-[0.16em] text-white/80 uppercase">
+                        {content.eyebrow}
+                      </span>
+                    </div>
+                  ) : (
+                    <div />
+                  )}
+                  <div className="flex flex-wrap items-center gap-3">
+                    {content.title && hasPoints && !displayTitleWithPoints ? (
+                      <p className="font-display text-lg font-semibold text-white/80 lg:text-xl">
+                        {content.title}
+                      </p>
+                    ) : null}
                   </div>
-                ) : null}
-              </div>
+                </>
+              )}
             </motion.div>
           ) : (
             <div />
           )}
 
+          {displayTitleWithPoints ? (
+            <div
+              className={`shrink-0 ${centeredPoints ? 'mx-auto w-full max-w-5xl text-center' : ''}`}
+            >
+              <motion.h2
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="font-display text-5xl leading-[0.95] font-bold tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl"
+              >
+                {content.title}
+              </motion.h2>
+              {hasSubtitle ? (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className={`mt-3 text-base text-white/65 lg:text-lg ${
+                    centeredPoints ? 'mx-auto max-w-3xl' : 'max-w-3xl'
+                  }`}
+                >
+                  {content.subtitle}
+                </motion.p>
+              ) : null}
+            </div>
+          ) : null}
+
           {hasPoints ? (
-            <div className="flex min-h-0 flex-1 flex-col justify-center py-3">
+            <div
+              className={`flex flex-col ${
+                hasTable ? 'shrink-0 py-1' : focusRevealPanel ? 'min-h-0 flex-1 py-0' : 'min-h-0 flex-1 py-3'
+              } ${centeredPoints ? 'items-center justify-center' : focusRevealPanel ? 'justify-start' : 'justify-center'}`}
+            >
+              {focusRevealPanel ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 12, scale: 0.99 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className={`relative w-full flex-1 overflow-hidden rounded-[24px] border border-white/10 bg-black/35 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm ${
+                    activePointImage ? 'min-h-[66vh] lg:min-h-[76vh]' : 'min-h-[42vh] lg:min-h-[48vh]'
+                  }`}
+                >
+                  <div className="absolute top-3 left-3 z-10 rounded-full border border-white/15 bg-black/55 px-4 py-2 backdrop-blur-md lg:top-4 lg:left-4">
+                    <p className="font-display text-base font-bold tracking-tight text-white lg:text-lg">
+                      {points[activeRevealIndex]}
+                    </p>
+                  </div>
+                  {activePointImage ? (
+                    <img
+                      src={activePointImage}
+                      alt={points[activeRevealIndex] ?? 'Revealed detail'}
+                      className="h-full min-h-[66vh] w-full object-contain object-top lg:min-h-[76vh]"
+                    />
+                  ) : (
+                    <div className="flex h-full min-h-[42vh] items-center justify-center px-8 py-16 lg:min-h-[48vh] lg:px-12">
+                      <p className="font-display max-w-5xl text-center text-3xl leading-tight font-bold tracking-tight text-balance text-white sm:text-4xl lg:text-5xl xl:text-6xl">
+                        {activePointDetail}
+                      </p>
+                    </div>
+                  )}
+                </motion.div>
+              ) : (
               <div
-                className={`grid w-full gap-3 md:gap-4 ${
-                  points.length >= 5
-                    ? 'md:grid-cols-6'
-                    : points.length === 4
-                      ? 'md:grid-cols-2 lg:grid-cols-4'
-                      : 'md:grid-cols-3'
-                }`}
+                className={
+                  centeredPoints
+                    ? `flex w-full flex-col items-center justify-center ${
+                        points.length >= 4
+                          ? 'max-w-4xl gap-3 lg:max-w-5xl lg:gap-5'
+                          : 'max-w-5xl gap-5 lg:gap-8'
+                      }`
+                    : `grid w-full gap-2 md:gap-3 ${
+                        hasTable && points.length >= 5
+                          ? 'md:grid-cols-5'
+                          : points.length >= 5
+                            ? 'md:grid-cols-6'
+                            : points.length === 4
+                              ? 'md:grid-cols-2 lg:grid-cols-4'
+                              : 'md:grid-cols-3'
+                      }`
+                }
               >
                 {points.map((point, index) => {
                   const long = point.length > 48
@@ -1865,24 +2198,50 @@ function VisualHeroScreen({
                         duration: 0.45,
                         ease: [0.22, 1, 0.36, 1],
                       }}
-                      className={`glass flex items-center justify-center rounded-[28px] px-4 py-6 text-center backdrop-blur-xl lg:px-5 ${
-                        fiveUp
-                          ? 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
-                          : 'min-h-[180px] lg:min-h-[240px] lg:py-8'
-                      } ${fiveUp && index === 3 ? 'md:col-start-2' : ''} ${
-                        visible ? '' : 'pointer-events-none'
-                      }`}
+                      className={`glass flex items-center justify-center rounded-[28px] text-center backdrop-blur-xl ${
+                        centeredPoints
+                          ? `w-full max-w-4xl px-6 lg:px-10 ${
+                              points.length > 2 ? 'py-5 lg:py-7' : 'py-8 lg:py-12'
+                            }`
+                          : `px-4 py-6 lg:px-5 ${
+                              fiveUp
+                                ? hasTable
+                                  ? 'min-h-[72px] py-3 lg:min-h-[88px]'
+                                  : 'min-h-[120px] md:col-span-2 lg:min-h-[150px]'
+                                : hasTable
+                                  ? 'min-h-[100px] py-4 lg:min-h-[120px]'
+                                  : 'min-h-[180px] lg:min-h-[240px] lg:py-8'
+                            } ${fiveUp && points.length === 5 && index === 3 && !hasTable ? 'md:col-start-2' : ''}`
+                      } ${visible ? '' : 'pointer-events-none'}`}
                       aria-hidden={!visible}
                     >
                       <p
                         className={`font-display font-bold tracking-tight text-balance text-white ${
-                          long
-                            ? 'text-lg leading-snug sm:text-xl lg:text-2xl'
-                            : medium
-                              ? 'text-xl leading-tight sm:text-2xl lg:text-3xl'
-                              : fiveUp
-                                ? 'text-2xl leading-none sm:text-3xl lg:text-4xl'
-                                : 'text-4xl leading-none sm:text-5xl lg:text-6xl xl:text-7xl'
+                          centeredPoints
+                            ? points.length === 2
+                              ? long
+                                ? 'text-2xl leading-snug sm:text-3xl lg:text-4xl xl:text-5xl'
+                                : medium
+                                  ? 'text-2xl leading-tight sm:text-3xl lg:text-5xl xl:text-6xl'
+                                  : 'text-3xl leading-tight sm:text-4xl lg:text-5xl xl:text-6xl'
+                              : points.length >= 4
+                                  ? long
+                                    ? 'text-base leading-snug sm:text-lg lg:text-2xl xl:text-3xl'
+                                    : medium
+                                      ? 'text-lg leading-snug sm:text-xl lg:text-2xl xl:text-3xl'
+                                      : 'text-lg leading-tight sm:text-xl lg:text-3xl xl:text-4xl'
+                                  : long
+                                    ? 'text-lg leading-snug sm:text-xl lg:text-3xl xl:text-4xl'
+                                    : 'text-xl leading-tight sm:text-2xl lg:text-4xl xl:text-5xl'
+                            : fiveUp && hasTable
+                              ? 'text-sm leading-snug sm:text-base lg:text-lg'
+                              : long
+                                ? 'text-lg leading-snug sm:text-xl lg:text-2xl'
+                                : medium
+                                  ? 'text-xl leading-tight sm:text-2xl lg:text-3xl'
+                                  : fiveUp
+                                    ? 'text-2xl leading-none sm:text-3xl lg:text-4xl'
+                                    : 'text-4xl leading-none sm:text-5xl lg:text-6xl xl:text-7xl'
                         }`}
                       >
                         {point}
@@ -1891,9 +2250,24 @@ function VisualHeroScreen({
                   )
                 })}
               </div>
+              )}
+              {hasRevealedPointImage && !focusRevealPanel ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  className="glass max-h-[34vh] w-full overflow-hidden rounded-[24px] border border-white/10 backdrop-blur-xl lg:max-h-[38vh]"
+                >
+                  <img
+                    src={activePointImage}
+                    alt={points[activeRevealIndex] ?? 'Revealed detail'}
+                    className="h-full w-full object-contain"
+                  />
+                </motion.div>
+              ) : null}
             </div>
           ) : hasTitleBlock ? (
-            <div className="flex flex-1 items-center">
+            <div className="flex flex-1 flex-col items-center justify-center text-center">
               <motion.h2
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -1905,23 +2279,163 @@ function VisualHeroScreen({
               >
                 {content.title}
               </motion.h2>
+              {hasSubtitles ? (
+                <div className="mt-6 space-y-2 lg:mt-8 lg:space-y-3">
+                  {content.subtitles!.map((line, index) => (
+                    <motion.p
+                      key={line}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.15 + index * 0.08 }}
+                      className="font-display text-xl leading-snug font-semibold text-balance text-white/90 lg:text-2xl"
+                    >
+                      {line}
+                    </motion.p>
+                  ))}
+                </div>
+              ) : null}
             </div>
           ) : (
             <div className="flex-1" />
           )}
 
-          {hasSubtitle ? (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="max-w-4xl text-base text-white/65 lg:text-lg"
-            >
-              {content.subtitle}
-            </motion.p>
+          {hasBottomCopy ? (
+            <div className="max-w-6xl space-y-4">
+              {hasSubtitle && !displayTitleWithPoints ? (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className={
+                    hasChips || hasLogos
+                      ? 'font-display text-xl leading-snug font-semibold text-balance text-white lg:text-2xl'
+                      : hasTitleBlock
+                        ? 'font-display text-xl leading-snug font-bold text-balance text-white lg:text-2xl'
+                        : 'text-base text-white/65 lg:text-lg'
+                  }
+                >
+                  {content.subtitle}
+                </motion.p>
+              ) : null}
+              {hasLogos ? (
+                <div>
+                  {content.chipsLabel ? (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.55 }}
+                      className="font-display text-xl leading-snug font-bold text-balance text-white lg:text-2xl"
+                    >
+                      {content.chipsLabel}
+                    </motion.p>
+                  ) : null}
+                  <div className="mt-4 flex flex-wrap items-center gap-2.5 lg:gap-3">
+                    {logos.map((logo, index) => (
+                      <motion.div
+                        key={logo.name}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: 0.6 + index * 0.03,
+                          duration: 0.35,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        title={logo.name}
+                        className="flex h-14 w-[148px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-white px-2.5 shadow-[0_8px_24px_rgba(0,0,0,0.25)] lg:h-16 lg:w-[168px]"
+                      >
+                        <img
+                          src={logo.src}
+                          alt={logo.name}
+                          className="h-full w-full object-contain p-1.5"
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              ) : hasChips ? (
+                <div>
+                  {content.chipsLabel ? (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.55 }}
+                      className="text-sm font-medium text-white/70 lg:text-base"
+                    >
+                      {content.chipsLabel}:
+                    </motion.p>
+                  ) : null}
+                  <div className="mt-2.5 flex flex-wrap gap-2">
+                    {chips.map((name, index) => (
+                      <motion.span
+                        key={name}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: 0.6 + index * 0.03,
+                          duration: 0.35,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="inline-flex items-center rounded-full border border-accent/35 bg-accent/15 px-3 py-1.5 font-display text-xs font-bold tracking-wide text-white shadow-[0_0_18px_rgba(255,107,44,0.18)] lg:text-sm"
+                      >
+                        {name}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           ) : (
             <div />
           )}
+
+          {showTable && content.table ? (
+            <div className="relative z-10 min-h-0 shrink-0">
+              <HeroDataTable table={content.table} />
+            </div>
+          ) : null}
+
+          {hasPointLinks ? (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className={`flex shrink-0 flex-wrap gap-3 ${centeredPoints ? 'mx-auto justify-center' : ''}`}
+              onClick={(event) => event.stopPropagation()}
+            >
+              {visiblePointLinks.map((item) => (
+                <a
+                  key={item.point}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-accent/35 bg-accent/15 px-4 py-2.5 font-display text-sm font-semibold text-white shadow-[0_0_18px_rgba(255,107,44,0.18)] backdrop-blur-md transition hover:bg-accent/25 lg:px-5 lg:text-base"
+                >
+                  {item.label ?? 'Open link'}
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              ))}
+            </motion.div>
+          ) : null}
+
+          {hasLink ? (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className={`shrink-0 ${centeredPoints ? 'mx-auto' : ''}`}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <a
+                href={content.linkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-accent/35 bg-accent/15 px-4 py-2.5 font-display text-sm font-semibold text-white shadow-[0_0_18px_rgba(255,107,44,0.18)] backdrop-blur-md transition hover:bg-accent/25 lg:px-5 lg:text-base"
+              >
+                {content.linkLabel ?? 'Open link'}
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </motion.div>
+          ) : null}
         </div>
       ) : null}
     </div>
@@ -1978,7 +2492,7 @@ function LeadershipRolesScreen({
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
-                Leadership system
+                {content.eyebrow ?? 'Leadership system'}
               </span>
             </div>
             <h1 className="font-display mt-3 text-2xl font-semibold text-white lg:text-3xl">
@@ -2111,6 +2625,145 @@ function LeadershipRolesScreen({
           </AnimatePresence>
         </div>
       </div>
+    </div>
+  )
+}
+
+function emphasizeMetrics(text: string) {
+  const parts = text.split(/(\d[\d.,]*\+?\s*(?:K\$|M\$|\$)?|\d+\+|\$\d[\d.,]*[KM]?)/gi)
+  return parts.map((part, index) => {
+    if (!part) return null
+    const isMetric = /^\d/.test(part) || part.startsWith('$')
+    if (isMetric) {
+      return (
+        <span
+          key={`${part}-${index}`}
+          className="font-display inline-block text-[1.35em] font-bold leading-none tracking-tight text-accent drop-shadow-[0_0_18px_rgba(255,107,44,0.35)] lg:text-[1.45em]"
+        >
+          {part}
+        </span>
+      )
+    }
+    return <span key={`${part}-${index}`}>{part}</span>
+  })
+}
+
+function DriversColumnsScreen({
+  title,
+  headline,
+  takeaway,
+  content,
+}: {
+  title: string
+  headline?: string
+  takeaway?: string
+  content: DriversContent
+}) {
+  return (
+    <div className="relative flex h-full w-full flex-col overflow-hidden px-5 py-5 lg:px-9 lg:py-7">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(255,107,44,0.18),transparent_42%),radial-gradient(ellipse_at_85%_100%,rgba(255,255,255,0.05),transparent_40%)]" />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute top-16 right-[18%] h-48 w-48 rounded-full bg-accent/15 blur-3xl"
+        animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.12, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="relative z-10 shrink-0">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 backdrop-blur-md">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+          <span className="text-[10px] font-semibold tracking-[0.16em] text-white/75 uppercase">
+            {content.eyebrow ?? 'Why I am here'}
+          </span>
+        </div>
+        <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-white lg:text-4xl">
+          {title}
+        </h1>
+        {headline ? (
+          <p className="mt-2 max-w-3xl text-sm text-white/55 lg:text-base">{headline}</p>
+        ) : null}
+      </div>
+
+      <div className="relative z-10 mt-5 grid min-h-0 flex-1 gap-3 sm:grid-cols-2 xl:grid-cols-4 xl:gap-4">
+        {content.drivers.map((driver, index) => (
+          <motion.article
+            key={driver.title}
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.08 + index * 0.08,
+              duration: 0.45,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="group relative flex min-h-0 flex-col overflow-hidden rounded-[28px] border border-white/12 bg-gradient-to-b from-white/[0.1] via-white/[0.04] to-transparent p-4 lg:p-5"
+          >
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+            <div className="absolute -top-16 left-1/2 h-28 w-28 -translate-x-1/2 rounded-full bg-accent/20 opacity-0 blur-2xl transition group-hover:opacity-100" />
+
+            <div className="relative flex items-baseline justify-between gap-2">
+              <p className="font-display text-[11px] font-semibold tracking-[0.2em] text-accent uppercase">
+                {String(index + 1).padStart(2, '0')}
+              </p>
+              <div className="h-px flex-1 bg-gradient-to-r from-accent/50 to-transparent" />
+            </div>
+
+            <h2 className="font-display relative mt-3 text-3xl font-bold tracking-tight text-white lg:text-4xl">
+              {driver.title}
+            </h2>
+            {driver.detail ? (
+              <p className="relative mt-2 text-sm leading-snug text-white/50">{driver.detail}</p>
+            ) : null}
+
+            {driver.bullets?.length ? (
+              <ul className="relative mt-6 flex min-h-0 flex-1 flex-col gap-3.5 lg:gap-4">
+                {driver.bullets.map((bullet, bulletIndex) => (
+                  <li key={bullet}>
+                    <div className="rounded-2xl border border-white/10 bg-black/25 px-3.5 py-3 backdrop-blur-sm transition group-hover:border-white/15 lg:px-4 lg:py-3.5">
+                      <p className="font-display text-[10px] font-semibold tracking-[0.16em] text-white/35 uppercase">
+                        {String(bulletIndex + 1).padStart(2, '0')}
+                      </p>
+                      <p className="mt-1.5 text-base leading-relaxed font-medium text-white/90 lg:text-lg lg:leading-relaxed">
+                        {emphasizeMetrics(bullet)}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+
+            {driver.highlights?.length ? (
+              <div className="relative mt-4">
+                <p className="font-display text-[10px] font-semibold tracking-[0.16em] text-accent uppercase">
+                  Named logos
+                </p>
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                  {driver.highlights.map((name, nameIndex) => (
+                    <motion.span
+                      key={name}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        delay: 0.2 + nameIndex * 0.04,
+                        duration: 0.35,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="inline-flex items-center rounded-full border border-accent/35 bg-accent/15 px-2.5 py-1 font-display text-[11px] font-bold tracking-wide text-white shadow-[0_0_18px_rgba(255,107,44,0.18)] lg:text-xs"
+                    >
+                      {name}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </motion.article>
+        ))}
+      </div>
+
+      {takeaway ? (
+        <p className="relative z-10 mt-4 max-w-4xl shrink-0 text-xs text-white/40 lg:text-sm">
+          {takeaway}
+        </p>
+      ) : null}
     </div>
   )
 }
@@ -2425,19 +3078,30 @@ function DashboardScreen({ content }: { content: DashboardContent }) {
 
 function MeddpiccScreen({ content }: { content: MeddpiccContent }) {
   return (
-    <Stagger className="grid gap-2 md:grid-cols-2">
+    <Stagger className="grid gap-4 md:grid-cols-2 lg:gap-5">
       {content.items.map((item) => (
         <StaggerItem key={item.category}>
-          <Expandable title={item.category} badge={item.status} subtitle={`Risk · ${item.risk}`}>
-            <p>
-              <span className="text-white/40">Evidence · </span>
-              {item.evidence}
-            </p>
-            <p className="mt-2">
-              <span className="text-white/40">Next action · </span>
-              {item.nextAction}
-            </p>
-          </Expandable>
+          {item.prompt ? (
+            <GlassCard className="h-full p-5 lg:p-6 xl:p-7">
+              <p className="text-sm font-bold tracking-[0.14em] text-accent uppercase lg:text-base">
+                {item.category}
+              </p>
+              <p className="mt-2.5 text-lg leading-snug font-medium text-white/90 lg:mt-3 lg:text-xl lg:leading-snug xl:text-2xl">
+                {item.prompt}
+              </p>
+            </GlassCard>
+          ) : (
+            <Expandable title={item.category} badge={item.status} subtitle={`Risk · ${item.risk}`}>
+              <p>
+                <span className="text-white/40">Evidence · </span>
+                {item.evidence}
+              </p>
+              <p className="mt-2">
+                <span className="text-white/40">Next action · </span>
+                {item.nextAction}
+              </p>
+            </Expandable>
+          )}
         </StaggerItem>
       ))}
     </Stagger>
@@ -2509,6 +3173,143 @@ function OneOnOneScreen({ content }: { content: OneOnOneContent }) {
         }))}
       />
       <GlassCard className="px-4 py-3 text-sm text-white/60">{content.note}</GlassCard>
+    </div>
+  )
+}
+
+function OrgChartScreen({ content }: { content: OrgChartContent }) {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-6 py-2">
+      <Stagger className="flex w-full max-w-3xl flex-col items-center">
+        <StaggerItem>
+          <GlassCard className="w-full max-w-sm px-6 py-5 text-center">
+            <p className="font-display text-2xl font-semibold text-white lg:text-3xl">
+              {content.director.name}
+            </p>
+            <p className="mt-1 text-sm font-medium tracking-[0.12em] text-accent uppercase">
+              {content.director.title}
+            </p>
+          </GlassCard>
+        </StaggerItem>
+        <StaggerItem>
+          <div className="flex h-10 w-px bg-gradient-to-b from-accent/60 to-white/20" />
+        </StaggerItem>
+        <StaggerItem className="w-full">
+          <div className="relative mx-auto h-px w-full max-w-2xl bg-white/15">
+            <div className="absolute top-0 left-1/2 h-10 w-px -translate-x-1/2 bg-white/15" />
+          </div>
+        </StaggerItem>
+      </Stagger>
+
+      <Stagger className="grid w-full max-w-5xl gap-5 md:grid-cols-2">
+        {content.regions.map((region) => (
+          <StaggerItem key={region.label} className="flex flex-col items-center">
+            <div className="mb-4 flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                {region.flags.map((flag) => (
+                  <MarketFlag key={flag} code={flag} />
+                ))}
+              </div>
+              <p className="font-display text-xl font-semibold text-white lg:text-2xl">
+                {region.label}
+              </p>
+            </div>
+            <div className="grid w-full gap-2.5">
+              {Array.from({ length: region.headcount }, (_, index) => (
+                <GlassCard
+                  key={`${region.label}-${index}`}
+                  className="px-4 py-3 text-center"
+                >
+                  <p className="text-sm font-semibold text-white lg:text-base">
+                    {region.roleTitle}
+                  </p>
+                </GlassCard>
+              ))}
+            </div>
+          </StaggerItem>
+        ))}
+      </Stagger>
+
+      {content.amount ? (
+        <motion.p
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="font-display text-6xl font-bold tracking-tight text-accent drop-shadow-[0_0_40px_rgba(255,107,44,0.35)] sm:text-7xl lg:text-[8rem] lg:leading-none"
+        >
+          {content.amount}
+        </motion.p>
+      ) : null}
+    </div>
+  )
+}
+
+function InvestFigureScreen({ content }: { content: InvestFigureContent }) {
+  const isLarge = content.amount.length >= 5
+
+  return (
+    <div className="flex h-full flex-col items-center justify-center px-4 text-center">
+      {content.subtitle ? (
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6 max-w-3xl text-lg leading-relaxed font-medium text-white/80 lg:text-2xl"
+        >
+          {content.subtitle}
+        </motion.p>
+      ) : null}
+      {content.tagline ? (
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.08 }}
+          className="mb-6 max-w-3xl text-base leading-relaxed font-semibold text-white/90 lg:mb-8 lg:text-xl"
+        >
+          {content.tagline}
+        </motion.p>
+      ) : null}
+      <motion.p
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        className={`font-display font-bold tracking-tight text-accent drop-shadow-[0_0_40px_rgba(255,107,44,0.35)] ${
+          isLarge
+            ? 'text-7xl sm:text-8xl lg:text-[11rem] lg:leading-none'
+            : 'text-6xl sm:text-7xl lg:text-[8rem] lg:leading-none'
+        }`}
+      >
+        {content.amount}
+      </motion.p>
+      {content.detail ? (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="mt-6 max-w-2xl text-base text-white/65 lg:text-lg"
+        >
+          {content.detail}
+        </motion.p>
+      ) : null}
+      {content.quote ? (
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25 }}
+          className="mt-8 max-w-4xl text-base leading-relaxed font-bold text-white lg:mt-10 lg:text-xl"
+        >
+          {content.quote}
+        </motion.p>
+      ) : null}
+      {content.footer ? (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.35 }}
+          className="mt-4 text-sm font-semibold tracking-[0.08em] text-accent uppercase lg:text-base"
+        >
+          {content.footer}
+        </motion.p>
+      ) : null}
     </div>
   )
 }

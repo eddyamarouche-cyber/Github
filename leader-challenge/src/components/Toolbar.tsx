@@ -9,13 +9,11 @@ import {
   Presentation,
   StickyNote,
 } from 'lucide-react'
-import { PlaceholderBadge } from './ui'
 
 interface ToolbarProps {
   slideNumber: number
   totalSlides: number
   sectionLabel: string
-  hasPlaceholders: boolean
   showNotes: boolean
   isFullscreen: boolean
   isPresenting: boolean
@@ -64,7 +62,6 @@ export function Toolbar({
   slideNumber,
   totalSlides,
   sectionLabel,
-  hasPlaceholders,
   showNotes,
   isFullscreen,
   isPresenting,
@@ -92,7 +89,6 @@ export function Toolbar({
           <span className="text-white/20">|</span>
           <span>{sectionLabel}</span>
         </div>
-        {hasPlaceholders ? <PlaceholderBadge /> : null}
       </div>
 
       <div className="flex flex-wrap items-center gap-2">{timerSlot}</div>

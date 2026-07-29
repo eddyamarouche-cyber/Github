@@ -5,6 +5,7 @@ export type SectionId =
   | 'retention'
   | 'revenue'
   | 'partnership'
+  | 'invest'
   | 'close'
 
 export interface SectionMeta {
@@ -20,6 +21,7 @@ export type SlideType =
   | 'thesis'
   | 'agenda'
   | 'topics-summary'
+  | 'challenge-brief'
   | 'pillars'
   | 'profile'
   | 'scorecard'
@@ -50,6 +52,8 @@ export type SlideType =
   | 'philosophy'
   | 'one-on-one'
   | 'asks'
+  | 'org-chart'
+  | 'invest-figure'
   | 'two-column'
   | 'plan'
   | 'risks'
@@ -86,19 +90,62 @@ export interface VisualHeroContent {
   eyebrow?: string
   title?: string
   subtitle?: string
+  /** Multiple subtitle lines shown under the title */
+  subtitles?: string[]
   points?: string[]
+  /** Accent name chips under the subtitle (must-win logos, etc.) */
+  chips?: string[]
+  /** Brand logos shown under the subtitle */
+  logos?: { name: string; src: string }[]
+  /** Small label above the chip / logo row */
+  chipsLabel?: string
   /** Oversized display title for short hero words like "How?" */
   titleSize?: 'default' | 'display'
+  /** Top-left title stack like subdivisions slides */
+  titleLayout?: 'default' | 'header'
   /** Reveal point blocks one-by-one on click / Next */
   revealPointsOnClick?: boolean
+  /** Optional image revealed alongside the point at the same index */
+  pointImages?: (string | undefined)[]
+  /** Optional detail line revealed alongside the point at the same index */
+  pointDetails?: (string | undefined)[]
+  /** Optional URL per point (same index as points) */
+  pointLinkUrls?: (string | undefined)[]
+  pointLinkLabels?: (string | undefined)[]
+  /** Stack and center points as large hero statements */
+  pointsLayout?: 'default' | 'center'
+  /** Optional external link shown at the bottom of the hero */
+  linkUrl?: string
+  linkLabel?: string
+  /** Optional data table shown below points */
+  table?: VisualHeroTable
+}
+
+export interface VisualHeroTableRow {
+  cells: string[]
+  highlight?: Partial<Record<number, 'good' | 'watch' | 'risk'>>
+}
+
+export interface VisualHeroTable {
+  title: string
+  columns: string[]
+  rows: VisualHeroTableRow[]
 }
 
 export interface RevealContent {
   image: string
-  question: string
+  question?: string
+  /** Supporting line shown below the question before the answer reveals */
+  questionSubtitle?: string
   answer: string
+  /** Line shown just below the answer once it reveals */
+  answerSubtitle?: string
+  /** Supporting formula or pillars line below the answer subtitle */
+  answerFooter?: string
   /** Delay before the answer appears, in ms */
   answerDelayMs?: number
+  /** Show only the answer block — for split reveal slides */
+  answerOnly?: boolean
 }
 
 export interface ThesisContent {
@@ -119,6 +166,20 @@ export interface TopicsSummaryItem {
 
 export interface TopicsSummaryContent {
   topics: TopicsSummaryItem[]
+}
+
+export interface ChallengeBriefTopic {
+  label: string
+  items: string[]
+}
+
+export interface ChallengeBriefContent {
+  brandTitle: string
+  planPoints: string[]
+  prepLabel: string
+  prepUrl: string
+  topics: ChallengeBriefTopic[]
+  closeLabel: string
 }
 
 export interface PillarsContent {
@@ -170,12 +231,18 @@ export interface SubdivisionItem {
   detail?: string
   image: string
   theme?: string
+  linkUrl?: string
+  linkLabel?: string
+  /** Larger detail typography in list and expanded views */
+  detailSize?: 'default' | 'large'
 }
 
 export interface SubdivisionsContent {
   items: SubdivisionItem[]
   /** Bold lines shown under the page title */
   statements?: string[]
+  /** Small pill label above the title (defaults to How?) */
+  eyebrow?: string
 }
 
 export interface FunnelContent {
@@ -216,7 +283,18 @@ export interface ObjectionsContent {
 }
 
 export interface DriversContent {
-  drivers: { title: string; detail?: string; image?: string; bullets?: string[] }[]
+  drivers: {
+    title: string
+    detail?: string
+    image?: string
+    bullets?: string[]
+    /** Logo / name chips to insist on visually */
+    highlights?: string[]
+  }[]
+  /** Small pill label above the title */
+  eyebrow?: string
+  /** Full-bleed four-column proof-point layout */
+  layout?: 'columns'
 }
 
 export interface FrameworkContent {
@@ -289,10 +367,12 @@ export interface DashboardContent {
 
 export interface MeddpiccItem {
   category: string
-  status: string
-  evidence: string
-  risk: string
-  nextAction: string
+  /** Plain-language inspection question for this element */
+  prompt?: string
+  status?: string
+  evidence?: string
+  risk?: string
+  nextAction?: string
 }
 
 export interface MeddpiccContent {
@@ -318,6 +398,26 @@ export interface OneOnOneContent {
 
 export interface AsksContent {
   asks: { title: string; detail: string; bullets: string[] }[]
+}
+
+export interface OrgChartContent {
+  director: { name: string; title: string }
+  regions: {
+    label: string
+    flags: ('IT' | 'ES' | 'PT')[]
+    roleTitle: string
+    headcount: number
+  }[]
+  amount?: string
+}
+
+export interface InvestFigureContent {
+  amount: string
+  subtitle?: string
+  tagline?: string
+  detail?: string
+  quote?: string
+  footer?: string
 }
 
 export interface TwoColumnContent {
@@ -353,8 +453,11 @@ export interface LinkedInTargetsContent {
     linkedinUrl: string
     signal: string
     photo?: string
+    filters?: string[]
   }[]
   regionLabel?: string
+  /** Optional flag icon shown beside the region label and title */
+  regionFlag?: string
 }
 
 export interface BrandPortfolioProduct {
@@ -381,6 +484,7 @@ export type SlideContent =
   | ThesisContent
   | AgendaContent
   | TopicsSummaryContent
+  | ChallengeBriefContent
   | PillarsContent
   | ProfileContent
   | ScorecardContent
@@ -411,6 +515,8 @@ export type SlideContent =
   | PhilosophyContent
   | OneOnOneContent
   | AsksContent
+  | OrgChartContent
+  | InvestFigureContent
   | TwoColumnContent
   | PlanContent
   | RisksContent

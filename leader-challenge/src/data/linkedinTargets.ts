@@ -7,6 +7,8 @@ export interface LinkedInTarget {
   linkedinUrl: string
   signal: string
   photo: string
+  /** A Player filter tags validated against this profile */
+  filters?: string[]
 }
 
 /**
@@ -23,6 +25,7 @@ export const linkedinTargets: LinkedInTarget[] = [
     linkedinUrl: 'https://www.linkedin.com/in/guido-zanetti/',
     signal: 'Enterprise AE with Twilio → Databricks path; strong Italy / Iberia digital-native coverage.',
     photo: '/images/linkedin/guido-zanetti.jpg',
+    filters: ['Clock speed', 'Resilient'],
   },
   {
     id: 'andrea-lupi',
@@ -33,6 +36,7 @@ export const linkedinTargets: LinkedInTarget[] = [
     linkedinUrl: 'https://www.linkedin.com/in/andrealupi19/',
     signal: 'Data & AI enterprise seller; ex-AWS / Oracle / HP with fashion & luxury adjacency.',
     photo: '/images/linkedin/andrea-lupi.jpg',
+    filters: ['Patriot', 'Ownership', 'Builder'],
   },
   {
     id: 'sofia-poggi',
@@ -43,6 +47,7 @@ export const linkedinTargets: LinkedInTarget[] = [
     linkedinUrl: 'https://www.linkedin.com/in/sofia-poggi-0692a911a/',
     signal: 'Public-sector AE; ex-Adobe / Accenture; PhD in Economy and Finance.',
     photo: '/images/linkedin/sofia-poggi.jpg',
+    filters: ['Resilient'],
   },
   {
     id: 'mauro-cenerelli',
@@ -122,6 +127,7 @@ export const linkedinTargetsSpain: LinkedInTarget[] = [
     signal:
       'Country lead for Iberia; ex-Grafana / Kong / Sprinklr enterprise AE with Spain–Italy coverage.',
     photo: '/images/linkedin/raphael-sublet.jpg',
+    filters: ['Builder'],
   },
   {
     id: 'jorge-munoz',

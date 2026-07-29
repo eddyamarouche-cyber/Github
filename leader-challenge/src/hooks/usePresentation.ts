@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { getCumulativeMinutes, slides } from '../data/slides'
 import { presenterNotes } from '../data/presenterNotes'
-import { slideHasPlaceholders } from '../utils/placeholders'
 import {
   bindDeckAdvance,
   consumeSlideInnerNext,
@@ -24,10 +23,6 @@ export function usePresentation() {
 
   const slide = slides[index]
   const notes = presenterNotes[slide.id]
-  const hasPlaceholders = useMemo(
-    () => slideHasPlaceholders(slide.content, notes),
-    [slide, notes],
-  )
 
   const goTo = useCallback((nextIndex: number, direction?: 'next' | 'prev') => {
     const current = indexRef.current
@@ -171,7 +166,6 @@ export function usePresentation() {
     index,
     slide,
     notes,
-    hasPlaceholders,
     showNotes,
     showMenu,
     isFullscreen,
