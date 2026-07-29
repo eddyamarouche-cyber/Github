@@ -286,8 +286,23 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'leadership-standard',
+    id: 'football-team-passes',
     number: 10,
+    section: 'intro',
+    type: 'visual-hero',
+    title: 'One Team',
+    takeaway:
+      'The ball moves fastest when everyone plays for the pass — collective movement beats individual heroics.',
+    recommendedMinutes: 0.5,
+    content: {
+      image: '/images/football-team-passes.jpg',
+      title: 'One team',
+      subtitle: 'Move the ball together',
+    },
+  },
+  {
+    id: 'leadership-standard',
+    number: 11,
     section: 'intro',
     type: 'visual-hero',
     title: 'The Standard',
@@ -305,7 +320,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'wild-geese',
-    number: 11,
+    number: 12,
     section: 'intro',
     type: 'visual-hero',
     title: 'One Direction',
@@ -320,7 +335,7 @@ export const slides: Slide[] = [
 
   {
     id: 'learning-in-the-struggle',
-    number: 12,
+    number: 13,
     section: 'intro',
     type: 'visual-hero',
     title: 'Learning is in the struggle',
@@ -336,7 +351,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'recruitment-opener',
-    number: 13,
+    number: 14,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Recruitment',
@@ -351,7 +366,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'a-player-profile',
-    number: 14,
+    number: 15,
     section: 'recruitment',
     type: 'profile',
     title: 'A Player Profile',
@@ -402,7 +417,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'linkedin-talent-map',
-    number: 15,
+    number: 16,
     section: 'recruitment',
     type: 'linkedin-targets',
     title: 'LinkedIn Talent Map · Italy',
@@ -418,7 +433,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'linkedin-talent-map-spain',
-    number: 16,
+    number: 17,
     section: 'recruitment',
     type: 'linkedin-targets',
     title: 'LinkedIn Talent Map · Spain',
@@ -434,7 +449,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'how-proactivity',
-    number: 17,
+    number: 18,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'How?',
@@ -451,7 +466,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'how-subdivisions',
-    number: 18,
+    number: 19,
     section: 'recruitment',
     type: 'subdivisions',
     title: 'How we hire?',
@@ -499,7 +514,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'roleplay-title',
-    number: 19,
+    number: 20,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Role Play',
@@ -514,7 +529,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'roleplay-opener',
-    number: 20,
+    number: 21,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Role play',
@@ -534,7 +549,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'roleplay-proof',
-    number: 21,
+    number: 22,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Why Cursor?',
@@ -561,7 +576,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'gtm-ambition',
-    number: 22,
+    number: 23,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'GTM ambition',
@@ -582,7 +597,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'gtm-100bn',
-    number: 23,
+    number: 24,
     section: 'recruitment',
     type: 'reveal',
     title: '100Bn$',
@@ -602,7 +617,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-opener',
-    number: 24,
+    number: 25,
     section: 'retention',
     type: 'visual-hero',
     title: 'Retention in summary',
@@ -619,7 +634,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-system',
-    number: 25,
+    number: 26,
     section: 'retention',
     type: 'subdivisions',
     title: 'The approach',
@@ -663,7 +678,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-cta',
-    number: 26,
+    number: 27,
     section: 'retention',
     type: 'subdivisions',
     title: 'Call to action',
@@ -701,7 +716,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-monitoring',
-    number: 27,
+    number: 28,
     section: 'retention',
     type: 'visual-hero',
     title: 'Monitoring',
@@ -753,7 +768,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'gap-reduction',
-    number: 28,
+    number: 29,
     section: 'revenue',
     type: 'subdivisions',
     title: 'Gap reduction',
@@ -780,7 +795,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'revenue-opener',
-    number: 29,
+    number: 30,
     section: 'revenue',
     type: 'visual-hero',
     title: 'Revenue',
@@ -796,7 +811,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'consistent-pipeline-generation',
-    number: 30,
+    number: 31,
     section: 'revenue',
     type: 'visual-hero',
     title: 'Consistent Pipeline Generation',
@@ -818,7 +833,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'operating-rhythm',
-    number: 31,
+    number: 32,
     section: 'revenue',
     type: 'visual-hero',
     title: 'Operating rhythm',
@@ -843,7 +858,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'inspection',
-    number: 32,
+    number: 33,
     section: 'revenue',
     type: 'meddpicc',
     title: 'Inspection',
@@ -898,7 +913,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'one-on-one-opener',
-    number: 33,
+    number: 34,
     section: 'revenue',
     type: 'visual-hero',
     title: '1:1',
@@ -917,7 +932,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'asks-opener',
-    number: 34,
+    number: 35,
     section: 'partnership',
     type: 'visual-hero',
     title: 'Asks',
@@ -933,7 +948,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'invest-opener',
-    number: 35,
+    number: 36,
     section: 'invest',
     type: 'visual-hero',
     title: 'Invest',
@@ -949,7 +964,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'invest-people',
-    number: 36,
+    number: 37,
     section: 'invest',
     type: 'org-chart',
     title: 'People',
@@ -980,7 +995,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'marketing-c-level',
-    number: 37,
+    number: 38,
     section: 'invest',
     type: 'invest-figure',
     title: 'Marketing / C-Level event',
@@ -993,7 +1008,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'invest-in-me',
-    number: 38,
+    number: 39,
     section: 'invest',
     type: 'invest-figure',
     title: 'Invest in me!',

@@ -102,6 +102,17 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'If we hire and coach for one team across Italy and Iberia, the operating system has something worth protecting.',
     likelyQuestion: 'How do you build one team across Spain, Portugal and Italy?',
+    transition: 'That is the trophy room. On the pitch, it looks like this.',
+  },
+  'football-team-passes': {
+    opening: 'Watch the movement — not the individual.',
+    coreMessage:
+      'Dynamic players, one ball, constant passes — the team advances because everyone plays for the next pass.',
+    supportingExample:
+      'No one runs alone. The ball moves faster than any single player.',
+    executiveImplication:
+      'One team on a slide is aspiration. One team on the pitch is behaviour — pass, move, support.',
+    likelyQuestion: 'How do you translate this sports metaphor into sales management?',
     transition: 'Now the personal standard behind that culture.',
   },
   'leadership-standard': {
