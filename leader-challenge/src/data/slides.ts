@@ -289,7 +289,7 @@ export const slides: Slide[] = [
     id: 'football-team-passes',
     number: 10,
     section: 'intro',
-    type: 'visual-hero',
+    type: 'football-passes',
     title: 'One Team',
     takeaway:
       'The ball moves fastest when everyone plays for the pass — collective movement beats individual heroics.',
