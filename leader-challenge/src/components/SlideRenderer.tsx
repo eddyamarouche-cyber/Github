@@ -18,6 +18,9 @@ import type {
   DiagnosisContent,
   DriversContent,
   FeedbackContent,
+  FootballPassesContent,
+  FootballPassPoint,
+  FootballPassRoute,
   FrameworkContent,
   FunnelContent,
   InvestFigureContent,
@@ -112,6 +115,8 @@ function renderSlide(slide: Slide) {
       return <CoverScreen content={slide.content as CoverContent} />
     case 'visual-hero':
       return <VisualHeroScreen content={slide.content as VisualHeroContent} />
+    case 'football-passes':
+      return <FootballPassesScreen content={slide.content as FootballPassesContent} />
     case 'reveal':
       return <RevealScreen content={slide.content as RevealContent} />
     case 'thesis':
@@ -1768,6 +1773,197 @@ function ObjectionsScreen({ content }: { content: ObjectionsContent }) {
         </StaggerItem>
       ))}
     </Stagger>
+  )
+}
+
+const DEFAULT_FOOTBALL_PLAYERS: FootballPassPoint[] = [
+  { x: 32, y: 45 },
+  { x: 58, y: 38 },
+  { x: 72, y: 62 },
+  { x: 85, y: 32 },
+  { x: 18, y: 72 },
+]
+
+const DEFAULT_FOOTBALL_PASSES: FootballPassRoute[] = [
+  { from: DEFAULT_FOOTBALL_PLAYERS[0], to: DEFAULT_FOOTBALL_PLAYERS[1] },
+  { from: DEFAULT_FOOTBALL_PLAYERS[1], to: DEFAULT_FOOTBALL_PLAYERS[2] },
+  { from: DEFAULT_FOOTBALL_PLAYERS[2], to: DEFAULT_FOOTBALL_PLAYERS[3] },
+  { from: DEFAULT_FOOTBALL_PLAYERS[3], to: DEFAULT_FOOTBALL_PLAYERS[4] },
+  { from: DEFAULT_FOOTBALL_PLAYERS[4], to: DEFAULT_FOOTBALL_PLAYERS[0] },
+]
+
+const FOOTBALL_PASS_MS = 1800
+
+function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+}
+
+function lerpPoint(from: FootballPassPoint, to: FootballPassPoint, t: number): FootballPassPoint {
+  return {
+    x: from.x + (to.x - from.x) * t,
+    y: from.y + (to.y - from.y) * t,
+  }
+}
+
+function FootballPassesScreen({ content }: { content: FootballPassesContent }) {
+  const players = content.players ?? DEFAULT_FOOTBALL_PLAYERS
+  const passes = content.passes ?? DEFAULT_FOOTBALL_PASSES
+  const [activePass, setActivePass] = useState(0)
+  const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    const startedAt = performance.now()
+
+    let frame = 0
+    const tick = (now: number) => {
+      const elapsed = now - startedAt
+      const cycleLength = passes.length * FOOTBALL_PASS_MS
+      const cyclePos = elapsed % cycleLength
+      const passIndex = Math.floor(cyclePos / FOOTBALL_PASS_MS)
+      const passProgress = easeInOutCubic((cyclePos % FOOTBALL_PASS_MS) / FOOTBALL_PASS_MS)
+
+      setActivePass(passIndex)
+      setProgress(passProgress)
+      frame = requestAnimationFrame(tick)
+    }
+
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
+  }, [passes.length])
+
+  const currentPass = passes[activePass] ?? passes[0]
+  const ballPosition = lerpPoint(currentPass.from, currentPass.to, progress)
+  const activeFromIndex = players.findIndex(
+    (player) => player.x === currentPass.from.x && player.y === currentPass.from.y,
+  )
+  const activeToIndex = players.findIndex(
+    (player) => player.x === currentPass.to.x && player.y === currentPass.to.y,
+  )
+
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <motion.img
+        src={content.image}
+        alt={content.title || 'Football team passes'}
+        className="absolute inset-0 h-full w-full object-cover"
+        initial={{ scale: 1.05, opacity: 0.75 }}
+        animate={{
+          scale: [1.04, 1.1, 1.06, 1.12, 1.04],
+          x: ['0%', '-1.5%', '0.5%', '-1%', '0%'],
+          y: ['0%', '-0.75%', '0.25%', '-0.5%', '0%'],
+          opacity: 1,
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/25 to-black/55" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/45" />
+
+      <svg
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        aria-hidden
+      >
+        {passes.map((pass, index) => {
+          const isActive = index === activePass
+          const lineProgress = isActive ? progress : index < activePass ? 1 : 0
+          const dx = pass.to.x - pass.from.x
+          const dy = pass.to.y - pass.from.y
+          const length = Math.hypot(dx, dy)
+
+          return (
+            <line
+              key={`${pass.from.x}-${pass.from.y}-${pass.to.x}-${pass.to.y}-${index}`}
+              x1={pass.from.x}
+              y1={pass.from.y}
+              x2={pass.to.x}
+              y2={pass.to.y}
+              stroke={isActive ? 'rgba(255, 107, 44, 0.95)' : 'rgba(255, 255, 255, 0.18)'}
+              strokeWidth={isActive ? 0.55 : 0.35}
+              strokeLinecap="round"
+              strokeDasharray={`${length} ${length}`}
+              strokeDashoffset={length * (1 - lineProgress)}
+              vectorEffect="non-scaling-stroke"
+            />
+          )
+        })}
+
+        {players.map((player, index) => {
+          const isSender = index === activeFromIndex
+          const isReceiver = index === activeToIndex && progress > 0.55
+
+          return (
+            <g key={`${player.x}-${player.y}-${index}`}>
+              <circle
+                cx={player.x}
+                cy={player.y}
+                r={isSender || isReceiver ? 2.1 : 1.5}
+                fill={isSender || isReceiver ? 'rgba(255, 107, 44, 0.95)' : 'rgba(255, 255, 255, 0.75)'}
+              />
+              <circle
+                cx={player.x}
+                cy={player.y}
+                r={isSender || isReceiver ? 4.2 : 3}
+                fill="none"
+                stroke={isSender || isReceiver ? 'rgba(255, 107, 44, 0.45)' : 'rgba(255, 255, 255, 0.2)'}
+                strokeWidth={0.35}
+                vectorEffect="non-scaling-stroke"
+              />
+            </g>
+          )
+        })}
+      </svg>
+
+      <motion.div
+        className="pointer-events-none absolute z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80 bg-white shadow-[0_0_18px_rgba(255,255,255,0.65)]"
+        style={{
+          left: `${ballPosition.x}%`,
+          top: `${ballPosition.y}%`,
+        }}
+        animate={{
+          scale: [1, 1.08, 1],
+          boxShadow: [
+            '0 0 18px rgba(255,255,255,0.65)',
+            '0 0 28px rgba(255,107,44,0.75)',
+            '0 0 18px rgba(255,255,255,0.65)',
+          ],
+        }}
+        transition={{ duration: 0.9, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="relative z-20 flex h-full flex-col justify-between px-8 py-7 lg:px-12 lg:py-9">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="flex items-center gap-2"
+        >
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+          <p className="text-xs font-semibold tracking-[0.22em] text-white/70 uppercase">
+            One team
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl"
+        >
+          {content.title ? (
+            <h2 className="font-display text-5xl leading-none font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+              {content.title}
+            </h2>
+          ) : null}
+          {content.subtitle ? (
+            <p className="mt-3 text-xl font-medium text-white/85 sm:text-2xl lg:text-3xl">
+              {content.subtitle}
+            </p>
+          ) : null}
+        </motion.div>
+      </div>
+    </div>
   )
 }
 

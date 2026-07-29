@@ -17,6 +17,7 @@ export interface SectionMeta {
 export type SlideType =
   | 'cover'
   | 'visual-hero'
+  | 'football-passes'
   | 'reveal'
   | 'thesis'
   | 'agenda'
@@ -83,6 +84,25 @@ export interface SlideBase {
 export interface CoverContent {
   title: string
   subtitle: string
+}
+
+export interface FootballPassPoint {
+  x: number
+  y: number
+}
+
+export interface FootballPassRoute {
+  from: FootballPassPoint
+  to: FootballPassPoint
+}
+
+export interface FootballPassesContent {
+  image: string
+  title?: string
+  subtitle?: string
+  /** Player positions and pass routes — defaults match football-team-passes.jpg */
+  players?: FootballPassPoint[]
+  passes?: FootballPassRoute[]
 }
 
 export interface VisualHeroContent {
@@ -480,6 +500,7 @@ export interface BrandPortfolioContent {
 export type SlideContent =
   | CoverContent
   | VisualHeroContent
+  | FootballPassesContent
   | RevealContent
   | ThesisContent
   | AgendaContent

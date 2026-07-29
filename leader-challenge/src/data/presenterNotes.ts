@@ -105,7 +105,7 @@ export const presenterNotes: Record<string, PresenterNote> = {
     transition: 'That is the trophy room. On the pitch, it looks like this.',
   },
   'football-team-passes': {
-    opening: 'Watch the movement — not the individual.',
+    opening: 'Watch the movement — not the individual. The ball loops through the team on its own.',
     coreMessage:
       'Dynamic players, one ball, constant passes — the team advances because everyone plays for the next pass.',
     supportingExample:
