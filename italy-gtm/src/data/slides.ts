@@ -7,12 +7,27 @@ export type SlideKind =
   | 'account'
   | 'why'
 
+export interface DeepDiveBlock {
+  title: string
+  stats?: { value: string; label: string }[]
+  points: string[]
+}
+
+export interface VerticalDeepDive {
+  headline: string
+  whyLabel: string
+  blocks: DeepDiveBlock[]
+  closer: string
+}
+
 export interface VerticalRow {
+  id: string
   name: string
   whyNow: string
   opportunities: string
   image: string
   imageAlt: string
+  deepDive?: VerticalDeepDive
 }
 
 export interface PipelineSlice {
@@ -96,13 +111,42 @@ export const slides: Slide[] = [
     lead: 'Three industries where trusted AI and enterprise readiness meet urgent demand.',
     verticals: [
       {
+        id: 'financial-services',
         name: 'Financial Services',
         whyNow: 'Cloud modernization, AI investments, regulation',
         opportunities: 'Engineering productivity, Compliance, Knowledge Management',
         image: '/images/vertical-finance.jpg',
         imageAlt: 'Modern financial district skyline',
+        deepDive: {
+          headline: "Why Banking is Anthropic's #1 Opportunity in Italy",
+          whyLabel: 'Why now?',
+          blocks: [
+            {
+              title: "One of Europe's largest banking markets",
+              stats: [
+                { value: 'Top 3', label: 'in Europe' },
+                { value: '€4T+', label: 'assets' },
+              ],
+              points: [
+                'Major institutions: UniCredit, Intesa Sanpaolo, Banco BPM, MPS',
+              ],
+            },
+            {
+              title: 'Investment cycle has started',
+              points: [
+                'Record profitability',
+                'Multi-billion € cloud & AI investments',
+                'Cloud modernization accelerating',
+                'Still early: most initiatives remain at POC / pilot stage',
+              ],
+            },
+          ],
+          closer:
+            'Perfect timing to establish Anthropic as the trusted Enterprise AI platform',
+        },
       },
       {
+        id: 'manufacturing',
         name: 'Manufacturing',
         whyNow: 'Largest industrial economy after Germany, fragmented knowledge',
         opportunities: 'Engineering Copilot, Documentation, Procurement',
@@ -110,6 +154,7 @@ export const slides: Slide[] = [
         imageAlt: 'Industrial manufacturing floor',
       },
       {
+        id: 'energy',
         name: 'Energy & Utilities',
         whyNow: 'Massive infrastructure investments, aging workforce',
         opportunities: 'Knowledge Assistant, Field Operations, Compliance',

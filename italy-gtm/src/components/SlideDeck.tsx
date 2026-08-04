@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { slides, presenter } from '../data/slides'
-import type { Slide } from '../data/slides'
+import type { Slide, VerticalRow } from '../data/slides'
 import { StageBackdrop } from './StageBackdrop'
 
 function MediaPlane({
@@ -20,7 +20,101 @@ function MediaPlane({
   )
 }
 
-function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
+function FinancialDeepDive({
+  vertical,
+  open,
+  onClose,
+}: {
+  vertical: VerticalRow
+  open: boolean
+  onClose: () => void
+}) {
+  const dive = vertical.deepDive
+  if (!dive) return null
+
+  return (
+    <div
+      className={`deep-dive ${open ? 'is-open' : ''}`}
+      role="dialog"
+      aria-modal="true"
+      aria-hidden={!open}
+      aria-labelledby="deep-dive-title"
+    >
+      <MediaPlane
+        src={vertical.image}
+        alt={vertical.imageAlt}
+        className="deep-dive-media"
+      />
+      <div className="deep-dive-body">
+        <button type="button" className="deep-dive-back" onClick={onClose}>
+          <span aria-hidden="true">←</span> Back to verticals
+        </button>
+
+        <p className="eyebrow">Financial Services</p>
+        <h2 id="deep-dive-title" className="deep-dive-title">
+          {dive.headline}
+        </h2>
+
+        <p className="deep-dive-why">{dive.whyLabel}</p>
+
+        <div className="deep-dive-grid">
+          {dive.blocks.map((block, i) => (
+            <section
+              key={block.title}
+              className="deep-dive-block"
+              style={{ ['--i' as string]: i }}
+            >
+              <div className="deep-dive-block-head">
+                <span className="deep-dive-block-index">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3>{block.title}</h3>
+              </div>
+
+              {block.stats && block.stats.length > 0 && (
+                <div className="deep-dive-stats">
+                  {block.stats.map((stat) => (
+                    <div key={stat.value} className="deep-stat">
+                      <span className="deep-stat-value">{stat.value}</span>
+                      <span className="deep-stat-label">{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <ul className="point-list">
+                {block.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+
+        <p className="deep-dive-closer">
+          <span className="deep-dive-closer-mark" aria-hidden="true">
+            →
+          </span>
+          {dive.closer}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function SlideContent({
+  slide,
+  active,
+  openVerticalId,
+  onOpenVertical,
+  onCloseVertical,
+}: {
+  slide: Slide
+  active: boolean
+  openVerticalId: string | null
+  onOpenVertical: (id: string) => void
+  onCloseVertical: () => void
+}) {
   const enter = active ? 'is-active' : ''
 
   if (slide.kind === 'cover') {
@@ -92,29 +186,62 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
   }
 
   if (slide.kind === 'verticals') {
+    const openVertical = slide.verticals?.find((v) => v.id === openVerticalId) ?? null
+
     return (
-      <div className={`slide-inner verticals visual-slide ${enter}`}>
+      <div
+        className={`slide-inner verticals visual-slide ${enter} ${openVertical ? 'has-deep-dive' : ''}`}
+      >
         <header className="slide-head overlay-head">
           {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
           <h2 className="slide-title">{slide.title}</h2>
           {slide.lead && <p className="slide-lead">{slide.lead}</p>}
         </header>
         <div className="vertical-panels" aria-label="Priority verticals">
-          {slide.verticals?.map((row, i) => (
-            <article
-              key={row.name}
-              className="vertical-panel"
-              style={{ ['--i' as string]: i }}
-            >
-              <MediaPlane src={row.image} alt={row.imageAlt} />
-              <div className="vertical-panel-copy">
-                <span className="row-index">{String(i + 1).padStart(2, '0')}</span>
-                <h3>{row.name}</h3>
-                <p className="panel-why">{row.whyNow}</p>
-                <p className="panel-opps">{row.opportunities}</p>
-              </div>
-            </article>
-          ))}
+          {slide.verticals?.map((row, i) => {
+            const clickable = Boolean(row.deepDive)
+            const copy = (
+              <>
+                <MediaPlane src={row.image} alt={row.imageAlt} />
+                <div className="vertical-panel-copy">
+                  <span className="row-index">{String(i + 1).padStart(2, '0')}</span>
+                  <h3>{row.name}</h3>
+                  <p className="panel-why">{row.whyNow}</p>
+                  <p className="panel-opps">{row.opportunities}</p>
+                  {clickable && (
+                    <span className="panel-cta">
+                      Open deep dive <span aria-hidden="true">→</span>
+                    </span>
+                  )}
+                </div>
+              </>
+            )
+
+            if (clickable) {
+              return (
+                <button
+                  key={row.id}
+                  type="button"
+                  className="vertical-panel is-clickable"
+                  style={{ ['--i' as string]: i }}
+                  onClick={() => onOpenVertical(row.id)}
+                  aria-haspopup="dialog"
+                >
+                  {copy}
+                </button>
+              )
+            }
+
+            return (
+              <article
+                key={row.id}
+                className="vertical-panel"
+                style={{ ['--i' as string]: i }}
+              >
+                {copy}
+              </article>
+            )
+          })}
         </div>
         <div className="pain-row overlay-pain">
           <p className="aside-label">Common pain points</p>
@@ -124,6 +251,14 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
             ))}
           </ul>
         </div>
+
+        {openVertical && (
+          <FinancialDeepDive
+            vertical={openVertical}
+            open={Boolean(openVertical)}
+            onClose={onCloseVertical}
+          />
+        )}
       </div>
     )
   }
@@ -315,9 +450,11 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
 
 export function SlideDeck() {
   const [index, setIndex] = useState(0)
+  const [openVerticalId, setOpenVerticalId] = useState<string | null>(null)
   const shellRef = useRef<HTMLDivElement>(null)
 
   const go = (next: number) => {
+    setOpenVerticalId(null)
     setIndex(Math.max(0, Math.min(slides.length - 1, next)))
   }
 
@@ -327,6 +464,14 @@ export function SlideDeck() {
 
   useEffect(() => {
     const onKey = (event: globalThis.KeyboardEvent) => {
+      if (openVerticalId) {
+        if (event.key === 'Escape') {
+          event.preventDefault()
+          setOpenVerticalId(null)
+        }
+        return
+      }
+
       if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
         event.preventDefault()
         go(index + 1)
@@ -346,9 +491,10 @@ export function SlideDeck() {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [index])
+  }, [index, openVerticalId])
 
   const onShellKey = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (openVerticalId) return
     if (event.key === 'ArrowRight') go(index + 1)
     if (event.key === 'ArrowLeft') go(index - 1)
   }
@@ -368,6 +514,7 @@ export function SlideDeck() {
       onKeyDown={onShellKey}
       data-slide={slide.kind}
       data-visual={visualKinds.has(slide.kind) ? 'true' : 'false'}
+      data-deep-dive={openVerticalId ? 'true' : 'false'}
     >
       <StageBackdrop />
 
@@ -407,7 +554,13 @@ export function SlideDeck() {
       </header>
 
       <main className="deck-stage" key={slide.id}>
-        <SlideContent slide={slide} active />
+        <SlideContent
+          slide={slide}
+          active
+          openVerticalId={openVerticalId}
+          onOpenVertical={setOpenVerticalId}
+          onCloseVertical={() => setOpenVerticalId(null)}
+        />
       </main>
 
       <footer className="deck-nav">
@@ -415,7 +568,7 @@ export function SlideDeck() {
           type="button"
           className="nav-btn"
           onClick={() => go(index - 1)}
-          disabled={index === 0}
+          disabled={index === 0 || Boolean(openVerticalId)}
           aria-label="Previous slide"
         >
           Previous
@@ -437,7 +590,7 @@ export function SlideDeck() {
           type="button"
           className="nav-btn primary"
           onClick={() => go(index + 1)}
-          disabled={index === slides.length - 1}
+          disabled={index === slides.length - 1 || Boolean(openVerticalId)}
           aria-label="Next slide"
         >
           Next
