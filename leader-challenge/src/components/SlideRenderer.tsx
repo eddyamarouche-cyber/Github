@@ -25,6 +25,7 @@ import type {
   FunnelContent,
   InvestFigureContent,
   KeyFiguresContent,
+  PharmacyOrderContent,
   MeddpiccContent,
   MetricsContent,
   ObjectionsContent,
@@ -57,6 +58,7 @@ import type {
   CoachingCase,
   MarketCard,
 } from '../data/types'
+import { PharmacyOrderScreen } from './PharmacyOrderScreen'
 import { MarketFlag, MarketFlagRow, flagCodeForCountry } from './Flags'
 import {
   Expandable,
@@ -339,6 +341,8 @@ function renderSlide(slide: Slide) {
       )
     case 'key-figures':
       return <KeyFiguresScreen content={slide.content as KeyFiguresContent} />
+    case 'pharmacy-order':
+      return <PharmacyOrderScreen content={slide.content as PharmacyOrderContent} />
     case 'culture':
       return (
         <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>

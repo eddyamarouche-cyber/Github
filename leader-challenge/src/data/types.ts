@@ -45,6 +45,7 @@ export type SlideType =
   | 'markets'
   | 'brand-portfolio'
   | 'key-figures'
+  | 'pharmacy-order'
   | 'culture'
   | 'weekday'
   | 'dashboard'
@@ -521,6 +522,12 @@ export interface KeyFiguresContent {
   overlay?: 'dark' | 'products'
 }
 
+export interface PharmacyOrderContent {
+  eyebrow?: string
+  title?: string
+  subtitle?: string
+}
+
 export interface BrandPortfolioProduct {
   name: string
   category: string
@@ -569,6 +576,7 @@ export type SlideContent =
   | { markets: MarketCard[] }
   | BrandPortfolioContent
   | KeyFiguresContent
+  | PharmacyOrderContent
   | CultureContent
   | WeekdayContent
   | DashboardContent

@@ -167,7 +167,18 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'We are selling into a company that reinvests for the long term — and a shareholder model that puts 100% of profits back into mission.',
     likelyQuestion: 'Where do you see the biggest growth lever — pharma or dermo?',
-    transition: 'That is the company. Now how I hire for it.',
+    transition: 'Now the tool that lets pharmacy sellers integrate orders directly in the field.',
+  },
+  'pharmacy-order': {
+    opening: 'This is the field tool — not a slide, a workflow.',
+    coreMessage:
+      'Pharmacy sellers integrate orders directly: pick the account, add multiple products, set quantities, capture notes — one submission.',
+    supportingExample:
+      'Dropdowns for pharmacy, region, delegate and delivery. Free-text for contact and PO reference. Multi-line product picker with live summary.',
+    executiveImplication:
+      'Less re-keying, fewer errors, faster order-to-cash — the rep sells instead of admining.',
+    likelyQuestion: 'Does this connect to our ERP or wholesaler today?',
+    transition: 'That is the company and the channel. Now how I hire for it.',
   },
   'recruitment-opener': {
     opening: 'This is how I think about hiring.',

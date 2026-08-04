@@ -1,4 +1,5 @@
 import { linkedinTargets, linkedinTargetsSpain } from './linkedinTargets'
+import { pharmacyOrderSlideContent } from './pharmacyOrder'
 import {
   pierreFabreBusinessMix,
   pierreFabreGlobalFigures,
@@ -376,8 +377,19 @@ export const slides: Slide[] = [
     content: pierreFabreBusinessMix,
   },
   {
-    id: 'recruitment-opener',
+    id: 'pharmacy-order',
     number: 16,
+    section: 'intro',
+    type: 'pharmacy-order',
+    title: 'Pharmacy Order Integration',
+    takeaway:
+      'Field reps capture pharmacy orders on the spot — account, products, quantities and delivery without re-keying.',
+    recommendedMinutes: 2,
+    content: pharmacyOrderSlideContent,
+  },
+  {
+    id: 'recruitment-opener',
+    number: 17,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Recruitment',
