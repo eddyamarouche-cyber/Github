@@ -195,6 +195,34 @@ export const slides: Slide[] = [
         opportunities: 'Knowledge Assistant, Field Operations, Compliance',
         image: '/images/vertical-energy.jpg',
         imageAlt: 'Energy infrastructure and power lines',
+        deepDive: {
+          headline: "Why It's Anthropic's #3 Opportunity in Italy",
+          whyLabel: 'Why now?',
+          blocks: [
+            {
+              title: 'A strategic sector undergoing massive transformation',
+              points: [
+                "Italy is one of Europe's largest energy markets",
+                'Significant investments in renewables, grid modernization and energy transition',
+                'National Energy & Climate Plan driving investment over the next five years',
+              ],
+            },
+            {
+              title: 'Strong AI and technology investment',
+              stats: [
+                { value: '$400M', label: 'AI market 2024' },
+                { value: '$1.7B', label: 'projected by 2030' },
+              ],
+              points: [
+                'Enel – ~$1B annual technology & AI investment',
+                'Eni – ~$500M annual technology & AI investment',
+                'Tier 1 targets: Enel, Eni',
+                'Tier 2: Snam, Terna, A2A, Hera',
+              ],
+            },
+          ],
+          closer: 'AI is becoming the strategic enabler of the energy transition.',
+        },
       },
     ],
     painPoints: [
