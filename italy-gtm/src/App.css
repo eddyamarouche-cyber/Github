@@ -796,31 +796,48 @@
 
   .focus {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.5rem;
     overflow: auto;
     justify-content: flex-start;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
+    align-content: start;
+  }
+
+  .focus-copy {
+    order: 0;
+    min-width: 0;
   }
 
   .focus-aside {
-    order: -1;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    justify-items: start;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
+    width: 100%;
+    min-width: 0;
   }
 
   .italy-mark {
-    width: 88px;
+    width: 72px;
+    flex-shrink: 0;
   }
 
   .why-block {
-    border-top: none;
-    padding-top: 0;
+    border-top: 1px solid var(--line-strong);
+    padding-top: 0.85rem;
+    max-width: none;
+    width: 100%;
   }
 
   .brand-name {
     font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .hero-title,
+  .hero-lead,
+  .positioning {
+    max-width: none;
   }
 
   .vertical-table-head,
