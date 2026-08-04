@@ -50,14 +50,16 @@ function FinancialDeepDive({
           <span aria-hidden="true">←</span> Back to verticals
         </button>
 
-        <p className="eyebrow">Financial Services</p>
+        <p className="eyebrow">{vertical.name}</p>
         <h2 id="deep-dive-title" className="deep-dive-title">
           {dive.headline}
         </h2>
 
         <p className="deep-dive-why">{dive.whyLabel}</p>
 
-        <div className="deep-dive-grid">
+        <div
+          className={`deep-dive-grid deep-dive-grid-${dive.blocks.length}`}
+        >
           {dive.blocks.map((block, i) => (
             <section
               key={block.title}

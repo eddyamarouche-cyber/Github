@@ -152,6 +152,41 @@ export const slides: Slide[] = [
         opportunities: 'Engineering Copilot, Documentation, Procurement',
         image: '/images/vertical-manufacturing.jpg',
         imageAlt: 'Industrial manufacturing floor',
+        deepDive: {
+          headline: "Why It's Anthropic's #2 Opportunity in Italy",
+          whyLabel: 'Why now?',
+          blocks: [
+            {
+              title: "Europe's second-largest manufacturing economy",
+              stats: [
+                { value: '16%', label: "of Italy's GDP" },
+                { value: '4M', label: 'employees' },
+              ],
+              points: [
+                'Global leaders: CNH, Iveco, Stellantis, Leonardo, Ferrari, Brembo, Prysmian',
+              ],
+            },
+            {
+              title: 'AI adoption is accelerating',
+              stats: [
+                { value: '50%', label: "of Italy's R&D investment" },
+                { value: '$1.8B', label: 'AI market (+50% YoY)' },
+              ],
+              points: [
+                '71% of large manufacturers already have active AI initiatives',
+              ],
+            },
+            {
+              title: 'Regulation favors trusted AI',
+              points: [
+                'Italy was the first EU country to align national legislation with the EU AI Act',
+                'Strong focus on governance, cybersecurity and compliance',
+              ],
+            },
+          ],
+          closer:
+            'Manufacturers are moving from digital transformation to enterprise AI adoption.',
+        },
       },
       {
         id: 'energy',
