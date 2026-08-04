@@ -131,6 +131,12 @@
     linear-gradient(180deg, rgba(3, 10, 16, 0.4) 0%, transparent 35%, rgba(3, 10, 16, 0.65) 100%);
 }
 
+.cover-media .media-scrim {
+  background:
+    linear-gradient(115deg, rgba(2, 8, 14, 0.9) 0%, rgba(2, 8, 14, 0.55) 45%, rgba(2, 8, 14, 0.35) 100%),
+    linear-gradient(180deg, rgba(2, 8, 14, 0.45) 0%, transparent 40%, rgba(2, 8, 14, 0.7) 100%);
+}
+
 .gtm-media .media-scrim,
 .account-media .media-scrim,
 .why-media .media-scrim {
@@ -363,6 +369,125 @@
   letter-spacing: 0.04em;
   color: var(--accent-mid);
   padding-top: 0.15rem;
+}
+
+/* ——— Cover ——— */
+.cover {
+  align-items: end;
+  padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1.25rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.cover-media {
+  z-index: 0;
+}
+
+.cover-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 18ch;
+}
+
+.cover-title {
+  display: grid;
+  gap: 0.15rem;
+  margin-bottom: 1.1rem;
+}
+
+.cover-brand {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  text-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+}
+
+.cover-line {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #9fd9cc;
+}
+
+.cover-dates {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  max-width: 14ch;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.cover.is-active .cover-dates {
+  animation: chipIn 0.6s var(--ease-out) 0.25s forwards;
+}
+
+.cover-tag {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-style: italic;
+  font-weight: 600;
+  color: #efc48a;
+  margin-bottom: 1.75rem;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.cover.is-active .cover-tag {
+  animation: chipIn 0.55s var(--ease-out) 0.4s forwards;
+}
+
+.cover-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(248, 251, 252, 0.75);
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.cover.is-active .cover-hint {
+  animation: chipIn 0.5s var(--ease-out) 0.55s forwards;
+}
+
+.cover-hint .hint-key {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: var(--accent-mid);
+  font-size: 1rem;
+}
+
+.cover.is-active .cover-brand {
+  animation: coverBrandIn 0.7s var(--ease-out) forwards;
+}
+
+.cover.is-active .cover-line {
+  animation: chipIn 0.55s var(--ease-out) 0.12s forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes coverBrandIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* ——— Focus / hero ——— */
@@ -1100,6 +1225,23 @@
     inset: 0.35rem;
   }
 
+  .cover {
+    align-content: end;
+    padding: 1.15rem 1rem 1.25rem;
+  }
+
+  .cover-copy {
+    max-width: none;
+  }
+
+  .cover-brand {
+    font-size: clamp(2.6rem, 14vw, 3.6rem);
+  }
+
+  .cover-dates {
+    max-width: none;
+  }
+
   .focus {
     grid-template-columns: 1fr;
     align-content: end;
@@ -1173,6 +1315,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .cover.is-active .cover-brand,
+  .cover.is-active .cover-line,
+  .cover.is-active .cover-dates,
+  .cover.is-active .cover-tag,
+  .cover.is-active .cover-hint,
   .deck-mark,
   .slide-inner.is-active,
   .is-active .media-img,
@@ -1191,6 +1338,10 @@
   }
 
   .slide-inner,
+  .cover-line,
+  .cover-dates,
+  .cover-tag,
+  .cover-hint,
   .vertical-chip,
   .aside-list li,
   .vertical-panel,

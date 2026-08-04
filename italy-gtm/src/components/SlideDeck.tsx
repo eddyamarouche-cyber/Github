@@ -23,6 +23,29 @@ function MediaPlane({
 function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
   const enter = active ? 'is-active' : ''
 
+  if (slide.kind === 'cover') {
+    return (
+      <div className={`slide-inner cover visual-slide ${enter}`}>
+        {slide.image && (
+          <MediaPlane src={slide.image} alt={slide.imageAlt ?? ''} className="cover-media" />
+        )}
+        <div className="cover-copy">
+          {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+          <h1 className="cover-title">
+            <span className="cover-brand">Anthropic</span>
+            <span className="cover-line">interviews</span>
+          </h1>
+          <p className="cover-dates">{slide.lead}</p>
+          {slide.quote && <p className="cover-tag">{slide.quote}</p>}
+          <p className="cover-hint">
+            <span className="hint-key">→</span>
+            <span>Italy GTM strategy</span>
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   if (slide.kind === 'focus') {
     return (
       <div className={`slide-inner focus visual-slide ${enter}`}>
@@ -316,7 +339,7 @@ export function SlideDeck() {
       } else if (event.key === 'End') {
         event.preventDefault()
         go(slides.length - 1)
-      } else if (/^[1-6]$/.test(event.key)) {
+      } else if (/^[1-7]$/.test(event.key)) {
         event.preventDefault()
         go(Number(event.key) - 1)
       }
@@ -332,7 +355,7 @@ export function SlideDeck() {
 
   const progress = ((index + 1) / slides.length) * 100
   const slide = slides[index]
-  const visualKinds = new Set(['focus', 'verticals', 'gtm', 'expand', 'account', 'why'])
+  const visualKinds = new Set(['cover', 'focus', 'verticals', 'gtm', 'expand', 'account', 'why'])
 
   return (
     <div

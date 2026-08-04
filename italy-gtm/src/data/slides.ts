@@ -1,4 +1,5 @@
 export type SlideKind =
+  | 'cover'
   | 'focus'
   | 'verticals'
   | 'gtm'
@@ -60,6 +61,16 @@ export const presenter = {
 }
 
 export const slides: Slide[] = [
+  {
+    id: 'cover',
+    kind: 'cover',
+    eyebrow: 'Interview preparation',
+    title: 'Anthropic interviews',
+    lead: '5th and 6th August 2026',
+    quote: 'Trusted AI · Safety · Enterprise',
+    image: '/images/cover-safety.jpg',
+    imageAlt: 'Padlock and digital security — AI safety and trust',
+  },
   {
     id: 'focus',
     kind: 'focus',
