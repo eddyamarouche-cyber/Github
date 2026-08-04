@@ -790,8 +790,8 @@
 
 .pipeline-list li {
   display: grid;
-  grid-template-columns: 3.4rem 1fr;
-  gap: 0.35rem 0.85rem;
+  grid-template-columns: 4.25rem minmax(0, 1fr);
+  gap: 0.35rem 1rem;
   align-items: center;
   opacity: 0;
   transform: translateY(8px);
@@ -814,11 +814,16 @@
   letter-spacing: -0.03em;
   color: var(--accent-deep);
   line-height: 1;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .pipeline-meta {
   display: grid;
   gap: 0.4rem;
+  min-width: 0;
 }
 
 .pipeline-label {
