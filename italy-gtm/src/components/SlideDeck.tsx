@@ -99,6 +99,26 @@ function FinancialDeepDive({
           </span>
           {dive.closer}
         </p>
+
+        {dive.sources && dive.sources.length > 0 && (
+          <div className="deep-dive-sources">
+            <p className="aside-label">Sources</p>
+            <ul>
+              {dive.sources.map((source) => (
+                <li key={source.href}>
+                  <a
+                    href={source.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {source.label}
+                    <span aria-hidden="true"> ↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   )

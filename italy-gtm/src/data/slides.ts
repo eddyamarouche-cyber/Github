@@ -13,11 +13,17 @@ export interface DeepDiveBlock {
   points: string[]
 }
 
+export interface DeepDiveSource {
+  label: string
+  href: string
+}
+
 export interface VerticalDeepDive {
   headline: string
   whyLabel: string
   blocks: DeepDiveBlock[]
   closer: string
+  sources?: DeepDiveSource[]
 }
 
 export interface VerticalRow {
@@ -143,6 +149,23 @@ export const slides: Slide[] = [
           ],
           closer:
             'Perfect timing to establish Anthropic as the trusted Enterprise AI platform',
+          sources: [
+            {
+              label:
+                'Reuters — Italian banks must invest more in technology, central bank says',
+              href: 'https://www.reuters.com/world/europe/italian-banks-must-invest-more-technology-central-bank-says-2024-05-31/',
+            },
+            {
+              label:
+                'UniCredit — Partnership with Google Cloud to accelerate digital transformation',
+              href: 'https://www.unicreditgroup.eu/it/press-media/press-releases/2025/may/unicredit-partners-with-google-cloud-to-accelerate-digital-trans.html',
+            },
+            {
+              label:
+                'Intesa Sanpaolo — Cloud core banking on Google Cloud regions in Italy',
+              href: 'https://group.intesasanpaolo.com/it/newsroom/comunicati-stampa/2026/07/intesa-sanpaolo-cloud-core-banking',
+            },
+          ],
         },
       },
       {

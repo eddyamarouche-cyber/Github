@@ -932,6 +932,37 @@
   font-weight: 800;
 }
 
+.deep-dive-sources {
+  margin-top: 1.25rem;
+  padding-top: 0.95rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.deep-dive-sources .aside-label {
+  margin-bottom: 0.55rem;
+}
+
+.deep-dive-sources ul {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.deep-dive-sources a {
+  display: inline;
+  color: rgba(248, 251, 252, 0.78);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-decoration-color: rgba(159, 217, 204, 0.45);
+  text-underline-offset: 0.18em;
+  transition: color 0.2s var(--ease-out), text-decoration-color 0.2s var(--ease-out);
+}
+
+.deep-dive-sources a:hover {
+  color: #9fd9cc;
+  text-decoration-color: #9fd9cc;
+}
+
 .deck[data-deep-dive='true'] .deck-nav {
   opacity: 0.35;
   pointer-events: none;
