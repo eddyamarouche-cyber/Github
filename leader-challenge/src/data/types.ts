@@ -492,6 +492,13 @@ export interface KeyFigureSegment {
   value: string
   detail?: string
   bullets?: string[]
+  image?: string
+  imageAlt?: string
+}
+
+export interface KeyFigureProduct {
+  src: string
+  alt: string
 }
 
 export interface KeyFiguresContent {
@@ -505,6 +512,13 @@ export interface KeyFiguresContent {
   segments?: KeyFigureSegment[]
   footer?: string
   layout?: 'hero-grid' | 'segments'
+  /** Featured product lineup shown at the bottom */
+  productsImage?: string
+  productsImageAlt?: string
+  /** Individual brand packshots */
+  productImages?: KeyFigureProduct[]
+  imageObjectPosition?: string
+  overlay?: 'dark' | 'products'
 }
 
 export interface BrandPortfolioProduct {

@@ -3139,7 +3139,9 @@ function MarketsScreen({ content }: { content: MarketsSlideContent }) {
 function KeyFiguresScreen({ content }: { content: KeyFiguresContent }) {
   const stats = content.stats ?? []
   const segments = content.segments ?? []
+  const productImages = content.productImages ?? []
   const isSegmentsLayout = content.layout === 'segments'
+  const isProductsOverlay = content.overlay === 'products'
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -3148,18 +3150,29 @@ function KeyFiguresScreen({ content }: { content: KeyFiguresContent }) {
         alt=""
         aria-hidden
         className="absolute inset-0 h-full w-full object-cover"
+        style={{ objectPosition: content.imageObjectPosition ?? 'center' }}
         initial={{ scale: 1.08, opacity: 0.55 }}
         animate={{
-          scale: isSegmentsLayout ? [1.04, 1.1, 1.06, 1.12, 1.04] : [1.06, 1.14, 1.08, 1.16, 1.06],
-          x: ['0%', '-1.5%', '0.5%', '-1%', '0%'],
-          y: ['0%', '-0.5%', '0.25%', '-0.75%', '0%'],
+          scale: isSegmentsLayout ? [1.04, 1.08, 1.05, 1.1, 1.04] : [1.05, 1.1, 1.06, 1.12, 1.05],
+          x: ['0%', '-1%', '0.5%', '-0.5%', '0%'],
+          y: ['0%', '-0.25%', '0.15%', '-0.35%', '0%'],
           opacity: 1,
         }}
         transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(46,110,184,0.35),transparent_50%),radial-gradient(ellipse_at_90%_100%,rgba(255,107,44,0.22),transparent_45%)]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#04080f]/92 via-[#04080f]/72 to-[#04080f]/55" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#04080f]/90 via-transparent to-[#04080f]/55" />
+      {isProductsOverlay ? (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(46,110,184,0.55),transparent_52%),radial-gradient(ellipse_at_85%_100%,rgba(0,61,124,0.45),transparent_48%)]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#04101f]/88 via-[#04101f]/55 to-[#04101f]/72" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#04101f]/95 via-[#04101f]/35 to-[#04101f]/55" />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(46,110,184,0.35),transparent_50%),radial-gradient(ellipse_at_90%_100%,rgba(255,107,44,0.22),transparent_45%)]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#04080f]/92 via-[#04080f]/72 to-[#04080f]/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#04080f]/90 via-transparent to-[#04080f]/55" />
+        </>
+      )}
 
       <div className="relative z-10 flex h-full flex-col px-7 py-5 lg:px-12 lg:py-7">
         <motion.div
@@ -3198,7 +3211,13 @@ function KeyFiguresScreen({ content }: { content: KeyFiguresContent }) {
           </motion.h2>
         ) : null}
 
-        <div className="mt-4 flex min-h-0 flex-1 flex-col justify-center">
+        <div
+          className={`mt-4 flex min-h-0 flex-1 flex-col ${
+            isSegmentsLayout ? 'justify-center gap-4' : 'justify-center'
+          }`}
+        >
+          <div className={isSegmentsLayout ? 'grid items-end gap-5 lg:grid-cols-[minmax(0,1fr)_auto]' : ''}>
+            <div>
           {content.heroStat ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -3243,6 +3262,29 @@ function KeyFiguresScreen({ content }: { content: KeyFiguresContent }) {
               ))}
             </div>
           ) : null}
+            </div>
+
+            {isSegmentsLayout && productImages.length > 0 ? (
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.28, duration: 0.55 }}
+                className="hidden items-end justify-center gap-2 lg:flex"
+              >
+                {productImages.map((product, index) => (
+                  <motion.img
+                    key={product.src}
+                    src={product.src}
+                    alt={product.alt}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.32 + index * 0.06 }}
+                    className="h-28 w-auto max-w-[5.5rem] object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
+                  />
+                ))}
+              </motion.div>
+            ) : null}
+          </div>
 
           {segments.length > 0 ? (
             <div className="grid gap-4 md:grid-cols-2">
@@ -3252,8 +3294,10 @@ function KeyFiguresScreen({ content }: { content: KeyFiguresContent }) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.24 + index * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="rounded-2xl border border-white/14 bg-black/50 px-5 py-5 shadow-[0_16px_48px_rgba(0,0,0,0.4)] backdrop-blur-xl lg:px-7 lg:py-6"
+                  className="overflow-hidden rounded-2xl border border-white/14 bg-black/50 shadow-[0_16px_48px_rgba(0,0,0,0.4)] backdrop-blur-xl"
                 >
+                  <div className="flex items-stretch">
+                    <div className="flex min-w-0 flex-1 flex-col px-5 py-5 lg:px-7 lg:py-6">
                   <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase lg:text-sm">
                     {segment.title}
                   </p>
@@ -3277,18 +3321,61 @@ function KeyFiguresScreen({ content }: { content: KeyFiguresContent }) {
                       ))}
                     </div>
                   ) : null}
+                    </div>
+                    {segment.image ? (
+                      <div className="flex w-28 shrink-0 items-end justify-center bg-white/[0.03] px-2 py-3 lg:w-36 lg:px-3 lg:py-4">
+                        <img
+                          src={segment.image}
+                          alt={segment.imageAlt ?? segment.title}
+                          className="max-h-full w-full object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.35)]"
+                        />
+                      </div>
+                    ) : null}
+                  </div>
                 </motion.div>
               ))}
             </div>
           ) : null}
         </div>
 
+        {content.productsImage && !isSegmentsLayout ? (
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.55 }}
+            className="mt-3 shrink-0"
+          >
+            <div className="overflow-hidden rounded-2xl border border-white/12 bg-[#0a1a2e]/70 p-2 shadow-[0_16px_48px_rgba(0,0,0,0.4)] backdrop-blur-xl lg:p-3">
+              <img
+                src={content.productsImage}
+                alt={content.productsImageAlt ?? 'Pierre Fabre products'}
+                className="mx-auto max-h-24 w-full max-w-5xl object-contain lg:max-h-28"
+              />
+            </div>
+            {productImages.length > 0 ? (
+              <div className="mt-2 flex flex-wrap items-center justify-center gap-2 lg:gap-3">
+                {productImages.map((product, index) => (
+                  <motion.img
+                    key={product.src}
+                    src={product.src}
+                    alt={product.alt}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.42 + index * 0.05 }}
+                    className="h-14 w-auto max-w-[4.5rem] object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)] lg:h-16"
+                  />
+                ))}
+              </div>
+            ) : null}
+          </motion.div>
+        ) : null}
+
         {content.footer ? (
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.5 }}
-            className="mt-4 max-w-5xl border-t border-white/10 pt-4 text-sm font-medium leading-relaxed text-white/70 lg:text-base"
+            className="mt-3 max-w-5xl border-t border-white/10 pt-3 text-sm font-medium leading-relaxed text-white/70 lg:text-base"
           >
             {content.footer}
           </motion.p>
