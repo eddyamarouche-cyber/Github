@@ -209,6 +209,13 @@ export const slides: Slide[] = [
           ],
           closer:
             'Manufacturers are moving from digital transformation to enterprise AI adoption.',
+          sources: [
+            {
+              label:
+                'Rome Business School — Italy AI market 2030: industrial districts & leadership',
+              href: 'https://romebusinessschool.com/blog/italy-ai-market-2030-industrial-districts-leadership/',
+            },
+          ],
         },
       },
       {
