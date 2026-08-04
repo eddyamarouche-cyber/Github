@@ -1,15 +1,34 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { slides, presenter } from '../data/slides'
 import type { Slide } from '../data/slides'
-import { ItalyMark } from './ItalyMark'
 import { StageBackdrop } from './StageBackdrop'
+
+function MediaPlane({
+  src,
+  alt,
+  className = '',
+}: {
+  src: string
+  alt: string
+  className?: string
+}) {
+  return (
+    <div className={`media-plane ${className}`} aria-hidden={alt ? undefined : true}>
+      <img className="media-img" src={src} alt={alt} loading="eager" decoding="async" />
+      <div className="media-scrim" />
+    </div>
+  )
+}
 
 function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
   const enter = active ? 'is-active' : ''
 
   if (slide.kind === 'focus') {
     return (
-      <div className={`slide-inner focus ${enter}`}>
+      <div className={`slide-inner focus visual-slide ${enter}`}>
+        {slide.image && (
+          <MediaPlane src={slide.image} alt={slide.imageAlt ?? ''} className="focus-media" />
+        )}
         <div className="focus-copy">
           <p className="brand-lockup">
             <span className="brand-name">{presenter.company}</span>
@@ -34,10 +53,6 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
           </div>
         </div>
         <aside className="focus-aside">
-          <div className="italy-stage">
-            <ItalyMark />
-            <p className="italy-caption">Milan · Rome · Naples</p>
-          </div>
           <div className="why-block">
             <p className="aside-label">Why Italy</p>
             <ul className="aside-list">
@@ -55,37 +70,30 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
 
   if (slide.kind === 'verticals') {
     return (
-      <div className={`slide-inner verticals ${enter}`}>
-        <header className="slide-head">
+      <div className={`slide-inner verticals visual-slide ${enter}`}>
+        <header className="slide-head overlay-head">
           {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
           <h2 className="slide-title">{slide.title}</h2>
           {slide.lead && <p className="slide-lead">{slide.lead}</p>}
         </header>
-        <div className="vertical-table" role="table" aria-label="Priority verticals">
-          <div className="vertical-table-head" role="row">
-            <span role="columnheader">Vertical</span>
-            <span role="columnheader">Why now</span>
-            <span role="columnheader">AI opportunities</span>
-          </div>
+        <div className="vertical-panels" aria-label="Priority verticals">
           {slide.verticals?.map((row, i) => (
-            <div
+            <article
               key={row.name}
-              className="vertical-table-row"
-              role="row"
+              className="vertical-panel"
               style={{ ['--i' as string]: i }}
             >
-              <div className="vertical-name-cell" role="cell">
+              <MediaPlane src={row.image} alt={row.imageAlt} />
+              <div className="vertical-panel-copy">
                 <span className="row-index">{String(i + 1).padStart(2, '0')}</span>
-                <strong>{row.name}</strong>
+                <h3>{row.name}</h3>
+                <p className="panel-why">{row.whyNow}</p>
+                <p className="panel-opps">{row.opportunities}</p>
               </div>
-              <span role="cell">{row.whyNow}</span>
-              <span role="cell" className="opportunities-cell">
-                {row.opportunities}
-              </span>
-            </div>
+            </article>
           ))}
         </div>
-        <div className="pain-row">
+        <div className="pain-row overlay-pain">
           <p className="aside-label">Common pain points</p>
           <ul className="pain-list">
             {slide.painPoints?.map((pain) => (
@@ -99,52 +107,57 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
 
   if (slide.kind === 'gtm') {
     return (
-      <div className={`slide-inner gtm ${enter}`}>
-        <header className="slide-head">
-          {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
-          <h2 className="slide-title">{slide.title}</h2>
-          {slide.lead && <p className="slide-lead">{slide.lead}</p>}
-        </header>
-        <div className="gtm-grid">
-          <section className="gtm-panel">
-            <p className="aside-label">Focus on</p>
-            <ul className="point-list numbered">
-              {slide.focusItems?.map((item, i) => (
-                <li key={item} style={{ ['--i' as string]: i }}>
-                  <span className="list-num">{String(i + 1).padStart(2, '0')}</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section className="gtm-panel pipeline-panel">
-            <p className="aside-label">Pipeline generation</p>
-            <ul className="pipeline-list">
-              {slide.pipeline?.map((slice, i) => (
-                <li key={slice.label} style={{ ['--i' as string]: i }}>
-                  <span className="pipeline-share">{slice.share}</span>
-                  <div className="pipeline-meta">
-                    <span className="pipeline-label">{slice.label}</span>
-                    <span
-                      className="pipeline-bar"
-                      style={{ ['--share' as string]: slice.share }}
-                    />
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section className="gtm-panel">
-            <p className="aside-label">Key multipliers</p>
-            <ul className="point-list numbered">
-              {slide.multipliers?.map((item, i) => (
-                <li key={item} style={{ ['--i' as string]: i }}>
-                  <span className="list-num">{String(i + 1).padStart(2, '0')}</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </section>
+      <div className={`slide-inner gtm visual-slide ${enter}`}>
+        {slide.image && (
+          <MediaPlane src={slide.image} alt={slide.imageAlt ?? ''} className="gtm-media" />
+        )}
+        <div className="gtm-content">
+          <header className="slide-head">
+            {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+            <h2 className="slide-title">{slide.title}</h2>
+            {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+          </header>
+          <div className="gtm-grid">
+            <section className="gtm-panel">
+              <p className="aside-label">Focus on</p>
+              <ul className="point-list numbered">
+                {slide.focusItems?.map((item, i) => (
+                  <li key={item} style={{ ['--i' as string]: i }}>
+                    <span className="list-num">{String(i + 1).padStart(2, '0')}</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <section className="gtm-panel pipeline-panel">
+              <p className="aside-label">Pipeline generation</p>
+              <ul className="pipeline-list">
+                {slide.pipeline?.map((slice, i) => (
+                  <li key={slice.label} style={{ ['--i' as string]: i }}>
+                    <span className="pipeline-share">{slice.share}</span>
+                    <div className="pipeline-meta">
+                      <span className="pipeline-label">{slice.label}</span>
+                      <span
+                        className="pipeline-bar"
+                        style={{ ['--share' as string]: slice.share }}
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <section className="gtm-panel">
+              <p className="aside-label">Key multipliers</p>
+              <ul className="point-list numbered">
+                {slide.multipliers?.map((item, i) => (
+                  <li key={item} style={{ ['--i' as string]: i }}>
+                    <span className="list-num">{String(i + 1).padStart(2, '0')}</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
         </div>
       </div>
     )
@@ -152,21 +165,24 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
 
   if (slide.kind === 'expand') {
     return (
-      <div className={`slide-inner expand ${enter}`}>
-        <header className="slide-head">
+      <div className={`slide-inner expand visual-slide ${enter}`}>
+        <header className="slide-head overlay-head">
           {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
           <h2 className="slide-title">{slide.title}</h2>
           {slide.lead && <p className="slide-lead">{slide.lead}</p>}
         </header>
-        <ol className="phase-track">
+        <ol className="phase-track phase-panels">
           {slide.phases?.map((phase, i) => (
             <li key={phase.phase} style={{ ['--i' as string]: i }}>
-              <span className="phase-watermark" aria-hidden="true">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span className="phase-step">{phase.phase}</span>
-              <strong className="phase-product">{phase.product}</strong>
-              <p className="phase-outcome">{phase.outcome}</p>
+              <MediaPlane src={phase.image} alt={phase.imageAlt} />
+              <div className="phase-panel-copy">
+                <span className="phase-watermark" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="phase-step">{phase.phase}</span>
+                <strong className="phase-product">{phase.product}</strong>
+                <p className="phase-outcome">{phase.outcome}</p>
+              </div>
             </li>
           ))}
         </ol>
@@ -180,86 +196,96 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
 
   if (slide.kind === 'account') {
     return (
-      <div className={`slide-inner account ${enter}`}>
-        <header className="slide-head account-head">
-          {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
-          <h2 className="slide-title account-title">{slide.title}</h2>
-          {slide.lead && <p className="slide-lead">{slide.lead}</p>}
-        </header>
-        <div className="account-grid">
-          <section style={{ ['--i' as string]: 0 }}>
-            <p className="aside-label">Strategic fit</p>
-            <ul className="point-list">
-              {slide.fitItems?.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </section>
-          <section style={{ ['--i' as string]: 1 }}>
-            <p className="aside-label">Initial opportunities</p>
-            <ul className="point-list">
-              {slide.opportunities?.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </section>
-          <section style={{ ['--i' as string]: 2 }}>
-            <p className="aside-label">Target buyers</p>
-            <ul className="point-list">
-              {slide.buyers?.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </section>
-          <section style={{ ['--i' as string]: 3 }}>
-            <p className="aside-label">Expected value</p>
-            <ul className="point-list">
-              {slide.valueItems?.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </section>
+      <div className={`slide-inner account visual-slide ${enter}`}>
+        {slide.image && (
+          <MediaPlane src={slide.image} alt={slide.imageAlt ?? ''} className="account-media" />
+        )}
+        <div className="account-content">
+          <header className="slide-head account-head">
+            {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+            <h2 className="slide-title account-title">{slide.title}</h2>
+            {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+          </header>
+          <div className="account-grid">
+            <section style={{ ['--i' as string]: 0 }}>
+              <p className="aside-label">Strategic fit</p>
+              <ul className="point-list">
+                {slide.fitItems?.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+            <section style={{ ['--i' as string]: 1 }}>
+              <p className="aside-label">Initial opportunities</p>
+              <ul className="point-list">
+                {slide.opportunities?.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+            <section style={{ ['--i' as string]: 2 }}>
+              <p className="aside-label">Target buyers</p>
+              <ul className="point-list">
+                {slide.buyers?.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+            <section style={{ ['--i' as string]: 3 }}>
+              <p className="aside-label">Expected value</p>
+              <ul className="point-list">
+                {slide.valueItems?.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className={`slide-inner why ${enter}`}>
-      <header className="slide-head">
-        {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
-        <h2 className="slide-title">{slide.title}</h2>
-        {slide.lead && <p className="slide-lead">{slide.lead}</p>}
-      </header>
-      <div className="why-grid">
-        <section style={{ ['--i' as string]: 0 }}>
-          <p className="aside-label">Relevant experience</p>
-          <ul className="point-list">
-            {slide.experience?.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-        <section style={{ ['--i' as string]: 1 }}>
-          <p className="aside-label">What I bring</p>
-          <ul className="point-list">
-            {slide.bring?.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-      </div>
-      {slide.vision && (
-        <blockquote className="vision-quote">
-          <span className="vision-mark" aria-hidden="true">
-            “
-          </span>
-          {slide.vision}
-        </blockquote>
+    <div className={`slide-inner why visual-slide ${enter}`}>
+      {slide.image && (
+        <MediaPlane src={slide.image} alt={slide.imageAlt ?? ''} className="why-media" />
       )}
-      <p className="close-meta">
-        {presenter.name} · {presenter.email}
-      </p>
+      <div className="why-content">
+        <header className="slide-head">
+          {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+          <h2 className="slide-title">{slide.title}</h2>
+          {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+        </header>
+        <div className="why-grid">
+          <section style={{ ['--i' as string]: 0 }}>
+            <p className="aside-label">Relevant experience</p>
+            <ul className="point-list">
+              {slide.experience?.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+          <section style={{ ['--i' as string]: 1 }}>
+            <p className="aside-label">What I bring</p>
+            <ul className="point-list">
+              {slide.bring?.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        </div>
+        {slide.vision && (
+          <blockquote className="vision-quote">
+            <span className="vision-mark" aria-hidden="true">
+              “
+            </span>
+            {slide.vision}
+          </blockquote>
+        )}
+        <p className="close-meta">
+          {presenter.name} · {presenter.email}
+        </p>
+      </div>
     </div>
   )
 }
@@ -306,6 +332,7 @@ export function SlideDeck() {
 
   const progress = ((index + 1) / slides.length) * 100
   const slide = slides[index]
+  const visualKinds = new Set(['focus', 'verticals', 'gtm', 'expand', 'account', 'why'])
 
   return (
     <div
@@ -317,6 +344,7 @@ export function SlideDeck() {
       aria-label="Italy GTM Strategy presentation"
       onKeyDown={onShellKey}
       data-slide={slide.kind}
+      data-visual={visualKinds.has(slide.kind) ? 'true' : 'false'}
     >
       <StageBackdrop />
 

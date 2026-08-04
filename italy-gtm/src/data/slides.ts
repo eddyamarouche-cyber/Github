@@ -10,6 +10,8 @@ export interface VerticalRow {
   name: string
   whyNow: string
   opportunities: string
+  image: string
+  imageAlt: string
 }
 
 export interface PipelineSlice {
@@ -21,6 +23,8 @@ export interface ExpandPhase {
   phase: string
   product: string
   outcome: string
+  image: string
+  imageAlt: string
 }
 
 export interface Slide {
@@ -44,6 +48,8 @@ export interface Slide {
   experience?: string[]
   bring?: string[]
   vision?: string
+  image?: string
+  imageAlt?: string
 }
 
 export const presenter = {
@@ -61,6 +67,8 @@ export const slides: Slide[] = [
     title: 'Where I Would Focus',
     lead: 'Position Anthropic as the trusted Enterprise AI platform for Italy’s largest enterprises.',
     quote: 'Trusted AI + Enterprise Security + Governance + Business Value',
+    image: '/images/hero-milan.jpg',
+    imageAlt: 'Rome Colosseum at dusk — Italy market backdrop',
     points: [
       'Large enterprises concentrated in a few strategic industries',
       'AI adoption accelerating under productivity pressure',
@@ -80,16 +88,22 @@ export const slides: Slide[] = [
         name: 'Financial Services',
         whyNow: 'Cloud modernization, AI investments, regulation',
         opportunities: 'Engineering productivity, Compliance, Knowledge Management',
+        image: '/images/vertical-finance.jpg',
+        imageAlt: 'Modern financial district skyline',
       },
       {
         name: 'Manufacturing',
         whyNow: 'Largest industrial economy after Germany, fragmented knowledge',
         opportunities: 'Engineering Copilot, Documentation, Procurement',
+        image: '/images/vertical-manufacturing.jpg',
+        imageAlt: 'Industrial manufacturing floor',
       },
       {
         name: 'Energy & Utilities',
         whyNow: 'Massive infrastructure investments, aging workforce',
         opportunities: 'Knowledge Assistant, Field Operations, Compliance',
+        image: '/images/vertical-energy.jpg',
+        imageAlt: 'Energy infrastructure and power lines',
       },
     ],
     painPoints: [
@@ -106,6 +120,8 @@ export const slides: Slide[] = [
     eyebrow: 'Go-To-Market',
     title: 'Target the right accounts—not the most accounts',
     lead: 'Win with Tier 1 enterprises through CEO / CIO / CTO engagement and business-value conversations.',
+    image: '/images/gtm-network.jpg',
+    imageAlt: 'Executive boardroom ready for high-stakes meetings',
     focusItems: [
       'Tier 1 enterprises',
       'CEO / CIO / CTO engagement',
@@ -135,16 +151,22 @@ export const slides: Slide[] = [
         phase: 'Phase 1',
         product: 'Claude Code',
         outcome: 'Deliver measurable Engineering Productivity ROI',
+        image: '/images/expand-code.jpg',
+        imageAlt: 'Software engineering workstation',
       },
       {
         phase: 'Phase 2',
         product: 'Claude Enterprise',
         outcome: 'Enterprise Knowledge Assistant',
+        image: '/images/expand-knowledge.jpg',
+        imageAlt: 'Teams collaborating over enterprise knowledge',
       },
       {
         phase: 'Phase 3',
         product: 'Trusted AI Platform',
         outcome: 'Compliance, Risk and Enterprise AI Agents',
+        image: '/images/expand-platform.jpg',
+        imageAlt: 'Secure enterprise data infrastructure',
       },
     ],
   },
@@ -154,6 +176,8 @@ export const slides: Slide[] = [
     eyebrow: 'Example Account',
     title: 'UniCredit',
     lead: 'A flagship financial-services account investing heavily in AI, cloud modernization, and engineering productivity.',
+    image: '/images/account-milan.jpg',
+    imageAlt: 'Modern European financial towers',
     fitItems: [
       'AI investment agenda',
       'Cloud modernization',
@@ -175,6 +199,8 @@ export const slides: Slide[] = [
     eyebrow: 'Why Me',
     title: 'Ready to open Italy for Anthropic',
     lead: 'Enterprise sales execution, executive relationships, and a partner-led motion that scales.',
+    image: '/images/close-italy.jpg',
+    imageAlt: 'Italian coastal towns along the cliffs',
     experience: [
       'Built Databricks in France and Italy',
       'Opened strategic enterprise accounts',
