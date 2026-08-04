@@ -13,29 +13,38 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
         <div className="focus-copy">
           <p className="brand-lockup">
             <span className="brand-name">{presenter.company}</span>
-            <span className="brand-sep">·</span>
             <span className="brand-role">Italy</span>
           </p>
           {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
           <h1 className="hero-title">{slide.title}</h1>
           <p className="hero-lead">{slide.lead}</p>
-          {slide.quote && <p className="positioning">{slide.quote}</p>}
+          {slide.quote && (
+            <p className="positioning">
+              <span className="positioning-mark" aria-hidden="true" />
+              {slide.quote}
+            </p>
+          )}
           <div className="vertical-strip" aria-label="Priority verticals">
             {slide.focusItems?.map((item, i) => (
               <span key={item} className="vertical-chip" style={{ ['--i' as string]: i }}>
                 <span className="vertical-index">{String(i + 1).padStart(2, '0')}</span>
-                {item}
+                <span className="vertical-name">{item}</span>
               </span>
             ))}
           </div>
         </div>
         <aside className="focus-aside">
-          <ItalyMark />
+          <div className="italy-stage">
+            <ItalyMark />
+            <p className="italy-caption">Milan · Rome · Naples</p>
+          </div>
           <div className="why-block">
             <p className="aside-label">Why Italy</p>
             <ul className="aside-list">
-              {slide.points?.map((point) => (
-                <li key={point}>{point}</li>
+              {slide.points?.map((point, i) => (
+                <li key={point} style={{ ['--i' as string]: i }}>
+                  {point}
+                </li>
               ))}
             </ul>
           </div>
@@ -47,9 +56,11 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
   if (slide.kind === 'verticals') {
     return (
       <div className={`slide-inner verticals ${enter}`}>
-        {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
-        <h2 className="slide-title">{slide.title}</h2>
-        {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+        <header className="slide-head">
+          {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+          <h2 className="slide-title">{slide.title}</h2>
+          {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+        </header>
         <div className="vertical-table" role="table" aria-label="Priority verticals">
           <div className="vertical-table-head" role="row">
             <span role="columnheader">Vertical</span>
@@ -63,9 +74,14 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
               role="row"
               style={{ ['--i' as string]: i }}
             >
-              <strong role="cell">{row.name}</strong>
+              <div className="vertical-name-cell" role="cell">
+                <span className="row-index">{String(i + 1).padStart(2, '0')}</span>
+                <strong>{row.name}</strong>
+              </div>
               <span role="cell">{row.whyNow}</span>
-              <span role="cell">{row.opportunities}</span>
+              <span role="cell" className="opportunities-cell">
+                {row.opportunities}
+              </span>
             </div>
           ))}
         </div>
@@ -84,15 +100,20 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
   if (slide.kind === 'gtm') {
     return (
       <div className={`slide-inner gtm ${enter}`}>
-        {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
-        <h2 className="slide-title">{slide.title}</h2>
-        {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+        <header className="slide-head">
+          {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+          <h2 className="slide-title">{slide.title}</h2>
+          {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+        </header>
         <div className="gtm-grid">
           <section className="gtm-panel">
             <p className="aside-label">Focus on</p>
-            <ul className="point-list">
-              {slide.focusItems?.map((item) => (
-                <li key={item}>{item}</li>
+            <ul className="point-list numbered">
+              {slide.focusItems?.map((item, i) => (
+                <li key={item} style={{ ['--i' as string]: i }}>
+                  <span className="list-num">{String(i + 1).padStart(2, '0')}</span>
+                  {item}
+                </li>
               ))}
             </ul>
           </section>
@@ -102,20 +123,25 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
               {slide.pipeline?.map((slice, i) => (
                 <li key={slice.label} style={{ ['--i' as string]: i }}>
                   <span className="pipeline-share">{slice.share}</span>
-                  <span className="pipeline-label">{slice.label}</span>
-                  <span
-                    className="pipeline-bar"
-                    style={{ ['--share' as string]: slice.share }}
-                  />
+                  <div className="pipeline-meta">
+                    <span className="pipeline-label">{slice.label}</span>
+                    <span
+                      className="pipeline-bar"
+                      style={{ ['--share' as string]: slice.share }}
+                    />
+                  </div>
                 </li>
               ))}
             </ul>
           </section>
           <section className="gtm-panel">
             <p className="aside-label">Key multipliers</p>
-            <ul className="point-list">
-              {slide.multipliers?.map((item) => (
-                <li key={item}>{item}</li>
+            <ul className="point-list numbered">
+              {slide.multipliers?.map((item, i) => (
+                <li key={item} style={{ ['--i' as string]: i }}>
+                  <span className="list-num">{String(i + 1).padStart(2, '0')}</span>
+                  {item}
+                </li>
               ))}
             </ul>
           </section>
@@ -127,24 +153,25 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
   if (slide.kind === 'expand') {
     return (
       <div className={`slide-inner expand ${enter}`}>
-        {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
-        <h2 className="slide-title">{slide.title}</h2>
-        {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+        <header className="slide-head">
+          {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+          <h2 className="slide-title">{slide.title}</h2>
+          {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+        </header>
         <ol className="phase-track">
           {slide.phases?.map((phase, i) => (
             <li key={phase.phase} style={{ ['--i' as string]: i }}>
+              <span className="phase-watermark" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
               <span className="phase-step">{phase.phase}</span>
               <strong className="phase-product">{phase.product}</strong>
               <p className="phase-outcome">{phase.outcome}</p>
-              {i < (slide.phases?.length ?? 0) - 1 && (
-                <span className="phase-arrow" aria-hidden="true">
-                  ↓
-                </span>
-              )}
             </li>
           ))}
         </ol>
         <p className="expand-goal">
+          <span className="expand-goal-label">Goal</span>
           Expand from one successful use case into enterprise-wide adoption.
         </p>
       </div>
@@ -154,11 +181,13 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
   if (slide.kind === 'account') {
     return (
       <div className={`slide-inner account ${enter}`}>
-        {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
-        <h2 className="slide-title account-title">{slide.title}</h2>
-        {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+        <header className="slide-head account-head">
+          {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+          <h2 className="slide-title account-title">{slide.title}</h2>
+          {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+        </header>
         <div className="account-grid">
-          <section>
+          <section style={{ ['--i' as string]: 0 }}>
             <p className="aside-label">Strategic fit</p>
             <ul className="point-list">
               {slide.fitItems?.map((item) => (
@@ -166,7 +195,7 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
               ))}
             </ul>
           </section>
-          <section>
+          <section style={{ ['--i' as string]: 1 }}>
             <p className="aside-label">Initial opportunities</p>
             <ul className="point-list">
               {slide.opportunities?.map((item) => (
@@ -174,7 +203,7 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
               ))}
             </ul>
           </section>
-          <section>
+          <section style={{ ['--i' as string]: 2 }}>
             <p className="aside-label">Target buyers</p>
             <ul className="point-list">
               {slide.buyers?.map((item) => (
@@ -182,7 +211,7 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
               ))}
             </ul>
           </section>
-          <section>
+          <section style={{ ['--i' as string]: 3 }}>
             <p className="aside-label">Expected value</p>
             <ul className="point-list">
               {slide.valueItems?.map((item) => (
@@ -197,11 +226,13 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
 
   return (
     <div className={`slide-inner why ${enter}`}>
-      {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
-      <h2 className="slide-title">{slide.title}</h2>
-      {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+      <header className="slide-head">
+        {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+        <h2 className="slide-title">{slide.title}</h2>
+        {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+      </header>
       <div className="why-grid">
-        <section>
+        <section style={{ ['--i' as string]: 0 }}>
           <p className="aside-label">Relevant experience</p>
           <ul className="point-list">
             {slide.experience?.map((item) => (
@@ -209,7 +240,7 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
             ))}
           </ul>
         </section>
-        <section>
+        <section style={{ ['--i' as string]: 1 }}>
           <p className="aside-label">What I bring</p>
           <ul className="point-list">
             {slide.bring?.map((item) => (
@@ -218,7 +249,14 @@ function SlideContent({ slide, active }: { slide: Slide; active: boolean }) {
           </ul>
         </section>
       </div>
-      {slide.vision && <blockquote className="vision-quote">{slide.vision}</blockquote>}
+      {slide.vision && (
+        <blockquote className="vision-quote">
+          <span className="vision-mark" aria-hidden="true">
+            “
+          </span>
+          {slide.vision}
+        </blockquote>
+      )}
       <p className="close-meta">
         {presenter.name} · {presenter.email}
       </p>
