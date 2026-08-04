@@ -252,6 +252,16 @@ export const slides: Slide[] = [
             },
           ],
           closer: 'AI is becoming the strategic enabler of the energy transition.',
+          sources: [
+            {
+              label: 'IEA — Italy country profile',
+              href: 'https://www.iea.org/countries/italy',
+            },
+            {
+              label: 'MASE — Ministero dell’Ambiente e della Sicurezza Energetica',
+              href: 'https://www.mase.gov.it/portale/home',
+            },
+          ],
         },
       },
     ],
