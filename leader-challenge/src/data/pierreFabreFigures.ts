@@ -1,7 +1,7 @@
 import type { KeyFiguresContent } from './types'
 
 export const pierreFabreGlobalFigures: KeyFiguresContent = {
-  image: '/images/gtm-galaxy.jpg',
+  image: '/images/unique-acceleration.jpg',
   logo: '/images/pierre-fabre/logo.svg',
   logoAlt: 'Pierre Fabre',
   eyebrow: 'Key figures · 2025',
@@ -23,7 +23,7 @@ export const pierreFabreGlobalFigures: KeyFiguresContent = {
 }
 
 export const pierreFabreBusinessMix: KeyFiguresContent = {
-  image: '/images/invest-ambition.jpg',
+  image: '/images/consistent-pipeline-generation.jpg',
   logo: '/images/pierre-fabre/logo.svg',
   logoAlt: 'Pierre Fabre',
   eyebrow: 'Science & business mix · 2025',
