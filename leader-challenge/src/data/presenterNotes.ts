@@ -145,7 +145,29 @@ export const presenterNotes: Record<string, PresenterNote> = {
     executiveImplication:
       'I coach through difficulty because that is where behaviour changes and leaders are forged.',
     likelyQuestion: 'How do you balance high standards with burnout risk?',
-    transition: 'Recruitment starts with a simple image.',
+    transition: 'Before we hire — let me anchor us in the company we are building for.',
+  },
+  'pierre-fabre-global-figures': {
+    opening: 'Start with scale — Pierre Fabre is not a regional niche player.',
+    coreMessage:
+      '€3.2B revenue, +4.6% like-for-like, 10,000 people, 130 countries — and #2 worldwide in dermo-cosmetics.',
+    supportingExample:
+      '71% of revenue is generated outside France. This is a global health and beauty platform with real international depth.',
+    executiveImplication:
+      'The Italy–Iberia role sits inside a company with global ambition, not a local subsidiary mindset.',
+    likelyQuestion: 'How does Southern Europe fit in the global growth story?',
+    transition: 'Scale is one chapter. Science and business mix is the next.',
+  },
+  'pierre-fabre-business-mix': {
+    opening: 'Ambition is funded — here is where the investment goes.',
+    coreMessage:
+      '€250M in R&D in 2025: €187M in pharma, €63M in dermo-cosmetics — science-led growth with digital acceleration.',
+    supportingExample:
+      '21.3% of dermo-cosmetics sales are already online — the mix is evolving, not static.',
+    executiveImplication:
+      'We are selling into a company that reinvests for the long term — and a shareholder model that puts 100% of profits back into mission.',
+    likelyQuestion: 'Where do you see the biggest growth lever — pharma or dermo?',
+    transition: 'That is the company. Now how I hire for it.',
   },
   'recruitment-opener': {
     opening: 'This is how I think about hiring.',

@@ -24,6 +24,7 @@ import type {
   FrameworkContent,
   FunnelContent,
   InvestFigureContent,
+  KeyFiguresContent,
   MeddpiccContent,
   MetricsContent,
   ObjectionsContent,
@@ -336,6 +337,8 @@ function renderSlide(slide: Slide) {
           takeaway={slide.takeaway}
         />
       )
+    case 'key-figures':
+      return <KeyFiguresScreen content={slide.content as KeyFiguresContent} />
     case 'culture':
       return (
         <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
@@ -3130,6 +3133,168 @@ function MarketsScreen({ content }: { content: MarketsSlideContent }) {
         )
       })}
     </Stagger>
+  )
+}
+
+function KeyFiguresScreen({ content }: { content: KeyFiguresContent }) {
+  const stats = content.stats ?? []
+  const segments = content.segments ?? []
+  const isSegmentsLayout = content.layout === 'segments'
+
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <motion.img
+        src={content.image}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+        initial={{ scale: 1.08, opacity: 0.55 }}
+        animate={{
+          scale: isSegmentsLayout ? [1.04, 1.1, 1.06, 1.12, 1.04] : [1.06, 1.14, 1.08, 1.16, 1.06],
+          x: ['0%', '-1.5%', '0.5%', '-1%', '0%'],
+          y: ['0%', '-0.5%', '0.25%', '-0.75%', '0%'],
+          opacity: 1,
+        }}
+        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(46,110,184,0.35),transparent_50%),radial-gradient(ellipse_at_90%_100%,rgba(255,107,44,0.22),transparent_45%)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#04080f]/92 via-[#04080f]/72 to-[#04080f]/55" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#04080f]/90 via-transparent to-[#04080f]/55" />
+
+      <div className="relative z-10 flex h-full flex-col px-7 py-5 lg:px-12 lg:py-7">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-wrap items-center justify-between gap-4"
+        >
+          <div className="flex items-center gap-4">
+            {content.logo ? (
+              <img
+                src={content.logo}
+                alt={content.logoAlt ?? 'Logo'}
+                className="h-10 w-auto max-w-[180px] drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)] lg:h-12"
+              />
+            ) : null}
+            {content.eyebrow ? (
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+                <p className="text-[11px] font-semibold tracking-[0.22em] text-white/65 uppercase lg:text-xs">
+                  {content.eyebrow}
+                </p>
+              </div>
+            ) : null}
+          </div>
+        </motion.div>
+
+        {content.title ? (
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08, duration: 0.5 }}
+            className="font-display mt-3 max-w-4xl text-2xl font-semibold tracking-tight text-white/90 lg:text-3xl"
+          >
+            {content.title}
+          </motion.h2>
+        ) : null}
+
+        <div className="mt-4 flex min-h-0 flex-1 flex-col justify-center">
+          {content.heroStat ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.12, duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-6 lg:mb-8"
+            >
+              <p className="font-display text-7xl leading-none font-bold tracking-tight text-accent drop-shadow-[0_0_48px_rgba(255,107,44,0.4)] sm:text-8xl lg:text-[9.5rem]">
+                {content.heroStat.value}
+              </p>
+              <p className="mt-3 text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
+                {content.heroStat.label}
+              </p>
+              {content.heroStat.detail ? (
+                <p className="mt-2 text-base font-medium text-white/70 lg:text-xl">
+                  {content.heroStat.detail}
+                </p>
+              ) : null}
+            </motion.div>
+          ) : null}
+
+          {stats.length > 0 ? (
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={`${stat.label}-${stat.value}`}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.22 + index * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-2xl border border-white/12 bg-black/45 px-4 py-4 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl lg:px-5 lg:py-5"
+                >
+                  <p className="font-display text-4xl font-bold tracking-tight text-white lg:text-5xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-2 text-sm font-medium leading-snug text-white/80 lg:text-base">
+                    {stat.label}
+                  </p>
+                  {stat.detail ? (
+                    <p className="mt-1 text-xs text-white/55 lg:text-sm">{stat.detail}</p>
+                  ) : null}
+                </motion.div>
+              ))}
+            </div>
+          ) : null}
+
+          {segments.length > 0 ? (
+            <div className="grid gap-4 md:grid-cols-2">
+              {segments.map((segment, index) => (
+                <motion.div
+                  key={segment.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.24 + index * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-2xl border border-white/14 bg-black/50 px-5 py-5 shadow-[0_16px_48px_rgba(0,0,0,0.4)] backdrop-blur-xl lg:px-7 lg:py-6"
+                >
+                  <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase lg:text-sm">
+                    {segment.title}
+                  </p>
+                  <p className="font-display mt-3 text-5xl font-bold tracking-tight text-white lg:text-6xl">
+                    {segment.value}
+                  </p>
+                  {segment.detail ? (
+                    <p className="mt-3 text-sm leading-relaxed text-white/75 lg:text-base">
+                      {segment.detail}
+                    </p>
+                  ) : null}
+                  {segment.bullets?.length ? (
+                    <div className="mt-4 space-y-2 border-t border-white/10 pt-4">
+                      {segment.bullets.map((bullet) => (
+                        <p
+                          key={bullet}
+                          className="text-sm font-semibold text-white/90 lg:text-base"
+                        >
+                          {bullet}
+                        </p>
+                      ))}
+                    </div>
+                  ) : null}
+                </motion.div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        {content.footer ? (
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.5 }}
+            className="mt-4 max-w-5xl border-t border-white/10 pt-4 text-sm font-medium leading-relaxed text-white/70 lg:text-base"
+          >
+            {content.footer}
+          </motion.p>
+        ) : null}
+      </div>
+    </div>
   )
 }
 

@@ -44,6 +44,7 @@ export type SlideType =
   | 'rhythm'
   | 'markets'
   | 'brand-portfolio'
+  | 'key-figures'
   | 'culture'
   | 'weekday'
   | 'dashboard'
@@ -480,6 +481,32 @@ export interface LinkedInTargetsContent {
   regionFlag?: string
 }
 
+export interface KeyFigureStat {
+  value: string
+  label: string
+  detail?: string
+}
+
+export interface KeyFigureSegment {
+  title: string
+  value: string
+  detail?: string
+  bullets?: string[]
+}
+
+export interface KeyFiguresContent {
+  image: string
+  logo?: string
+  logoAlt?: string
+  eyebrow?: string
+  title?: string
+  heroStat?: KeyFigureStat
+  stats?: KeyFigureStat[]
+  segments?: KeyFigureSegment[]
+  footer?: string
+  layout?: 'hero-grid' | 'segments'
+}
+
 export interface BrandPortfolioProduct {
   name: string
   category: string
@@ -527,6 +554,7 @@ export type SlideContent =
   | RhythmContent
   | { markets: MarketCard[] }
   | BrandPortfolioContent
+  | KeyFiguresContent
   | CultureContent
   | WeekdayContent
   | DashboardContent

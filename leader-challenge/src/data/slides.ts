@@ -1,4 +1,8 @@
 import { linkedinTargets, linkedinTargetsSpain } from './linkedinTargets'
+import {
+  pierreFabreBusinessMix,
+  pierreFabreGlobalFigures,
+} from './pierreFabreFigures'
 import type { SectionMeta, Slide } from './types'
 
 export const TOTAL_SESSION_MINUTES = 90
@@ -350,8 +354,30 @@ export const slides: Slide[] = [
     },
   },
   {
-    id: 'recruitment-opener',
+    id: 'pierre-fabre-global-figures',
     number: 14,
+    section: 'intro',
+    type: 'key-figures',
+    title: 'Pierre Fabre — Global Scale',
+    takeaway:
+      '€3.2B revenue, 130 countries, 71% outside France — a global dermo-cosmetics leader with a unique foundation model.',
+    recommendedMinutes: 1,
+    content: pierreFabreGlobalFigures,
+  },
+  {
+    id: 'pierre-fabre-business-mix',
+    number: 15,
+    section: 'intro',
+    type: 'key-figures',
+    title: 'Pierre Fabre — R&D & Business Mix',
+    takeaway:
+      '€250M in R&D — science-led growth across pharmaceuticals and dermo-cosmetics, with digital accelerating the mix.',
+    recommendedMinutes: 1,
+    content: pierreFabreBusinessMix,
+  },
+  {
+    id: 'recruitment-opener',
+    number: 16,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Recruitment',
@@ -366,7 +392,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'a-player-profile',
-    number: 15,
+    number: 17,
     section: 'recruitment',
     type: 'profile',
     title: 'A Player Profile',
@@ -417,7 +443,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'linkedin-talent-map',
-    number: 16,
+    number: 18,
     section: 'recruitment',
     type: 'linkedin-targets',
     title: 'LinkedIn Talent Map · Italy',
@@ -433,7 +459,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'linkedin-talent-map-spain',
-    number: 17,
+    number: 19,
     section: 'recruitment',
     type: 'linkedin-targets',
     title: 'LinkedIn Talent Map · Spain',
@@ -449,7 +475,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'how-proactivity',
-    number: 18,
+    number: 20,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'How?',
@@ -466,7 +492,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'how-subdivisions',
-    number: 19,
+    number: 21,
     section: 'recruitment',
     type: 'subdivisions',
     title: 'How we hire?',
@@ -514,7 +540,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'roleplay-title',
-    number: 20,
+    number: 22,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Role Play',
@@ -529,7 +555,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'roleplay-opener',
-    number: 21,
+    number: 23,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Role play',
@@ -549,7 +575,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'roleplay-proof',
-    number: 22,
+    number: 24,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'Why Cursor?',
@@ -576,7 +602,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'gtm-ambition',
-    number: 23,
+    number: 25,
     section: 'recruitment',
     type: 'visual-hero',
     title: 'GTM ambition',
@@ -597,7 +623,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'gtm-100bn',
-    number: 24,
+    number: 26,
     section: 'recruitment',
     type: 'reveal',
     title: '100Bn$',
@@ -617,7 +643,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-opener',
-    number: 25,
+    number: 27,
     section: 'retention',
     type: 'visual-hero',
     title: 'Retention in summary',
@@ -634,7 +660,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-system',
-    number: 26,
+    number: 28,
     section: 'retention',
     type: 'subdivisions',
     title: 'The approach',
@@ -678,7 +704,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-cta',
-    number: 27,
+    number: 29,
     section: 'retention',
     type: 'subdivisions',
     title: 'Call to action',
@@ -716,7 +742,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'retention-monitoring',
-    number: 28,
+    number: 30,
     section: 'retention',
     type: 'visual-hero',
     title: 'Monitoring',
@@ -768,7 +794,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'gap-reduction',
-    number: 29,
+    number: 31,
     section: 'revenue',
     type: 'subdivisions',
     title: 'Gap reduction',
@@ -795,7 +821,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'revenue-opener',
-    number: 30,
+    number: 32,
     section: 'revenue',
     type: 'visual-hero',
     title: 'Revenue',
@@ -811,7 +837,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'consistent-pipeline-generation',
-    number: 31,
+    number: 33,
     section: 'revenue',
     type: 'visual-hero',
     title: 'Consistent Pipeline Generation',
@@ -833,7 +859,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'operating-rhythm',
-    number: 32,
+    number: 34,
     section: 'revenue',
     type: 'visual-hero',
     title: 'Operating rhythm',
@@ -858,7 +884,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'inspection',
-    number: 33,
+    number: 35,
     section: 'revenue',
     type: 'meddpicc',
     title: 'Inspection',
@@ -913,7 +939,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'one-on-one-opener',
-    number: 34,
+    number: 36,
     section: 'revenue',
     type: 'visual-hero',
     title: '1:1',
@@ -932,7 +958,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'asks-opener',
-    number: 35,
+    number: 37,
     section: 'partnership',
     type: 'visual-hero',
     title: 'Asks',
@@ -948,7 +974,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'invest-opener',
-    number: 36,
+    number: 38,
     section: 'invest',
     type: 'visual-hero',
     title: 'Invest',
@@ -964,7 +990,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'invest-people',
-    number: 37,
+    number: 39,
     section: 'invest',
     type: 'org-chart',
     title: 'People',
@@ -995,7 +1021,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'marketing-c-level',
-    number: 38,
+    number: 40,
     section: 'invest',
     type: 'invest-figure',
     title: 'Marketing / C-Level event',
@@ -1008,7 +1034,7 @@ export const slides: Slide[] = [
   },
   {
     id: 'invest-in-me',
-    number: 39,
+    number: 41,
     section: 'invest',
     type: 'invest-figure',
     title: 'Invest in me!',
