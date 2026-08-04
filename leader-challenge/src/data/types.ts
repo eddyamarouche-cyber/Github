@@ -17,6 +17,7 @@ export interface SectionMeta {
 export type SlideType =
   | 'cover'
   | 'visual-hero'
+  | 'football-passes'
   | 'reveal'
   | 'thesis'
   | 'agenda'
@@ -43,6 +44,8 @@ export type SlideType =
   | 'rhythm'
   | 'markets'
   | 'brand-portfolio'
+  | 'key-figures'
+  | 'pharmacy-order'
   | 'culture'
   | 'weekday'
   | 'dashboard'
@@ -83,6 +86,25 @@ export interface SlideBase {
 export interface CoverContent {
   title: string
   subtitle: string
+}
+
+export interface FootballPassPoint {
+  x: number
+  y: number
+}
+
+export interface FootballPassRoute {
+  from: FootballPassPoint
+  to: FootballPassPoint
+}
+
+export interface FootballPassesContent {
+  image: string
+  title?: string
+  subtitle?: string
+  /** Player positions and pass routes — defaults match football-team-passes.jpg */
+  players?: FootballPassPoint[]
+  passes?: FootballPassRoute[]
 }
 
 export interface VisualHeroContent {
@@ -460,6 +482,52 @@ export interface LinkedInTargetsContent {
   regionFlag?: string
 }
 
+export interface KeyFigureStat {
+  value: string
+  label: string
+  detail?: string
+}
+
+export interface KeyFigureSegment {
+  title: string
+  value: string
+  detail?: string
+  bullets?: string[]
+  image?: string
+  imageAlt?: string
+}
+
+export interface KeyFigureProduct {
+  src: string
+  alt: string
+}
+
+export interface KeyFiguresContent {
+  image: string
+  logo?: string
+  logoAlt?: string
+  eyebrow?: string
+  title?: string
+  heroStat?: KeyFigureStat
+  stats?: KeyFigureStat[]
+  segments?: KeyFigureSegment[]
+  footer?: string
+  layout?: 'hero-grid' | 'segments'
+  /** Featured product lineup shown at the bottom */
+  productsImage?: string
+  productsImageAlt?: string
+  /** Individual brand packshots */
+  productImages?: KeyFigureProduct[]
+  imageObjectPosition?: string
+  overlay?: 'dark' | 'products'
+}
+
+export interface PharmacyOrderContent {
+  eyebrow?: string
+  title?: string
+  subtitle?: string
+}
+
 export interface BrandPortfolioProduct {
   name: string
   category: string
@@ -480,6 +548,7 @@ export interface BrandPortfolioContent {
 export type SlideContent =
   | CoverContent
   | VisualHeroContent
+  | FootballPassesContent
   | RevealContent
   | ThesisContent
   | AgendaContent
@@ -506,6 +575,8 @@ export type SlideContent =
   | RhythmContent
   | { markets: MarketCard[] }
   | BrandPortfolioContent
+  | KeyFiguresContent
+  | PharmacyOrderContent
   | CultureContent
   | WeekdayContent
   | DashboardContent

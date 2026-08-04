@@ -18,9 +18,14 @@ import type {
   DiagnosisContent,
   DriversContent,
   FeedbackContent,
+  FootballPassesContent,
+  FootballPassPoint,
+  FootballPassRoute,
   FrameworkContent,
   FunnelContent,
   InvestFigureContent,
+  KeyFiguresContent,
+  PharmacyOrderContent,
   MeddpiccContent,
   MetricsContent,
   ObjectionsContent,
@@ -53,6 +58,7 @@ import type {
   CoachingCase,
   MarketCard,
 } from '../data/types'
+import { PharmacyOrderScreen } from './PharmacyOrderScreen'
 import { MarketFlag, MarketFlagRow, flagCodeForCountry } from './Flags'
 import {
   Expandable,
@@ -112,6 +118,8 @@ function renderSlide(slide: Slide) {
       return <CoverScreen content={slide.content as CoverContent} />
     case 'visual-hero':
       return <VisualHeroScreen content={slide.content as VisualHeroContent} />
+    case 'football-passes':
+      return <FootballPassesScreen content={slide.content as FootballPassesContent} />
     case 'reveal':
       return <RevealScreen content={slide.content as RevealContent} />
     case 'thesis':
@@ -331,6 +339,10 @@ function renderSlide(slide: Slide) {
           takeaway={slide.takeaway}
         />
       )
+    case 'key-figures':
+      return <KeyFiguresScreen content={slide.content as KeyFiguresContent} />
+    case 'pharmacy-order':
+      return <PharmacyOrderScreen content={slide.content as PharmacyOrderContent} />
     case 'culture':
       return (
         <ScreenShell eyebrow={eyebrow} title={slide.title} takeaway={slide.takeaway}>
@@ -1771,6 +1783,197 @@ function ObjectionsScreen({ content }: { content: ObjectionsContent }) {
   )
 }
 
+const DEFAULT_FOOTBALL_PLAYERS: FootballPassPoint[] = [
+  { x: 32, y: 45 },
+  { x: 58, y: 38 },
+  { x: 72, y: 62 },
+  { x: 85, y: 32 },
+  { x: 18, y: 72 },
+]
+
+const DEFAULT_FOOTBALL_PASSES: FootballPassRoute[] = [
+  { from: DEFAULT_FOOTBALL_PLAYERS[0], to: DEFAULT_FOOTBALL_PLAYERS[1] },
+  { from: DEFAULT_FOOTBALL_PLAYERS[1], to: DEFAULT_FOOTBALL_PLAYERS[2] },
+  { from: DEFAULT_FOOTBALL_PLAYERS[2], to: DEFAULT_FOOTBALL_PLAYERS[3] },
+  { from: DEFAULT_FOOTBALL_PLAYERS[3], to: DEFAULT_FOOTBALL_PLAYERS[4] },
+  { from: DEFAULT_FOOTBALL_PLAYERS[4], to: DEFAULT_FOOTBALL_PLAYERS[0] },
+]
+
+const FOOTBALL_PASS_MS = 1800
+
+function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+}
+
+function lerpPoint(from: FootballPassPoint, to: FootballPassPoint, t: number): FootballPassPoint {
+  return {
+    x: from.x + (to.x - from.x) * t,
+    y: from.y + (to.y - from.y) * t,
+  }
+}
+
+function FootballPassesScreen({ content }: { content: FootballPassesContent }) {
+  const players = content.players ?? DEFAULT_FOOTBALL_PLAYERS
+  const passes = content.passes ?? DEFAULT_FOOTBALL_PASSES
+  const [activePass, setActivePass] = useState(0)
+  const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    const startedAt = performance.now()
+
+    let frame = 0
+    const tick = (now: number) => {
+      const elapsed = now - startedAt
+      const cycleLength = passes.length * FOOTBALL_PASS_MS
+      const cyclePos = elapsed % cycleLength
+      const passIndex = Math.floor(cyclePos / FOOTBALL_PASS_MS)
+      const passProgress = easeInOutCubic((cyclePos % FOOTBALL_PASS_MS) / FOOTBALL_PASS_MS)
+
+      setActivePass(passIndex)
+      setProgress(passProgress)
+      frame = requestAnimationFrame(tick)
+    }
+
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
+  }, [passes.length])
+
+  const currentPass = passes[activePass] ?? passes[0]
+  const ballPosition = lerpPoint(currentPass.from, currentPass.to, progress)
+  const activeFromIndex = players.findIndex(
+    (player) => player.x === currentPass.from.x && player.y === currentPass.from.y,
+  )
+  const activeToIndex = players.findIndex(
+    (player) => player.x === currentPass.to.x && player.y === currentPass.to.y,
+  )
+
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <motion.img
+        src={content.image}
+        alt={content.title || 'Football team passes'}
+        className="absolute inset-0 h-full w-full object-cover"
+        initial={{ scale: 1.05, opacity: 0.75 }}
+        animate={{
+          scale: [1.04, 1.1, 1.06, 1.12, 1.04],
+          x: ['0%', '-1.5%', '0.5%', '-1%', '0%'],
+          y: ['0%', '-0.75%', '0.25%', '-0.5%', '0%'],
+          opacity: 1,
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/25 to-black/55" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/45" />
+
+      <svg
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        aria-hidden
+      >
+        {passes.map((pass, index) => {
+          const isActive = index === activePass
+          const lineProgress = isActive ? progress : index < activePass ? 1 : 0
+          const dx = pass.to.x - pass.from.x
+          const dy = pass.to.y - pass.from.y
+          const length = Math.hypot(dx, dy)
+
+          return (
+            <line
+              key={`${pass.from.x}-${pass.from.y}-${pass.to.x}-${pass.to.y}-${index}`}
+              x1={pass.from.x}
+              y1={pass.from.y}
+              x2={pass.to.x}
+              y2={pass.to.y}
+              stroke={isActive ? 'rgba(255, 107, 44, 0.95)' : 'rgba(255, 255, 255, 0.18)'}
+              strokeWidth={isActive ? 0.55 : 0.35}
+              strokeLinecap="round"
+              strokeDasharray={`${length} ${length}`}
+              strokeDashoffset={length * (1 - lineProgress)}
+              vectorEffect="non-scaling-stroke"
+            />
+          )
+        })}
+
+        {players.map((player, index) => {
+          const isSender = index === activeFromIndex
+          const isReceiver = index === activeToIndex && progress > 0.55
+
+          return (
+            <g key={`${player.x}-${player.y}-${index}`}>
+              <circle
+                cx={player.x}
+                cy={player.y}
+                r={isSender || isReceiver ? 2.1 : 1.5}
+                fill={isSender || isReceiver ? 'rgba(255, 107, 44, 0.95)' : 'rgba(255, 255, 255, 0.75)'}
+              />
+              <circle
+                cx={player.x}
+                cy={player.y}
+                r={isSender || isReceiver ? 4.2 : 3}
+                fill="none"
+                stroke={isSender || isReceiver ? 'rgba(255, 107, 44, 0.45)' : 'rgba(255, 255, 255, 0.2)'}
+                strokeWidth={0.35}
+                vectorEffect="non-scaling-stroke"
+              />
+            </g>
+          )
+        })}
+      </svg>
+
+      <motion.div
+        className="pointer-events-none absolute z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80 bg-white shadow-[0_0_18px_rgba(255,255,255,0.65)]"
+        style={{
+          left: `${ballPosition.x}%`,
+          top: `${ballPosition.y}%`,
+        }}
+        animate={{
+          scale: [1, 1.08, 1],
+          boxShadow: [
+            '0 0 18px rgba(255,255,255,0.65)',
+            '0 0 28px rgba(255,107,44,0.75)',
+            '0 0 18px rgba(255,255,255,0.65)',
+          ],
+        }}
+        transition={{ duration: 0.9, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="relative z-20 flex h-full flex-col justify-between px-8 py-7 lg:px-12 lg:py-9">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="flex items-center gap-2"
+        >
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+          <p className="text-xs font-semibold tracking-[0.22em] text-white/70 uppercase">
+            One team
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl"
+        >
+          {content.title ? (
+            <h2 className="font-display text-5xl leading-none font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+              {content.title}
+            </h2>
+          ) : null}
+          {content.subtitle ? (
+            <p className="mt-3 text-xl font-medium text-white/85 sm:text-2xl lg:text-3xl">
+              {content.subtitle}
+            </p>
+          ) : null}
+        </motion.div>
+      </div>
+    </div>
+  )
+}
+
 function RevealScreen({ content }: { content: RevealContent }) {
   const answerOnly = Boolean(content.answerOnly)
   const [showAnswer, setShowAnswer] = useState(false)
@@ -2934,6 +3137,255 @@ function MarketsScreen({ content }: { content: MarketsSlideContent }) {
         )
       })}
     </Stagger>
+  )
+}
+
+function KeyFiguresScreen({ content }: { content: KeyFiguresContent }) {
+  const stats = content.stats ?? []
+  const segments = content.segments ?? []
+  const productImages = content.productImages ?? []
+  const isSegmentsLayout = content.layout === 'segments'
+  const isProductsOverlay = content.overlay === 'products'
+
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <motion.img
+        src={content.image}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ objectPosition: content.imageObjectPosition ?? 'center' }}
+        initial={{ scale: 1.08, opacity: 0.55 }}
+        animate={{
+          scale: isSegmentsLayout ? [1.04, 1.08, 1.05, 1.1, 1.04] : [1.05, 1.1, 1.06, 1.12, 1.05],
+          x: ['0%', '-1%', '0.5%', '-0.5%', '0%'],
+          y: ['0%', '-0.25%', '0.15%', '-0.35%', '0%'],
+          opacity: 1,
+        }}
+        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      {isProductsOverlay ? (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(46,110,184,0.55),transparent_52%),radial-gradient(ellipse_at_85%_100%,rgba(0,61,124,0.45),transparent_48%)]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#04101f]/88 via-[#04101f]/55 to-[#04101f]/72" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#04101f]/95 via-[#04101f]/35 to-[#04101f]/55" />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(46,110,184,0.35),transparent_50%),radial-gradient(ellipse_at_90%_100%,rgba(255,107,44,0.22),transparent_45%)]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#04080f]/92 via-[#04080f]/72 to-[#04080f]/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#04080f]/90 via-transparent to-[#04080f]/55" />
+        </>
+      )}
+
+      <div className="relative z-10 flex h-full flex-col px-7 py-5 lg:px-12 lg:py-7">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-wrap items-center justify-between gap-4"
+        >
+          <div className="flex items-center gap-4">
+            {content.logo ? (
+              <img
+                src={content.logo}
+                alt={content.logoAlt ?? 'Logo'}
+                className="h-10 w-auto max-w-[180px] drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)] lg:h-12"
+              />
+            ) : null}
+            {content.eyebrow ? (
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+                <p className="text-[11px] font-semibold tracking-[0.22em] text-white/65 uppercase lg:text-xs">
+                  {content.eyebrow}
+                </p>
+              </div>
+            ) : null}
+          </div>
+        </motion.div>
+
+        {content.title ? (
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08, duration: 0.5 }}
+            className="font-display mt-3 max-w-4xl text-2xl font-semibold tracking-tight text-white/90 lg:text-3xl"
+          >
+            {content.title}
+          </motion.h2>
+        ) : null}
+
+        <div
+          className={`mt-4 flex min-h-0 flex-1 flex-col ${
+            isSegmentsLayout ? 'justify-center gap-4' : 'justify-center'
+          }`}
+        >
+          <div className={isSegmentsLayout ? 'grid items-end gap-5 lg:grid-cols-[minmax(0,1fr)_auto]' : ''}>
+            <div>
+          {content.heroStat ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.12, duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-6 lg:mb-8"
+            >
+              <p className="font-display text-7xl leading-none font-bold tracking-tight text-accent drop-shadow-[0_0_48px_rgba(255,107,44,0.4)] sm:text-8xl lg:text-[9.5rem]">
+                {content.heroStat.value}
+              </p>
+              <p className="mt-3 text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
+                {content.heroStat.label}
+              </p>
+              {content.heroStat.detail ? (
+                <p className="mt-2 text-base font-medium text-white/70 lg:text-xl">
+                  {content.heroStat.detail}
+                </p>
+              ) : null}
+            </motion.div>
+          ) : null}
+
+          {stats.length > 0 ? (
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={`${stat.label}-${stat.value}`}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.22 + index * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-2xl border border-white/12 bg-black/45 px-4 py-4 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl lg:px-5 lg:py-5"
+                >
+                  <p className="font-display text-4xl font-bold tracking-tight text-white lg:text-5xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-2 text-sm font-medium leading-snug text-white/80 lg:text-base">
+                    {stat.label}
+                  </p>
+                  {stat.detail ? (
+                    <p className="mt-1 text-xs text-white/55 lg:text-sm">{stat.detail}</p>
+                  ) : null}
+                </motion.div>
+              ))}
+            </div>
+          ) : null}
+            </div>
+
+            {isSegmentsLayout && productImages.length > 0 ? (
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.28, duration: 0.55 }}
+                className="hidden items-end justify-center gap-2 lg:flex"
+              >
+                {productImages.map((product, index) => (
+                  <motion.img
+                    key={product.src}
+                    src={product.src}
+                    alt={product.alt}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.32 + index * 0.06 }}
+                    className="h-28 w-auto max-w-[5.5rem] object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
+                  />
+                ))}
+              </motion.div>
+            ) : null}
+          </div>
+
+          {segments.length > 0 ? (
+            <div className="grid gap-4 md:grid-cols-2">
+              {segments.map((segment, index) => (
+                <motion.div
+                  key={segment.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.24 + index * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden rounded-2xl border border-white/14 bg-black/50 shadow-[0_16px_48px_rgba(0,0,0,0.4)] backdrop-blur-xl"
+                >
+                  <div className="flex items-stretch">
+                    <div className="flex min-w-0 flex-1 flex-col px-5 py-5 lg:px-7 lg:py-6">
+                  <p className="text-xs font-semibold tracking-[0.18em] text-accent uppercase lg:text-sm">
+                    {segment.title}
+                  </p>
+                  <p className="font-display mt-3 text-5xl font-bold tracking-tight text-white lg:text-6xl">
+                    {segment.value}
+                  </p>
+                  {segment.detail ? (
+                    <p className="mt-3 text-sm leading-relaxed text-white/75 lg:text-base">
+                      {segment.detail}
+                    </p>
+                  ) : null}
+                  {segment.bullets?.length ? (
+                    <div className="mt-4 space-y-2 border-t border-white/10 pt-4">
+                      {segment.bullets.map((bullet) => (
+                        <p
+                          key={bullet}
+                          className="text-sm font-semibold text-white/90 lg:text-base"
+                        >
+                          {bullet}
+                        </p>
+                      ))}
+                    </div>
+                  ) : null}
+                    </div>
+                    {segment.image ? (
+                      <div className="flex w-28 shrink-0 items-end justify-center bg-white/[0.03] px-2 py-3 lg:w-36 lg:px-3 lg:py-4">
+                        <img
+                          src={segment.image}
+                          alt={segment.imageAlt ?? segment.title}
+                          className="max-h-full w-full object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.35)]"
+                        />
+                      </div>
+                    ) : null}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        {content.productsImage && !isSegmentsLayout ? (
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.55 }}
+            className="mt-3 shrink-0"
+          >
+            <div className="overflow-hidden rounded-2xl border border-white/12 bg-[#0a1a2e]/70 p-2 shadow-[0_16px_48px_rgba(0,0,0,0.4)] backdrop-blur-xl lg:p-3">
+              <img
+                src={content.productsImage}
+                alt={content.productsImageAlt ?? 'Pierre Fabre products'}
+                className="mx-auto max-h-24 w-full max-w-5xl object-contain lg:max-h-28"
+              />
+            </div>
+            {productImages.length > 0 ? (
+              <div className="mt-2 flex flex-wrap items-center justify-center gap-2 lg:gap-3">
+                {productImages.map((product, index) => (
+                  <motion.img
+                    key={product.src}
+                    src={product.src}
+                    alt={product.alt}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.42 + index * 0.05 }}
+                    className="h-14 w-auto max-w-[4.5rem] object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)] lg:h-16"
+                  />
+                ))}
+              </div>
+            ) : null}
+          </motion.div>
+        ) : null}
+
+        {content.footer ? (
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.5 }}
+            className="mt-3 max-w-5xl border-t border-white/10 pt-3 text-sm font-medium leading-relaxed text-white/70 lg:text-base"
+          >
+            {content.footer}
+          </motion.p>
+        ) : null}
+      </div>
+    </div>
   )
 }
 
