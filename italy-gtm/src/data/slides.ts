@@ -119,33 +119,6 @@ export const slides: Slide[] = [
     focusItems: ['Financial Services', 'Manufacturing', 'Energy & Utilities'],
   },
   {
-    id: 'account-planning',
-    kind: 'planning',
-    eyebrow: 'Enterprise motion',
-    title: 'Account Planning',
-    lead: 'A structured path from account strategy to measurable Anthropic value.',
-    image: '/images/planning-strategy.jpg',
-    imageAlt: 'Strategy workshop and business planning session',
-    planningElements: [
-      {
-        id: 'business-strategy',
-        title: 'Business strategy',
-      },
-      {
-        id: 'executive-priorities',
-        title: 'Executive priorities',
-      },
-      {
-        id: 'business-initiatives',
-        title: 'Business initiatives',
-      },
-      {
-        id: 'multi-champions',
-        title: 'Multi Champions',
-      },
-    ],
-  },
-  {
     id: 'verticals',
     kind: 'verticals',
     eyebrow: 'Priority Verticals',
@@ -307,6 +280,33 @@ export const slides: Slide[] = [
       'Knowledge management',
       'Regulatory compliance',
       'Software engineering efficiency',
+    ],
+  },
+  {
+    id: 'account-planning',
+    kind: 'planning',
+    eyebrow: 'Enterprise motion',
+    title: 'Account Planning',
+    lead: 'A structured path from account strategy to measurable Anthropic value.',
+    image: '/images/planning-strategy.jpg',
+    imageAlt: 'Strategy workshop and business planning session',
+    planningElements: [
+      {
+        id: 'business-strategy',
+        title: 'Business strategy',
+      },
+      {
+        id: 'executive-priorities',
+        title: 'Executive priorities',
+      },
+      {
+        id: 'business-initiatives',
+        title: 'Business initiatives',
+      },
+      {
+        id: 'multi-champions',
+        title: 'Multi Champions',
+      },
     ],
   },
   {
