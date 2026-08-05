@@ -661,6 +661,88 @@
   background: var(--sun);
 }
 
+/* ——— Account Planning ——— */
+.planning {
+  grid-template-columns: 1fr;
+}
+
+.planning-media .media-scrim {
+  background:
+    linear-gradient(105deg, rgba(2, 8, 14, 0.9) 0%, rgba(2, 8, 14, 0.68) 50%, rgba(2, 8, 14, 0.4) 100%),
+    linear-gradient(180deg, rgba(2, 8, 14, 0.3), transparent 40%, rgba(2, 8, 14, 0.6));
+}
+
+.planning-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1rem, 2.5vw, 2rem) clamp(1.25rem, 3.5vw, 3rem);
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 0;
+}
+
+.planning-title {
+  max-width: 12ch;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+}
+
+.planning-elements {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 0.35rem;
+  list-style: none;
+}
+
+.planning-element {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.planning.is-active .planning-element {
+  animation: chipIn 0.55s var(--ease-out) forwards;
+  animation-delay: calc(0.2s + var(--i) * 0.1s);
+}
+
+.planning-index {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #9fd9cc;
+  line-height: 1;
+  padding-top: 0.15rem;
+}
+
+.planning-element h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.planning-element-lead {
+  margin-top: 0.45rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: rgba(248, 251, 252, 0.78);
+  max-width: 42ch;
+}
+
+.planning-element-body .point-list {
+  margin-top: 0.75rem;
+}
+
 /* ——— Verticals as image panels ——— */
 .verticals {
   grid-template-rows: auto 1fr auto;
@@ -1559,10 +1641,15 @@
 
   .gtm-content,
   .account-content,
-  .why-content {
+  .why-content,
+  .planning-content {
     overflow: auto;
     padding: 0.85rem 1rem 1rem;
     justify-content: flex-start;
+  }
+
+  .planning-title {
+    max-width: none;
   }
 
   .slide-title {
@@ -1587,6 +1674,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .planning.is-active .planning-element,
   .deep-dive.is-open .deep-dive-block,
   .cover.is-active .cover-brand,
   .cover.is-active .cover-line,
@@ -1611,6 +1699,7 @@
   }
 
   .slide-inner,
+  .planning-element,
   .deep-dive,
   .deep-dive-block,
   .cover-line,

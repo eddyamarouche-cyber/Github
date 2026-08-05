@@ -207,6 +207,51 @@ function SlideContent({
     )
   }
 
+  if (slide.kind === 'planning') {
+    return (
+      <div className={`slide-inner planning visual-slide ${enter}`}>
+        {slide.image && (
+          <MediaPlane
+            src={slide.image}
+            alt={slide.imageAlt ?? ''}
+            className="planning-media"
+          />
+        )}
+        <div className="planning-content">
+          <header className="slide-head">
+            {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+            <h2 className="slide-title planning-title">{slide.title}</h2>
+            {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+          </header>
+          <ol className="planning-elements" aria-label="Account planning elements">
+            {slide.planningElements?.map((element, i) => (
+              <li
+                key={element.id}
+                className="planning-element"
+                style={{ ['--i' as string]: i }}
+              >
+                <span className="planning-index">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="planning-element-body">
+                  <h3>{element.title}</h3>
+                  {element.lead && <p className="planning-element-lead">{element.lead}</p>}
+                  {element.points && element.points.length > 0 && (
+                    <ul className="point-list">
+                      {element.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    )
+  }
+
   if (slide.kind === 'verticals') {
     const openVertical = slide.verticals?.find((v) => v.id === openVerticalId) ?? null
 
@@ -506,7 +551,7 @@ export function SlideDeck() {
       } else if (event.key === 'End') {
         event.preventDefault()
         go(slides.length - 1)
-      } else if (/^[1-7]$/.test(event.key)) {
+      } else if (/^[1-8]$/.test(event.key)) {
         event.preventDefault()
         go(Number(event.key) - 1)
       }
@@ -523,7 +568,16 @@ export function SlideDeck() {
 
   const progress = ((index + 1) / slides.length) * 100
   const slide = slides[index]
-  const visualKinds = new Set(['cover', 'focus', 'verticals', 'gtm', 'expand', 'account', 'why'])
+  const visualKinds = new Set([
+    'cover',
+    'focus',
+    'planning',
+    'verticals',
+    'gtm',
+    'expand',
+    'account',
+    'why',
+  ])
 
   return (
     <div

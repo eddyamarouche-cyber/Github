@@ -1,6 +1,7 @@
 export type SlideKind =
   | 'cover'
   | 'focus'
+  | 'planning'
   | 'verticals'
   | 'gtm'
   | 'expand'
@@ -36,6 +37,13 @@ export interface VerticalRow {
   deepDive?: VerticalDeepDive
 }
 
+export interface PlanningElement {
+  id: string
+  title: string
+  lead?: string
+  points?: string[]
+}
+
 export interface PipelineSlice {
   label: string
   share: string
@@ -63,6 +71,7 @@ export interface Slide {
   pipeline?: PipelineSlice[]
   multipliers?: string[]
   phases?: ExpandPhase[]
+  planningElements?: PlanningElement[]
   fitItems?: string[]
   opportunities?: string[]
   buyers?: string[]
@@ -108,6 +117,21 @@ export const slides: Slide[] = [
       'Executive sponsorship becoming critical',
     ],
     focusItems: ['Financial Services', 'Manufacturing', 'Energy & Utilities'],
+  },
+  {
+    id: 'account-planning',
+    kind: 'planning',
+    eyebrow: 'Enterprise motion',
+    title: 'Account Planning',
+    lead: 'A structured path from account strategy to measurable Anthropic value.',
+    image: '/images/planning-strategy.jpg',
+    imageAlt: 'Strategy workshop and business planning session',
+    planningElements: [
+      {
+        id: 'business-strategy',
+        title: 'Business strategy',
+      },
+    ],
   },
   {
     id: 'verticals',
