@@ -131,6 +131,18 @@ export const slides: Slide[] = [
         id: 'business-strategy',
         title: 'Business strategy',
       },
+      {
+        id: 'executive-priorities',
+        title: 'Executive priorities',
+      },
+      {
+        id: 'business-initiatives',
+        title: 'Business initiatives',
+      },
+      {
+        id: 'multi-champions',
+        title: 'Multi Champions',
+      },
     ],
   },
   {
