@@ -7,6 +7,7 @@ export type SlideKind =
   | 'expand'
   | 'account'
   | 'why'
+  | 'roadmap'
 
 export interface DeepDiveBlock {
   title: string
@@ -44,6 +45,16 @@ export interface PlanningElement {
   points?: string[]
 }
 
+export interface FocusPhase {
+  id: string
+  period: string
+  verb: string
+  summary: string
+  image: string
+  imageAlt: string
+  points: string[]
+}
+
 export interface PipelineSlice {
   label: string
   share: string
@@ -72,6 +83,7 @@ export interface Slide {
   multipliers?: string[]
   phases?: ExpandPhase[]
   planningElements?: PlanningElement[]
+  focusPhases?: FocusPhase[]
   fitItems?: string[]
   opportunities?: string[]
   buyers?: string[]
@@ -410,6 +422,59 @@ export const slides: Slide[] = [
     ],
     vision:
       'Win a few flagship customers, create measurable business value, then scale trusted AI across Italy’s largest enterprises.',
+  },
+  {
+    id: 'where-to-focus',
+    kind: 'roadmap',
+    eyebrow: '90-day plan',
+    title: 'Where to Focus',
+    lead: 'Learn fast, validate the vertical thesis, then execute for flagship wins.',
+    image: '/images/where-focus.jpg',
+    imageAlt: 'Executive focus and decisive leadership',
+    focusPhases: [
+      {
+        id: 'learn-30',
+        period: 'First 30 days',
+        verb: 'LEARN',
+        summary: 'Why customers choose Anthropic — and where deals stall.',
+        image: '/images/expand-knowledge.jpg',
+        imageAlt: 'Teams learning and collaborating',
+        points: [
+          'Why customers choose Anthropic',
+          'Why opportunities are lost or not moving quickly enough',
+          'Where Claude consistently creates differentiated value',
+        ],
+      },
+      {
+        id: 'validate-60',
+        period: '30–60 days',
+        verb: 'VALIDATE',
+        summary: 'Pressure-test vertical assumptions against Anthropic’s top accounts.',
+        image: '/images/vertical-finance.jpg',
+        imageAlt: 'Enterprise skyline representing target accounts',
+        points: [
+          'Validate assumptions on top verticals',
+          'Anthropic top accounts: large enterprise spend',
+          'Complex knowledge work',
+          'Engineering-heavy organizations',
+          'Regulatory pressure',
+        ],
+      },
+      {
+        id: 'execute-90',
+        period: 'Days 60–90',
+        verb: 'EXECUTE',
+        summary: 'Turn learning into flagship customers and repeatable plays.',
+        image: '/images/account-milan.jpg',
+        imageAlt: 'Modern enterprise towers for flagship execution',
+        points: [
+          'Building flagship customers',
+          'Creating executive relationships',
+          'Generating repeatable sales plays',
+          'Partnering closely with hyperscalers and consulting firms',
+        ],
+      },
+    ],
   },
   {
     id: 'deal-review',

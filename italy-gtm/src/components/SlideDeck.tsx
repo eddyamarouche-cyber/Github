@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { slides, presenter } from '../data/slides'
-import type { Slide, VerticalRow } from '../data/slides'
+import type { FocusPhase, Slide, VerticalRow } from '../data/slides'
 import { StageBackdrop } from './StageBackdrop'
 
 function MediaPlane({
@@ -124,18 +124,57 @@ function FinancialDeepDive({
   )
 }
 
+function PhaseDeepDive({
+  phase,
+  open,
+  onClose,
+}: {
+  phase: FocusPhase
+  open: boolean
+  onClose: () => void
+}) {
+  return (
+    <div
+      className={`deep-dive ${open ? 'is-open' : ''}`}
+      role="dialog"
+      aria-modal="true"
+      aria-hidden={!open}
+      aria-labelledby="phase-dive-title"
+    >
+      <MediaPlane src={phase.image} alt={phase.imageAlt} className="deep-dive-media" />
+      <div className="deep-dive-body">
+        <button type="button" className="deep-dive-back" onClick={onClose}>
+          <span aria-hidden="true">←</span> Back to plan
+        </button>
+
+        <p className="eyebrow">{phase.period}</p>
+        <p className="phase-dive-verb">{phase.verb}</p>
+        <h2 id="phase-dive-title" className="deep-dive-title">
+          {phase.summary}
+        </h2>
+
+        <ul className="point-list phase-dive-points">
+          {phase.points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
 function SlideContent({
   slide,
   active,
-  openVerticalId,
-  onOpenVertical,
-  onCloseVertical,
+  openDetailId,
+  onOpenDetail,
+  onCloseDetail,
 }: {
   slide: Slide
   active: boolean
-  openVerticalId: string | null
-  onOpenVertical: (id: string) => void
-  onCloseVertical: () => void
+  openDetailId: string | null
+  onOpenDetail: (id: string) => void
+  onCloseDetail: () => void
 }) {
   const enter = active ? 'is-active' : ''
 
@@ -256,7 +295,7 @@ function SlideContent({
   }
 
   if (slide.kind === 'verticals') {
-    const openVertical = slide.verticals?.find((v) => v.id === openVerticalId) ?? null
+    const openVertical = slide.verticals?.find((v) => v.id === openDetailId) ?? null
 
     return (
       <div
@@ -294,7 +333,7 @@ function SlideContent({
                   type="button"
                   className="vertical-panel is-clickable"
                   style={{ ['--i' as string]: i }}
-                  onClick={() => onOpenVertical(row.id)}
+                  onClick={() => onOpenDetail(row.id)}
                   aria-haspopup="dialog"
                 >
                   {copy}
@@ -326,7 +365,54 @@ function SlideContent({
           <FinancialDeepDive
             vertical={openVertical}
             open={Boolean(openVertical)}
-            onClose={onCloseVertical}
+            onClose={onCloseDetail}
+          />
+        )}
+      </div>
+    )
+  }
+
+  if (slide.kind === 'roadmap') {
+    const openPhase = slide.focusPhases?.find((p) => p.id === openDetailId) ?? null
+
+    return (
+      <div
+        className={`slide-inner roadmap visual-slide ${enter} ${openPhase ? 'has-deep-dive' : ''}`}
+      >
+        <header className="slide-head overlay-head">
+          {slide.eyebrow && <p className="eyebrow">{slide.eyebrow}</p>}
+          <h2 className="slide-title">{slide.title}</h2>
+          {slide.lead && <p className="slide-lead">{slide.lead}</p>}
+        </header>
+        <div className="roadmap-panels" aria-label="Where to focus phases">
+          {slide.focusPhases?.map((phase, i) => (
+            <button
+              key={phase.id}
+              type="button"
+              className="roadmap-panel is-clickable"
+              style={{ ['--i' as string]: i }}
+              onClick={() => onOpenDetail(phase.id)}
+              aria-haspopup="dialog"
+            >
+              <MediaPlane src={phase.image} alt={phase.imageAlt} />
+              <div className="roadmap-panel-copy">
+                <span className="row-index">{String(i + 1).padStart(2, '0')}</span>
+                <p className="roadmap-period">{phase.period}</p>
+                <h3 className="roadmap-verb">{phase.verb}</h3>
+                <p className="roadmap-summary">{phase.summary}</p>
+                <span className="panel-cta">
+                  Open focus <span aria-hidden="true">→</span>
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {openPhase && (
+          <PhaseDeepDive
+            phase={openPhase}
+            open={Boolean(openPhase)}
+            onClose={onCloseDetail}
           />
         )}
       </div>
@@ -520,11 +606,11 @@ function SlideContent({
 
 export function SlideDeck() {
   const [index, setIndex] = useState(0)
-  const [openVerticalId, setOpenVerticalId] = useState<string | null>(null)
+  const [openDetailId, setOpenDetailId] = useState<string | null>(null)
   const shellRef = useRef<HTMLDivElement>(null)
 
   const go = (next: number) => {
-    setOpenVerticalId(null)
+    setOpenDetailId(null)
     setIndex(Math.max(0, Math.min(slides.length - 1, next)))
   }
 
@@ -534,10 +620,10 @@ export function SlideDeck() {
 
   useEffect(() => {
     const onKey = (event: globalThis.KeyboardEvent) => {
-      if (openVerticalId) {
+      if (openDetailId) {
         if (event.key === 'Escape') {
           event.preventDefault()
-          setOpenVerticalId(null)
+          setOpenDetailId(null)
         }
         return
       }
@@ -557,14 +643,17 @@ export function SlideDeck() {
       } else if (/^[1-9]$/.test(event.key)) {
         event.preventDefault()
         go(Number(event.key) - 1)
+      } else if (event.key === '0') {
+        event.preventDefault()
+        go(9)
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [index, openVerticalId])
+  }, [index, openDetailId])
 
   const onShellKey = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (openVerticalId) return
+    if (openDetailId) return
     if (event.key === 'ArrowRight') go(index + 1)
     if (event.key === 'ArrowLeft') go(index - 1)
   }
@@ -580,6 +669,7 @@ export function SlideDeck() {
     'expand',
     'account',
     'why',
+    'roadmap',
   ])
 
   return (
@@ -593,7 +683,7 @@ export function SlideDeck() {
       onKeyDown={onShellKey}
       data-slide={slide.kind}
       data-visual={visualKinds.has(slide.kind) ? 'true' : 'false'}
-      data-deep-dive={openVerticalId ? 'true' : 'false'}
+      data-deep-dive={openDetailId ? 'true' : 'false'}
     >
       <StageBackdrop />
 
@@ -636,9 +726,9 @@ export function SlideDeck() {
         <SlideContent
           slide={slide}
           active
-          openVerticalId={openVerticalId}
-          onOpenVertical={setOpenVerticalId}
-          onCloseVertical={() => setOpenVerticalId(null)}
+          openDetailId={openDetailId}
+          onOpenDetail={setOpenDetailId}
+          onCloseDetail={() => setOpenDetailId(null)}
         />
       </main>
 
@@ -647,7 +737,7 @@ export function SlideDeck() {
           type="button"
           className="nav-btn"
           onClick={() => go(index - 1)}
-          disabled={index === 0 || Boolean(openVerticalId)}
+          disabled={index === 0 || Boolean(openDetailId)}
           aria-label="Previous slide"
         >
           Previous
@@ -669,7 +759,7 @@ export function SlideDeck() {
           type="button"
           className="nav-btn primary"
           onClick={() => go(index + 1)}
-          disabled={index === slides.length - 1 || Boolean(openVerticalId)}
+          disabled={index === slides.length - 1 || Boolean(openDetailId)}
           aria-label="Next slide"
         >
           Next
