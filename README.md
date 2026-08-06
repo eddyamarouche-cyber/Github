@@ -7,6 +7,7 @@ Applications related to a Cursor candidacy:
 | Leader Challenge | [`leader-challenge/`](./leader-challenge) | 90-minute executive presentation for Regional Director, Southern Europe |
 | Interview Coach | [`coach-entretien/`](./coach-entretien) | Interview preparation (questions, simulation, guidance) |
 | Presentation Plan | [`plan-presentation/`](./plan-presentation) | Interactive 30 / 60 / 90-day plan presentation |
+| Italy GTM | [`italy-gtm/`](./italy-gtm) | Executive 6-slide Italy GTM strategy (interview deck) |
 
 ## Leader Challenge (recommended)
 
@@ -39,3 +40,13 @@ cd coach-entretien
 npm install
 npm run dev
 ```
+
+## Italy GTM Strategy
+
+```bash
+cd italy-gtm
+npm install
+npm run dev
+```
+
+See [`italy-gtm/README.md`](./italy-gtm/README.md) for the 6-slide executive narrative and controls.
