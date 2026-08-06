@@ -247,6 +247,9 @@ function SlideContent({
               </li>
             ))}
           </ol>
+          {(!slide.planningElements || slide.planningElements.length === 0) && (
+            <p className="planning-empty" aria-hidden="true" />
+          )}
         </div>
       </div>
     )
@@ -551,7 +554,7 @@ export function SlideDeck() {
       } else if (event.key === 'End') {
         event.preventDefault()
         go(slides.length - 1)
-      } else if (/^[1-8]$/.test(event.key)) {
+      } else if (/^[1-9]$/.test(event.key)) {
         event.preventDefault()
         go(Number(event.key) - 1)
       }

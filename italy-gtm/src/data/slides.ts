@@ -336,6 +336,16 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: 'deal-review',
+    kind: 'planning',
+    eyebrow: 'Pipeline discipline',
+    title: 'Deal Review',
+    lead: 'Inspect opportunities with facts — qualify, advance, or exit with clarity.',
+    image: '/images/deal-review.jpg',
+    imageAlt: 'Leadership team reviewing deals and pipeline in a meeting',
+    planningElements: [],
+  },
+  {
     id: 'expand',
     kind: 'expand',
     eyebrow: 'Land & Expand',
