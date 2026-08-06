@@ -424,6 +424,16 @@ export const slides: Slide[] = [
       'Win a few flagship customers, create measurable business value, then scale trusted AI across Italy’s largest enterprises.',
   },
   {
+    id: 'pre-work',
+    kind: 'planning',
+    eyebrow: 'Before day one',
+    title: 'Pre Work',
+    lead: 'Prepare before the first 30 days — so LEARN starts with clarity and momentum.',
+    image: '/images/pre-work.jpg',
+    imageAlt: 'Strong sunlight breaking through the landscape',
+    planningElements: [],
+  },
+  {
     id: 'where-to-focus',
     kind: 'roadmap',
     eyebrow: '90-day plan',
