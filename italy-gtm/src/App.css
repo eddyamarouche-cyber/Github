@@ -777,21 +777,21 @@
 
 .planning-metric-value {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6.5vw, 4.8rem);
+  font-size: clamp(1.85rem, 3.6vw, 2.6rem);
   font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 0.92;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
   color: #9fd9cc;
 }
 
 .planning-metric-label {
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
   font-weight: 600;
   color: rgba(248, 251, 252, 0.78);
 }
 
 .deal-review .planning-metric-value {
-  font-size: clamp(3.4rem, 8vw, 5.8rem);
+  font-size: clamp(2.1rem, 4.2vw, 3rem);
 }
 
 .deal-review .planning-element:nth-child(4) .planning-metric-value {
