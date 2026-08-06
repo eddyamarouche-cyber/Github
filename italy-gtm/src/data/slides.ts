@@ -510,39 +510,6 @@ export const slides: Slide[] = [
     ],
   },
   {
-    id: 'sell-against',
-    kind: 'planning',
-    eyebrow: 'Sell against',
-    title: 'Displacement vs Greenfield',
-    lead: 'Understand the Why?',
-    image: '/images/sell-against.jpg',
-    imageAlt: 'Executive strategy discussion in a modern office',
-    planningElements: [
-      {
-        id: 'greenfield',
-        title: 'Greenfield',
-        lead: 'Identify new workflows',
-        points: [
-          'Software engineering with Claude Code',
-          'Enterprise knowledge assistants',
-          'Compliance and legal copilots',
-          'Document-intensive operations',
-        ],
-      },
-      {
-        id: 'displacement',
-        title: 'Displacement',
-        lead: 'What business problems remain unsolved?',
-        points: [
-          'Identify adjacent spaces where Anthropic is strong',
-          'Reasoning',
-          'Long context',
-          'Safety and governance',
-        ],
-      },
-    ],
-  },
-  {
     id: 'deal-review',
     kind: 'planning',
     eyebrow: 'Pipeline discipline',
@@ -587,6 +554,39 @@ export const slides: Slide[] = [
         points: [
           'Long term partnership',
           'Expansion in progress',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'sell-against',
+    kind: 'planning',
+    eyebrow: 'Sell against',
+    title: 'Displacement vs Greenfield',
+    lead: 'Understand the Why?',
+    image: '/images/sell-against.jpg',
+    imageAlt: 'Executive strategy discussion in a modern office',
+    planningElements: [
+      {
+        id: 'greenfield',
+        title: 'Greenfield',
+        lead: 'Identify new workflows',
+        points: [
+          'Software engineering with Claude Code',
+          'Enterprise knowledge assistants',
+          'Compliance and legal copilots',
+          'Document-intensive operations',
+        ],
+      },
+      {
+        id: 'displacement',
+        title: 'Displacement',
+        lead: 'What business problems remain unsolved?',
+        points: [
+          'Identify adjacent spaces where Anthropic is strong',
+          'Reasoning',
+          'Long context',
+          'Safety and governance',
         ],
       },
     ],
