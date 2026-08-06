@@ -247,8 +247,12 @@ function SlideContent({
   }
 
   if (slide.kind === 'planning') {
+    const isPair = slide.planningElements?.length === 2
+
     return (
-      <div className={`slide-inner planning visual-slide ${enter}`}>
+      <div
+        className={`slide-inner planning visual-slide ${enter}${isPair ? ' is-pair' : ''}`}
+      >
         {slide.image && (
           <MediaPlane
             src={slide.image}
@@ -262,7 +266,10 @@ function SlideContent({
             <h2 className="slide-title planning-title">{slide.title}</h2>
             {slide.lead && <p className="slide-lead">{slide.lead}</p>}
           </header>
-          <ol className="planning-elements" aria-label="Account planning elements">
+          <ol
+            className={`planning-elements${isPair ? ' is-pair' : ''}`}
+            aria-label="Account planning elements"
+          >
             {slide.planningElements?.map((element, i) => (
               <li
                 key={element.id}

@@ -704,6 +704,27 @@
   list-style: none;
 }
 
+.planning-elements.is-pair {
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 2rem;
+  margin-top: 0.85rem;
+  align-items: start;
+}
+
+.planning-elements.is-pair .planning-element {
+  grid-template-columns: 2.6rem 1fr;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  padding-top: 1.15rem;
+}
+
+.planning-elements.is-pair .planning-element-lead {
+  max-width: 34ch;
+}
+
+.planning.is-pair .planning-title {
+  max-width: 18ch;
+}
+
 .planning-element {
   display: grid;
   grid-template-columns: 3.2rem 1fr;

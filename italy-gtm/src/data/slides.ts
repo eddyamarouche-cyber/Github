@@ -506,6 +506,39 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: 'sell-against',
+    kind: 'planning',
+    eyebrow: 'Sell against',
+    title: 'Displacement vs Greenfield',
+    lead: 'Match the motion to the buying reality — incumbent in seat, or clean slate.',
+    image: '/images/sell-against.jpg',
+    imageAlt: 'Executive strategy discussion in a modern office',
+    planningElements: [
+      {
+        id: 'displacement',
+        title: 'Displacement',
+        lead: 'Incumbent already deployed — sell the cost of standing still.',
+        points: [
+          'Uncover dissatisfaction beyond “good enough”',
+          'Quantify cost of doing nothing',
+          'Win on business case + tech validation',
+          'Align executives Italy and global HQ',
+        ],
+      },
+      {
+        id: 'greenfield',
+        title: 'Greenfield',
+        lead: 'No platform decision yet — shape the evaluation before competitors entrench.',
+        points: [
+          'Land a lighthouse use case fast',
+          'Define success metrics early',
+          'Build multi-threaded sponsors',
+          'Expand before an incumbent locks in',
+        ],
+      },
+    ],
+  },
+  {
     id: 'deal-review',
     kind: 'planning',
     eyebrow: 'Pipeline discipline',
