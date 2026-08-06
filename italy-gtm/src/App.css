@@ -1755,7 +1755,8 @@
   .roadmap-panels,
   .gtm-grid,
   .account-grid,
-  .why-grid {
+  .why-grid,
+  .planning-elements.is-pair {
     grid-template-columns: 1fr;
     gap: 0.7rem;
   }
