@@ -477,6 +477,16 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: 'deal',
+    kind: 'planning',
+    eyebrow: 'Opportunity',
+    title: 'Deal',
+    lead: 'From qualified opportunity to closed enterprise value.',
+    image: '/images/deal.jpg',
+    imageAlt: 'Deal analysis and business performance dashboard',
+    planningElements: [],
+  },
+  {
     id: 'deal-review',
     kind: 'planning',
     eyebrow: 'Pipeline discipline',
