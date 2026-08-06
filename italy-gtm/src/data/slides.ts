@@ -512,7 +512,39 @@ export const slides: Slide[] = [
     title: 'Deal Review',
     lead: 'Inspect opportunities with facts — qualify, advance, or exit with clarity.',
     image: '/images/deal-review.jpg',
-    imageAlt: 'Leadership team reviewing deals and pipeline in a meeting',
-    planningElements: [],
+    imageAlt: 'Manufacturing company industrial facility',
+    planningElements: [
+      {
+        id: 'situation',
+        title: 'Situation',
+        lead: 'Large Manufacturing company in Italy — +$22Bn/year revenue',
+      },
+      {
+        id: 'task',
+        title: 'Task',
+        lead: 'Working with Azure solutions — “was good enough”',
+      },
+      {
+        id: 'action',
+        title: 'Action',
+        points: [
+          'Uncovered business drivers',
+          'Pains around the org',
+          'Cost of doing nothing',
+          'Tech validation',
+          'Business cases',
+          'Executive alignment Italy and US',
+        ],
+      },
+      {
+        id: 'result',
+        title: 'Result',
+        points: [
+          '$5M revenue per year',
+          'Long term partnership',
+          'Expansion in progress',
+        ],
+      },
+    ],
   },
 ]
