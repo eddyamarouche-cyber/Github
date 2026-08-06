@@ -460,8 +460,8 @@ export const slides: Slide[] = [
         period: '30–60 days',
         verb: 'VALIDATE',
         summary: 'Pressure-test vertical assumptions against Anthropic’s top accounts.',
-        image: '/images/vertical-finance.jpg',
-        imageAlt: 'Enterprise skyline representing target accounts',
+        image: '/images/validate.jpg',
+        imageAlt: 'Analytics and validation of enterprise account assumptions',
         points: [
           'Validate assumptions on top verticals',
           'Anthropic top accounts: large enterprise spend',
