@@ -43,6 +43,10 @@ export interface PlanningElement {
   title: string
   lead?: string
   points?: string[]
+  metric?: {
+    value: string
+    label: string
+  }
 }
 
 export interface FocusPhase {
@@ -550,7 +554,11 @@ export const slides: Slide[] = [
       {
         id: 'situation',
         title: 'Situation',
-        lead: 'Large Manufacturing company in Italy — +$22Bn/year revenue',
+        lead: 'Large Manufacturing company in Italy',
+        metric: {
+          value: '+$22Bn',
+          label: '/year revenue',
+        },
       },
       {
         id: 'task',
@@ -572,8 +580,11 @@ export const slides: Slide[] = [
       {
         id: 'result',
         title: 'Result',
+        metric: {
+          value: '$5M',
+          label: 'revenue per year',
+        },
         points: [
-          '$5M revenue per year',
           'Long term partnership',
           'Expansion in progress',
         ],

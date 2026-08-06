@@ -248,10 +248,13 @@ function SlideContent({
 
   if (slide.kind === 'planning') {
     const isPair = slide.planningElements?.length === 2
+    const isDealReview = slide.id === 'deal-review'
 
     return (
       <div
-        className={`slide-inner planning visual-slide ${enter}${isPair ? ' is-pair' : ''}`}
+        className={`slide-inner planning visual-slide ${enter}${isPair ? ' is-pair' : ''}${
+          isDealReview ? ' deal-review' : ''
+        }`}
       >
         {slide.image && (
           <MediaPlane
@@ -281,6 +284,12 @@ function SlideContent({
                 </span>
                 <div className="planning-element-body">
                   <h3>{element.title}</h3>
+                  {element.metric && (
+                    <p className="planning-metric">
+                      <span className="planning-metric-value">{element.metric.value}</span>
+                      <span className="planning-metric-label">{element.metric.label}</span>
+                    </p>
+                  )}
                   {element.lead && <p className="planning-element-lead">{element.lead}</p>}
                   {element.points && element.points.length > 0 && (
                     <ul className="point-list">
