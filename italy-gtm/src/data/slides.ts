@@ -484,7 +484,16 @@ export const slides: Slide[] = [
     lead: 'From qualified opportunity to closed enterprise value.',
     image: '/images/deal.jpg',
     imageAlt: 'Deal analysis and business performance dashboard',
-    planningElements: [],
+    planningElements: [
+      {
+        id: 'flagship-customers',
+        title: 'Building flagship customers',
+      },
+      {
+        id: 'lighthouse-use-cases',
+        title: 'Lighthouse use cases',
+      },
+    ],
   },
   {
     id: 'deal-review',
