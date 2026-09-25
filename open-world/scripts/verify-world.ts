@@ -1,6 +1,8 @@
+import { createBridge } from '../src/bridge.ts'
 import { entityBlocked, terrainCircleBlocked, terrainWalkable } from '../src/game/collision.ts'
 import { generateWorld } from '../src/game/generate.ts'
-import { COLS, PLAYER_R, ROWS, center, places, sporeTiles } from '../src/game/places.ts'
+import { COLS, PLAYER_R, ROWS, ZOOM, center, places, sporeTiles } from '../src/game/places.ts'
+import { createSim, step } from '../src/game/simulate.ts'
 import type { World } from '../src/game/types.ts'
 
 const goals = [
@@ -84,5 +86,27 @@ for (const deer of world.deer) {
 const again = generateWorld(7)
 assert(again.entities.length === world.entities.length, 'generation is not stable for one seed')
 generateWorld(99)
+
+const bridge = createBridge()
+const sim = createSim(world)
+bridge.command = 'new'
+step(sim, bridge, 1 / 60, 1280, 720, 0)
+assert(sim.mode === 'play', 'entering the wilds did not start play')
+const startY = sim.player.y
+const screenX = (sim.player.x - sim.camX) * ZOOM
+const screenY = (sim.player.y - sim.camY) * ZOOM + 220
+bridge.click = { x: screenX, y: screenY }
+for (let frame = 0; frame < 120; frame++) step(sim, bridge, 1 / 60, 1280, 720, frame)
+assert(sim.player.y > startY + 70, `click-to-walk did not move south (${sim.player.y - startY})`)
+
+const mara = sim.npcs.find((npc) => npc.id === 'mara')
+assert(mara != null, 'Mara is missing')
+sim.player.x = mara.x
+sim.player.y = mara.y + 36
+sim.dest = null
+sim.pendingId = null
+bridge.interact = true
+step(sim, bridge, 1 / 60, 1280, 720, 3)
+assert(sim.speech?.speaker === 'Mara', 'talking to Mara did not open dialogue')
 
 console.log('Hearthmere checks passed', counts)

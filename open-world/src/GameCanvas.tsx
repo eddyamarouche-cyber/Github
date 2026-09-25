@@ -110,6 +110,7 @@ export function GameCanvas({ bridge, onHud }: Props) {
         className="world"
         aria-label="Hearthmere Wilds"
         onPointerDown={(event) => {
+          event.currentTarget.setPointerCapture(event.pointerId)
           pointer.current = { x: event.clientX, y: event.clientY }
         }}
         onPointerUp={(event) => {
@@ -118,7 +119,7 @@ export function GameCanvas({ bridge, onHud }: Props) {
           if (!start) return
           const dx = event.clientX - start.x
           const dy = event.clientY - start.y
-          if (dx * dx + dy * dy > 36) return
+          if (dx * dx + dy * dy > 576) return
           const rect = event.currentTarget.getBoundingClientRect()
           bridge.click = { x: event.clientX - rect.left, y: event.clientY - rect.top }
         }}

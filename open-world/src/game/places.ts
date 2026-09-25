@@ -8,7 +8,7 @@ export const WALK = 148
 export const RUN = 236
 export const PLAYER_R = 11
 export const DAY_SECONDS = 170
-export const INTERACT_R = 48
+export const INTERACT_R = 86
 
 export const SEED = 7
 

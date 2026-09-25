@@ -416,12 +416,12 @@ function worldToScreen(x: number, y: number, sim: Sim): { x: number; y: number }
   return { x: (x - sim.camX) * ZOOM, y: (y - sim.camY) * ZOOM }
 }
 
-function drawLabels(ctx: CanvasRenderingContext2D, sim: Sim): void {
+function drawLabels(ctx: CanvasRenderingContext2D, sim: Sim, cssW: number, cssH: number): void {
   ctx.font = '600 13px Outfit, sans-serif'
   ctx.textAlign = 'center'
   for (const npc of sim.npcs) {
-    if (Math.hypot(npc.x - sim.player.x, npc.y - sim.player.y) > 150 && sim.mode === 'play') continue
     const at = worldToScreen(npc.x, npc.y - 36, sim)
+    if (at.x < -30 || at.y < -30 || at.x > cssW + 30 || at.y > cssH + 30) continue
     ctx.fillStyle = 'rgba(16, 14, 12, 0.72)'
     const width = ctx.measureText(npc.name).width + 12
     roundRect(ctx, at.x - width / 2, at.y - 11, width, 16, 8)
@@ -555,15 +555,20 @@ export function drawWorld(
   }
 
   if (sim.dest && sim.mode === 'play') {
-    ctx.strokeStyle = 'rgba(226, 177, 90, 0.9)'
-    ctx.lineWidth = 1.5
+    ctx.strokeStyle = '#e2b15a'
+    ctx.fillStyle = '#e2b15a'
+    ctx.lineWidth = 2
+    const pulse = 14 + Math.sin(anim * 4) * 2
     ctx.beginPath()
-    ctx.arc(sim.dest.x, sim.dest.y, 6 + Math.sin(anim * 4) * 1.5, 0, Math.PI * 2)
+    ctx.arc(sim.dest.x, sim.dest.y, pulse, 0, Math.PI * 2)
     ctx.stroke()
+    ctx.beginPath()
+    ctx.arc(sim.dest.x, sim.dest.y, 3, 0, Math.PI * 2)
+    ctx.fill()
   }
   ctx.restore()
 
-  drawLabels(ctx, sim)
+  drawLabels(ctx, sim, cssW, cssH)
   drawNight(ctx, sim, anim, cssW, cssH, dpr)
   const phase = daylight(sim.time).label
   if (phase === 'Dawn') {

@@ -1,7 +1,7 @@
 import type { Bridge } from '../bridge.ts'
 import { daylight } from './clock.ts'
 import { countSpores, journalEntries, type Progress } from './dialogue.ts'
-import { center, places, questMarks } from './places.ts'
+import { INTERACT_R, center, places, questMarks } from './places.ts'
 import { nearestHit } from './simulate.ts'
 import type { Sim } from './types.ts'
 
@@ -91,7 +91,7 @@ export function snapshot(sim: Sim, bridge: Bridge, hasSave: boolean): HudModel {
   const sky = daylight(sim.time)
   const spores = countSpores(sim.collected)
   const now = typeof performance !== 'undefined' ? performance.now() : 0
-  const prompt = sim.mode === 'play' && !sim.speech && !sim.atlas ? nearestHit(sim, 48)?.prompt ?? null : null
+  const prompt = sim.mode === 'play' && !sim.speech && !sim.atlas ? nearestHit(sim, INTERACT_R)?.prompt ?? null : null
   return {
     mode: sim.mode,
     region: sim.region,

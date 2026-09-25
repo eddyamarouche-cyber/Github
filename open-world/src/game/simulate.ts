@@ -171,7 +171,7 @@ export function nearestHit(sim: Sim, maxDist: number): InteractHit | null {
 
 function hitAtPoint(sim: Sim, x: number, y: number): InteractHit | null {
   let best: InteractHit | null = null
-  let bestDist = 28
+  let bestDist = 52
   for (const hit of collectHits(sim)) {
     const dist = Math.hypot(hit.x - x, hit.y - y)
     if (dist < bestDist) {
