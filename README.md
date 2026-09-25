@@ -7,6 +7,7 @@ Applications related to a Cursor candidacy:
 | Leader Challenge | [`leader-challenge/`](./leader-challenge) | 90-minute executive presentation for Regional Director, Southern Europe |
 | Interview Coach | [`coach-entretien/`](./coach-entretien) | Interview preparation (questions, simulation, guidance) |
 | Presentation Plan | [`plan-presentation/`](./plan-presentation) | Interactive 30 / 60 / 90-day plan presentation |
+| Open World | [`open-world/`](./open-world) | Hearthmere Wilds, a walkable coast, forest, and ridge |
 
 ## Leader Challenge (recommended)
 
@@ -31,6 +32,16 @@ cd plan-presentation
 npm install
 npm run dev
 ```
+
+## Open World
+
+```bash
+cd open-world
+npm install
+npm run dev
+```
+
+See [`open-world/README.md`](./open-world/README.md) for controls, the atlas, and how the world is generated.
 
 ## Interview Coach
 
